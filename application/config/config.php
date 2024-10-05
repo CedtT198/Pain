@@ -23,7 +23,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = '';
+
+
+
+
+// COMMENTEO FOTSINY IZAY TSY ANLISANY
+
+$config['base_url'] = 'C:\xampp\htdocs\web\Pain'; // LIEN ANY CEDRIC
+// $config['base_url'] = ''; // LIEN ANY TSIRY
+// $config['base_url'] = ''; // LIEN ANY MIHARY
+
+
 
 /*
 |--------------------------------------------------------------------------
