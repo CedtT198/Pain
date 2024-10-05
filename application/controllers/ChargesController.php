@@ -7,5 +7,15 @@ class ChargesController extends CI_Controller {
         parent::__construct();
         $this->load->model('ChargeModel');
     }
+
+    public function index() {
+        $data['contents'] = 'page/ListeCharge';
+        $this->load->view('template/template', $data);
+    }
+
+    public function index2() {
+        $data['contents'] = 'page/FormulaireCharge';
+        $this->load->view('template/template', $data);
+    }
 }
 ?>

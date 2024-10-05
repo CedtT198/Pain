@@ -2,9 +2,9 @@
 <div class="col-lg-12 grid-margin stretch-card">
        <div class="card">
               <div class="card-body">
-              <h4 class="card-title">CENTRE</h4>
+              <h4 class="card-title">UNITE d' OEUVRE</h4>
               <p class="card-description">
-              Liste <code>center</code>
+              Liste <code>unite d'oeuvre</code>
               </p>
               <div class="table-responsive">
               <table class="table table-striped">
@@ -12,16 +12,19 @@
                      <tr>
                             <th>Id</th>
                             <th>Nom</th>
+                            <th>Abreviation</th>
                      </tr>
                      </thead>
                      <tbody>
                      <tr>
-                            <td class="py-1">1</td>
-                            <td>Livraison</td>
+                            <td class="py-1">exemple</td>
+                            <td>exemple</td>
+                            <td>exemple</td>
                      </tr>
                      <tr>
-                            <td class="py-1">2</td>
-                            <td>Courses</td>
+                            <td class="py-1">exemple</td>
+                            <td>exemple</td>
+                            <td>exemple</td>
                      </tr>
                      </tbody>
               </table>

@@ -29,8 +29,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 // COMMENTEO FOTSINY IZAY TSY ANLISANY
 
-$config['base_url'] = 'http://localhost/web/Pain/'; // LIEN ANY CEDRIC
-// $config['base_url'] = 'C:\xampp\htdocs\projet\S5\GESTION\1er projet\Pain'; // LIEN ANY TSIRY
+// $config['base_url'] = 'http://localhost/web/Pain/'; // LIEN ANY CEDRIC
+$config['base_url'] = 'http://localhost/projet/S5/GESTION/1erProjet/Pain'; // LIEN ANY TSIRY
 // $config['base_url'] = ''; // LIEN ANY MIHARY
 
 

@@ -1,7 +1,7 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-
-class Rubrique extends CI_Model {
+// defined('BASEPATH') OR exit('No direct script access allowed');
+    
+class RubriqueModel extends CI_Model {
 
     public function GetAll () {
         $query = $this->db->get('rubrique');

@@ -86,13 +86,13 @@
             </a>
             <div class="collapse" id="rubrique">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="">Liste</a></li>
-                <li class="nav-item"> <a class="nav-link" href="">Insertion</a></li>
+                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('RubriqueController'); ?>">Liste</a></li>
+                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('RubriqueController/index2'); ?>">Insertion</a></li>
               </ul>
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="<?php echo site_url('CentreController'); ?>">
               <i class="icon-layout menu-icon"></i>
               <span class="menu-title">Centre</span>
             </a>
@@ -105,8 +105,8 @@
             </a>
             <div class="collapse" id="unite">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="">Liste</a></li>
-                <li class="nav-item"> <a class="nav-link" href="">Insertion</a></li>
+                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('UniteOeuvreController'); ?>">Liste</a></li>
+                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('UniteOeuvreController/index2'); ?>">Insertion</a></li>
               </ul>
             </div>
           </li>
@@ -118,8 +118,8 @@
             </a>
             <div class="collapse" id="charges">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="">Liste</a></li>
-                <li class="nav-item"> <a class="nav-link" href="">Insertion</a></li>
+                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('ChargesController'); ?>">Liste</a></li>
+                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('ChargesController/index2'); ?>">Insertion</a></li>
               </ul>
             </div>
           </li>
@@ -131,8 +131,8 @@
             </a>
             <div class="collapse" id="repartition">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="">Liste</a></li>
-                <li class="nav-item"> <a class="nav-link" href="">Insertion</a></li>
+                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('RepartitionController'); ?>">Liste</a></li>
+                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('RepartitionController/index2'); ?>">Insertion</a></li>
               </ul>
             </div>
           </li>
