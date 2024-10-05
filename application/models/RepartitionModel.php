@@ -23,5 +23,9 @@ class RepartitionModel extends CI_Model {
         $this->db->where('id_repartition_centre', $id_repartition_centre);
         return $this->db->delete('repartition_centre');
     }
+    public function getRepartitionCentre($id_charge) {
+        $this->db->where('id_charge', $id_charge);
+        return $this->db->get('repartition_centre')->result();
+    }
 }
 ?>
