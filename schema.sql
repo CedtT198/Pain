@@ -46,7 +46,7 @@ CREATE TABLE centre(
 );
 
 CREATE TABLE repartition_centre(
-    repartition_centre INT PRIMARY KEY auto_increment,
+    id_repartition_centre INT PRIMARY KEY auto_increment,
     id_charge INT not null,
     id_centre INT not null,
     taux DECIMAL(15,3)

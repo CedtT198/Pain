@@ -1,5 +1,5 @@
 <?php
-class TypeCharge extends CI_Model {
+class TypeChargeModel extends CI_Model {
 
     public function getById($id_type_charge) {
         $this->db->where('id_type_charge', $id_type_charge);

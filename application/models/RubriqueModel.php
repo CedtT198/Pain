@@ -1,30 +1,30 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Nature extends CI_Model {
+class Rubrique extends CI_Model {
 
     public function GetAll () {
-        $query = $this->db->get('nature');
+        $query = $this->db->get('rubrique');
         return $query->result_array();
     }
 
     public function GetById ($id) {
-        $this->db->where('id_nature', $id);
-        $query = $this->db->get('nature');
+        $this->db->where('id_rubrique', $id);
+        $query = $this->db->get('rubrique');
         return $query->row_array();
     }
 
     public function Insert($data) {
-        return $this->db->insert('nature', $data);
+        return $this->db->insert('rubrique', $data);
     }
 
     public function delete($id) {
-        $this->db->where('id_nature', $id);
-        return $this->db->delete('nature');
+        $this->db->where('id_rubrique', $id);
+        return $this->db->delete('rubrique');
     }
     
     public function deleteAll() {
-        $this->db->truncate('nature');
+        $this->db->truncate('rubrique');
    }
 }
 
