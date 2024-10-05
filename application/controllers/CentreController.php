@@ -7,5 +7,10 @@ class CentreController extends CI_Controller {
         parent::__construct();
         $this->load->model('CentreModel');
     }
+
+    public function index() {
+        $data['contents'] = 'page/ListeCentre';
+        $this->load->view('template/template', $data);
+    }
 }
 ?>
