@@ -1,7 +1,5 @@
-
 <?php
 class ChargeModel extends CI_Model {
-
 
     public function insert($data) {
         return $this->db->insert('charge', $data);
@@ -32,27 +30,31 @@ class ChargeModel extends CI_Model {
         return $this->db->get('charge')->result();
     }
 
-    public function getTotalChargeFixe($id_repartition) {
+    public function getTotalChargeFixe($id_centre) {
         $this->db->select_sum('montant');
-        $this->db->join('charge', 'charge.id_charge = charge_repartition.id_charge');
+        $this->db->join('charge', 'charge.id_charge = repartition_centre.id_charge');
         $this->db->where('charge.id_nature', 2); // Nature fixe
-        $this->db->where('id_repartition', $id_repartition);
-        return $this->db->get('charge_repartition')->row()->montant;
+        $this->db->where('repartition_centre.id_centre', $id_centre);
+        return $this->db->get('repartition_centre')->row()->montant;
     }
 
-    public function getTotalChargeVariable($id_repartition) {
+    public function getTotalChargeVariable($id_centre) {
         $this->db->select_sum('montant');
-        $this->db->join('charge', 'charge.id_charge = charge_repartition.id_charge');
+        $this->db->join('charge', 'charge.id_charge = repartition_centre.id_charge');
         $this->db->where('charge.id_nature', 1); // Nature variable
-        $this->db->where('id_repartition', $id_repartition);
-        return $this->db->get('charge_repartition')->row()->montant;
+        $this->db->where('repartition_centre.id_centre', $id_centre);
+        return $this->db->get('repartition_centre')->row()->montant;
     }
 
-    public function getTotalCharges($id_repartition) {
+    public function getTotalChargesByCentre($id_centre) {
         $this->db->select_sum('montant');
-        $this->db->join('charge', 'charge.id_charge = charge_repartition.id_charge');
-        $this->db->where('id_repartition', $id_repartition);
-        return $this->db->get('charge_repartition')->row()->montant;
+        $this->db->join('charge', 'charge.id_charge = repartition_centre.id_charge');
+        $this->db->where('repartition_centre.id_centre', $id_centre);
+        return $this->db->get('repartition_centre')->row()->montant;
+    }
+    public function getTotalCharges() {
+        $this->db->select_sum('montant');
+        return $this->db->get('charge')->row()->montant;
     }
 }
 ?>
