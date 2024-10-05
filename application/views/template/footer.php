@@ -22,26 +22,24 @@
   <!-- container-scroller -->
 
   <!-- plugins:assets/js -->
-  <script src="<?php echo site_url('assets/vendors/js/vendor.bundle.base.js'); ?>"></script>
-
-  <script src="<?php echo site_url('assets/vendors/assets/js/vendor.bundle.base.assets/js'); ?>"></script>
-  <script src="<?php echo site_url('assets/vendors/chart.assets/js/Chart.min.assets/js'); ?>"></script>
-  <script src="<?php echo site_url('assets/vendors/datatables.net/jquery.dataTables.assets/js'); ?>"></script>
-  <script src="<?php echo site_url('assets/vendors/datatables.net-bs4/dataTables.bootstrap4.assets/js'); ?>"></script>
-  <script src="<?php echo site_url('assets/js/dataTables.select.min.assets/js'); ?>"></script>
-  <script src="<?php echo site_url('assets/js/off-canvas.assets/js'); ?>"></script>
-  <script src="<?php echo site_url('assets/js/hoverable-collapse.assets/js'); ?>"></script>
-  <script src="<?php echo site_url('assets/js/template.assets/js'); ?>"></script>
-  <script src="<?php echo site_url('assets/js/settings.assets/js'); ?>"></script>
-  <script src="<?php echo site_url('assets/js/todolist.assets/js'); ?>"></script>
-  <script src="<?php echo site_url('assets/js/dashboard.assets/js'); ?>"></script>
-  <script src="<?php echo site_url('assets/js/Chart.roundedBarCharts.assets/js'); ?>"></script>
-  <script src="<?php echo site_url('assets/vendors/js/vendor.bundle.base.js'); ?>"></script>
-  <script src="<?php echo site_url('assets/js/off-canvas.js'); ?>"></script>
-  <script src="<?php echo site_url('assets/js/hoverable-collapse.js'); ?>"></script>
-  <script src="<?php echo site_url('assets/js/template.js'); ?>"></script>
-  <script src="<?php echo site_url('assets/js/settings.js'); ?>"></script>
-  <script src="<?php echo site_url('assets/js/todolist.js'); ?>"></script>
+  <script src="<?php echo base_url(); ?>assets/vendors/js/vendor.bundle.base.js"></script>
+  <script src="<?php echo base_url(); ?>assets/vendors/assets/js/vendor.bundle.base.assets/js"></script>
+  <script src="<?php echo base_url(); ?>assets/vendors/chart.assets/js/Chart.min.assets/js"></script>
+  <script src="<?php echo base_url(); ?>assets/vendors/datatables.net/jquery.dataTables.assets/js"></script>
+  <script src="<?php echo base_url(); ?>assets/vendors/datatables.net-bs4/dataTables.bootstrap4.assets/js"></script>
+  <script src="<?php echo base_url(); ?>assets/js/dataTables.select.min.assets/js"></script>
+  <script src="<?php echo base_url(); ?>assets/js/off-canvas.assets/js"></script>
+  <script src="<?php echo base_url(); ?>assets/js/hoverable-collapse.assets/js"></script>
+  <script src="<?php echo base_url(); ?>assets/js/template.assets/js"></script>
+  <script src="<?php echo base_url(); ?>assets/js/settings.assets/js"></script>
+  <script src="<?php echo base_url(); ?>assets/js/todolist.assets/js"></script>
+  <script src="<?php echo base_url(); ?>assets/js/dashboard.assets/js"></script>
+  <script src="<?php echo base_url(); ?>assets/js/Chart.roundedBarCharts.assets/js"></script>
+  <script src="<?php echo base_url(); ?>assets/js/off-canvas.js"></script>
+  <script src="<?php echo base_url(); ?>assets/js/hoverable-collapse.js"></script>
+  <script src="<?php echo base_url(); ?>assets/js/template.js"></script>
+  <script src="<?php echo base_url(); ?>assets/js/settings.js"></script>
+  <script src="<?php echo base_url(); ?>assets/js/todolist.js"></script>
 
 </body>
 
