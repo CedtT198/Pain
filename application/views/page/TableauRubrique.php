@@ -23,9 +23,11 @@
                                    <td></td>
                                    <td></td>
                                    <?php foreach($centres as $centre) { ?>
-                                          <td><?php echo "%"; ?></td>
-                                          <td><?php echo "Fixe"; ?></td>
-                                          <td><?php echo "Variable"; ?></td>
+                                          <td>
+                                                 <?php echo "%"; ?>
+                                                 <?php echo "Fixe"; ?>
+                                                 <?php echo "Variable"; ?>
+                                          </td>
                                    <?php } ?>
                             </tr>
                             <!-- <?php ?>
