@@ -27,7 +27,7 @@
           <span class="icon-menu"></span>
         </button>
         <ul class="navbar-nav navbar-nav-right">
-          <li class="nav-item nav-profile dropdown">
+          <!-- <li class="nav-item nav-profile dropdown">
             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
               <img src="images/faces/face28.jpg" alt="profile"/>
             </a>
@@ -41,7 +41,7 @@
                 Logout
               </a>
             </div>
-          </li>
+          </li> -->
         </ul>
         <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
           <span class="icon-menu"></span>

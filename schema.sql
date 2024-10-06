@@ -46,10 +46,10 @@ CREATE TABLE centre(
 );
 
 CREATE TABLE repartition_centre(
-    id_repartition_centre INT PRIMARY KEY auto_increment,
     id_charge INT not null,
     id_centre INT not null,
-    taux DECIMAL(15,3)
+    taux DECIMAL(15,3),
+    PRIMARY KEY (id_charge, id_centre)
 );
 ALTER TABLE repartition_centre ADD FOREIGN KEY (id_charge) REFERENCES charge(id_charge); 
 ALTER TABLE repartition_centre ADD FOREIGN KEY (id_centre) REFERENCES centre(id_centre); 

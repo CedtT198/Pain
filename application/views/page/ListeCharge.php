@@ -10,34 +10,31 @@
               <table class="table table-striped">
                      <thead>
                      <tr>
-                            <th>Id</th>
-                            <th>id nature</th>
-                            <th>Id rubrique</th>
-                            <th>Id type</th>
+                            <!-- <th>Rubrique</th> -->
+                            <th>Date de la charge</th>
+                            <th>Nature</th>
+                            <th>Type</th>
                             <th>Unite</th>
                             <th>Montant</th>
-                            <th>Date de la charge</th>
                      </tr>
                      </thead>
                      <tbody>
-                     <tr>
-                            <td class="py-1">exemple</td>
-                            <td>exemple</td>
-                            <td>exemple</td>
-                            <td>exemple</td>
-                            <td>exemple</td>
-                            <td>exemple</td>
-                            <td>exemple</td>
-                     </tr>
-                     <tr>
-                            <td class="py-1">exemple</td>
-                            <td>exemple</td>
-                            <td>exemple</td>
-                            <td>exemple</td>
-                            <td>exemple</td>
-                            <td>exemple</td>
-                            <td>exemple</td>
-                     </tr>
+                            <?php foreach ($charges as $charge) { ?>
+                                   <tr>
+                                          <!-- <td>
+                                                 <?php echo $this->RubriqueModel->GetById($charge['id_rubrique'])['nom_rubrique']; ?>
+                                          </td> -->
+                                          <td><?php echo $charge['date_charge']; ?></td>
+                                          <td>
+                                                 <?php echo $this->NatureModel->getbyId($charge['id_nature'])['nom_nature']; ?>
+                                          </td>
+                                          <td>
+                                                 <?php echo $this->TypeChargeModel->getbyId($charge['id_type'])['nom_type_charge']; ?>
+                                          </td>
+                                          <td><?php echo $charge['unite']; ?></td>
+                                          <td><?php echo $charge['montant']; ?></td>
+                                   </tr>
+                            <?php } ?>
                      </tbody>
               </table>
               </div>

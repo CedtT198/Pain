@@ -13,19 +13,23 @@
                             <th>Id</th>
                             <th>Nom</th>
                             <th>Abreviation</th>
+                            <th></th>
                      </tr>
                      </thead>
                      <tbody>
-                     <tr>
-                            <td class="py-1">exemple</td>
-                            <td>exemple</td>
-                            <td>exemple</td>
-                     </tr>
-                     <tr>
-                            <td class="py-1">exemple</td>
-                            <td>exemple</td>
-                            <td>exemple</td>
-                     </tr>
+                            <?php foreach($unites as $unite) { ?>
+                                   <tr>
+                                          <td><?php echo $unite['id_unite_oeuvre']; ?></td>
+                                          <td><?php echo $unite['nom_unite_oeuvre']; ?></td>
+                                          <td><?php echo $unite['abreviation']; ?></td>
+                                          <!-- <td>
+                                                 <form action="<?php echo site_url("UniteOeuvreController/delete"); ?>">
+                                                        <input type="hidden" name="id" value="<?php echo $unite['id_unite_oeuvre']; ?>">
+                                                        <button type="submit" class="btn btn-danger">Supprimer</button>
+                                                 </form>
+                                          </td> -->
+                                   </tr>
+                            <?php } ?>
                      </tbody>
               </table>
               </div>

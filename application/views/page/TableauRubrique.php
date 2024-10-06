@@ -11,42 +11,30 @@
                      <thead>
                      <tr>
                             <th>Rubrique</th>
-                            <th>TOTAL</th>
                             <th>Unite d'Oeuvre</th>
-                            <th>Nature</th>
-                            <th>ADM/DIST (fixe)</th>
-                            <th>ADM/DIST (variable)</th>
-                            <th>PLATATION (fixe)</th>
-                            <th>PLATATION (variable)</th>
-                            <th>TOTAL (fixe)</th>
-                            <th>TOTAL (variable)</th>
+                            <?php foreach($centres as $centre) { ?>
+                                   <th><?php echo $centre['nom_centre']; ?></th>
+                            <?php } ?>
                      </tr>
+                     <tr></tr>
                      </thead>
                      <tbody>
-                     <tr>
-                            <td class="py-1">exemple</td>
-                            <td>exemple</td>
-                            <td>exemple</td>
-                            <td>exemple</td>
-                            <td>exemple</td>
-                            <td>exemple</td>
-                            <td>exemple</td>
-                            <td>exemple</td>
-                            <td>exemple</td>
-                            <td>exemple</td>
-                     </tr>
-                     <tr>
-                            <td class="py-1">exemple</td>
-                            <td>exemple</td>
-                            <td>exemple</td>
-                            <td>exemple</td>
-                            <td>exemple</td>
-                            <td>exemple</td>
-                            <td>exemple</td>
-                            <td>exemple</td>
-                            <td>exemple</td>
-                            <td>exemple</td>
-                     </tr>
+                            <tr>
+                                   <td></td>
+                                   <td></td>
+                                   <?php foreach($centres as $centre) { ?>
+                                          <td><?php echo "%"; ?></td>
+                                          <td><?php echo "Fixe"; ?></td>
+                                          <td><?php echo "Variable"; ?></td>
+                                   <?php } ?>
+                            </tr>
+                            <!-- <?php ?>
+                                   <tr>
+                                          <td>Achat</td>
+                                          <td>Kg</td>
+                                          <td></td>
+                                   </tr>
+                            <?php ?> -->
                      </tbody>
               </table>
               </div>

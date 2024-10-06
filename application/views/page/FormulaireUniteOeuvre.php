@@ -5,15 +5,15 @@
                      <div class="card-body">
                      <h4 class="card-title">UNITE d' OEUVRE</h4>
                      <p class="card-description"></p>
-                     <form class="forms-sample">
-                     <div class="form-group">
-                            <label for="exampleInputUsername1">Nom</label>
-                            <input type="text" class="form-control" id="exampleInputUsername1" placeholder="nom">
-                    </div>
-                     <div class="form-group">
-                            <label for="exampleInputUsername1">Abreviation</label>
-                            <input type="text" class="form-control" id="exampleInputUsername1" placeholder="abreviation">
-                    </div>
+                     <form class="forms-sample" action="<?php echo site_url('UniteOeuvreController/insert'); ?>" method="post">
+                            <div class="form-group">
+                                   <label for="Nom">Nom</label>
+                                   <input type="text" class="form-control" id="Nom" name="nom"  placeholder="nom">
+                            </div>
+                            <div class="form-group">
+                                   <label for="Abreviation">Abreviation</label>
+                                   <input type="text" class="form-control" id="Abreviation" name="abreviation" placeholder="abreviation">
+                            </div>
                      <button type="submit" class="btn btn-primary mr-2">Submit</button>
                      </form>
                      </div>

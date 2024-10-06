@@ -10,6 +10,7 @@ class CentreController extends CI_Controller {
 
     public function index() {
         $data['contents'] = 'page/ListeCentre';
+        $data['centres'] = $this->CentreModel->getAll();
         $this->load->view('template/template', $data);
     }
 }

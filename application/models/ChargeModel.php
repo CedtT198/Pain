@@ -7,7 +7,7 @@ class ChargeModel extends CI_Model {
 
     public function getById($id_charge) {
         $this->db->where('id_charge', $id_charge);
-        return $this->db->get('charge')->row();
+        return $this->db->get('charge')->row_array();
     }
 
     public function update($id_charge, $data) {
@@ -23,11 +23,11 @@ class ChargeModel extends CI_Model {
     public function getAllByDate($id_rubrique, $date_charge) {
         $this->db->where('id_rubrique', $id_rubrique);
         $this->db->where('date_charge', $date_charge);
-        return $this->db->get('charge')->result();
+        return $this->db->get('charge')->result_array();
     }
 
     public function getAll() {
-        return $this->db->get('charge')->result();
+        return $this->db->get('charge')->result_array();
     }
 
     public function getTotalChargeFixe($id_centre) {

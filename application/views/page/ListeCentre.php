@@ -15,14 +15,12 @@
                      </tr>
                      </thead>
                      <tbody>
-                     <tr>
-                            <td class="py-1">1</td>
-                            <td>Livraison</td>
-                     </tr>
-                     <tr>
-                            <td class="py-1">2</td>
-                            <td>Courses</td>
-                     </tr>
+                            <?php foreach ($centres as $centre) { ?>
+                                   <tr>
+                                          <td><?php echo $centre['id_centre']; ?></td>
+                                          <td><?php echo $centre['nom_centre']; ?></td>
+                                   </tr>
+                            <?php } ?>
                      </tbody>
               </table>
               </div>

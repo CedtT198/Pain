@@ -5,19 +5,19 @@
                      <div class="card-body">
                      <h4 class="card-title">RUBRIQUE</h4>
                      <p class="card-description"></p>
-                     <form class="forms-sample">
+                     <form class="forms-sample" action="<?php echo site_url('RubriqueController/insert'); ?>" method="post">
                             <div class="form-group">
-                                   <label for="exampleInputUsername1">Nom</label>
-                                   <input type="text" class="form-control" id="exampleInputUsername1" placeholder="nom">
+                                   <label for="nom">Nom</label>
+                                   <input type="text" class="form-control" id="nom" placeholder="nom" name="nom">
                            </div>
                      <div class="form-group">
-                            <label for="exampleFormControlSelect2">Unite d' Oeuvre</label>
-                            <select class="form-control" id="exampleFormControlSelect2">
-                                   <option>exemple 1</option>
-                                   <option>exemple 2</option>
-                                   <option>exemple 3</option>
-                                   <option>exemple 4</option>
-                                   <option>exemple 5</option>
+                            <label for="unite">Unite d' Oeuvre</label>
+                            <select class="form-control" id="unite" name="unite">
+                                   <?php foreach ($unites as $unite) { ?>
+                                          <option value="<?php echo $unite['id_unite_oeuvre']; ?>">
+                                                 <?php echo $unite['nom_unite_oeuvre']; ?>
+                                          </option>
+                                   <?php } ?>
                             </select>
                      </div>
                      <button type="submit" class="btn btn-primary mr-2">Submit</button>

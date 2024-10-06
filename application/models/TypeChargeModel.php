@@ -1,9 +1,13 @@
 <?php
 class TypeChargeModel extends CI_Model {
 
+    public function getAll() {
+        return $this->db->get('type_charge')->result_array();
+    }
+
     public function getById($id_type_charge) {
         $this->db->where('id_type_charge', $id_type_charge);
-        return $this->db->get('type_charge')->row();
+        return $this->db->get('type_charge')->row_array();
     }
 
     public function insert($data) {

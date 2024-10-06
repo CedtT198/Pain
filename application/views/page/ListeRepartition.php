@@ -10,25 +10,24 @@
               <table class="table table-striped">
                      <thead>
                      <tr>
-                            <th>Id</th>
                             <th>Id charge</th>
                             <th>Id centre</th>
                             <th>Taux</th>
                      </tr>
                      </thead>
                      <tbody>
-                     <tr>
-                            <td class="py-1">exemple</td>
-                            <td>exemple</td>
-                            <td>exemple</td>
-                            <td>exemple</td>
-                     </tr>
-                     <tr>
-                            <td class="py-1">exemple</td>
-                            <td>exemple</td>
-                            <td>exemple</td>
-                            <td>exemple</td>
-                     </tr>
+                            <?php foreach($repartitions as $rep) { ?>
+                                   <tr>
+                                          <td>
+                                                 <?php echo $this->ChargeModel->GetById($rep['id_charge'])['date_charge']; ?> - 
+                                                 <?php echo $this->ChargeModel->GetById($rep['id_charge'])['montant']; ?> 
+                                          </td>
+                                          <td>
+                                                 <?php echo $this->CentreModel->GetById($rep['id_centre'])['nom_centre']; ?>
+                                          </td>
+                                          <td><?php echo $rep['taux']; ?></td>
+                                   </tr>
+                            <?php } ?>
                      </tbody>
               </table>
               </div>

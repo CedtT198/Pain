@@ -3,11 +3,11 @@ class NatureModel extends CI_Model {
 
     public function getById($id_nature) {
         $this->db->where('id_nature', $id_nature);
-        return $this->db->get('nature')->row();
+        return $this->db->get('nature')->row_array();
     }
 
     public function getAll() {
-        return $this->db->get('nature')->result();
+        return $this->db->get('nature')->result_array();
     }
 
     public function insert($data) {
