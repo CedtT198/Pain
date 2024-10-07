@@ -8,13 +8,18 @@ class RepartitionModel extends CI_Model {
             $total += $rep['taux'];
         }
 
-        if ($total+$taux_input < 100)
+        if ($total+$taux_input <= 100)
             return true;
         return false;
     }
 
     public function getAll() {
         return $this->db->get('repartition_centre')->result_array();
+    }
+
+    public function getByIdCentre($id_centre) {
+        $this->db->where('id_centre', $id_centre);
+        return $this->db->get('repartition_centre')->row_array();
     }
 
     public function insert($data) {
