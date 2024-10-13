@@ -305,3 +305,39 @@
               </div>
        </div>
 </div>
+
+<div class="row">
+       <div class="col-lg-12 grid-margin stretch-card">
+              <div class="card">
+                     <div class="card-body">
+                            <h4 class="card-title">TOTAL</h4>
+                            <p class="card-description">
+                            Repartition <code>admin / livraison</code>
+                            </p>
+                            <div class="table-responsive">
+                                   <table class="table table-striped">
+                                          <tr></tr>
+                                   </table>
+                            </div>
+                     </div>
+              </div>
+       </div>
+</div>
+
+<div class="row">
+       <div class="col-lg-12 grid-margin stretch-card">
+              <div class="card">
+                     <div class="card-body">
+                            <h4 class="card-title">Cout</h4>
+                            <p class="card-description">
+                            Prix du pain
+                            </p>
+                            <div class="table-responsive">
+                                   <table class="table table-striped">
+                                          <tr></tr>
+                                   </table>
+                            </div>
+                     </div>
+              </div>
+       </div>
+</div>
