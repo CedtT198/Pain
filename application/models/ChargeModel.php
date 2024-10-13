@@ -2,7 +2,8 @@
 class ChargeModel extends CI_Model {
 
     public function insert($data) {
-        return $this->db->insert('charge', $data);
+        $this->db->insert('charge', $data);
+        return $this->db->insert_id();
     }
 
     public function getById($id_charge) {

@@ -7,6 +7,31 @@ class RubriqueModel extends CI_Model {
         $query = $this->db->get('rubrique');
         return $query->result_array();
     }
+    
+    public function GetAllCharge () {
+        $query = $this->db->query('select * from v_all_charge');
+        return $query->result_array();
+    }
+    
+    public function GetTotalJoin() {
+        $query = $this->db->query('select * from v_total_join');
+        return $query->result_array();
+    }
+    
+    public function GetTotalMontant () {
+        $query = $this->db->query('select * from total_montant');
+        return $query->result_array();
+    }
+
+    public function GetTotalNature () {
+        $query = $this->db->query('select * from total_nature');
+        return $query->result_array();
+    }
+    
+    public function GetTotalRepartition () {
+        $query = $this->db->query('select * from total_repart');
+        return $query->result_array();
+    }
 
     public function GetById ($id) {
         $this->db->where('id_rubrique', $id);

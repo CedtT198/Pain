@@ -5,6 +5,10 @@
                      <div class="card-body">
                      <h4 class="card-title">CHARGE</h4>
                      <p class="card-description"></p>
+                     
+                     <?php if (isset($error)) { ?>
+                            <p style="color:red;"><?php echo $error; ?></p>
+                     <?php } ?>
                      <form class="forms-sample" action="<?php echo site_url('ChargesController/insert'); ?>" method="post">
                      <div class="form-group">
                             <label for="nature">Nature</label>
@@ -41,12 +45,34 @@
                             <input type="text" class="form-control" id="unite" placeholder="00" name="unite">
                     </div>
                      <div class="form-group">
-                            <label for="montant">Montant</label>
+                            <label for="montant">Montant (Unitaire)</label>
                             <input type="text" class="form-control" id="montant" placeholder="00" name="montant">
                     </div>
                      <div class="form-group">
                             <label for="date">Date charge</label>
                             <input type="date" class="form-control" id="date" placeholder="00" name="date">
+                    </div>
+                    <br><hr><br>
+
+                    <h4>REPARTITION (en %)</h4>
+                    <div class="form-group">
+                            <label for="rep_courses">Courses</label>
+                            <input type="number" class="form-control" id="rep_courses" placeholder="00" name="rep_courses">
+                    </div>
+                    
+                    <div class="form-group">
+                            <label for="rep_usine">Usine</label>
+                            <input type="number" class="form-control" id="rep_usine" placeholder="00" name="rep_usine">
+                    </div>
+                    
+                    <div class="form-group">
+                            <label for="rep_admin">Administration</label>
+                            <input type="number" class="form-control" id="rep_admin" placeholder="00" name="rep_admin">
+                    </div>
+                    
+                    <div class="form-group">
+                            <label for="rep_livraison">Livraison</label>
+                            <input type="number" class="form-control" id="rep_livraison" placeholder="00" name="rep_livraison">
                     </div>
                     
                      <button type="submit" class="btn btn-primary mr-2">Submit</button>

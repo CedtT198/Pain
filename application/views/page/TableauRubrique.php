@@ -84,7 +84,7 @@
        </div>
        </div>
 </div> -->
-
+<!-- 
 <div class="row">
 <div class="col-lg-12 grid-margin stretch-card">
        <div class="card">
@@ -116,8 +116,8 @@
               </div>
        </div>
        </div>
-</div>
-
+</div> -->
+<!-- 
 <div class="row">
 <div class="col-lg-12 grid-margin stretch-card">
        <div class="card">
@@ -201,5 +201,107 @@
               </div>
               </div>
        </div>
+       </div>
+</div> -->
+
+
+<div class="row">
+       <div class="col-lg-12 grid-margin stretch-card">
+              <div class="card">
+                     <div class="card-body">
+                            <h4 class="card-title">REPARTITION</h4>
+                            <p class="card-description">
+                            Liste <code>répartition détaillée</code>
+                            </p>
+                            <div class="table-responsive">
+                                   <table class="table table-striped">
+                                          <tr>
+                                                 <th rowspan="2">Rubrique</th>
+                                                 <th rowspan="2">Total</th>
+                                                 <th rowspan="2">Unité d'oeuvre</th>
+                                                 <th colspan="3">Courses</th>
+                                                 <th colspan="3">Usine</th>
+                                                 <th colspan="3">Administration</th>
+                                                 <th colspan="3">Livraison</th>
+                                                 <th colspan="2">Total nature</th>
+                                          </tr>
+                                          <tr>
+                                                 <?php for($i=0; $i < Count($centres); $i++) { ?>
+                                                        <th>%</th>
+                                                        <th>Fixe</th>
+                                                        <th>Variable</th>
+                                                 <?php } ?>
+                                                 <th>Fixe</th>
+                                                 <th>Variable</th>
+                                          </tr>
+                                          <?php foreach($allCharge as $charge) { ?>
+                                          <tr>
+                                                 <td><?php echo $charge["rubrique"]; ?></td>
+                                                 <td><?php echo $charge["montant"]; ?></td>
+                                                 <td><?php echo $charge['abreviation_unite_oeuvre']; ?></td>
+
+                                                 <td><?php echo $charge['courses']; ?></td>
+                                                 <?php if ($charge['id_nature'] == 1) { ?>
+                                                        <td>0</td>
+                                                        <td><?php echo $charge['montant'] * $charge['courses'] / 100; ?></td>
+                                                 <?php } else { ?>
+                                                        <td><?php echo $charge['montant'] * $charge['courses'] / 100; ?></td>
+                                                        <td>0</td>
+                                                 <?php } ?>
+
+                                                 <td><?php echo $charge['usine']; ?></td>
+                                                 <?php if ($charge['id_nature'] == 1) { ?>
+                                                        <td>0</td>
+                                                        <td><?php echo $charge['montant'] * $charge['usine'] / 100; ?></td>
+                                                 <?php } else { ?>
+                                                        <td><?php echo $charge['montant'] * $charge['usine'] / 100; ?></td>
+                                                        <td>0</td>
+                                                 <?php } ?>
+                                                 
+                                                 <td><?php echo $charge['administration']; ?></td>
+                                                 <?php if ($charge['id_nature'] == 1) { ?>
+                                                        <td>0</td>
+                                                        <td><?php echo $charge['montant'] * $charge['administration'] / 100; ?></td>
+                                                 <?php } else { ?>
+                                                        <td><?php echo $charge['montant'] * $charge['administration'] / 100; ?></td>
+                                                        <td>0</td>
+                                                 <?php } ?>
+                                                 
+                                                 <td><?php echo $charge['livraison']; ?></td>
+                                                 <?php if ($charge['id_nature'] == 1) { ?>
+                                                        <td>0</td>
+                                                        <td><?php echo $charge['montant'] * $charge['livraison'] / 100; ?></td>
+                                                 <?php } else { ?>
+                                                        <td><?php echo $charge['montant'] * $charge['livraison'] / 100; ?></td>
+                                                        <td>0</td>
+                                                 <?php } ?>
+                                          </tr>
+                                          <?php } ?>
+                                          <tr>
+                                                 <td colspan="4"></td>
+                                                 <td><?php echo $totalJoin[1]['t_courses']; ?></td>
+                                                 <td colspan="2"><?php echo $totalJoin[0]['t_courses']; ?></td>
+                                                 <td><?php echo $totalJoin[1]['t_usine']; ?></td>
+                                                 <td colspan="2"><?php echo $totalJoin[0]['t_usine']; ?></td>
+                                                 <td><?php echo $totalJoin[1]['t_administration']; ?></td>
+                                                 <td colspan="2"><?php echo $totalJoin[0]['t_administration']; ?></td>
+                                                 <td><?php echo $totalJoin[1]['t_livraison']; ?></td>
+                                                 <td><?php echo $totalJoin[0]['t_livraison']; ?></td>
+                                                 <td><?php echo $totalNature[1]['total']; ?></td>
+                                                 <td><?php echo $totalNature[0]['total']; ?></td>
+                                          </tr>
+                                          <tr>
+                                                 <th>TOTAL</th>
+                                                 <td><?php echo $totalMontant[0]['t_montant']; ?></td>
+                                                 <td colspan="3"></td>
+                                                 <td colspan="3"><?php echo $totalRepartition[0]['s_courses']; ?></td>
+                                                 <td colspan="3"><?php echo $totalRepartition[0]['s_usine']; ?></td>
+                                                 <td colspan="3"><?php echo $totalRepartition[0]['s_administration']; ?></td>
+                                                 <td><?php echo $totalRepartition[0]['s_livraison']; ?></td>
+                                          </tr>
+                                   </table>
+                            </div>
+                     </div>
+              </div>
        </div>
 </div>
