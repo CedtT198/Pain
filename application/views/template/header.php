@@ -108,7 +108,7 @@
             <div class="collapse" id="unite">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('UniteOeuvreController'); ?>">Liste</a></li>
-                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('UniteOeuvreController/index2'); ?>">Insertion</a></li>
+                <!-- <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('UniteOeuvreController/index2'); ?>">Insertion</a></li> -->
               </ul>
             </div>
           </li>
@@ -126,6 +126,32 @@
             </div>
           </li>
           <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#achat" aria-expanded="false" aria-controls="achat">
+              <i class="icon-grid menu-icon"></i>
+              <span class="menu-title">Achat</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="achat">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('AchatController'); ?>">Liste</a></li>
+                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('AchatController/index2'); ?>">insertion</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#vente" aria-expanded="false" aria-controls="vente">
+              <i class="icon-grid menu-icon"></i>
+              <span class="menu-title">Vente</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="vente">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('VenteController'); ?>">Liste</a></li>
+                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('VenteController/index2'); ?>">Insertion</a></li>
+              </ul>
+            </div>
+          </li>
+          <!-- <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#repartition" aria-expanded="false" aria-controls="repartition">
               <i class="icon-grid menu-icon"></i>
               <span class="menu-title">Répartition charges</span>
@@ -137,7 +163,7 @@
                 <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('RepartitionController/index2'); ?>">Insertion</a></li>
               </ul>
             </div>
-          </li>
+          </li> -->
        <!-- ============ fin lien sisiny ============= -->
        <!-- ============ fin lien sisiny ============= -->
        <!-- ============ fin lien sisiny ============= -->
