@@ -55,11 +55,25 @@ CREATE TABLE repartition_centre(
 ALTER TABLE repartition_centre ADD FOREIGN KEY (id_charge) REFERENCES charge(id_charge); 
 ALTER TABLE repartition_centre ADD FOREIGN KEY (id_centre) REFERENCES centre(id_centre); 
 
+
+CREATE table input_stock(
+    id_input_stock INT PRIMARY KEY auto_increment,
+    quantite DECIMAL(15,2) not null,
+    date_input DATE not null
+);
+
+CREATE table output_stock(
+    id_output_stock INT PRIMARY KEY auto_increment,
+    quantite DECIMAL(15,2) not null,
+    date_output DATE not null
+);
+
 INSERT INTO unite_oeuvre (nom_unite_oeuvre, abreviation) VALUES
 ("Kilogramme", "Kg"),
 ("Litre", "L"),
 ("Nombre", "Nb"),
 ("Kilowatt", "KW"),
+("Piece", "Pc"),
 ("Cons periodique", "CP");
 
 INSERT INTO rubrique (id_rubrique, nom_rubrique, id_unite_oeuvre) VALUES 
@@ -67,6 +81,20 @@ INSERT INTO rubrique (id_rubrique, nom_rubrique, id_unite_oeuvre) VALUES
 (null, "Achat emballage", 3),
 (null, "Eau et electricite", 4),
 (null, "Telephone", 5);
+
+INSERT INTO charge (id_nature, id_rubrique, id_type, unite, montant, date_charge) VALUES
+(1, 1, 1, 1, 2000, '2024-10-20'),
+(1, 2, 3, 1, 100000, '2024-10-31');
+
+INSERT INTO repartition_centre (id_repartition, id_charge, id_centre, taux) VALUES
+(null, 1, 1, 100),
+(null, 1, 2, 0),
+(null, 1, 3, 0),
+(null, 1, 4, 0),
+(null, 2, 1, 0),
+(null, 2, 2, 50),
+(null, 2, 3, 50),
+(null, 2, 4, 0);
 
 INSERT INTO type_charge (id_type_charge,nom_type_charge) VALUES 
 (null,"Corporable"),
@@ -288,7 +316,33 @@ from
 -- FROM 
 --     v_total;
 
-SELECT SUM(montant) as montant FROM charge where id_type = 2;
+
+-- CREATE OR REPLACE VIEW stock_restant AS
+-- SELECT 
+--     IFNULL(SUM(i.quantite), 0) - IFNULL(SUM(o.quantite), 0) AS stock_restant
+-- FROM 
+--     (SELECT quantite FROM input_stock WHERE date_input <= '2024-10-14') i
+-- JOIN 
+--     (SELECT quantite FROM output_stock WHERE date_output <= '2024-10-14') o;
+
+CREATE OR REPLACE VIEW stock_restant AS
+SELECT 
+    (COALESCE(SUM(i.quantite), 0) - COALESCE(SUM(o.quantite), 0)) AS stock_restant
+FROM 
+    input_stock i
+LEFT JOIN 
+    output_stock o ON 1 = 1;
+
+
+
+
+
+
+
+
+
+
+
 
 
 

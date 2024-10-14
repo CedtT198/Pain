@@ -11,10 +11,14 @@ class RubriqueController extends CI_Controller {
         $this->load->model('RepartitionModel');
         $this->load->model('NatureModel');
         $this->load->model('ChargeModel');
+        $this->load->model('AchatModel');
     }
 
     public function index() {
         $data['contents'] = 'page/TableauRubrique';
+        // $data['stock'] = 5;
+        $data['stock'] = $this->AchatModel->GetStockRest();
+        $data['allUniteOeuvre'] = $this->UniteOeuvreModel->GetAll();
         $data['rubriques'] = $this->RubriqueModel->GetAll();
         $data['centres'] = $this->CentreModel->GetAll();
         $data['repartitions'] = $this->RepartitionModel->GetAll();

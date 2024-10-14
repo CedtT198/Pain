@@ -30,8 +30,8 @@ class ChargesController extends CI_Controller {
     }
 
     public function insert() {
-        $total = $this->input->post('rep_courses') + $this->input->post('rep_usine') +
-                        $this->input->post('rep_admin') + $this->input->post('rep_livraison');
+        $total = (int) $this->input->post('rep_courses') + (int)$this->input->post('rep_usine') +
+                        (int)$this->input->post('rep_admin') + (int)$this->input->post('rep_livraison');
                         
         if ($total > 100 || $total <= 0) {
             $data['contents'] = 'page/FormulaireCharge';

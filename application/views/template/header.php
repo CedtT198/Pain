@@ -128,7 +128,7 @@
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#achat" aria-expanded="false" aria-controls="achat">
               <i class="icon-grid menu-icon"></i>
-              <span class="menu-title">Achat</span>
+              <span class="menu-title">Productions</span>
               <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="achat">

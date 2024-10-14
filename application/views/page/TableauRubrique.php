@@ -316,7 +316,52 @@
                             </p>
                             <div class="table-responsive">
                                    <table class="table table-striped">
-                                          <tr></tr>
+                                          <tr>
+                                                 <th>Rerpartition</th>
+                                                 <th>Cout direct</th>
+                                                 <th>Clés (en %)</th>
+                                                 <th>Admin/liv</th>
+                                                 <th>Cout total</th>
+                                          </tr>
+                                          <?php
+                                                 $cd_courses = $totalRepartition[0]['s_courses'];
+                                                 $cd_usine = $totalRepartition[0]['s_usine'];
+
+                                                 $totalCoutDir = $cd_usine+$cd_courses;
+                                                 $totalAdmin = $totalRepartition[0]['s_administration'];
+                                                 // $totalAdmin = $totalRepartition[0]['s_administration']+$totalRepartition[0]['s_livraison'];
+                                                 
+                                                 $cle_courses = $cd_courses * 100 / $totalCoutDir;
+                                                 $cle_usine = $cd_usine * 100 / $totalCoutDir;
+
+                                                 $part_admin_courses = $totalAdmin * $cle_courses / 100;
+                                                 $part_admin_usine = $totalAdmin * $cle_usine / 100;
+
+                                                 $ct_courses = $cd_courses+$part_admin_courses;
+                                                 $ct_usine = $cd_usine+$part_admin_usine;
+
+                                                 $ct = $ct_courses + $ct_usine;
+                                                 ?>
+                                          <tr>
+                                                 <td>Total Courses</td>
+                                                 <td><?php echo $cd_courses; ?></td>
+                                                 <td><?php echo $cle_courses; ?></td>
+                                                 <td><?php echo $part_admin_courses; ?></td>
+                                                 <td><?php echo $ct_courses; ?></td>
+                                          </tr>
+                                          <tr>
+                                                 <td>Total Usine</td>
+                                                 <td><?php echo $cd_usine; ?></td>
+                                                 <td><?php echo $cle_usine; ?></td>
+                                                 <td><?php echo $part_admin_usine; ?></td>
+                                                 <td><?php echo $ct_usine; ?></td>
+                                          </tr>
+                                          <tr>
+                                                 <th>Total general</th>
+                                                 <th colspan="2"><?php echo $totalCoutDir; ?></th>
+                                                 <th><?php echo $totalAdmin; ?></th>
+                                                 <th><?php echo $ct; ?></th>
+                                          </tr>
                                    </table>
                             </div>
                      </div>
@@ -328,13 +373,44 @@
        <div class="col-lg-12 grid-margin stretch-card">
               <div class="card">
                      <div class="card-body">
-                            <h4 class="card-title">Cout</h4>
+                            <h4 class="card-title">Coût d'une pièce de pain</h4>
                             <p class="card-description">
-                            Prix du pain
                             </p>
                             <div class="table-responsive">
                                    <table class="table table-striped">
-                                          <tr></tr>
+                                          <tr>
+                                                 <th>Unité d'oeuvre</th>
+                                                 <td><?php echo $allUniteOeuvre[4]['abreviation'];?></td>
+                                          </tr>
+                                          <tr>
+                                                 <th>Nombre</th>
+                                                 <td><?php echo $stock['stock_restant'];?></td>
+                                          </tr>
+                                          <tr>
+                                                 <th>Cout courses</th>
+                                                 <td><?php echo $ct_courses; ?></td>
+                                          </tr>
+                                          <tr>
+                                                 <th>Cout usine</th>
+                                                 <td><?php echo $ct_usine; ?></td>
+                                          </tr>
+                                          <tr>
+                                                 <th>Cout final</th>
+                                                 <td><?php echo $ct; ?></td>
+                                          </tr>
+                                          <tr>
+                                                 <th>Cout d'une <?php echo $allUniteOeuvre[4]['nom_unite_oeuvre'];?> de pain</th>
+                                                 <th>
+                                                        <?php
+                                                               if ($stock['stock_restant'] != 0) {
+                                                                      echo $ct / $stock['stock_restant'];
+                                                               }                                         
+                                                               else {
+                                                                      echo "0";
+                                                               }
+                                                        ?>
+                                                 </th>
+                                          </tr>
                                    </table>
                             </div>
                      </div>
