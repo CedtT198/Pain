@@ -1,6 +1,6 @@
 <?php
 class AchatModel extends CI_Model {
-    public function GetStockRest() {
+    public function getStockRest() {
         $query = $this->db->query('select * from stock_restant');
         return $query->row_array();
     }

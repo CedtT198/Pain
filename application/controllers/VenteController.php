@@ -12,13 +12,13 @@ class VenteController extends CI_Controller {
     public function index() {
         $data['contents'] = 'page/ListeVente';
         $data['ventes'] = $this->VenteModel->getAll();
-        $data['rest_stock'] = $this->AchatModel->GetStockRest();
+        $data['rest_stock'] = $this->AchatModel->getStockRest();
         $this->load->view('template/template', $data);
     }
     
     public function index2() {
         $data['contents'] = 'page/FormulaireVente';
-        $data['rest_stock'] = $this->AchatModel->GetStockRest();
+        $data['rest_stock'] = $this->AchatModel->getStockRest();
         $this->load->view('template/template', $data);
     }
     
@@ -28,13 +28,13 @@ class VenteController extends CI_Controller {
 
         if ($qt <= 0) {
             $data['contents'] = 'page/FormulaireVente';
-            $data['rest_stock'] = $this->AchatModel->GetStockRest();
+            $data['rest_stock'] = $this->AchatModel->getStockRest();
             $data['error'] = "Quantité doit être supérieure à 0.";
             $this->load->view('template/template', $data);
         }
-        else if ($qt > $this->AchatModel->GetStockRest()['stock_restant']) {
+        else if ($qt > $this->AchatModel->getStockRest()['stock_restant']) {
             $data['contents'] = 'page/FormulaireVente';
-            $data['rest_stock'] = $this->AchatModel->GetStockRest();
+            $data['rest_stock'] = $this->AchatModel->getStockRest();
             $data['error'] = "Quantité choisie supérieure au nombre de stock restant.";
             $this->load->view('template/template', $data);
         }

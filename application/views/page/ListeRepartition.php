@@ -19,11 +19,11 @@
                             <?php foreach($repartitions as $rep) { ?>
                                    <tr>
                                           <td>
-                                                 <?php echo $this->ChargeModel->GetById($rep['id_charge'])['date_charge']; ?> - 
-                                                 <?php echo $this->ChargeModel->GetById($rep['id_charge'])['montant']; ?> 
+                                                 <?php echo $this->ChargeModel->getById($rep['id_charge'])['date_charge']; ?> - 
+                                                 <?php echo $this->ChargeModel->getById($rep['id_charge'])['montant']; ?> 
                                           </td>
                                           <td>
-                                                 <?php echo $this->CentreModel->GetById($rep['id_centre'])['nom_centre']; ?>
+                                                 <?php echo $this->CentreModel->getById($rep['id_centre'])['nom_centre']; ?>
                                           </td>
                                           <td><?php echo $rep['taux']; ?></td>
                                    </tr>

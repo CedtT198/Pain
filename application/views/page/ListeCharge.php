@@ -22,7 +22,7 @@
                             <?php foreach ($charges as $charge) { ?>
                                    <tr>
                                           <!-- <td>
-                                                 <?php echo $this->RubriqueModel->GetById($charge['id_rubrique'])['nom_rubrique']; ?>
+                                                 <?php echo $this->RubriqueModel->getById($charge['id_rubrique'])['nom_rubrique']; ?>
                                           </td> -->
                                           <td><?php echo $charge['date_charge']; ?></td>
                                           <td>

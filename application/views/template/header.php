@@ -29,21 +29,22 @@
           <span class="icon-menu"></span>
         </button>
         <ul class="navbar-nav navbar-nav-right">
-          <!-- <li class="nav-item nav-profile dropdown">
+          <li class="nav-item nav-profile dropdown">
             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-              <img src="images/faces/face28.jpg" alt="profile"/>
+              <!-- <img src="images/faces/face28.jpg" alt="profile"/> -->
+               Menu
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-              <a class="dropdown-item">
+              <!-- <a class="dropdown-item">
                 <i class="ti-settings text-primary"></i>
                 Settings
-              </a>
+              </a> -->
               <a class="dropdown-item">
                 <i class="ti-power-off text-primary"></i>
                 Logout
               </a>
             </div>
-          </li> -->
+          </li>
         </ul>
         <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
           <span class="icon-menu"></span>
@@ -93,11 +94,24 @@
               </ul>
             </div>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link" href="<?php echo site_url('CentreController'); ?>">
               <i class="icon-layout menu-icon"></i>
               <span class="menu-title">Centre</span>
             </a>
+          </li> -->
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#centre" aria-expanded="false" aria-controls="centre">
+              <i class="icon-grid menu-icon"></i>
+              <span class="menu-title">Centre</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="centre">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('CentreController'); ?>">Liste</a></li>
+                <li class="nav-item"> <a class="nav-link">Demande achat</a></li>
+              </ul>
+            </div>
           </li>
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#unite" aria-expanded="false" aria-controls="unite">
@@ -138,7 +152,46 @@
               </ul>
             </div>
           </li>
+          <!-- <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#achat" aria-expanded="false" aria-controls="achat">
+              <i class="icon-grid menu-icon"></i>
+              <span class="menu-title">Productions</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="achat">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('AchatController'); ?>">Liste</a></li>
+                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('AchatController/index2'); ?>">insertion</a></li>
+              </ul>
+            </div>
+          </li> -->
           <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#finance" aria-expanded="false" aria-controls="finance">
+              <i class="icon-grid menu-icon"></i>
+              <span class="menu-title">Finance</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="finance">
+              <ul class="nav flex-column sub-menu">
+                <!-- <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('AchatController'); ?>">Liste</a></li>
+                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('AchatController/index2'); ?>">insertion</a></li> -->
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#directeur" aria-expanded="false" aria-controls="directeur">
+              <i class="icon-grid menu-icon"></i>
+              <span class="menu-title">Directeur général</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="directeur">
+              <ul class="nav flex-column sub-menu">
+                <!-- <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('AchatController'); ?>">Liste</a></li>
+                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('AchatController/index2'); ?>">insertion</a></li> -->
+              </ul>
+            </div>
+          </li>
+          <!-- <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#vente" aria-expanded="false" aria-controls="vente">
               <i class="icon-grid menu-icon"></i>
               <span class="menu-title">Vente</span>
@@ -150,7 +203,7 @@
                 <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('VenteController/index2'); ?>">Insertion</a></li>
               </ul>
             </div>
-          </li>
+          </li> -->
           <!-- <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#repartition" aria-expanded="false" aria-controls="repartition">
               <i class="icon-grid menu-icon"></i>

@@ -11,7 +11,7 @@ class AchatController extends CI_Controller {
     public function index() {
         $data['contents'] = 'page/ListeAchat';
         $data['achats'] = $this->AchatModel->getAll();
-        $data['rest_stock'] = $this->AchatModel->GetStockRest();
+        $data['rest_stock'] = $this->AchatModel->getStockRest();
         $this->load->view('template/template', $data);
     }
     

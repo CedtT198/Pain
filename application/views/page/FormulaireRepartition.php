@@ -11,7 +11,7 @@
                             <select class="form-control" id="charge" name="charge">
                                    <?php foreach($charges as $charge) { ?>
                                           <option value="<?php echo $charge['id_charge']; ?>">
-                                                 <?php echo $this->RubriqueModel->GetById($charge['id_rubrique'])['nom_rubrique']; ?> - 
+                                                 <?php echo $this->RubriqueModel->getById($charge['id_rubrique'])['nom_rubrique']; ?> - 
                                                  <?php echo $charge['date_charge']; ?> - 
                                                  <?php echo $charge['montant']; ?>
                                           </option>

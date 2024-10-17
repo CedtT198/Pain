@@ -34,7 +34,7 @@
                             <?php foreach($rubriques as $rubrique) { ?>
                                    <tr>
                                    <td><?php echo $rubrique['nom_rubrique']; ?></td>
-                                   <td><?php echo $this->UniteOeuvreModel->GetById($rubrique['id_unite_oeuvre'])['nom_unite_oeuvre']; ?></td>
+                                   <td><?php echo $this->UniteOeuvreModel->getById($rubrique['id_unite_oeuvre'])['nom_unite_oeuvre']; ?></td>
                                    <?php foreach($centres as $centre) { ?>
                                           <?php $rep = $this->RepartitionModel->getByIdCentre($centre['id_centre']); ?>
                                           <td>
@@ -48,7 +48,7 @@
                                                                // $charge = $this->ChargeModel->getById($rep['id_charge']);
                                                                $charge = $this->ChargeModel->getByChargeRubrique($rep['id_charge'], $rubrique['id_rubrique']);
                                                                if (isset($charge)) {
-                                                                      $nature = $this->NatureModel->GetById($charge['id_nature'])['nom_nature'];
+                                                                      $nature = $this->NatureModel->getById($charge['id_nature'])['nom_nature'];
                                                                       $montant = $charge['montant'] * $rep['taux'] / 100;
                                                                       
                                                                       echo $rep['taux'] . "% - ";
@@ -106,7 +106,7 @@
                                    <tr>
                                           <td><?php echo $r['nom_rubrique']; ?> </td>
                                           <td>
-                                                 <?php echo $this->UniteOeuvreModel->GetById($r['id_unite_oeuvre'])['nom_unite_oeuvre']; ?>
+                                                 <?php echo $this->UniteOeuvreModel->getById($r['id_unite_oeuvre'])['nom_unite_oeuvre']; ?>
                                           </td>
                                    </tr>
                             <?php } ?>
@@ -142,16 +142,16 @@
                      <tbody>
                             <?php foreach($repartitions as $rep) { ?>
                                    <tr>
-                                          <td><?php echo $this->ChargeModel->GetById($rep['id_charge'])['date_charge']; ?> </td>
+                                          <td><?php echo $this->ChargeModel->getById($rep['id_charge'])['date_charge']; ?> </td>
                                           <td>
-                                                 <?php echo $this->RubriqueModel->GetById($this->ChargeModel->GetById($rep['id_charge'])['id_rubrique'])['nom_rubrique']; ?>
+                                                 <?php echo $this->RubriqueModel->getById($this->ChargeModel->getById($rep['id_charge'])['id_rubrique'])['nom_rubrique']; ?>
                                           </td>
-                                          <td><?php echo $this->ChargeModel->GetById($rep['id_charge'])['montant']; ?></td>
+                                          <td><?php echo $this->ChargeModel->getById($rep['id_charge'])['montant']; ?></td>
                                           <td>
-                                                 <?php echo $this->ChargeModel->GetById($rep['id_charge'])['montant'] * $rep['taux'] / 100; ?>
+                                                 <?php echo $this->ChargeModel->getById($rep['id_charge'])['montant'] * $rep['taux'] / 100; ?>
                                           </td>
-                                          <td><?php echo $this->NatureModel->getById($this->ChargeModel->GetById($rep['id_charge'])['id_nature'])['nom_nature']; ?> </td>
-                                          <td><?php echo $this->CentreModel->GetById($rep['id_centre'])['nom_centre']; ?></td>
+                                          <td><?php echo $this->NatureModel->getById($this->ChargeModel->getById($rep['id_charge'])['id_nature'])['nom_nature']; ?> </td>
+                                          <td><?php echo $this->CentreModel->getById($rep['id_centre'])['nom_centre']; ?></td>
                                           <td><?php echo $rep['taux']; ?></td>
                                    </tr>
                             <?php } ?>

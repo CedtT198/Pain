@@ -17,22 +17,22 @@ class RubriqueController extends CI_Controller {
     public function index() {
         $data['contents'] = 'page/TableauRubrique';
         // $data['stock'] = 5;
-        $data['stock'] = $this->AchatModel->GetStockRest();
-        $data['allUniteOeuvre'] = $this->UniteOeuvreModel->GetAll();
-        $data['rubriques'] = $this->RubriqueModel->GetAll();
-        $data['centres'] = $this->CentreModel->GetAll();
-        $data['repartitions'] = $this->RepartitionModel->GetAll();
-        $data['allCharge'] = $this->RubriqueModel->GetAllCharge();
-        $data['totalJoin'] = $this->RubriqueModel->GetTotalJoin();
-        $data['totalNature'] = $this->RubriqueModel->GetTotalNature();
-        $data['totalRepartition'] = $this->RubriqueModel->GetTotalRepartition();
-        $data['totalMontant'] = $this->RubriqueModel->GetTotalMontant();
+        $data['stock'] = $this->AchatModel->getStockRest();
+        $data['allUniteOeuvre'] = $this->UniteOeuvreModel->getAll();
+        $data['rubriques'] = $this->RubriqueModel->getAll();
+        $data['centres'] = $this->CentreModel->getAll();
+        $data['repartitions'] = $this->RepartitionModel->getAll();
+        $data['allCharge'] = $this->RubriqueModel->getAllCharge();
+        $data['totalJoin'] = $this->RubriqueModel->getTotalJoin();
+        $data['totalNature'] = $this->RubriqueModel->getTotalNature();
+        $data['totalRepartition'] = $this->RubriqueModel->getTotalRepartition();
+        $data['totalMontant'] = $this->RubriqueModel->getTotalMontant();
         $this->load->view('template/template', $data);
     }
 
     public function index2() {
         $data['contents'] = 'page/FormulaireRubrique';
-        $data['unites'] = $this->UniteOeuvreModel->GetAll();
+        $data['unites'] = $this->UniteOeuvreModel->getAll();
         $this->load->view('template/template', $data);
     }
 
@@ -44,7 +44,7 @@ class RubriqueController extends CI_Controller {
             'nom_rubrique' => $nom,
             'id_unite_oeuvre' => $unite
         );
-        $this->RubriqueModel->Insert($data);
+        $this->RubriqueModel->insert($data);
         
         redirect("RubriqueController/index");
     }

@@ -27,7 +27,7 @@ class UniteOeuvreController extends CI_Controller {
             'nom_unite_oeuvre' => $nom,
             'abreviation' => $abreviation
         );
-        $this->UniteOeuvreModel->Insert($data);
+        $this->UniteOeuvreModel->insert($data);
         
         redirect("UniteOeuvreController/index2");
     }

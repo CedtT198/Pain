@@ -14,18 +14,18 @@ class ChargesController extends CI_Controller {
 
     public function index() {
         $data['contents'] = 'page/ListeCharge';
-        $data['charges'] = $this->ChargeModel->GetAll();
+        $data['charges'] = $this->ChargeModel->getAll();
         $data['natures'] = $this->NatureModel->getAll();
-        $data['rubriques'] = $this->RubriqueModel->GetAll();
-        $data['types'] = $this->TypeChargeModel->GetAll();
+        $data['rubriques'] = $this->RubriqueModel->getAll();
+        $data['types'] = $this->TypeChargeModel->getAll();
         $this->load->view('template/template', $data);
     }
 
     public function index2() {
         $data['contents'] = 'page/FormulaireCharge';
         $data['natures'] = $this->NatureModel->getAll();
-        $data['rubriques'] = $this->RubriqueModel->GetAll();
-        $data['types'] = $this->TypeChargeModel->GetAll();
+        $data['rubriques'] = $this->RubriqueModel->getAll();
+        $data['types'] = $this->TypeChargeModel->getAll();
         $this->load->view('template/template', $data);
     }
 
@@ -36,8 +36,8 @@ class ChargesController extends CI_Controller {
         if ($total > 100 || $total <= 0) {
             $data['contents'] = 'page/FormulaireCharge';
             $data['natures'] = $this->NatureModel->getAll();
-            $data['rubriques'] = $this->RubriqueModel->GetAll();
-            $data['types'] = $this->TypeChargeModel->GetAll();
+            $data['rubriques'] = $this->RubriqueModel->getAll();
+            $data['types'] = $this->TypeChargeModel->getAll();
             $data['error'] = "Erreur : Total des répartitions doit être > 0 et <= 100.";
             $this->load->view('template/template', $data);   
         }

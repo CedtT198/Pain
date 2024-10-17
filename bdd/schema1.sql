@@ -55,7 +55,7 @@ CREATE TABLE repartition_centre(
 ALTER TABLE repartition_centre ADD FOREIGN KEY (id_charge) REFERENCES charge(id_charge); 
 ALTER TABLE repartition_centre ADD FOREIGN KEY (id_centre) REFERENCES centre(id_centre); 
 
-
+-- RETO STOCK DE PAIN FA TSY MATIERE PREMIERE
 CREATE table input_stock(
     id_input_stock INT PRIMARY KEY auto_increment,
     quantite DECIMAL(15,2) not null,

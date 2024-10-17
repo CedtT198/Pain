@@ -3,12 +3,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class UniteOeuvreModel extends CI_Model {
 
-    public function GetAll () {
+    public function getAll () {
         $query = $this->db->get('unite_oeuvre');
         return $query->result_array();
     }
 
-    public function GetById ($id) {
+    public function getById ($id) {
         $this->db->where('id_unite_oeuvre', $id);
         $query = $this->db->get('unite_oeuvre');
         return $query->row_array();
