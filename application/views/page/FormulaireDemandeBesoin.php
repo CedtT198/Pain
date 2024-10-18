@@ -18,7 +18,7 @@
                                           <textarea class="form-control" id="exampleTextarea1" rows="3"></textarea>
                                    </div>
                                    <div class="form-group">
-                                          <label for="exampleInputUsername1">Username</label>
+                                          <label for="exampleInputUsername1">Quantite</label>
                                           <input type="number" class="form-control" id="exampleInputUsername1" placeholder="00">
                                    </div>
                                    <div class="row checkbox">
