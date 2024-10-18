@@ -40,6 +40,11 @@
   <script src="<?php echo base_url(); ?>assets/js/template.js"></script>
   <script src="<?php echo base_url(); ?>assets/js/settings.js"></script>
   <script src="<?php echo base_url(); ?>assets/js/todolist.js"></script>
+  <script src="<?php echo base_url(); ?>assets/vendors/typeahead.js/typeahead.bundle.min.js"></script>
+  <script src="<?php echo base_url(); ?>assets/vendors/select2/select2.min.js"></script>
+  <script src="<?php echo base_url(); ?>assets/js/file-upload.js"></script>
+  <script src="<?php echo base_url(); ?>assets/js/typeahead.js"></script>
+  <script src="<?php echo base_url(); ?>assets/js/select2.js"></script>
 
 </body>
 
