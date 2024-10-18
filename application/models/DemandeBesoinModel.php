@@ -44,5 +44,15 @@ class DemandeBesoinModel extends CI_Model {
         $this->db->where('id_demande_besoin', $id);
         return $this->db->delete('demande_besoin');
     }
+
+    // Mettre à jour uniquement la colonne 'accepte'
+    public function accepte($id, $accepte) {
+        $data = array(
+            'accepte' => $accepte
+        );
+
+        $this->db->where('id_demande_besoin', $id);
+        return $this->db->update('demande_besoin', $data);
+    }
 }
 ?>
