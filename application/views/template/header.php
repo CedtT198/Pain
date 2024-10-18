@@ -165,6 +165,20 @@
               </ul>
             </div>
           </li> -->
+          <!-- if id_dep == 5 -->
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#achat" aria-expanded="false" aria-controls="achat">
+              <i class="icon-grid menu-icon"></i>
+              <span class="menu-title">Achat</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="achat">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('DemandeBesoinController'); ?>">Liste de demande<br> des besoins</a></li>
+              </ul>
+            </div>
+          </li>
+          <!-- if id_dep == 6 -->
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#finance" aria-expanded="false" aria-controls="finance">
               <i class="icon-grid menu-icon"></i>
@@ -173,11 +187,11 @@
             </a>
             <div class="collapse" id="finance">
               <ul class="nav flex-column sub-menu">
-                <!-- <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('AchatController'); ?>">Liste</a></li>
-                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('AchatController/index2'); ?>">insertion</a></li> -->
+                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('DemandeBonCommandeController'); ?>">Liste de bon <br> de commande  </a></li>
               </ul>
             </div>
           </li>
+          <!-- if id_dep == 7 -->
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#directeur" aria-expanded="false" aria-controls="directeur">
               <i class="icon-grid menu-icon"></i>
@@ -186,8 +200,7 @@
             </a>
             <div class="collapse" id="directeur">
               <ul class="nav flex-column sub-menu">
-                <!-- <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('AchatController'); ?>">Liste</a></li>
-                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('AchatController/index2'); ?>">insertion</a></li> -->
+                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('DemandePaiementController'); ?>">Liste demande <br>de  paiement</a></li>
               </ul>
             </div>
           </li>
@@ -217,10 +230,10 @@
               </ul>
             </div>
           </li> -->
-       <!-- ============ fin lien sisiny ============= -->
-       <!-- ============ fin lien sisiny ============= -->
-       <!-- ============ fin lien sisiny ============= -->
-       </ul>
+        <!-- ============ fin lien sisiny ============= -->
+        <!-- ============ fin lien sisiny ============= -->
+        <!-- ============ fin lien sisiny ============= -->
+      </ul>
       </nav>
       <!-- partial -->
       <div class="main-panel">

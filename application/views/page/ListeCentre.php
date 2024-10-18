@@ -2,9 +2,9 @@
 <div class="col-lg-12 grid-margin stretch-card">
        <div class="card">
               <div class="card-body">
-              <h4 class="card-title">CENTRE</h4>
+              <h4 class="card-title">DEPARTEMENT</h4>
               <p class="card-description">
-              Liste <code>center</code>
+              Liste <code>départements</code>
               </p>
               <div class="table-responsive">
               <table class="table table-striped">
@@ -19,6 +19,12 @@
                                    <tr>
                                           <td><?php echo $centre['id_centre']; ?></td>
                                           <td><?php echo $centre['nom_centre']; ?></td>
+                                          <!-- if id_centre == id_dep from session -->
+                                          <?php if ($centre['id_centre'] == 0) { ?>
+                                          <td>
+                                                 <a href="">Faire une demande de besoin</a>
+                                          </td>
+                                          <?php } ?>
                                    </tr>
                             <?php } ?>
                      </tbody>
