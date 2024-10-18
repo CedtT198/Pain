@@ -13,16 +13,17 @@ class LoginModel extends CI_Model {
             
             if($mdp_departement == $departement->mdp_departement) {
                 // Mot de passe correct, renvoyer l'ID du département
-                $existe=$departement->id_departement;
+                $existe = $departement->id_departement;
                 return $existe;
-            } else {
+            }
+            else {
                 $existe = -1;
                 // Le mot de passe est incorrect
                 return $existe;
             }
         } else {
-            $existe = -1;
             // Le nom du département est incorrect
+            $existe = -2;
             return $existe;
         }
     }

@@ -26,12 +26,15 @@
                 <img src="<?php echo base_url(); ?>assets/images/pain.png" alt="logo">
               </div>
               <h6 class="font-weight-light">Log in to continue.</h6>
-              <form class="pt-3" method="post">
+                <?php if (isset($error)) { ?>
+                    <h6 style="color:red;"><?php echo $error; ?></h6>
+                  <?php } ?>
+              <form class="pt-3" method="post" action="<?php echo site_url('LoginController/checkLogin'); ?>">
                 <div class="form-group">
-                  <input type="email" class="form-control form-control-lg" id="name" name="name" placeholder="Username">
+                  <input type="text" class="form-control form-control-lg" id="name" name="name" placeholder="Username" required>
                 </div>
                 <div class="form-group">
-                  <input type="password" class="form-control form-control-lg" id="password" name="password" placeholder="Password">
+                  <input type="password" class="form-control form-control-lg" id="password" name="password" placeholder="Password" required>
                 </div>
                 <div class="mt-3">
                   <button class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" type="submit">LOG IN</button>

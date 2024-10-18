@@ -12,7 +12,7 @@ class FournisseurModel extends CI_Model {
         $this->db->where('produitInFournisseur.id_produit', $id_produit);
         $query = $this->db->get();
 
-        $fournisseurs = $query->result();
+        $fournisseurs = $query->result_array();
 
         if (empty($fournisseurs)) {
             return null;  // Si aucun fournisseur n'est trouvé pour ce produit
