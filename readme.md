@@ -1,7 +1,6 @@
 # PROJET GESTION
 Thème : Boulangerie
 Framework : codeigniter
-###################
 
 
 # Règles de syntaxe
