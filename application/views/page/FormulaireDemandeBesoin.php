@@ -12,27 +12,36 @@
                             <p class="card-description">
                                    formulaire
                             </p>
-                            <form class="forms-sample">
+                            <?php if (isset($error)) { ?>
+                                   <p style="color:red;"><?php echo $error; ?></p>
+                            <?php } ?>
+                            <form class="forms-sample" action="<?php echo site_url('DemandeBesoinController/insert'); ?>" method="post">
                                    <div class="form-group">
-                                          <label for="exampleTextarea1">Description</label>
-                                          <textarea class="form-control" id="exampleTextarea1" rows="3"></textarea>
+                                          <label for="desc">Description</label>
+                                          <textarea class="form-control" id="desc" name="desc" rows="3" required></textarea>
                                    </div>
                                    <div class="form-group">
-                                          <label for="exampleInputUsername1">Quantite</label>
-                                          <input type="number" class="form-control" id="exampleInputUsername1" placeholder="00">
+                                          <label for="produit">Produit</label>
+                                          <input type="text" class="form-control" id="produit" name="nom_produit" placeholder="Nom du produit" required>
                                    </div>
-                                   <div class="row checkbox">
-                                          <!-- ==== boucle ========= -->
-                                          <div class="col-md-3 col-md-offset-1 form-group">
-                                                 <div class="form-check form-check-info">
-                                                        <!-- <label class="form-check-label"> -->
-                                                               <input type="checkbox" class="form-check-input" checked>
-                                                               exemple produit
-                                                        <!-- </label> -->
+                                   <div class="form-group">
+                                          <label for="qt">Quantite</label>
+                                          <input type="number" class="form-control" id="qt" name="qt" placeholder="00" required>
+                                   </div>
+                                   <div class="form-group">
+                                          <label for="montant">Montant</label>
+                                          <input type="number" class="form-control" id="montant" name="montant" placeholder="00" required>
+                                   </div>
+                                   <!-- <div class="row checkbox">              
+                                          <?php foreach ($produits as $prod) { ?>
+                                                 <div class="col-md-3 col-md-offset-1 form-group">
+                                                        <div class="form-check form-check-info">
+                                                               <input type="checkbox" class="form-check-input">
+                                                              <?php echo $prod['id_produit']; ?>
+                                                        </div>
                                                  </div>
-                                          </div>
-                                          <!-- ==== fin boucle ========= -->
-                                   </div>
+                                          <?php } ?>
+                                   </div> -->
                                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
                             </form>
                      </div>

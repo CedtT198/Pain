@@ -90,6 +90,7 @@ CREATE TABLE produit_stock(
    id_produit_stock INT AUTO_INCREMENT,
    nom_produit VARCHAR(50)  NOT NULL,
    montant DECIMAL(15,2)   NOT NULL,
+   date_entree DATE NOT NULL,
    PRIMARY KEY(id_produit_stock)
 );
 
@@ -115,6 +116,7 @@ CREATE TABLE demande_besoin(
    description VARCHAR(50)  NOT NULL,
    quantite INT NOT NULL,
    accepte BOOLEAN NOT NULL,
+   date_demande DATE NOT NULL,
    id_centre INT NOT NULL,
    PRIMARY KEY(id_demande_besoin),
    FOREIGN KEY(id_centre) REFERENCES centre(id_centre)

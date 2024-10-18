@@ -14,7 +14,7 @@ class DepartementModel extends CI_Model {
     // Obtenir tous les départements
     public function getAll() {
         $query = $this->db->get('departement');
-        return $query->result();
+        return $query->result_array();
     }
 
     // Obtenir un département par ID

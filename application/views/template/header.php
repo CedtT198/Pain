@@ -41,7 +41,7 @@
                 <i class="ti-settings text-primary"></i>
                 Settings
               </a> -->
-              <a class="dropdown-item">
+              <a class="dropdown-item" href="<?php echo site_url('LoginController'); ?>">
                 <i class="ti-power-off text-primary"></i>
                 Logout
               </a>
@@ -111,7 +111,7 @@
             <div class="collapse" id="centre">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('CentreController'); ?>">Liste</a></li>
-                <li class="nav-item"> <a class="nav-link">Demande achat</a></li>
+                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('DemandeBesoinController'); ?>">Demande achat</a></li>
               </ul>
             </div>
           </li>
@@ -167,7 +167,9 @@
               </ul>
             </div>
           </li> -->
-          <!-- if id_dep == 5 -->
+           <?php
+            $id_depa = $this->session->userdata('id_depa');
+            if ($id_depa == 5) { ?>
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#achat" aria-expanded="false" aria-controls="achat">
               <i class="icon-grid menu-icon"></i>
@@ -180,7 +182,7 @@
               </ul>
             </div>
           </li>
-          <!-- if id_dep == 6 -->
+          <?php } else if ($id_depa == 6) { ?>
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#finance" aria-expanded="false" aria-controls="finance">
               <i class="icon-grid menu-icon"></i>
@@ -193,11 +195,11 @@
               </ul>
             </div>
           </li>
-          <!-- if id_dep == 7 -->
+          <?php } else if ($id_depa == 7) { ?>
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#directeur" aria-expanded="false" aria-controls="directeur">
               <i class="icon-grid menu-icon"></i>
-              <span class="menu-title">Directeur général</span>
+              <span class="menu-title">Dir. général</span>
               <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="directeur">
@@ -206,6 +208,7 @@
               </ul>
             </div>
           </li>
+          <?php } ?>
           <!-- <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#vente" aria-expanded="false" aria-controls="vente">
               <i class="icon-grid menu-icon"></i>
