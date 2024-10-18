@@ -12,7 +12,7 @@ class LoginController extends CI_Controller {
     // }
     
     public function index() {                   // index ahafana miteste page fotsiny ho an'ny front
-        $data['contents'] = 'page/FormulaireDemandeBesoin';
+        $data['contents'] = 'page/ListeDemandeBesoin';
         $this->load->view('template/template', $data);
     }
 
