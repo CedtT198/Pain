@@ -6,26 +6,26 @@ class AchatModel extends CI_Model {
     }
 
     public function getById($id) {
-        $this->db->where('id_input_stock', $id);
-        return $this->db->get('input_stock')->row_array();
+        $this->db->where('id_achat', $id);
+        return $this->db->get('achat')->row_array();
     }
 
     public function getAll() {
-        return $this->db->get('input_stock')->result_array();
+        return $this->db->get('achat')->result_array();
     }
 
     public function insert($data) {
-        return $this->db->insert('input_stock', $data);
+        return $this->db->insert('achat', $data);
     }
 
     public function update($id, $data) {
-        $this->db->where('id_input_stock', $id);
-        return $this->db->update('input_stock', $data);
+        $this->db->where('id_achat', $id);
+        return $this->db->update('achat', $data);
     }
 
     public function delete($id) {
-        $this->db->where('id_input_stock', $id);
-        return $this->db->delete('input_stock');
+        $this->db->where('id_achat', $id);
+        return $this->db->delete('achat');
     }
 }
 ?>

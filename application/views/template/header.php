@@ -18,6 +18,7 @@
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
 </head>
 <body>
+<?php $id_depa = $this->session->userdata('id_depa'); ?>
   <div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
@@ -34,7 +35,9 @@
           <li class="nav-item nav-profile dropdown">
             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
               <!-- <img src="images/faces/face28.jpg" alt="profile"/> -->
-               Menu
+              <p style="color:green">id_user : 
+                <?php echo$id_depa; ?>
+              </p>
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
               <!-- <a class="dropdown-item">
@@ -111,7 +114,11 @@
             <div class="collapse" id="centre">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('CentreController'); ?>">Liste</a></li>
-                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('DemandeBesoinController'); ?>">Demande achat</a></li>
+                <?php if ($id_depa < 5) { ?>
+                  <li class="nav-item">
+                    <a class="nav-link" href="<?php echo site_url('DemandeBesoinController'); ?>">Demande achat</a>
+                  </li>
+                <?php } ?>
               </ul>
             </div>
           </li>
@@ -167,9 +174,7 @@
               </ul>
             </div>
           </li> -->
-           <?php
-            $id_depa = $this->session->userdata('id_depa');
-            if ($id_depa == 5) { ?>
+           <?php if ($id_depa == 5) { ?>
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#achat" aria-expanded="false" aria-controls="achat">
               <i class="icon-grid menu-icon"></i>

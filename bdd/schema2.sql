@@ -58,18 +58,18 @@ CREATE TABLE repartition_centre(
    FOREIGN KEY(id_charge) REFERENCES charge(id_charge)
 );
 
-CREATE TABLE input_stock(
-   id_input_stock INT AUTO_INCREMENT,
+CREATE TABLE achat(
+   id_achat INT AUTO_INCREMENT,
    quantite INT NOT NULL,
-   data_input DATE NOT NULL,
-   PRIMARY KEY(id_input_stock)
+   data_achat DATE NOT NULL,
+   PRIMARY KEY(id_achat)
 );
 
-CREATE TABLE output_stock(
-   id_output_stock INT AUTO_INCREMENT,
+CREATE TABLE vente(
+   id_vente INT AUTO_INCREMENT,
    quantite INT NOT NULL,
-   data_output DATE NOT NULL,
-   PRIMARY KEY(id_output_stock)
+   data_vente DATE NOT NULL,
+   PRIMARY KEY(id_vente)
 );
 
 CREATE TABLE departement(
@@ -86,12 +86,19 @@ CREATE TABLE fournisseur(
    PRIMARY KEY(id_fournisseur)
 );
 
-CREATE TABLE produit_stock(
-   id_produit_stock INT AUTO_INCREMENT,
+CREATE TABLE produit(
+   id_produit INT AUTO_INCREMENT,
    nom_produit VARCHAR(50)  NOT NULL,
-   montant DECIMAL(15,2)   NOT NULL,
-   date_entree DATE NOT NULL,
-   PRIMARY KEY(id_produit_stock)
+   PRIMARY KEY(id_produit)
+);
+
+CREATE TABLE input_stock(
+   id_input_stock INT AUTO_INCREMENT,
+   date_input DATE NOT NULL,
+   quantite INT NOT NULL,
+   id_produit INT NOT NULL,
+   PRIMARY KEY(id_input_stock),
+   FOREIGN KEY(id_produit) REFERENCES produit(id_produit)
 );
 
 CREATE TABLE attestation(
@@ -105,27 +112,34 @@ CREATE TABLE attestation(
    FOREIGN KEY(id_fournisseur) REFERENCES fournisseur(id_fournisseur)
 );
 
-CREATE TABLE produit(
-   id_produit INT AUTO_INCREMENT,
-   nom_produit VARCHAR(50)  NOT NULL,
-   PRIMARY KEY(id_produit)
-);
-
 CREATE TABLE demande_besoin(
    id_demande_besoin INT AUTO_INCREMENT,
    description VARCHAR(50)  NOT NULL,
    quantite INT NOT NULL,
-   accepte BOOLEAN NOT NULL,
+   accepte BOOLEAN,
    date_demande DATE NOT NULL,
    id_centre INT NOT NULL,
+   id_produit INT NOT NULL,
    PRIMARY KEY(id_demande_besoin),
-   FOREIGN KEY(id_centre) REFERENCES centre(id_centre)
+   FOREIGN KEY(id_centre) REFERENCES centre(id_centre),
+   FOREIGN KEY(id_produit) REFERENCES produit(id_produit)
 );
 
 CREATE TABLE type_attestation(
    id_type_attestation INT AUTO_INCREMENT,
    nom_attestation VARCHAR(50)  NOT NULL,
    PRIMARY KEY(id_type_attestation)
+);
+
+CREATE TABLE output_stock(
+   id_output_stock INT AUTO_INCREMENT,
+   date_output DATE NOT NULL,
+   quantite INT NOT NULL,
+   id_centre INT NOT NULL,
+   id_produit INT NOT NULL,
+   PRIMARY KEY(id_output_stock),
+   FOREIGN KEY(id_centre) REFERENCES centre(id_centre),
+   FOREIGN KEY(id_produit) REFERENCES produit(id_produit)
 );
 
 CREATE TABLE produitInFournisseur(
@@ -145,13 +159,13 @@ CREATE TABLE produitsInAttestation(
    FOREIGN KEY(id_produit) REFERENCES produit(id_produit)
 );
 
-CREATE TABLE produitInDemandeBesoin(
-   id_produit INT,
-   id_demande_besoin INT,
-   PRIMARY KEY(id_produit, id_demande_besoin),
-   FOREIGN KEY(id_produit) REFERENCES produit(id_produit),
-   FOREIGN KEY(id_demande_besoin) REFERENCES demande_besoin(id_demande_besoin)
-);
+-- CREATE TABLE produitInDemandeBesoin(
+--    id_produit INT,
+--    id_demande_besoin INT,
+--    PRIMARY KEY(id_produit, id_demande_besoin),
+--    FOREIGN KEY(id_produit) REFERENCES produit(id_produit),
+--    FOREIGN KEY(id_demande_besoin) REFERENCES demande_besoin(id_demande_besoin)
+-- );
 
 
 INSERT INTO unite_oeuvre (nom_unite_oeuvre, abreviation) VALUES
@@ -181,9 +195,7 @@ INSERT INTO centre VALUES
 (null, "Courses"),
 (null, "Usine"),
 (null, "Administration"),
-(null, "Livraison"),
-(null, "Achat"),
-(null, "Finance");
+(null, "Livraison");
 
 INSERT INTO charge (id_nature, id_rubrique, id_type, unite, montant, date_charge) VALUES
 (1, 1, 1, 1, 2000, '2024-10-20'),
@@ -200,12 +212,12 @@ INSERT INTO repartition_centre (id_repartition, id_charge, id_centre, taux) VALU
 (null, 2, 4, 0);
 
 INSERT INTO departement VALUES
-(null, "courses", "courses"),
-(null, "usine", "usine"),
-(null, "admin", "admin"),
-(null, "livraison", "livraison"),
-(null, "achat", "achat"),
-(null, "finance", "finance"),
+(null, "Courses", "courses"),
+(null, "Usine", "usine"),
+(null, "Admin", "admin"),
+(null, "Livraison", "livraison"),
+(null, "Achat", "achat"),
+(null, "Finance", "finance"),
 (null, "dg", "dg");
 
 INSERT INTO fournisseur (nom_fournisseur, attribution) VALUES 
@@ -351,6 +363,11 @@ INSERT INTO produitInFournisseur (id_fournisseur, id_produit, montant) VALUES
 (2, 28, 3.50),  -- Colorants Alimentaires chez Boulange & Co
 (3, 28, 3.10);  -- Colorants Alimentaires chez Le Moulin Gourmand
 
+INSERT INTO input_stock (date_input, quantite, id_produit) VALUES
+('2024-10-19', 1, 1),
+('2024-10-19', 1, 2),
+('2024-10-19', 1, 3),
+('2024-10-19', 1, 4);
 
 SELECT rubrique.*  FROM rubrique JOIN unite_oeuvre on rubrique.id_unite_oeuvre=unite_oeuvre.id_unite_oeuvre;
 SELECT * FROM rubrique JOIN charge ON rubrique.id_rubrique=charge.id_rubrique; 
@@ -561,17 +578,17 @@ from
 -- SELECT 
 --     IFNULL(SUM(i.quantite), 0) - IFNULL(SUM(o.quantite), 0) AS stock_restant
 -- FROM 
---     (SELECT quantite FROM input_stock WHERE date_input <= '2024-10-14') i
+--     (SELECT quantite FROM achat WHERE date_achat <= '2024-10-14') i
 -- JOIN 
---     (SELECT quantite FROM output_stock WHERE date_output <= '2024-10-14') o;
+--     (SELECT quantite FROM vente WHERE date_vente <= '2024-10-14') o;
 
 CREATE OR REPLACE VIEW stock_restant AS
 SELECT 
     (COALESCE(SUM(i.quantite), 0) - COALESCE(SUM(o.quantite), 0)) AS stock_restant
 FROM 
-    input_stock i
+    achat i
 LEFT JOIN 
-    output_stock o ON 1 = 1;
+    vente o ON 1 = 1;
 
 
 

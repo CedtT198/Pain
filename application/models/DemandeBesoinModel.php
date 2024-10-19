@@ -6,7 +6,14 @@ class DemandeBesoinModel extends CI_Model {
     }
 
     // Obtenir toutes les demandes de besoin
+    // public function getAll() {
+    //     $query = $this->db->get('demande_besoin');
+    //     return $query->result_array();
+    // }
+    
     public function getAll() {
+        $this->db->where('accepte IS NULL', null, false);
+        // $this->db->where('accepte', FALSE); 
         $query = $this->db->get('demande_besoin');
         return $query->result_array();
     }
@@ -19,12 +26,14 @@ class DemandeBesoinModel extends CI_Model {
     }
 
     // Mettre à jour une demande de besoin
-    public function update($id, $description, $quantite, $accepte, $id_centre) {
+    public function update($data) {
+        return $this->db->update('demande_besoin', $data);
+    }
+
+    public function updateAcceptation($id, $qt, $accepte) {
         $data = array(
-            'description' => $description,
-            'quantite' => $quantite,
-            'accepte' => $accepte,
-            'id_centre' => $id_centre
+            'quantite' => $qt,
+            'accepte' => $accepte
         );
 
         $this->db->where('id_demande_besoin', $id);

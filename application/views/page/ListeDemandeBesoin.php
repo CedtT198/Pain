@@ -4,27 +4,59 @@
                      <div class="card-body">
                             <h4 class="card-title">LISTE DEMANDE BESOIN</h4>
                             <p class="card-description">
-                                   Demande par <code>course</code>
+                                   <!-- Demande par <code>course</code> -->
                             </p>
+                            <?php if (isset($error)) { ?>
+                                   <p style="color:red;"><?php echo $error; ?></p>
+                            <?php } if (isset($success0)) { ?>
+                                   <p style="color:green;">
+                                          <?php echo $success0; ?><br>
+                                          Voir <a href="">proformat</a>
+                                   </p>
+                            <?php } if (isset($succes1)) { ?>
+                                   <p style="color:green;"><?php echo $success1; ?></p>
+                            <?php } ?>
                             <div class="table-responsive">
                                    <table class="table table-striped">
                                           <thead>
                                                  <tr>
-                                                        <th>Description</th>
-                                                        <th>Quantite</th>
                                                         <th>Date de demande</th>
                                                         <th>Centre</th>
+                                                        <th>Description</th>
+                                                        <th>Produit</th>
+                                                        <th>Quantite</th>
                                                  </tr>
                                           </thead>
                                           <tbody>
-                                                 <tr>
-                                                        <td class="py-1">exemple</td>
-                                                        <td>Herman Beck</td>
-                                                        <td>exemple</td>
-                                                        <td>$ 77.99</td>
-                                                        <td><button type="button" class="btn btn-inverse-success btn-fw">Accepter</button></td>
-                                                        <td><button type="button" class="btn btn-inverse-danger btn-fw">Refuser</button></td>
-                                                 </tr>
+                                                 <?php foreach($demandes as $dem) { ?>
+                                                        <tr>
+                                                               <td>
+                                                                      <?php echo $this->CentreModel->getById($dem['id_centre'])['nom_centre']; ?>
+                                                               </td>
+                                                               <td><?php echo $dem['date_demande']; ?></td>
+                                                               <td><?php echo $dem['description']; ?></td>
+                                                               <td>
+                                                                      <?php echo $this->ProduitModel->getById($dem['id_produit'])['nom_produit']; ?>
+                                                               </td>
+                                                               <td><?php echo $dem['quantite']; ?></td>
+                                                               <td>
+                                                                      <form action="<?php echo site_url('DemandeBesoinController/accept'); ?>" method="post">
+                                                                             <input type="hidden" value="<?php echo $dem['id_produit']; ?>" name="id_produit">
+                                                                             <input type="hidden" value="<?php echo $dem['quantite']; ?>" name="quantite">
+                                                                             <input type="hidden" value="<?php echo $dem['id_demande_besoin']; ?>" name="id">
+                                                                             <input type="hidden" value="<?php echo $dem['id_centre']; ?>" name="id_centre">
+                                                                             <button type="submit" class="btn btn-inverse-success btn-fw">Accepter</button>
+                                                                      </form>
+                                                               </td>
+                                                               <td>
+                                                                      <form action="<?php echo site_url('DemandeBesoinController/refuse'); ?>" method="post">
+                                                                             <input type="hidden" value="<?php echo $dem['id_demande_besoin']; ?>" name="id">
+                                                                             <input type="hidden" value="<?php echo $dem['quantite']; ?>" name="quantite">
+                                                                             <button type="submit" class="btn btn-inverse-danger btn-fw">Refuser</button>
+                                                                      </form>
+                                                               </td>
+                                                        </tr>
+                                                        <?php } ?>
                                           </tbody>
                                    </table>
                             </div>
