@@ -9,6 +9,7 @@ class DemandeBesoinController extends CI_Controller {
         $this->load->model('CentreModel');
         $this->load->model('ProduitModel');
         $this->load->model('StockModel');
+        $this->load->model('AttestationModel');
         // $this->load->model('ProduitInFournisseurModel');
     }
 
@@ -78,8 +79,10 @@ class DemandeBesoinController extends CI_Controller {
 
             $resteTadiavina = $resteStock * -1;
 
-            $id= $this->input->post('id');
+            $id = $this->input->post('id');
             $this->DemandeBesoinModel->updateAcceptation($id, $resteTadiavina, true);
+            
+            $this->AttestationModel->createProformat();
     
             $data['contents'] = 'page/ListeDemandeBesoin';
             $data['success0'] = 'Produit non présent dans stock. Un proformat a été généré.';

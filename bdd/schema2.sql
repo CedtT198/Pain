@@ -106,9 +106,11 @@ CREATE TABLE attestation(
    date_attestation DATE NOT NULL,
    libelle VARCHAR(50)  NOT NULL,
    accepte BOOLEAN,
+   id_centre INT NOT NULL,
    id_type_attestation INT NOT NULL,
    id_fournisseur INT NOT NULL,
    PRIMARY KEY(id_attestation),
+   FOREIGN KEY(id_centre) REFERENCES centre(id_centre),
    FOREIGN KEY(id_fournisseur) REFERENCES fournisseur(id_fournisseur)
 );
 
@@ -288,7 +290,8 @@ INSERT INTO type_attestation (nom_attestation) VALUES
 ("Bon de commande"),
 ("Bon de reception"),
 ("Bon de livraison"),
-("Facture");
+("Facture"),
+("Proformat");
 
 INSERT INTO produitInFournisseur (id_fournisseur, id_produit, montant) VALUES
 (1, 1, 12.50), -- Farine T55 chez Fournil Prime
