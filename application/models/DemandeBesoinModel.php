@@ -1,15 +1,7 @@
 <?php
 class DemandeBesoinModel extends CI_Model {
 
-    // Ajouter une demande de besoin
-    public function insert($description, $quantite, $accepte, $id_centre) {
-        $data = array(
-            'description' => $description,
-            'quantite' => $quantite,
-            'accepte' => $accepte,
-            'id_centre' => $id_centre
-        );
-
+    public function insert($data) {
         return $this->db->insert('demande_besoin', $data);
     }
 
