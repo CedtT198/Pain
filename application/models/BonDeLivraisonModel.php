@@ -16,7 +16,7 @@ class BonDeLivraisonModel extends CI_Model {
     public function getAll() {
         $this->db->where('id_type_attestation', 3); // 3 est l'ID pour 'Bon de livraison'
         $query = $this->db->get('attestation');
-        return $query->result();
+        return $query->result_array();
     }
 
     // Fonction pour lire un bon de livraison par ID
@@ -24,7 +24,7 @@ class BonDeLivraisonModel extends CI_Model {
         $this->db->where('id_attestation', $id);
         $this->db->where('id_type_attestation', 3); // Assurer que c'est un bon de livraison
         $query = $this->db->get('attestation');
-        return $query->row();
+        return $query->row_array();
     }
 
     // Fonction pour mettre à jour un bon de livraison
@@ -51,7 +51,7 @@ class BonDeLivraisonModel extends CI_Model {
         $this->db->where('a.id_type_attestation', 3); // 3 est l'ID pour 'Bon de livraison'
         $query = $this->db->get();
 
-        return $query->result();
+        return $query->result_array();
     }
 }
 ?>

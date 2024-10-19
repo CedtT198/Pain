@@ -6,6 +6,7 @@ class LoginController extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('LoginModel');
+        $this->load->model('DepartementModel');
     }
 
     public function index() {               //  ito ny index tena izy
@@ -25,6 +26,7 @@ class LoginController extends CI_Controller {
 
         if ($return > 0) {
             $this->session->set_userdata('id_depa', $return);
+            $this->session->set_userdata('nom_depa', $this->DepartementModel->getById($return)['nom_departement']);
             redirect('RubriqueController/index');
         }
         else {

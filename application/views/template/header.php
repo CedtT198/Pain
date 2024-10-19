@@ -35,8 +35,8 @@
           <li class="nav-item nav-profile dropdown">
             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
               <!-- <img src="images/faces/face28.jpg" alt="profile"/> -->
-              <p style="color:green">id_user : 
-                <?php echo$id_depa; ?>
+              <p style="color:green">Connected as  : 
+                <?php echo $this->session->userdata('nom_depa');  ?>
               </p>
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
@@ -185,6 +185,8 @@
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('DemandeBesoinController/index2'); ?>">Liste de demande<br> des besoins</a></li>
                 <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('ProformatController/index'); ?>">Liste de proformat</a></li>
+                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('ProformatController/index'); ?>">Liste de bon <br> de livraison</a></li>
+                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('ProformatController/index'); ?>">Liste de bon <br> de reception</a></li>
               </ul>
             </div>
           </li>
@@ -197,7 +199,8 @@
             </a>
             <div class="collapse" id="finance">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('DemandeBonCommandeController'); ?>">Liste de bon <br> de commande  </a></li>
+                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('ProformaController'); ?>">Liste proforma</a></li>
+                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('BonCommandeController'); ?>">Liste de bon <br> de commande  </a></li>
               </ul>
             </div>
           </li>
@@ -210,7 +213,7 @@
             </a>
             <div class="collapse" id="directeur">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('DemandePaiementController'); ?>">Liste demande <br>de  paiement</a></li>
+                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('FactureController'); ?>">Liste demande <br>de  paiement</a></li>
               </ul>
             </div>
           </li>

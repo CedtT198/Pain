@@ -147,6 +147,7 @@ CREATE TABLE output_stock(
 CREATE TABLE produitInFournisseur(
    id_fournisseur INT,
    id_produit INT,
+   quantite INT NOT NULL,
    montant DECIMAL(15,2)   NOT NULL,
    PRIMARY KEY(id_fournisseur, id_produit),
    FOREIGN KEY(id_fournisseur) REFERENCES fournisseur(id_fournisseur),

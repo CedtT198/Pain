@@ -16,7 +16,7 @@ class BonDeReceptionModel extends CI_Model {
     public function getAll() {
         $this->db->where('id_type_attestation', 2); // 2 est l'ID pour 'Bon de réception'
         $query = $this->db->get('attestation');
-        return $query->result();
+        return $query->result_array();
     }
 
     // Fonction pour lire un bon de réception par ID
@@ -24,7 +24,7 @@ class BonDeReceptionModel extends CI_Model {
         $this->db->where('id_attestation', $id);
         $this->db->where('id_type_attestation', 2); // Assurer que c'est un bon de réception
         $query = $this->db->get('attestation');
-        return $query->row();
+        return $query->row_array();
     }
 
     // Fonction pour mettre à jour un bon de réception
@@ -52,7 +52,7 @@ class BonDeReceptionModel extends CI_Model {
             $this->db->where('a.id_type_attestation', 2); // 2 est l'ID pour 'Bon de reception'
             $query = $this->db->get();
     
-            return $query->result();
+            return $query->result_array();
         }
 }
 ?>

@@ -13,7 +13,7 @@ class FactureModel extends CI_Model {
         $this->db->join('fournisseur', 'attestation.id_fournisseur = fournisseur.id_fournisseur');
         $this->db->where('attestation.id_type_attestation', 4); // 4 correspond à "Facture"
         $query = $this->db->get();
-        return $query->result();
+        return $query->result_array();
     }
 
     // Fonction pour récupérer une facture par ID
@@ -23,7 +23,7 @@ class FactureModel extends CI_Model {
         $this->db->join('fournisseur', 'attestation.id_fournisseur = fournisseur.id_fournisseur');
         $this->db->where('attestation.id_attestation', $id);
         $query = $this->db->get();
-        return $query->row();
+        return $query->row_array();
     }
 
     // Fonction pour mettre à jour une facture
@@ -48,7 +48,7 @@ class FactureModel extends CI_Model {
             $this->db->where('a.id_type_attestation', 4); // 4 est l'ID pour 'facture'
             $query = $this->db->get();
     
-            return $query->result();
+            return $query->result_array();
         }
 }
 ?>

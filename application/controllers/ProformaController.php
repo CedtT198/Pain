@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class ProformatController extends CI_Controller {
+class ProformaController extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
@@ -9,7 +9,7 @@ class ProformatController extends CI_Controller {
     }
 
     public function index() {
-        $data['contents'] = 'page/ListeProformat';
+        $data['contents'] = 'page/ListeFacture';
         $this->load->view('template/template', $data);
     }
 }

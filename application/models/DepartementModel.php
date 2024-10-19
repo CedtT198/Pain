@@ -21,7 +21,7 @@ class DepartementModel extends CI_Model {
     public function getById($id) {
         $this->db->where('id_departement', $id);
         $query = $this->db->get('departement');
-        return $query->row();
+        return $query->row_array();
     }
 
     // Mettre à jour un département

@@ -16,7 +16,7 @@ class BonDeCommandeModel extends CI_Model {
     public function getAll() {
         $this->db->where('id_type_attestation', 1); // 1 est l'ID pour 'Bon de commande'
         $query = $this->db->get('attestation');
-        return $query->result();
+        return $query->result_array();
     }
 
     // Fonction pour lire un bon de commande par ID
@@ -24,7 +24,7 @@ class BonDeCommandeModel extends CI_Model {
         $this->db->where('id_attestation', $id);
         $this->db->where('id_type_attestation', 1); // Assurer que c'est un bon de commande
         $query = $this->db->get('attestation');
-        return $query->row();
+        return $query->row_array();
     }
 
     // Fonction pour mettre à jour un bon de commande
@@ -51,7 +51,7 @@ class BonDeCommandeModel extends CI_Model {
         $this->db->where('a.id_type_attestation', 1); // 1 est l'ID pour 'Bon de commande'
         $query = $this->db->get();
 
-        return $query->result();
+        return $query->result_array();
     }
 }
 ?>
