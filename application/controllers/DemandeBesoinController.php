@@ -10,6 +10,7 @@ class DemandeBesoinController extends CI_Controller {
         $this->load->model('ProduitModel');
         $this->load->model('StockModel');
         $this->load->model('AttestationModel');
+        $this->load->model('FournisseurModel');
         // $this->load->model('ProduitInFournisseurModel');
     }
 
@@ -68,55 +69,102 @@ class DemandeBesoinController extends CI_Controller {
         $qtstock = $this->StockModel->checkRestStock($id_produit);
         $resteStock = $qtstock - $qt;
 
-        if ($resteStock < 0) {
-            $data = array(
-                'date_output' => date('Y-m-d'),
-                'quantite' => $qtstock,
-                'id_centre' => $id_centre,
-                'id_produit' => $id_produit
-            );
-            $this->StockModel->insertOutput($data);
-
-            $resteTadiavina = $resteStock * -1;
-
-            $id = $this->input->post('id');
-            $this->DemandeBesoinModel->updateAcceptation($id, $resteTadiavina, true);
-            
-            $this->AttestationModel->createProformat();
+        // Si le produit existe dans le stock
+        if ($qtstock >= 0) {
+            // Si le produit est présent mais pas assez 
+            if ($resteStock < 0) {
+                $data = array(
+                    'date_output' => date('Y-m-d'),
+                    'quantite' => $qtstock,
+                    'id_centre' => $id_centre,
+                    'id_produit' => $id_produit
+                );
+                $this->StockModel->insertOutput($data);
     
-            $data['contents'] = 'page/ListeDemandeBesoin';
-            $data['success0'] = 'Produit non présent dans stock. Un proformat a été généré.';
-            $data['demandes'] = $this->DemandeBesoinModel->getAll();
-            $this->load->view('template/template', $data);
-        }
-        else if ($resteStock == 0) {
-            $data = array(
-                'date_output' => date('Y-m-d'),
-                'quantite' => $qt,
-                'id_centre' => $id_centre,
-                'id_produit' => $id_produit
-            );
-            $this->StockModel->insertOutput($data);
+                $resteARechercher = $resteStock * -1;
+    
+                $id = $this->input->post('id');
+                $this->DemandeBesoinModel->updateAcceptation($id, $resteARechercher, true);
+                
+                // Création de proformat et bon de commande
+                $dataProformat = array(
+                    'date_attestation' => date('Y-m-d'),
+                    'libelle' => '',
+                    'accepte' => null,
+                    'id_centre' => $id_centre,
+                    'id_type_attestation' => 5,
+                    'id_fournisseur' =>   $this->FournisseurModel->getBonfournisseur($id_produit)
+                );
+                
+                $dataBonCommande = array(
+                    'date_attestation' => date('Y-m-d'),
+                    'libelle' => '',
+                    'accepte' => null,
+                    'id_centre' => $id_centre,
+                    'id_type_attestation' => 1,
+                    'id_fournisseur' =>  $this->FournisseurModel->getBonfournisseur($id_produit)
+                );
 
+                $id_proformat = $this->AttestationModel->insert($dataProformat);
+                $id_bonCom = $this->AttestationModel->insert($dataBonCommande);
+
+                $this->ProduitInAttestationModel->insert($id_proformat, $id_produit);
+                $this->ProduitInAttestationModel->insert($id_bonCom, $id_produit);
+                // ====================================
+        
+                $data['contents'] = 'page/ListeDemandeBesoin';
+                $data['success'] = 'Quanité du produit insuffisante en stock. Un proformat a été généré.';
+                $data['demandes'] = $this->DemandeBesoinModel->getAll();
+                $this->load->view('template/template', $data);
+            }
+            else {
+                $data = array(
+                    'date_output' => date('Y-m-d'),
+                    'quantite' => $qt,
+                    'id_centre' => $id_centre,
+                    'id_produit' => $id_produit
+                );
+                $this->StockModel->insertOutput($data);
+    
+                $data['contents'] = 'page/ListeDemandeBesoin';
+                $data['success'] = 'Accepté. Le(s) produit(s) demandé(s) ont été prélevé du stock.<br>Nombre de '.$this->ProduitModel->getById($id_produit)['nom_produit'].' restant : '.$resteStock;
+                $data['demandes'] = $this->DemandeBesoinModel->getAll();
+                $this->load->view('template/template', $data);
+            }
+        }
+        // Si le produit n'est pas du tout présent dans le stock
+        else {
             $id= $this->input->post('id');
             $this->DemandeBesoinModel->updateAcceptation($id, $qt, true);
+
+            // Création de proformat et bon de commande
+            $dataProformat = array(
+                'date_attestation' => date('Y-m-d'),
+                'libelle' => '',
+                'accepte' => null,
+                'id_centre' => $id_centre,
+                'id_type_attestation' => 5,
+                'id_fournisseur' =>   $this->FournisseurModel->getBonfournisseur($id_produit)
+            );
+            
+            $dataBonCommande = array(
+                'date_attestation' => date('Y-m-d'),
+                'libelle' => '',
+                'accepte' => null,
+                'id_centre' => $id_centre,
+                'id_type_attestation' => 1,
+                'id_fournisseur' =>  $this->FournisseurModel->getBonfournisseur($id_produit)
+            );
+
+            $id_proformat = $this->AttestationModel->insert($dataProformat);
+            $id_bonCom = $this->AttestationModel->insert($dataBonCommande);
+
+            $this->ProduitInAttestationModel->insert($id_proformat, $id_produit);
+            $this->ProduitInAttestationModel->insert($id_bonCom, $id_produit);
+            // ====================================
     
             $data['contents'] = 'page/ListeDemandeBesoin';
-            $data['success0'] = 'Produit non présent dans stock. Un proformat a été généré.';
-            $data['demandes'] = $this->DemandeBesoinModel->getAll();
-            $this->load->view('template/template', $data);
-        }
-        else if ($resteStock > 0) {
-            $data = array(
-                'date_output' => date('Y-m-d'),
-                'quantite' => $qt,
-                'id_centre' => $id_centre,
-                'id_produit' => $id_produit
-            );
-            $this->StockModel->insertOutput($data);
-
-            $data['contents'] = 'page/ListeDemandeBesoin';
-            $data['success1'] = 'Accepté. Le(s) produit(s) demandé(s) ont été prélevé du stock.<br>Nombre de '.$this->ProduitModel->getById($id_produit)['nom_produit'].' restant : '.$resteStock;
+            $data['success'] = 'Produit non présent dans stock. Un proformat a été généré.';
             $data['demandes'] = $this->DemandeBesoinModel->getAll();
             $this->load->view('template/template', $data);
         }   

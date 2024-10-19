@@ -21,5 +21,10 @@ class AttestationModel extends CI_Model {
         // Exécuter la mise à jour
         return $this->db->update('attestation', $data);
     }
+
+    public function insert($data) {
+        $this->db->insert('attestation', $data);
+        return $this->db->insert_id();
+    }
 }
 ?>
