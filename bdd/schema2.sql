@@ -90,6 +90,7 @@ CREATE TABLE produit_stock(
    id_produit_stock INT AUTO_INCREMENT,
    nom_produit VARCHAR(50)  NOT NULL,
    montant DECIMAL(15,2)   NOT NULL,
+   date_entree DATE NOT NULL,
    PRIMARY KEY(id_produit_stock)
 );
 
