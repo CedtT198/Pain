@@ -30,7 +30,7 @@
                                                                       <td>19 octobre 2024</td>
                                                                       <td><button type="button" class="btn btn-outline-warning btn-fw" onclick="toggleDetails('details1')">Details</button></td>
                                                                </tr>
-                                                               <tr  id="details1" style="display:table-row">   <!-- ilay tr mipoitra refa miclique details -->
+                                                               <tr  id="details1" style="display:none">   <!-- ilay tr mipoitra refa miclique details -->
                                                                       <td colspan="8">
                                                                              <table cellpadding="5" cellspacing="0" border="0" style="width:100%">
                                                                                     <tbody>
