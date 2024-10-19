@@ -149,12 +149,12 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#achat" aria-expanded="false" aria-controls="achat">
+            <a class="nav-link" data-toggle="collapse" href="#production" aria-expanded="false" aria-controls="production">
               <i class="icon-grid menu-icon"></i>
               <span class="menu-title">Productions</span>
               <i class="menu-arrow"></i>
             </a>
-            <div class="collapse" id="achat">
+            <div class="collapse" id="production">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('AchatController'); ?>">Liste</a></li>
                 <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('AchatController/index2'); ?>">insertion</a></li>
@@ -184,6 +184,7 @@
             <div class="collapse" id="achat">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('DemandeBesoinController/index2'); ?>">Liste de demande<br> des besoins</a></li>
+                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('ProformatController/index'); ?>">Liste de proformat</a></li>
               </ul>
             </div>
           </li>
