@@ -15,23 +15,21 @@
                             <form class="forms-sample">
                                    <div class="form-group">
                                           <label for="exampleTextarea1">Description</label>
-                                          <textarea class="form-control" id="exampleTextarea1" rows="3"></textarea>
+                                          <textarea class="form-control" id="exampleTextarea1" name="desc" rows="3" required></textarea>
                                    </div>
                                    <div class="form-group">
                                           <label for="exampleInputUsername1">Quantite</label>
-                                          <input type="number" class="form-control" id="exampleInputUsername1" placeholder="00">
+                                          <input type="number" class="form-control" id="qt" placeholder="00" required>
                                    </div>
-                                   <div class="row checkbox">
-                                          <!-- ==== boucle ========= -->
-                                          <div class="col-md-3 col-md-offset-1 form-group">
-                                                 <div class="form-check form-check-info">
-                                                        <!-- <label class="form-check-label"> -->
-                                                               <input type="checkbox" class="form-check-input" checked>
-                                                               exemple produit
-                                                        <!-- </label> -->
+                                   <div class="row checkbox">              
+                                          <?php foreach ($produits as $prod) { ?>
+                                                 <div class="col-md-3 col-md-offset-1 form-group">
+                                                        <div class="form-check form-check-info">
+                                                               <input type="checkbox" class="form-check-input">
+                                                              <?php echo $prod['id_produit']; ?>
+                                                        </div>
                                                  </div>
-                                          </div>
-                                          <!-- ==== fin boucle ========= -->
+                                          <?php } ?>
                                    </div>
                                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
                             </form>

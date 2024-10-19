@@ -116,6 +116,7 @@ CREATE TABLE demande_besoin(
    description VARCHAR(50)  NOT NULL,
    quantite INT NOT NULL,
    accepte BOOLEAN NOT NULL,
+   date_demande DATE NOT NULL,
    id_centre INT NOT NULL,
    PRIMARY KEY(id_demande_besoin),
    FOREIGN KEY(id_centre) REFERENCES centre(id_centre)

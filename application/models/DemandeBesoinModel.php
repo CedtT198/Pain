@@ -16,7 +16,7 @@ class DemandeBesoinModel extends CI_Model {
     // Obtenir toutes les demandes de besoin
     public function getAll() {
         $query = $this->db->get('demande_besoin');
-        return $query->result();
+        return $query->result_array();
     }
 
     // Obtenir une demande de besoin par ID

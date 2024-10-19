@@ -13,19 +13,19 @@ class ProduitInDemandeBesoinModel extends CI_Model {
     public function getByIdDemande($id_demande_besoin) {
         $this->db->where('id_demande_besoin', $id_demande_besoin);
         $query = $this->db->get('produitInDemandeBesoin');
-        return $query->result();
+        return $query->result_array();
     }
 
     public function getByIdProduit($id_produit) {
         $this->db->where('id_produit', $id_produit);
         $query = $this->db->get('produitInDemandeBesoin');
-        return $query->result();
+        return $query->result_array();
     }
 
     
     public function getAll() {
         $query = $this->db->get('produitInDemandeBesoin');
-        return $query->result();
+        return $query->result_array();
     }
 
     public function delete($id_produit, $id_demande_besoin) {
