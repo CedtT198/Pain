@@ -575,4 +575,4 @@ LEFT JOIN
 
 
 
-CREATE OR REPLACE VIEW v_demande_paiement AS
+-- CREATE OR REPLACE VIEW v_demande_paiement AS

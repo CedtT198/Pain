@@ -178,7 +178,7 @@
             </a>
             <div class="collapse" id="achat">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('DemandeBesoinController'); ?>">Liste de demande<br> des besoins</a></li>
+                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('DemandeBesoinController/index2'); ?>">Liste de demande<br> des besoins</a></li>
               </ul>
             </div>
           </li>
