@@ -14,7 +14,7 @@ class LoginController extends CI_Controller {
     // }
     
     public function index() {                   // index ahafana miteste page fotsiny ho an'ny front
-        $data['contents'] = 'page/ListeBonLivraison';
+        $data['contents'] = 'page/ListeDemandePaiement';
         $this->load->view('template/template', $data);
     }
     
