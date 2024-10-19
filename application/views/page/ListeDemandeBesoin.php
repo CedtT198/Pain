@@ -8,13 +8,8 @@
                             </p>
                             <?php if (isset($error)) { ?>
                                    <p style="color:red;"><?php echo $error; ?></p>
-                            <?php } if (isset($success0)) { ?>
-                                   <p style="color:green;">
-                                          <?php echo $success0; ?><br>
-                                          Voir <a href="">proformat</a>
-                                   </p>
-                            <?php } if (isset($succes1)) { ?>
-                                   <p style="color:green;"><?php echo $success1; ?></p>
+                            <?php }if (isset($success)) { ?>
+                                   <p style="color:green;"><?php echo $success; ?></p>
                             <?php } ?>
                             <div class="table-responsive">
                                    <table class="table table-striped">

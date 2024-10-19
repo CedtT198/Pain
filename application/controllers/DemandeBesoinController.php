@@ -82,7 +82,7 @@ class DemandeBesoinController extends CI_Controller {
             $this->DemandeBesoinModel->updateAcceptation($id, $resteTadiavina, true);
     
             $data['contents'] = 'page/ListeDemandeBesoin';
-            $data['success0'] = 'Produit non présent dans stock. Processus d\'achat en cours.';
+            $data['success0'] = 'Produit non présent dans stock. Un proformat a été généré.';
             $data['demandes'] = $this->DemandeBesoinModel->getAll();
             $this->load->view('template/template', $data);
         }
@@ -99,7 +99,7 @@ class DemandeBesoinController extends CI_Controller {
             $this->DemandeBesoinModel->updateAcceptation($id, $qt, true);
     
             $data['contents'] = 'page/ListeDemandeBesoin';
-            $data['success0'] = 'Produit non présent dans stock. Processus d\'achat en cours.';
+            $data['success0'] = 'Produit non présent dans stock. Un proformat a été généré.';
             $data['demandes'] = $this->DemandeBesoinModel->getAll();
             $this->load->view('template/template', $data);
         }
@@ -115,7 +115,7 @@ class DemandeBesoinController extends CI_Controller {
             $data['contents'] = 'page/ListeDemandeBesoin';
             $data['success1'] = 'Accepté. Le(s) produit(s) demandé(s) ont été prélevé du stock.<br>Nombre de '.$this->ProduitModel->getById($id_produit)['nom_produit'].' restant : '.$resteStock;
             $data['demandes'] = $this->DemandeBesoinModel->getAll();
-            $this->load->view('template/template', $data);            
+            $this->load->view('template/template', $data);
         }   
     }
     
