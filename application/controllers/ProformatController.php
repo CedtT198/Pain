@@ -8,36 +8,9 @@ class ProformatController extends CI_Controller {
         $this->load->model('AttestationModel');
     }
 
-
-    public function index() {                   // index ahafana miteste page fotsiny ho an'ny front
-        $data['contents'] = 'page/ListeDemandeBesoin';
+    public function index() {
+        $data['contents'] = 'page/ListeProformat';
         $this->load->view('template/template', $data);
     }
-    
-    public function checkLogin() {
-        $name= $this->input->post('name');
-        $password= $this->input->post('password');
-        
-        $return = $this->LoginModel->login($name, $password);
-
-        if ($return > 0) {
-            $this->session->set_userdata('id_depa', $return);
-            redirect('RubriqueController/index');
-        }
-        else {
-            if ($return == -1)
-                $data['error'] = "Mot de passe incorrect.";
-            else if ($return == -2)
-                $data['error'] = "Nom du département incorrect.";
-
-            $this->load->view('page/Login', $data);
-        }
-    }
-
-    // public function index() {                   // index ahafana miteste page fotsiny ho an'ny front
-    //     $data['contents'] = 'page/FormulaireDemandeBesoin';
-    //     $this->load->view('template/template', $data);
-    // }
-
 }
 ?>
