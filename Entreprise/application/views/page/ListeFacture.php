@@ -158,6 +158,9 @@
                                                                </div>
                                                  </div>
                                           </div>
+
+
+                                          
                                    </div>
                                    <a class="carousel-control-prev" href="#detailedReports" role="button" data-slide="prev">
                                           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
