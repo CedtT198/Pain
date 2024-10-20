@@ -15,16 +15,15 @@
                                           </tr>
                                    </thead>
                                     <tbody>
-                                          <tr>
-                                                 <td class="py-1">exemple</td>
-                                                 <td>Herman Beck</td>
-                                                 <td>exemple</td>
-                                          </tr>
-                                          <tr>
-                                                 <td class="py-1">exemple</td>
-                                                 <td>Messsy Adam</td>
-                                                 <td>exemple</td>
-                                          </tr>
+                                          <?php foreach ($isteStock as $stock) {  
+                                                 $produit = $this->ProduitModel->getById($stock['id_produit']);
+                                          ?>
+                                                 <tr>
+                                                        <td class="py-1"><?php $stock['date_input'] ;?></td>
+                                                        <td><?php $stock['quantite']  ;?></td>
+                                                        <td><?php $produit['nom_produit'] ;?></td>
+                                                 </tr>
+                                          <?php } ?>
                                    </tbody>
                             </table>
                      </div>
