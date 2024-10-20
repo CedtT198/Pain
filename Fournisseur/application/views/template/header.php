@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Boulangerie</title>
+  <title>Fournisseur</title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/vendors/feather/feather.css">
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/vendors/ti-icons/css/themify-icons.css">
@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/vendors/select2-bootstrap-theme/select2-bootstrap.min.css"> -->
 </head>
 <body>
-<?php $id_depa = $this->session->userdata('id_depa'); ?>
+<?php $id_depa = $this->session->userdata('id_fou'); ?>
   <div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
@@ -87,6 +87,12 @@
             <a class="nav-link" href="<?php echo site_url('ListeCommandeController'); ?>">
               <i class="icon-layout menu-icon"></i>
               <span class="menu-title">Liste des <br>commandes</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="<?php echo site_url('ListeLivraisonController'); ?>">
+              <i class="icon-layout menu-icon"></i>
+              <span class="menu-title">Liste des bons <br>de livraison</span>
             </a>
           </li>
       </ul>

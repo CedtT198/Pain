@@ -106,10 +106,12 @@ CREATE TABLE attestation(
    date_attestation DATE NOT NULL,
    libelle VARCHAR(50)  NOT NULL,
    accepte BOOLEAN,
+   id_correspondance INT,
    id_centre INT NOT NULL,
    id_type_attestation INT NOT NULL,
    id_fournisseur INT NOT NULL,
    PRIMARY KEY(id_attestation),
+   FOREIGN KEY(id_correspondance) REFERENCES attestation(id_attestation),
    FOREIGN KEY(id_centre) REFERENCES centre(id_centre),
    FOREIGN KEY(id_fournisseur) REFERENCES fournisseur(id_fournisseur)
 );
@@ -165,6 +167,7 @@ CREATE TABLE produitsInAttestation(
    id_attestation INT,
    id_produit INT,
    quantite INT NOT NULL,
+   montant DECIMAL(15,2)   NOT NULL,
    PRIMARY KEY(id_attestation, id_produit),
    FOREIGN KEY(id_attestation) REFERENCES attestation(id_attestation),
    FOREIGN KEY(id_produit) REFERENCES produit(id_produit)

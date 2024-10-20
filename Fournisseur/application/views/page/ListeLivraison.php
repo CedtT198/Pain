@@ -22,24 +22,17 @@
                                                                       <th>Date</th>
                                                                       <th>Libelle</th>
                                                                       <th></th>
-                                                                      <th></th>
                                                                </tr>
                                                         </thead>
                                                         <tbody>
                                                         <?php
                                                         $id = 0;
-                                                        echo var_dump($livraisons);
+                                                        // echo var_dump($livraisons);
                                                         foreach ($livraisons as $com) { ?>
                                                                <tr class="odd">
                                                                       <td class="sorting_1"><?php echo $com['libelle'];?></td>
                                                                       <td><?php echo $com['date_attestation']; ?></td>
                                                                       <td><button type="button" class="btn btn-outline-primary btn-fw" onclick="toggleDetails('details<?php echo $id;?>')">Details</button></td>
-                                                                      <td>
-                                                                             <form action="<?php echo site_url('BonReceptionController/accept'); ?>" method="post">
-                                                                                    <input type="hidden" name="id_attestation" value="<?php echo $com['id_attestation']; ?>">
-                                                                                    <button type="submit" class="btn btn-outline-success btn-fw">Créer bon de réception</button>
-                                                                             </form>
-                                                                      </td>
                                                                </tr>
                                                                <tr  id="details<?php echo $id;?>" style="display:none">   <!-- ilay tr mipoitra refa miclique details -->
                                                                       <td colspan="8">

@@ -12,7 +12,7 @@ class LoginModel extends CI_Model {
             
             if($mdp == $fournisseur->nom_fournisseur) {
                 // Mot de passe correct, renvoyer l'ID du département
-                $existe = $fournisseur->nom_fournisseur;
+                $existe = $fournisseur->id_fournisseur;
                 return $existe;
             }
             else {

@@ -94,6 +94,7 @@ class DemandeBesoinController extends CI_Controller {
                     'date_attestation' => $date,
                     'libelle' => '',
                     'accepte' => null,
+                    'id_correspondance' => null,
                     'id_centre' => $id_centre,
                     'id_type_attestation' => 5,
                     'id_fournisseur' =>   $this->FournisseurModel->getBonfournisseur($id_produit)
@@ -103,6 +104,7 @@ class DemandeBesoinController extends CI_Controller {
                     'date_attestation' => $date,
                     'libelle' => '',
                     'accepte' => null,
+                    'id_correspondance' => null,
                     'id_centre' => $id_centre,
                     'id_type_attestation' => 1,
                     'id_fournisseur' =>  $this->FournisseurModel->getBonfournisseur($id_produit)
@@ -145,6 +147,7 @@ class DemandeBesoinController extends CI_Controller {
                 'date_attestation' => $date,
                 'libelle' => '',
                 'accepte' => null,
+                'id_correspondance' => null,
                 'id_centre' => $id_centre,
                 'id_type_attestation' => 5,
                 'id_fournisseur' =>   $this->FournisseurModel->getBonfournisseur($id_produit)
@@ -154,6 +157,7 @@ class DemandeBesoinController extends CI_Controller {
                 'date_attestation' => $date,
                 'libelle' => '',
                 'accepte' => null,
+                'id_correspondance' => null,
                 'id_centre' => $id_centre,
                 'id_type_attestation' => 1,
                 'id_fournisseur' =>  $this->FournisseurModel->getBonfournisseur($id_produit)
