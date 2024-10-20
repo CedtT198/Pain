@@ -144,6 +144,13 @@ CREATE TABLE output_stock(
    FOREIGN KEY(id_produit) REFERENCES produit(id_produit)
 );
 
+CREATE TABLE caisse(
+   Id_caisse INT AUTO_INCREMENT,
+   date_caisse DATE NOT NULL,
+   montant DECIMAL(15,2)   NOT NULL,
+   PRIMARY KEY(Id_caisse)
+);
+
 CREATE TABLE produitInFournisseur(
    id_fournisseur INT,
    id_produit INT,
@@ -157,6 +164,7 @@ CREATE TABLE produitInFournisseur(
 CREATE TABLE produitsInAttestation(
    id_attestation INT,
    id_produit INT,
+   quantite INT NOT NULL,
    PRIMARY KEY(id_attestation, id_produit),
    FOREIGN KEY(id_attestation) REFERENCES attestation(id_attestation),
    FOREIGN KEY(id_produit) REFERENCES produit(id_produit)
@@ -223,70 +231,6 @@ INSERT INTO departement VALUES
 (null, "Finance", "finance"),
 (null, "dg", "dg");
 
-INSERT INTO fournisseur (nom_fournisseur, attribution) VALUES 
-("Fournil Prime", 0), 
-("Boulange & Co", 1), 
-("Le Moulin Gourmand", 0),
-("equipements Pro Boulangerie", 1), 
-("Emballages Express", 2),
-("Grain d’Or", 0), 
-("Techno-Fournil", 1), 
-("Papiers & Sacs", 2), 
-("Levure et Saveurs", 0), 
-("Materiel Four Pro", 1); 
-
-INSERT INTO produit (nom_produit) VALUES
-("Farine T55"),
-("Farine Complète"),
-("Farine d’Épeautre"),
-("Farine de Seigle"),
-("Levure Sèche"),
-("Levure Fraîche"),
-("Sucre en Poudre"),
-("Sucre Glace"),
-("Sel de Guérande"),
-("Beurre de Baratte"),
-("Margarine de Boulangerie"),
-("Œufs Bio"),
-("Lait Entier"),
-("Crème Fraîche"),
-("Chocolat Pâtissier"),
-("Pépites de Chocolat"),
-("Amandes Effilées"),
-("Noisettes Concassées"),
-("Fruits Confits"),
-("Purée de Fruits"),
-("Levain Déshydraté"),
-("Poudre à Lever"),
-("Fécule de Maïs"),
-("Gélatine Alimentaire"),
-("Crème Pâtissière en Poudre"),
-("Arômes Vanille"),
-("Extrait de Café"),
-("Colorants Alimentaires"),
-("Emballages pour Pains"),
-("Boîtes pour Gâteaux"),
-("Sachets pour Viennoiseries"),
-("Plateaux Carton"),
-("Moules à Cake"),
-("Moules à Tartes"),
-("Plaques de Cuisson"),
-("Moules à Madeleines"),
-("Grilles de Refroidissement"),
-("Four à Convection"),
-("Pétrin Professionnel"),
-("Batteur Mélangeur"),
-("Laminoir à Pâte"),
-("Chambre de Pousse"),
-("Réfrigérateur Inox Professionnel"),
-("Congélateur Coffre"),
-("Trancheuse à Pain"),
-("Balance de Précision"),
-("Pelle à Pizza"),
-("Couteaux à Pain"),
-("Poches à Douille"),
-("Spatules en Silicone");
-
 INSERT INTO type_attestation (nom_attestation) VALUES
 ("Bon de commande"),
 ("Bon de reception"),
@@ -294,84 +238,58 @@ INSERT INTO type_attestation (nom_attestation) VALUES
 ("Facture"),
 ("Proformat");
 
-INSERT INTO produitInFournisseur (id_fournisseur, id_produit, montant) VALUES
-(1, 1, 12.50), -- Farine T55 chez Fournil Prime
-(2, 1, 13.00), -- Farine T55 chez Boulange & Co
-(3, 1, 11.75), -- Farine T55 chez Le Moulin Gourmand
-(1, 2, 15.20), -- Farine Complète chez Fournil Prime
-(2, 2, 16.30), -- Farine Complète chez Boulange & Co
-(3, 2, 14.90), -- Farine Complète chez Le Moulin Gourmand
-(4, 3, 17.80), -- Farine d’Épeautre chez Équipements Pro Boulangerie
-(5, 3, 18.50), -- Farine d’Épeautre chez Emballages Express
-(1, 4, 10.50), -- Farine de Seigle chez Fournil Prime
-(2, 4, 10.90), -- Farine de Seigle chez Boulange & Co
-(3, 4, 9.95), -- Farine de Seigle chez Le Moulin Gourmand
-(4, 5, 5.75),  -- Levure Sèche chez Équipements Pro Boulangerie
-(5, 5, 6.00),  -- Levure Sèche chez Emballages Express
-(1, 6, 6.50),  -- Levure Fraîche chez Fournil Prime
-(2, 6, 6.75),  -- Levure Fraîche chez Boulange & Co
-(3, 6, 6.30),  -- Levure Fraîche chez Le Moulin Gourmand
-(4, 7, 3.50),  -- Sucre en Poudre chez Équipements Pro Boulangerie
-(5, 7, 3.80),  -- Sucre en Poudre chez Emballages Express
-(1, 8, 4.10),  -- Sucre Glace chez Fournil Prime
-(2, 8, 4.25),  -- Sucre Glace chez Boulange & Co
-(3, 8, 4.00),  -- Sucre Glace chez Le Moulin Gourmand
-(4, 9, 2.90),  -- Sel de Guérande chez Équipements Pro Boulangerie
-(5, 9, 3.10),  -- Sel de Guérande chez Emballages Express
-(1, 10, 7.90), -- Beurre de Baratte chez Fournil Prime
-(2, 10, 8.20), -- Beurre de Baratte chez Boulange & Co
-(3, 10, 7.75), -- Beurre de Baratte chez Le Moulin Gourmand
-(4, 11, 6.20), -- Margarine de Boulangerie chez Équipements Pro Boulangerie
-(5, 11, 6.50), -- Margarine de Boulangerie chez Emballages Express
-(1, 12, 10.10), -- Œufs Bio chez Fournil Prime
-(2, 12, 10.50), -- Œufs Bio chez Boulange & Co
-(3, 12, 9.90),  -- Œufs Bio chez Le Moulin Gourmand
-(4, 13, 9.00),  -- Lait Entier chez Équipements Pro Boulangerie
-(5, 13, 9.20),  -- Lait Entier chez Emballages Express
-(1, 14, 15.30), -- Crème Fraîche chez Fournil Prime
-(2, 14, 15.75), -- Crème Fraîche chez Boulange & Co
-(3, 14, 15.10), -- Crème Fraîche chez Le Moulin Gourmand
-(4, 15, 8.50),  -- Chocolat Pâtissier chez Équipements Pro Boulangerie
-(5, 15, 8.75),  -- Chocolat Pâtissier chez Emballages Express
-(1, 16, 5.00),  -- Pépites de Chocolat chez Fournil Prime
-(2, 16, 5.25),  -- Pépites de Chocolat chez Boulange & Co
-(3, 16, 4.95),  -- Pépites de Chocolat chez Le Moulin Gourmand
-(4, 17, 3.90),  -- Amandes Effilées chez Équipements Pro Boulangerie
-(5, 17, 4.10),  -- Amandes Effilées chez Emballages Express
-(1, 18, 4.80),  -- Noisettes Concassées chez Fournil Prime
-(2, 18, 5.00),  -- Noisettes Concassées chez Boulange & Co
-(3, 18, 4.75),  -- Noisettes Concassées chez Le Moulin Gourmand
-(4, 19, 6.50),  -- Fruits Confits chez Équipements Pro Boulangerie
-(5, 19, 6.80),  -- Fruits Confits chez Emballages Express
-(1, 20, 8.50),  -- Purée de Fruits chez Fournil Prime
-(2, 20, 8.75),  -- Purée de Fruits chez Boulange & Co
-(3, 20, 8.30),  -- Purée de Fruits chez Le Moulin Gourmand
-(4, 21, 5.75),  -- Levain Déshydraté chez Équipements Pro Boulangerie
-(5, 21, 6.00),  -- Levain Déshydraté chez Emballages Express
-(1, 22, 3.20),  -- Poudre à Lever chez Fournil Prime
-(2, 22, 3.50),  -- Poudre à Lever chez Boulange & Co
-(3, 22, 3.10),  -- Poudre à Lever chez Le Moulin Gourmand
-(4, 23, 2.00),  -- Fécule de Maïs chez Équipements Pro Boulangerie
-(5, 23, 2.20),  -- Fécule de Maïs chez Emballages Express
-(1, 24, 4.30),  -- Gélatine Alimentaire chez Fournil Prime
-(2, 24, 4.50),  -- Gélatine Alimentaire chez Boulange & Co
-(3, 24, 4.00),  -- Gélatine Alimentaire chez Le Moulin Gourmand
-(4, 25, 6.10),  -- Crème Pâtissière en Poudre chez Équipements Pro Boulangerie
-(5, 25, 6.40),  -- Crème Pâtissière en Poudre chez Emballages Express
-(1, 26, 7.50),  -- Arômes Vanille chez Fournil Prime
-(2, 26, 7.75),  -- Arômes Vanille chez Boulange & Co
-(3, 26, 7.30),  -- Arômes Vanille chez Le Moulin Gourmand
-(4, 27, 5.80),  -- Extrait de Café chez Équipements Pro Boulangerie
-(5, 27, 6.00),  -- Extrait de Café chez Emballages Express
-(1, 28, 3.20),  -- Colorants Alimentaires chez Fournil Prime
-(2, 28, 3.50),  -- Colorants Alimentaires chez Boulange & Co
-(3, 28, 3.10);  -- Colorants Alimentaires chez Le Moulin Gourmand
+INSERT INTO fournisseur (nom_fournisseur, attribution) VALUES 
+('Fournisseur A', 10),
+('Fournisseur B', 10),
+('Fournisseur C', 10);
+
+INSERT INTO produit (nom_produit) VALUES 
+('Farine'),
+('Sucre'),
+('Ordinateur'),
+('Coffre'),
+('Refrigerateur');
+
+-- Fournisseur A
+INSERT INTO produitInFournisseur (id_fournisseur, id_produit, quantite, montant) VALUES
+(1, 1, 50, 1000.00),  -- Ordinateur portable chez Fournisseur A
+(1, 2, 30, 200.00),   -- Écran chez Fournisseur A
+(1, 3, 100, 50.00),   -- Clavier chez Fournisseur A
+(1, 4, 200, 25.00),   -- Souris chez Fournisseur A
+(1, 5, 10, 300.00);   -- Imprimante chez Fournisseur A
+
+-- Fournisseur B
+INSERT INTO produitInFournisseur (id_fournisseur, id_produit, quantite, montant) VALUES
+(2, 1, 40, 1050.00),  -- Ordinateur portable chez Fournisseur B
+(2, 2, 25, 190.00),   -- Écran chez Fournisseur B
+(2, 3, 150, 55.00),   -- Clavier chez Fournisseur B
+(2, 4, 220, 22.50),   -- Souris chez Fournisseur B
+(2, 5, 15, 320.00);   -- Imprimante chez Fournisseur B
+
+-- Fournisseur C
+INSERT INTO produitInFournisseur (id_fournisseur, id_produit, quantite, montant) VALUES
+(3, 1, 60, 1100.00),  -- Ordinateur portable chez Fournisseur C
+(3, 2, 35, 210.00),   -- Écran chez Fournisseur C
+(3, 3, 120, 48.00),   -- Clavier chez Fournisseur C
+(3, 4, 250, 20.00),   -- Souris chez Fournisseur C
+(3, 5, 12, 310.00);   -- Imprimante chez Fournisseur C
+
+INSERT INTO demande_besoin (description, quantite, accepte, date_demande, id_centre, id_produit) VALUES
+('Demande de 10 ordinateurs portables', 10, null, '2024-10-01', 3, 3),  -- Demande de 10 ordinateurs portables pour le centre 1
+('Demande de 15 écrans', 15, null, '2024-10-03', 3, 3),               -- Demande de 15 écrans pour le centre 2
+('Demande de 50kg farine', 50, null, '2024-10-05', 2, 1),               -- Demande de 50 claviers pour le centre 3
+('Demande de 100kg sucre', 100, null, '2024-10-10', 2, 2),               -- Demande de 100 souris pour le centre 1
+('Demande de 5 refrigerateur', 5, null, '2024-10-12', 3, 5),             -- Demande de 5 imprimantes pour le centre 2
+('Demande de 5 refrigerateur', 5, null, '2024-10-12', 4, 5);             -- Demande de 5 imprimantes pour le centre 2
+
 
 INSERT INTO input_stock (date_input, quantite, id_produit) VALUES
 ('2024-10-19', 1, 1),
 ('2024-10-19', 1, 2),
 ('2024-10-19', 1, 3),
 ('2024-10-19', 1, 4);
+
+INSERT INTO caisse (date_caisse, montant) VALUES ('2024-10-19', "100000");
 
 SELECT rubrique.*  FROM rubrique JOIN unite_oeuvre on rubrique.id_unite_oeuvre=unite_oeuvre.id_unite_oeuvre;
 SELECT * FROM rubrique JOIN charge ON rubrique.id_rubrique=charge.id_rubrique; 

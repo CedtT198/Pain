@@ -184,9 +184,9 @@
             <div class="collapse" id="achat">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('DemandeBesoinController/index2'); ?>">Liste de demande<br> des besoins</a></li>
-                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('ProformatController/index'); ?>">Liste de proformat</a></li>
-                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('ProformatController/index'); ?>">Liste de bon <br> de livraison</a></li>
-                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('ProformatController/index'); ?>">Liste de bon <br> de reception</a></li>
+                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('ProformaController/index'); ?>">Liste de proformat</a></li>
+                <!-- <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('LivraisonController/index'); ?>">Liste de bon <br> de livraison</a></li> -->
+                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('ReceptionController/index'); ?>">Liste de bon <br> de reception</a></li>
               </ul>
             </div>
           </li>
@@ -199,7 +199,7 @@
             </a>
             <div class="collapse" id="finance">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('ProformaController'); ?>">Liste proforma</a></li>
+                <!-- <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('ProformaController'); ?>">Liste proforma</a></li> -->
                 <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('BonCommandeController'); ?>">Liste de bon <br> de commande  </a></li>
               </ul>
             </div>

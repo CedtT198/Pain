@@ -39,6 +39,7 @@
                                                                              <input type="hidden" value="<?php echo $dem['id_produit']; ?>" name="id_produit">
                                                                              <input type="hidden" value="<?php echo $dem['quantite']; ?>" name="quantite">
                                                                              <input type="hidden" value="<?php echo $dem['id_demande_besoin']; ?>" name="id">
+                                                                             <input type="hidden" value="<?php echo $dem['date_demande']; ?>" name="date">
                                                                              <input type="hidden" value="<?php echo $dem['id_centre']; ?>" name="id_centre">
                                                                              <button type="submit" class="btn btn-inverse-success btn-fw">Accepter</button>
                                                                       </form>

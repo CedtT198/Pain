@@ -1,19 +1,18 @@
 <?php
 class LoginModel extends CI_Model {
 
-    public function login($nom_departement, $mdp_departement) {
+    public function login($nom, $mdp) {
         $existe =0;
-        // Vérifier si le nom du département existe
-        $this->db->where('nom_departement', $nom_departement);
-        $query = $this->db->get('departement');
+        $this->db->where('nom_fournisseur', $nom);
+        $query = $this->db->get('fournisseur');
     
         // Si le département existe
         if($query->num_rows() == 1) {
-            $departement = $query->row();
+            $fournisseur = $query->row();
             
-            if($mdp_departement == $departement->mdp_departement) {
+            if($mdp == $fournisseur->nom_fournisseur) {
                 // Mot de passe correct, renvoyer l'ID du département
-                $existe = $departement->id_departement;
+                $existe = $fournisseur->nom_fournisseur;
                 return $existe;
             }
             else {

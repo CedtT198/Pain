@@ -6,7 +6,7 @@ class LoginController extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('LoginModel');
-        $this->load->model('DepartementModel');
+        $this->load->model('FournisseurModel');
     }
 
     // public function index() {               //  ito ny index tena izy
@@ -14,7 +14,7 @@ class LoginController extends CI_Controller {
     // }
     
     public function index() {                   // index ahafana miteste page fotsiny ho an'ny front
-        $data['contents'] = 'page/ListeDemandePaiement';
+        $data['contents'] = 'page/ListeCommande';
         $this->load->view('template/template', $data);
     }
     
@@ -25,9 +25,9 @@ class LoginController extends CI_Controller {
         $return = $this->LoginModel->login($name, $password);
 
         if ($return > 0) {
-            $this->session->set_userdata('id_depa', $return);
-            $this->session->set_userdata('nom_depa', $this->DepartementModel->getById($return)['nom_departement']);
-            redirect('RubriqueController/index');
+            $this->session->set_userdata('id_fou', $return);
+            $this->session->set_userdata('nom_fou', $this->FournisseurModel->getById($return)['nom_fournisseur']);
+            redirect('ListeCommandeController/index');
         }
         else {
             if ($return == -1)

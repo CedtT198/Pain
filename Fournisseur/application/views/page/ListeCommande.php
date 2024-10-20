@@ -3,7 +3,7 @@
               <div class="row">
                      <div class="col-12 col-xl-8 mb-4 mb-xl-0">
                             <h3 class="font-weight-bold">RECEPTION</h3>
-                            <h6 class="font-weight-normal mb-0">Liste bon receptions</h6>
+                            <h6 class="font-weight-normal mb-0">Liste commande</h6>
                      </div>
               </div>
        </div>
@@ -25,15 +25,12 @@
                                                                </tr>
                                                         </thead>
                                                         <tbody>
-                                                        <?php
-                                                        $id = 0;
-                                                        foreach ($receptions as $com) { ?>
                                                                <tr class="odd">
-                                                                      <td class="sorting_1"><?php echo $com['libelle'];?></td>
-                                                                      <td><?php echo $com['date_attestation']; ?></td>
-                                                                      <td><button type="button" class="btn btn-outline-warning btn-fw" onclick="toggleDetails('details<?php echo $id;?>')">Details</button></td>
+                                                                      <td class="sorting_1"></td>
+                                                                      <td>20 Octobre 2024</td>
+                                                                      <td><button type="button" class="btn btn-outline-warning btn-fw" onclick="toggleDetails('details1')">Details</button></td>
                                                                </tr>
-                                                               <tr  id="details<?php echo $id;?>" style="display:none">   <!-- ilay tr mipoitra refa miclique details -->
+                                                               <tr  id="details1" style="display:table-row">   <!-- ilay tr mipoitra refa miclique details -->
                                                                       <td colspan="8">
                                                                              <table cellpadding="5" cellspacing="0" border="0" style="width:100%">
                                                                                     <tbody>
@@ -44,19 +41,20 @@
                                                                                                                 <!-- <div class="d-flex"> -->
                                                                                                                 <div class="">
                                                                                                                        <div class="row">
-                                                                                                                              <div class="col-md-1"></div>
-                                                                                                                              <div class="col-md-10 grid-margin stretch-card">
-                                                                                                                                     <!-- <div class="card"> -->
+
+
+                                                                                                                              <div class="col-md-6 grid-margin stretch-card">
+                                                                                                                                     <div class="card">
                                                                                                                                             <div class="card-body">
                                                                                                                                                    <h4 class="card-title">Entreprise :  <code>Bakery</code></h4>
                                                                                                                                                    <div class="row">
                                                                                                                                                           <div class="col-md-7"></div>
                                                                                                                                                           <div class="col-md-5">
-                                                                                                                                                                 <p class="font-weight-bold">Fournisseur : <code><?php echo $this->FournisseurModel->getById($com['id_fournisseur'])['nom_fournisseur']; ?></code>  </p>
+                                                                                                                                                                 <p class="font-weight-bold">Fournisseur : <code>Nom_fournisseur</code>  </p>
                                                                                                                                                           </div>
                                                                                                                                                    </div>
-                                                                                                                                                   <p class="font-weight-bold">Date : <code><?php echo $com['date_attestation'] ?></code></p>
-                                                                                                                                                   <p class="font-weight-bold">Centre : <code><?php echo $this->CentreModel->getById($com['id_centre'])['nom_centre']; ?></code></p>
+                                                                                                                                                   <p class="font-weight-bold">Date : <code>20 Octobre 2024</code></p>
+                                                                                                                                                   <p class="font-weight-bold">Centre : <code>Nom_centre</code></p>
                                                                                                                                                    <div class="row">
                                                                                                                                                           <div class="col-md-12 stretch-card grid-margin">
                                                                                                                                                                  <div class="card-body">
@@ -71,19 +69,12 @@
                                                                                                                                                                                              </tr>
                                                                                                                                                                                       <!-- </thead> -->
                                                                                                                                                                                       <tbody>
-                                                                                                                                                                                      <?php
-                                                                                                                                                                                      $total = 0;
-                                                                                                                                                                                      $produits = $this->ProduitInAttestationModel->getProduitByAttestation($com['id_attestation']);
-                                                                                                                                                                                      foreach($produits as $prod) { ?>
                                                                                                                                                                                              <tr>
-                                                                                                                                                                                                    <td class="pl-0"><?php echo $prod['nom_produit'];?></td>
-                                                                                                                                                                                                    <td class="text-muted"><?php echo $prod['quantite'];?></td>
-                                                                                                                                                                                                    <td class="text-muted"><?php echo $prod['quantite'];?></td>
-                                                                                                                                                                                                    <td class="text-muted"><?php echo $prod['montant']*$prod['quantite'];?></td>
+                                                                                                                                                                                                    <td class="pl-0">exemple</td>
+                                                                                                                                                                                                    <td class="text-muted">exemple</td>
+                                                                                                                                                                                                    <td class="text-muted">exemple</td>
+                                                                                                                                                                                                    <td class="text-muted">exemple</td>
                                                                                                                                                                                              </tr>
-                                                                                                                                                                                      <?php
-                                                                                                                                                                                             $total += $prod['montant']*$prod['quantite'];
-                                                                                                                                                                                      } ?>
                                                                                                                                                                                       </tbody>
                                                                                                                                                                                </table>
                                                                                                                                                                         </div>
@@ -93,11 +84,48 @@
                                                                                                                                                    <div class="row">
                                                                                                                                                           <div class="col-md-7"></div>
                                                                                                                                                           <div class="col-md-5">
-                                                                                                                                                                 <p class="font-weight-bold">TOTAL : <code><?php echo $total;?></code></p>
+                                                                                                                                                                 <p class="font-weight-bold">TOTAL : <code>exemple</code></p>
                                                                                                                                                           </div>
                                                                                                                                                    </div>
                                                                                                                                             </div>
-                                                                                                                                     <!-- </div> -->
+                                                                                                                                     </div>
+                                                                                                                              </div>
+                                                                                                                              <div class="col-md-6 grid-margin stretch-card">
+                                                                                                                                     <div class="card">
+                                                                                                                                            <div class="card-body">
+                                                                                                                                                   <h4 class="card-title">Default form</h4>
+                                                                                                                                                   <p class="card-description">
+                                                                                                                                                         Basic form layout
+                                                                                                                                                   </p>
+                                                                                                                                                   <form class="forms-sample">
+                                                                                                                                                          <div class="form-group">
+                                                                                                                                                                 <label for="exampleInputUsername1">Date</label>
+                                                                                                                                                                 <input type="date" class="form-control" id="exampleInputUsername1" placeholder="date">
+                                                                                                                                                          </div>
+                                                                                                                                                          <div class="form-group">
+                                                                                                                                                                 <label for="exampleInputEmail1">Libelle</label>
+                                                                                                                                                                 <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Text">
+                                                                                                                                                          </div>
+                                                                                                                                                          <div class="form-group">
+                                                                                                                                                                 <label for="exampleInputPassword1">Centre</label>
+                                                                                                                                                                 <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Nom centre">
+                                                                                                                                                          </div>
+                                                                                                                                                          <div class="form-group">
+                                                                                                                                                                 <label for="exampleInputConfirmPassword1">Produit</label>
+                                                                                                                                                                 <input type="password" class="form-control" id="exampleInputConfirmPassword1" placeholder="Nom produit">
+                                                                                                                                                          </div>
+                                                                                                                                                          <div class="form-group">
+                                                                                                                                                                 <label for="exampleInputConfirmPassword1">Quantier</label>
+                                                                                                                                                                 <input type="number" class="form-control" id="exampleInputConfirmPassword1" placeholder="00">
+                                                                                                                                                          </div>
+                                                                                                                                                          <div class="form-group">
+                                                                                                                                                                 <label for="exampleInputConfirmPassword1">Montant</label>
+                                                                                                                                                                 <input type="text" class="form-control" id="exampleInputConfirmPassword1" placeholder="00Ar">
+                                                                                                                                                          </div>
+                                                                                                                                                          <button type="submit" class="btn btn-primary mr-2">VALIDER</button>
+                                                                                                                                                   </form>
+                                                                                                                                            </div>
+                                                                                                                                     </div>
                                                                                                                               </div>
                                                                                                                        </div>
                                                                                                                 </div>
@@ -108,8 +136,6 @@
                                                                              </table>
                                                                       </td>
                                                                </tr>
-                                                        <?php $id+= 1;
-                                                        } ?>
                                                         </tbody>
                                                  </table>
                                           </div>

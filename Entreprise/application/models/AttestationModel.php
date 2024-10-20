@@ -1,14 +1,40 @@
 <?php
 class AttestationModel extends CI_Model {
-    public function compareAttestation() {
-        // getBonDeCommande
-        // getBonDeLivraison
-        // getBonDeReception
-        // getFacture
-        // return true ou false
+    private function getAttestationByType($type) {
+        $this->db->select('attestation.id_fournisseur, produitsInAttestation.id_produit');
+        $this->db->from('attestation');
+        $this->db->join('produitsInAttestation', 'attestation.id_attestation = produitsInAttestation.id_attestation');
+        $this->db->join('type_attestation', 'attestation.id_type_attestation = type_attestation.id_type_attestation');
+        $this->db->where('type_attestation.nom_attestation', $type);
+        $query = $this->db->get();
+        
+        return $query->result_array(); // Retourne un tableau des produits et du fournisseur
     }
 
-     // Fonction pour mettre à jour la colonne 'accepte' d'une attestation
+    // Fonction pour comparer les attestations
+    public function compareAttestation() {
+        // Obtenir les informations de chaque type d'attestation
+        $bonDeCommande = $this->getAttestationByType("Bon de commande");
+        $bonDeLivraison = $this->getAttestationByType("Bon de livraison");
+        $bonDeReception = $this->getAttestationByType("Bon de réception");
+        $facture = $this->getAttestationByType("Facture");
+
+        // Comparer les attestations en vérifiant si elles sont identiques
+        if ($this->compareDetails($bonDeCommande, $bonDeLivraison) &&
+            $this->compareDetails($bonDeCommande, $bonDeReception) &&
+            $this->compareDetails($bonDeCommande, $facture)) {
+            return true; // Toutes les attestations sont identiques
+        }
+
+        return false; // Les attestations sont différentes
+    }
+
+    // Fonction pour comparer les détails des attestations
+    private function compareDetails($attestation1, $attestation2) {
+        return $attestation1 == $attestation2; // Comparaison des tableaux
+    }
+
+    // Fonction pour mettre à jour la colonne 'accepte' d'une attestation
      public function updateAccepte($id_attestation, $accepte) {
         // Préparer les données à mettre à jour
         $data = array(

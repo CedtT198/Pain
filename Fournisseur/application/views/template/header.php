@@ -24,7 +24,7 @@
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
         <a class="navbar-brand brand-logo mr-5" href="<?php echo site_url('CentreController'); ?>">
-          <img src="<?php echo base_url(); ?>assets/images/pain.png" class="mr-2" alt="logo"/>
+          <img src="<?php echo base_url(); ?>assets/images/fournisseur.png" class="mr-2" alt="logo"/>
         </a>
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
@@ -36,7 +36,7 @@
             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
               <!-- <img src="images/faces/face28.jpg" alt="profile"/> -->
               <p style="color:green">Connected as  : 
-                <?php echo $this->session->userdata('nom_depa');  ?>
+                <?php echo $this->session->userdata('nom_fou');  ?>
               </p>
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
@@ -83,170 +83,12 @@
       <!-- partial:partials/_sidebar.html -->
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
-              <!-- ============ debut lien sisiny ============= -->
-              <!-- ============ debut lien sisiny ============= -->
-              <!-- ============ debut lien sisiny ============= -->
           <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#rubrique" aria-expanded="false" aria-controls="rubrique">
-              <i class="icon-grid menu-icon"></i>
-              <span class="menu-title">Rubrique</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="rubrique">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('RubriqueController'); ?>">Liste</a></li>
-                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('RubriqueController/index2'); ?>">Insertion</a></li>
-              </ul>
-            </div>
-          </li>
-          <!-- <li class="nav-item">
-            <a class="nav-link" href="<?php echo site_url('CentreController'); ?>">
+            <a class="nav-link" href="<?php echo site_url('ListeCommandeController'); ?>">
               <i class="icon-layout menu-icon"></i>
-              <span class="menu-title">Centre</span>
+              <span class="menu-title">Liste des <br>commandes</span>
             </a>
-          </li> -->
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#centre" aria-expanded="false" aria-controls="centre">
-              <i class="icon-grid menu-icon"></i>
-              <span class="menu-title">Centre</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="centre">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('CentreController'); ?>">Liste</a></li>
-                <?php if ($id_depa < 5) { ?>
-                  <li class="nav-item">
-                    <a class="nav-link" href="<?php echo site_url('DemandeBesoinController'); ?>">Demande achat</a>
-                  </li>
-                <?php } ?>
-              </ul>
-            </div>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#unite" aria-expanded="false" aria-controls="unite">
-              <i class="icon-grid menu-icon"></i>
-              <span class="menu-title">Unité d'oeuvres</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="unite">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('UniteOeuvreController'); ?>">Liste</a></li>
-                <!-- <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('UniteOeuvreController/index2'); ?>">Insertion</a></li> -->
-              </ul>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#charges" aria-expanded="false" aria-controls="charges">
-              <i class="icon-grid menu-icon"></i>
-              <span class="menu-title">Charges</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="charges">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('ChargesController'); ?>">Liste</a></li>
-                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('ChargesController/index2'); ?>">Insertion</a></li>
-              </ul>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#production" aria-expanded="false" aria-controls="production">
-              <i class="icon-grid menu-icon"></i>
-              <span class="menu-title">Productions</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="production">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('AchatController'); ?>">Liste</a></li>
-                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('AchatController/index2'); ?>">insertion</a></li>
-              </ul>
-            </div>
-          </li>
-          <!-- <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#achat" aria-expanded="false" aria-controls="achat">
-              <i class="icon-grid menu-icon"></i>
-              <span class="menu-title">Productions</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="achat">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('AchatController'); ?>">Liste</a></li>
-                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('AchatController/index2'); ?>">insertion</a></li>
-              </ul>
-            </div>
-          </li> -->
-           <?php if ($id_depa == 5) { ?>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#achat" aria-expanded="false" aria-controls="achat">
-              <i class="icon-grid menu-icon"></i>
-              <span class="menu-title">Achat</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="achat">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('DemandeBesoinController/index2'); ?>">Liste de demande<br> des besoins</a></li>
-                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('ProformatController/index'); ?>">Liste de proformat</a></li>
-                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('ProformatController/index'); ?>">Liste de bon <br> de livraison</a></li>
-                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('ProformatController/index'); ?>">Liste de bon <br> de reception</a></li>
-              </ul>
-            </div>
-          </li>
-          <?php } else if ($id_depa == 6) { ?>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#finance" aria-expanded="false" aria-controls="finance">
-              <i class="icon-grid menu-icon"></i>
-              <span class="menu-title">Finance</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="finance">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('ProformaController'); ?>">Liste proforma</a></li>
-                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('BonCommandeController'); ?>">Liste de bon <br> de commande  </a></li>
-              </ul>
-            </div>
-          </li>
-          <?php } else if ($id_depa == 7) { ?>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#directeur" aria-expanded="false" aria-controls="directeur">
-              <i class="icon-grid menu-icon"></i>
-              <span class="menu-title">Dir. général</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="directeur">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('FactureController'); ?>">Liste demande <br>de  paiement</a></li>
-              </ul>
-            </div>
-          </li>
-          <?php } ?>
-          <!-- <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#vente" aria-expanded="false" aria-controls="vente">
-              <i class="icon-grid menu-icon"></i>
-              <span class="menu-title">Vente</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="vente">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('VenteController'); ?>">Liste</a></li>
-                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('VenteController/index2'); ?>">Insertion</a></li>
-              </ul>
-            </div>
-          </li> -->
-          <!-- <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#repartition" aria-expanded="false" aria-controls="repartition">
-              <i class="icon-grid menu-icon"></i>
-              <span class="menu-title">Répartition charges</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="repartition">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('RepartitionController'); ?>">Liste</a></li>
-                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('RepartitionController/index2'); ?>">Insertion</a></li>
-              </ul>
-            </div>
-          </li> -->
-        <!-- ============ fin lien sisiny ============= -->
-        <!-- ============ fin lien sisiny ============= -->
-        <!-- ============ fin lien sisiny ============= -->
       </ul>
       </nav>
       <!-- partial -->
