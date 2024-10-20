@@ -6,14 +6,15 @@ class FactureModel extends CI_Model {
         return $this->db->insert('attestation', $data);
     }
 
-    // Fonction pour récupérer toutes les factures
+
     public function getAll() {
-        $this->db->select('attestation.*, fournisseur.nom_fournisseur');
+        $this->db->select('*');
         $this->db->from('attestation');
-        $this->db->join('fournisseur', 'attestation.id_fournisseur = fournisseur.id_fournisseur');
-        $this->db->where('attestation.id_type_attestation', 4); // 4 correspond à "Facture"
+        $this->db->where('id_type_attestation', 4);
+        $this->db->where('accepte IS NULL');  // Accepte NULL
         $query = $this->db->get();
-        return $query->result_array();
+        
+        return $query->result_array();  // Retourne toutes les lignes sous forme d'objets
     }
 
     // Fonction pour récupérer une facture par ID
