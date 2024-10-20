@@ -15,8 +15,13 @@ class ProduitInAttestationModel extends CI_Model {
         return $this->db->insert('produitsInAttestation', $data);
     }
 
+    public function insertData($data) {
+        return $this->db->insert('produitsInAttestation', $data);
+    }
+
     public function getProduitByAttestation($id_attestation) {
         $query = "SELECT 
+                                p.id_produit, 
                                 p.nom_produit, 
                                 pf.montant, 
                                 pa.quantite

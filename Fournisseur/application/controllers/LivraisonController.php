@@ -54,6 +54,7 @@ class LivraisonController extends CI_Controller {
             $dataProduitInAttestation = array(
                 'id_attestation' => $id_attestation,
                 'id_produit' => $id_produit,
+                'id_type_attestation' => 3,
                 'quantite' => $quantite,
                 'montant' => $montant
             );

@@ -19,6 +19,17 @@ class BonDeCommandeModel extends CI_Model {
     //     return $query->result_array();
     // }
 
+    public function getAllTrue() {
+        $this->db->select('*');
+        $this->db->from('attestation');
+        $this->db->where('id_type_attestation', 1);
+        $this->db->where('accepte', TRUE);
+        $this->db->order_by('date_attestation DESC');
+        $query = $this->db->get();
+        
+        return $query->result_array();  // Retourne toutes les lignes sous forme d'objets
+    }
+
     public function getAll() {
         $this->db->select('*');
         $this->db->from('attestation');

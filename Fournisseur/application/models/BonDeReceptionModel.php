@@ -20,10 +20,11 @@ class BonDeReceptionModel extends CI_Model {
     //     return $query->result_array();
     // }
     
-    public function getAll() {
+    public function getAll($id_fournisseur) {
         $this->db->select('*');
         $this->db->from('attestation');
         $this->db->where('id_type_attestation', 2);
+        $this->db->where('id_fournisseur', $id_fournisseur);
         $this->db->group_by('date_attestation');
         $this->db->group_by('id_centre');
         $this->db->order_by('date_attestation DESC');

@@ -19,6 +19,7 @@
                                                  <table id="example" class="display expandable-table" style="width:100%">
                                                         <thead>
                                                                <tr>
+                                                                      <th>id</th>
                                                                       <th>Libelle</th>
                                                                       <th>Date</th>
                                                                       <th></th>
@@ -29,7 +30,8 @@
                                                         $id = 0;
                                                         foreach ($proformas as $com) { ?>
                                                                <tr class="odd">
-                                                                      <td class="sorting_1"><?php echo $com['libelle'];?></td>
+                                                                      <td class="sorting_1"><?php echo $com['id_attestation'];?></td>
+                                                                      <td><?php echo $com['libelle'];?></td>
                                                                       <td><?php echo $com['date_attestation']; ?></td>
                                                                       <td><button type="button" class="btn btn-outline-warning btn-fw" onclick="toggleDetails('details<?php echo $id;?>')">Details</button></td>
                                                                </tr>

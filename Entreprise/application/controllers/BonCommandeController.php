@@ -15,8 +15,14 @@ class BonCommandeController extends CI_Controller {
     }
 
     public function index() {
-        $data['contents'] = 'page/ListeBonCommande';
+        $data['contents'] = 'page/ListeDemandeBonCommande';
         $data['commandes'] = $this->BonDeCommandeModel->getAll();
+        $this->load->view('template/template', $data);
+    }
+    
+    public function index2() {
+        $data['contents'] = 'page/ListeBonCommande';
+        $data['commandes'] = $this->BonDeCommandeModel->getAllTrue();
         $this->load->view('template/template', $data);
     }
 

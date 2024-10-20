@@ -6,6 +6,8 @@ class ReceptionController extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('BonDeReceptionModel');
+        $this->load->model('CentreModel');
+        $this->load->model('ProduitInAttestationModel');
     }
 
     public function index() {

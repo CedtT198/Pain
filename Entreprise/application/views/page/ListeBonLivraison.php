@@ -19,8 +19,9 @@
                                                  <table id="example" class="display expandable-table" style="width:100%">
                                                         <thead>
                                                                <tr>
-                                                                      <th>Date</th>
+                                                                      <th>id</th>
                                                                       <th>Libelle</th>
+                                                                      <th>Date</th>
                                                                       <th></th>
                                                                       <th></th>
                                                                </tr>
@@ -28,14 +29,15 @@
                                                         <tbody>
                                                         <?php
                                                         $id = 0;
-                                                        echo var_dump($livraisons);
+                                                        // echo var_dump($livraisons);
                                                         foreach ($livraisons as $com) { ?>
                                                                <tr class="odd">
-                                                                      <td class="sorting_1"><?php echo $com['libelle'];?></td>
+                                                                      <td class="sorting_1"><?php echo $com['id_attestation'];?></td>
+                                                                      <td><?php echo $com['libelle'];?></td>
                                                                       <td><?php echo $com['date_attestation']; ?></td>
                                                                       <td><button type="button" class="btn btn-outline-primary btn-fw" onclick="toggleDetails('details<?php echo $id;?>')">Details</button></td>
                                                                       <td>
-                                                                             <form action="<?php echo site_url('BonReceptionController/accept'); ?>" method="post">
+                                                                             <form action="<?php echo site_url('BonReceptionController/insert'); ?>" method="post">
                                                                                     <input type="hidden" name="id_attestation" value="<?php echo $com['id_attestation']; ?>">
                                                                                     <button type="submit" class="btn btn-outline-success btn-fw">Créer bon de réception</button>
                                                                              </form>

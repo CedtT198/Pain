@@ -23,7 +23,7 @@
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-        <a class="navbar-brand brand-logo mr-5" href="<?php echo site_url('CentreController'); ?>">
+        <a class="navbar-brand brand-logo mr-5" href="<?php echo site_url('LoginController'); ?>">
           <img src="<?php echo base_url(); ?>assets/images/fournisseur.png" class="mr-2" alt="logo"/>
         </a>
       </div>
@@ -93,6 +93,12 @@
             <a class="nav-link" href="<?php echo site_url('ListeLivraisonController'); ?>">
               <i class="icon-layout menu-icon"></i>
               <span class="menu-title">Liste des bons <br>de livraison</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="<?php echo site_url('ReceptionController'); ?>">
+              <i class="icon-layout menu-icon"></i>
+              <span class="menu-title">Liste des bons <br>de reception</span>
             </a>
           </li>
       </ul>

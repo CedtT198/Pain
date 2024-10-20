@@ -9,14 +9,14 @@ class LoginController extends CI_Controller {
         $this->load->model('FournisseurModel');
     }
 
-    // public function index() {               //  ito ny index tena izy
-    //     $this->load->view('page/Login');
-    // }
-    
-    public function index() {                   // index ahafana miteste page fotsiny ho an'ny front
-        $data['contents'] = 'page/ListeCommande';
-        $this->load->view('template/template', $data);
+    public function index() {               //  ito ny index tena izy
+        $this->load->view('page/Login');
     }
+    
+    // public function index() {                   // index ahafana miteste page fotsiny ho an'ny front
+    //     $data['contents'] = 'page/ListeCommande';
+    //     $this->load->view('template/template', $data);
+    // }
     
     public function checkLogin() {
         $name= $this->input->post('name');

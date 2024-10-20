@@ -39,28 +39,29 @@ class BonDeCommandeModel extends CI_Model {
     //     return $query->result_array();  // Retourne toutes les lignes sous forme d'objets
     // }
     
-    // public function getAllTrue($id_fournisseur) {
-    //     $this->db->select('*');
-    //     $this->db->from('attestation');
-    //     $this->db->where('id_type_attestation', 1);
-    //     $this->db->where('accepte', TRUE);
-        // $this->db->where('id_fournisseur', $id_fournisseur);
-    //     $query = $this->db->get();
-        
-    //     return $query->result_array();  // Retourne toutes les lignes sous forme d'objets
-    // }
     public function getAllTrue($id_fournisseur) {
-        $this->db->select('a1.*');
-        $this->db->from('attestation a1');
-        $this->db->join('attestation a2', 'a1.id_attestation = a2.id_correspondance', 'left');
-        $this->db->where('a1.id_type_attestation', 1);  
-        $this->db->where('a1.accepte', TRUE);
-        $this->db->where('a1.id_fournisseur', $id_fournisseur);  
-        $this->db->where('a2.id_attestation IS NULL');  
-        
+        $this->db->select('*');
+        $this->db->from('attestation');
+        $this->db->where('id_type_attestation', 1);
+        $this->db->where('accepte', TRUE);
+        $this->db->where('id_fournisseur', $id_fournisseur);
         $query = $this->db->get();
-        return $query->result_array();  // Retourne toutes les lignes sous forme de tableau associatif
+        
+        return $query->result_array();  // Retourne toutes les lignes sous forme d'objets
     }
+
+    // public function getAllTrue($id_fournisseur) {
+    //     $this->db->select('a1.*');
+    //     $this->db->from('attestation a1');
+    //     $this->db->join('attestation a2', 'a1.id_attestation = a2.id_correspondance', 'left');
+    //     $this->db->where('a1.id_type_attestation', 1);  
+    //     $this->db->where('a1.accepte', TRUE);
+    //     $this->db->where('a1.id_fournisseur', $id_fournisseur);  
+    //     $this->db->where('a2.id_attestation IS NULL');  
+        
+    //     $query = $this->db->get();
+    //     return $query->result_array();  // Retourne toutes les lignes sous forme de tableau associatif
+    // }
     
 
     // Fonction pour lire un bon de commande par ID

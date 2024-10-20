@@ -166,11 +166,13 @@ CREATE TABLE produitInFournisseur(
 CREATE TABLE produitsInAttestation(
    id_attestation INT,
    id_produit INT,
+   id_type_attestation INT,
    quantite INT NOT NULL,
    montant DECIMAL(15,2)   NOT NULL,
-   PRIMARY KEY(id_attestation, id_produit),
+   PRIMARY KEY(id_attestation, id_produit, id_type_attestation),
    FOREIGN KEY(id_attestation) REFERENCES attestation(id_attestation),
-   FOREIGN KEY(id_produit) REFERENCES produit(id_produit)
+   FOREIGN KEY(id_produit) REFERENCES produit(id_produit),
+   FOREIGN KEY(id_type_attestation) REFERENCES type_attestation(id_type_attestation)
 );
 
 -- CREATE TABLE produitInDemandeBesoin(
@@ -518,3 +520,39 @@ LEFT JOIN
 
 
 -- CREATE OR REPLACE VIEW v_demande_paiement AS
+
+
+
+
+
+
+
+
+SELECT 
+    pbc.id_produit,
+    pbc.quantite AS quantite_commandee,
+    IFNULL(SUM(pbl.quantite), 0) AS quantite_livree,
+    (pbc.quantite - IFNULL(SUM(pbl.quantite), 0)) AS quantite_restante,
+    a2.id_attestation 
+FROM 
+    produitsInAttestation pbc
+JOIN 
+    attestation a1 ON pbc.id_attestation = a1.id_attestation
+LEFT JOIN 
+    attestation a2 ON a1.id_attestation = a2.id_correspondance
+LEFT JOIN 
+    produitsInAttestation pbl ON a2.id_attestation = pbl.id_attestation AND pbl.id_type_attestation = 3 -- Type "Bon de livraison"
+WHERE 
+    pbc.id_attestation = 6
+    AND pbc.id_type_attestation = 1  -- Type "Bon de commande"
+GROUP BY 
+    pbc.id_produit, pbc.quantite;
+
+
+SELECT a1.*
+FROM attestation a1
+LEFT JOIN attestation a2 ON a1.id_attestation = a2.id_correspondance
+WHERE a1.id_type_attestation = 1
+  AND a1.accepte = TRUE
+  AND a1.id_fournisseur = 1
+  AND a2.id_attestation IS NULL;

@@ -22,6 +22,7 @@
                                                  <table id="example" class="display expandable-table" style="width:100%">
                                                         <thead>
                                                                <tr>
+                                                                      <th>id</th>
                                                                       <th>Libelle</th>
                                                                       <th>Date</th>
                                                                       <th></th>
@@ -32,7 +33,8 @@
                                                         $id = 0;
                                                         foreach ($commandes as $com) { ?>
                                                                <tr class="odd">
-                                                                      <td class="sorting_1"><?php echo $com['libelle'];?></td>
+                                                                      <td class="sorting_1"><?php echo $com['id_attestation'];?></td>
+                                                                      <td><?php echo $com['libelle'];?></td>
                                                                       <td><?php echo $com['date_attestation']; ?></td>
                                                                       <td><button type="button" class="btn btn-outline-warning btn-fw" onclick="toggleDetails('details<?php echo $id;?>')">Voir facture</button></td>
                                                                </tr>
@@ -71,6 +73,7 @@
                                                                                                                                                                                                     <th class="border-bottom pb-2">Prix unitaire</th>
                                                                                                                                                                                                     <th class="border-bottom pb-2">Quantite</th>
                                                                                                                                                                                                     <th class="border-bottom pb-2">Total</th>
+                                                                                                                                                                                                    <th class="border-bottom pb-2">Etat</th>
                                                                                                                                                                                              </tr>
                                                                                                                                                                                       <!-- </thead> -->
                                                                                                                                                                                       <tbody>
@@ -83,6 +86,7 @@
                                                                                                                                                                                                     <td class="text-muted"><?php echo $prod['montant'];?></td>
                                                                                                                                                                                                     <td class="text-muted"><?php echo $prod['quantite'];?></td>
                                                                                                                                                                                                     <td class="text-muted"><?php echo $prod['montant']*$prod['quantite'];?></td>
+                                                                                                                                                                                                    <!-- <td class="text-muted"><?php echo $prod['accepte'];?></td> -->
                                                                                                                                                                                              </tr>
                                                                                                                                                                                       <?php
                                                                                                                                                                                              $total += $prod['montant']*$prod['quantite'];
@@ -97,22 +101,6 @@
                                                                                                                                                           <div class="col-md-7"></div>
                                                                                                                                                           <div class="col-md-5">
                                                                                                                                                                  <p class="font-weight-bold">TOTAL : <code><?php echo $total;?></code></p>
-                                                                                                                                                          </div>
-                                                                                                                                                   </div>
-                                                                                                                                                   <div class="row">
-                                                                                                                                                          <div class="col-md-3"></div>
-                                                                                                                                                          <div class="col-md-2">
-                                                                                                                                                                 <form action="<?php echo site_url('BonCommandeController/accept'); ?>" method="post">
-                                                                                                                                                                        <input type="hidden" value="<?php echo $total; ?>" name="total_montant">
-                                                                                                                                                                        <input type="hidden" value="<?php echo $com['id_attestation']; ?>" name="id">
-                                                                                                                                                                        <button type="submit" class="btn btn-success btn-rounded btn-fw">Accepter</button>
-                                                                                                                                                                 </form>
-                                                                                                                                                          </div>
-                                                                                                                                                          <div class="col-md-2">
-                                                                                                                                                                 <form action="<?php echo site_url('BonCommandeController/refuse'); ?>" method="post">
-                                                                                                                                                                        <input type="hidden" value="<?php echo $com['id_attestation']; ?>" name="id">
-                                                                                                                                                                        <button type="submit" class="btn btn-danger btn-rounded btn-fw">Refuser</button>
-                                                                                                                                                                 </form>
                                                                                                                                                           </div>
                                                                                                                                                    </div>
                                                                                                                                             </div>

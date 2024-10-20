@@ -13,6 +13,7 @@ class DemandeBesoinModel extends CI_Model {
     
     public function getAll() {
         $this->db->where('accepte IS NULL', null, false);
+        $this->db->order_by('date_demande DESC');
         // $this->db->where('accepte', FALSE); 
         $query = $this->db->get('demande_besoin');
         return $query->result_array();

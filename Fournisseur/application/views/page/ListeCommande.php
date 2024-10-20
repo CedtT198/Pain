@@ -13,14 +13,16 @@
               <div class="card">
                      <div class="card-body">
                             <p class="card-title">Liste</p>
+                            <p style="color:red;">Toutes commandes présentes ici ne sont pas encore livré en totalité.</p>
                             <div class="row">
                                    <div class="col-12">
                                           <div class="table-responsive">
                                                  <table id="example" class="display expandable-table" style="width:100%">
                                                         <thead>
                                                                <tr>
-                                                                      <th>Date</th>
+                                                                      <th>id</th>
                                                                       <th>Libelle</th>
+                                                                      <th>Date</th>
                                                                       <th></th>
                                                                </tr>
                                                         </thead>
@@ -35,9 +37,17 @@
                                                         if (isset($success)) { ?>
                                                                <p style="color:green;"><?php echo $success; ?></p>
                                                         <?php } 
-                                                        foreach ($commandes as $com) { ?>
+                                                        foreach ($commandes as $com) {
+                                                               // echo $com['id_attestation'];
+                                                               $qt = $this->BonDeLivraisonModel->getDetailLivraison($com['id_attestation']);
+                                                               $qt_restante = $qt['quantite_restante'];
+                                                               $qt_livree = $qt['quantite_livree'];
+                                                               $id_bon_livraison = $qt['id_attestation'];
+                                                               if ($qt_restante > 0) {       
+                                                        ?>
                                                                <tr class="odd">
-                                                                      <td class="sorting_1"><?php echo $com['libelle'];?></td>
+                                                                      <td class="sorting_1"><?php echo $com['id_attestation'];?></td>
+                                                                      <td><?php echo $com['libelle'];?></td>
                                                                       <td><?php echo $com['date_attestation']; ?></td>
                                                                       <td><button type="button" class="btn btn-outline-primary btn-fw" onclick="toggleDetails('details<?php echo $id;?>')">Details</button></td>
                                                                </tr>
@@ -52,8 +62,6 @@
                                                                                                                 <!-- <div class="d-flex"> -->
                                                                                                                 <div class="">
                                                                                                                        <div class="row">
-
-
                                                                                                                               <div class="col-md-6 grid-margin stretch-card">
                                                                                                                                      <div class="card">
                                                                                                                                             <div class="card-body">
@@ -105,12 +113,24 @@
                                                                                                                                                                  <p class="font-weight-bold">TOTAL : <code><?php echo $total;?></code></p>
                                                                                                                                                           </div>
                                                                                                                                                    </div>
+                                                                                                                                                   <div class="row">
+                                                                                                                                                          <div class="col-md-12">
+                                                                                                                                                                 <p style="color:green;">Total déjà livrée : <?php echo $qt_livree; ?></p>
+                                                                                                                                                          </div>
+                                                                                                                                                          <div class="col-md-12">
+                                                                                                                                                                 <p style="color:green;">Reste à livrer : <?php echo $qt_restante; ?></p>
+                                                                                                                                                          </div>
+                                                                                                                                                          <div class="col-md-12">
+                                                                                                                                                                 <p style="color:green;">Voir bon de livraison N°: <?php echo $id_bon_livraison; ?> pour plus de détails.</p> 
+                                                                                                                                                          </div>
+                                                                                                                                                   </div>
                                                                                                                                             </div>
                                                                                                                                      </div>
                                                                                                                               </div>
                                                                                                                               <div class="col-md-6 grid-margin stretch-card">
                                                                                                                                      <div class="card">
                                                                                                                                             <div class="card-body">
+                                                                                                                                                   <!-- Atao eo amle ? le reste  -->
                                                                                                                                                    <h4 class="card-title">Création de bon de livraison</h4>
                                                                                                                                                    <p class="card-description"></p>
                                                                                                                                                    <form class="forms-sample" method="post" action="<?php echo site_url('LivraisonController/insert'); ?>">
@@ -165,7 +185,8 @@
                                                                              </table>
                                                                       </td>
                                                                </tr>
-                                                        <?php $id+=1;
+                                                        <?php } 
+                                                               $id+=1;
                                                         }?>
                                                         </tbody>
                                                  </table>

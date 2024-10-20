@@ -17,8 +17,8 @@ class ListeLivraisonController extends CI_Controller {
 
     public function index() {   
         $data['contents'] = 'page/ListeLivraison';
-        // $id_fournisseur = $this->session->userdata('id_fou');
-        $data['livraisons'] = $this->BonDeLivraisonModel->getAll();
+        $id_fournisseur = $this->session->userdata('id_fou');
+        $data['livraisons'] = $this->BonDeLivraisonModel->getAll($id_fournisseur);
         // $data['centres'] = $this->CentreModel->getAll();
         // $data['produits'] = $this->ProduitInAttestationModel->getProduitsByFournisseur($id_fournisseur);
         $this->load->view('template/template', $data);

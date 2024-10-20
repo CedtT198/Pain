@@ -113,8 +113,22 @@ class DemandeBesoinController extends CI_Controller {
                 $id_proformat = $this->AttestationModel->insert($dataProformat);
                 $id_bonCom = $this->AttestationModel->insert($dataBonCommande);
 
-                $this->ProduitInAttestationModel->insert($id_proformat, $id_produit, $resteARechercher);
-                $this->ProduitInAttestationModel->insert($id_bonCom, $id_produit, $resteARechercher);
+                $data1 = array(
+                    'id_attestation' => $id_proformat,
+                    'id_produit' => $id_produit,
+                    'id_type_attestation' => 5,
+                    'quantite' => $resteARechercher
+                );
+                
+                $data2 = array(
+                    'id_attestation' => $id_bonCom,
+                    'id_produit' => $id_produit,
+                    'id_type_attestation' => 1,
+                    'quantite' => $resteARechercher
+                );
+
+                $this->ProduitInAttestationModel->insertData($data1);
+                $this->ProduitInAttestationModel->insertData($data2);
                 // ====================================
         
                 $data['contents'] = 'page/ListeDemandeBesoin';
@@ -166,8 +180,22 @@ class DemandeBesoinController extends CI_Controller {
             $id_proformat = $this->AttestationModel->insert($dataProformat);
             $id_bonCom = $this->AttestationModel->insert($dataBonCommande);
 
-            $this->ProduitInAttestationModel->insert($id_proformat, $id_produit, $qt);
-            $this->ProduitInAttestationModel->insert($id_bonCom, $id_produit, $qt);
+            $data1 = array(
+                'id_attestation' => $id_proformat,
+                'id_produit' => $id_produit,
+                'id_type_attestation' => 5,
+                'quantite' => $qt
+            );
+            
+            $data2 = array(
+                'id_attestation' => $id_bonCom,
+                'id_produit' => $id_produit,
+                'id_type_attestation' => 1,
+                'quantite' => $qt
+            );
+
+            $this->ProduitInAttestationModel->insertData($data1);
+            $this->ProduitInAttestationModel->insertData($data2);
             // ====================================
     
             $data['contents'] = 'page/ListeDemandeBesoin';

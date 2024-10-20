@@ -161,6 +161,19 @@
               </ul>
             </div>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#stock" aria-expanded="false" aria-controls="stock">
+              <i class="icon-grid menu-icon"></i>
+              <span class="menu-title">Stock</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="stock">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('StockController'); ?>">Liste</a></li>
+                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('StockController/index2'); ?>">insertion</a></li>
+              </ul>
+            </div>
+          </li>
           <!-- <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#achat" aria-expanded="false" aria-controls="achat">
               <i class="icon-grid menu-icon"></i>
@@ -184,7 +197,8 @@
             <div class="collapse" id="achat">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('DemandeBesoinController/index2'); ?>">Liste de demande<br> des besoins</a></li>
-                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('ProformaController/index'); ?>">Liste de proformat</a></li>
+                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('ProformaController/index'); ?>">Liste de proforma</a></li>
+                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('BonCommandeController/index2'); ?>">Liste de bon <br>de commande <br>accepté</a></li>
                 <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('BonLivraisonController/index'); ?>">Liste de bon <br> de livraison</a></li>
                 <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('ReceptionController/index'); ?>">Liste de bon <br> de reception</a></li>
               </ul>

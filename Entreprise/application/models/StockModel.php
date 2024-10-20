@@ -1,6 +1,15 @@
 <?php
 class StockModel extends CI_Model {
 
+    public function getAllInputStock() {
+        $query = $this->db->get('input_stock');
+        return $query->result_array();
+    }
+
+    public function insertInputStock($data) {
+        return $this->db->insert('input_stock', $data);
+    }
+
     // Fonction pour vérifier si un produit existe dans le stock
     // public function checkRestStock($id_input_stock) {
     //     $this->db->select('*');
