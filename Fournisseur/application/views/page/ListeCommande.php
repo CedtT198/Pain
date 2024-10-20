@@ -41,6 +41,8 @@
                                                                                                                 <!-- <div class="d-flex"> -->
                                                                                                                 <div class="">
                                                                                                                        <div class="row">
+
+
                                                                                                                               <div class="col-md-6 grid-margin stretch-card">
                                                                                                                                      <div class="card">
                                                                                                                                             <div class="card-body">
