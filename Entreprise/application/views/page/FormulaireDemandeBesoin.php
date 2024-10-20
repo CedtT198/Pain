@@ -35,6 +35,10 @@
                                           <label for="qt">Quantite</label>
                                           <input type="number" class="form-control" id="qt" name="qt" placeholder="00" required>
                                    </div>
+                                   <div class="form-group">
+                                          <label for="qt">Date</label>
+                                          <input type="date" class="form-control" id="date" name="date" placeholder="00" required>
+                                   </div>
                                    <!-- <div class="form-group">
                                           <label for="montant">Montant unitaire</label>
                                           <input type="number" class="form-control" id="montant" name="montant" placeholder="00" required>

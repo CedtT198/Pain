@@ -11,6 +11,7 @@ class DemandeBesoinController extends CI_Controller {
         $this->load->model('StockModel');
         $this->load->model('AttestationModel');
         $this->load->model('FournisseurModel');
+        $this->load->model('ProduitInAttestationModel');
         // $this->load->model('ProduitInFournisseurModel');
     }
 
@@ -30,6 +31,7 @@ class DemandeBesoinController extends CI_Controller {
         $desc= $this->input->post('desc');
         $produit= $this->input->post('produit');
         $qt= $this->input->post('qt');
+        $date= $this->input->post('date');
         // $montant= $this->input->post('montant');
 
         if ($qt < 0) {
@@ -49,7 +51,7 @@ class DemandeBesoinController extends CI_Controller {
                 'description' => $desc,
                 'quantite' => $qt,
                 'accepte' => null,
-                'date_demande' => date('Y-m-d'),
+                'date_demande' => $date,
                 'id_centre' => $this->session->userdata('id_depa'),
                 'id_produit' => $produit
             );
@@ -65,6 +67,7 @@ class DemandeBesoinController extends CI_Controller {
     public function accept() {
         $id_centre = $this->input->post('id_centre');
         $id_produit = $this->input->post('id_produit');
+        $date = $this->input->post('date');
         $qt = $this->input->post('quantite');
         $qtstock = $this->StockModel->checkRestStock($id_produit);
         $resteStock = $qtstock - $qt;
@@ -74,7 +77,7 @@ class DemandeBesoinController extends CI_Controller {
             // Si le produit est présent mais pas assez 
             if ($resteStock < 0) {
                 $data = array(
-                    'date_output' => date('Y-m-d'),
+                    'date_output' => $date,
                     'quantite' => $qtstock,
                     'id_centre' => $id_centre,
                     'id_produit' => $id_produit
@@ -88,7 +91,7 @@ class DemandeBesoinController extends CI_Controller {
                 
                 // Création de proformat et bon de commande
                 $dataProformat = array(
-                    'date_attestation' => date('Y-m-d'),
+                    'date_attestation' => $date,
                     'libelle' => '',
                     'accepte' => null,
                     'id_centre' => $id_centre,
@@ -97,7 +100,7 @@ class DemandeBesoinController extends CI_Controller {
                 );
                 
                 $dataBonCommande = array(
-                    'date_attestation' => date('Y-m-d'),
+                    'date_attestation' => $date,
                     'libelle' => '',
                     'accepte' => null,
                     'id_centre' => $id_centre,
@@ -108,8 +111,8 @@ class DemandeBesoinController extends CI_Controller {
                 $id_proformat = $this->AttestationModel->insert($dataProformat);
                 $id_bonCom = $this->AttestationModel->insert($dataBonCommande);
 
-                $this->ProduitInAttestationModel->insert($id_proformat, $id_produit);
-                $this->ProduitInAttestationModel->insert($id_bonCom, $id_produit);
+                $this->ProduitInAttestationModel->insert($id_proformat, $id_produit, $resteARechercher);
+                $this->ProduitInAttestationModel->insert($id_bonCom, $id_produit, $resteARechercher);
                 // ====================================
         
                 $data['contents'] = 'page/ListeDemandeBesoin';
@@ -119,7 +122,7 @@ class DemandeBesoinController extends CI_Controller {
             }
             else {
                 $data = array(
-                    'date_output' => date('Y-m-d'),
+                    'date_output' => $date,
                     'quantite' => $qt,
                     'id_centre' => $id_centre,
                     'id_produit' => $id_produit
@@ -139,7 +142,7 @@ class DemandeBesoinController extends CI_Controller {
 
             // Création de proformat et bon de commande
             $dataProformat = array(
-                'date_attestation' => date('Y-m-d'),
+                'date_attestation' => $date,
                 'libelle' => '',
                 'accepte' => null,
                 'id_centre' => $id_centre,
@@ -148,7 +151,7 @@ class DemandeBesoinController extends CI_Controller {
             );
             
             $dataBonCommande = array(
-                'date_attestation' => date('Y-m-d'),
+                'date_attestation' => $date,
                 'libelle' => '',
                 'accepte' => null,
                 'id_centre' => $id_centre,
@@ -159,8 +162,8 @@ class DemandeBesoinController extends CI_Controller {
             $id_proformat = $this->AttestationModel->insert($dataProformat);
             $id_bonCom = $this->AttestationModel->insert($dataBonCommande);
 
-            $this->ProduitInAttestationModel->insert($id_proformat, $id_produit);
-            $this->ProduitInAttestationModel->insert($id_bonCom, $id_produit);
+            $this->ProduitInAttestationModel->insert($id_proformat, $id_produit, $qt);
+            $this->ProduitInAttestationModel->insert($id_bonCom, $id_produit, $qt);
             // ====================================
     
             $data['contents'] = 'page/ListeDemandeBesoin';

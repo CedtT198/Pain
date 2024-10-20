@@ -13,10 +13,20 @@ class BonDeReceptionModel extends CI_Model {
     }
 
     // Fonction pour lire tous les bons de réception
+    // public function getAll() {
+    //     $this->db->where('id_type_attestation', 2); // 2 est l'ID pour 'Bon de réception'
+    //     $query = $this->db->get('attestation');
+    //     return $query->result_array();
+    // }
+    
     public function getAll() {
-        $this->db->where('id_type_attestation', 2); // 2 est l'ID pour 'Bon de réception'
-        $query = $this->db->get('attestation');
-        return $query->result_array();
+        $this->db->select('*');
+        $this->db->from('attestation');
+        $this->db->where('id_type_attestation', 2);
+        $this->db->where('accepte IS NULL');  // Accepte NULL
+        $query = $this->db->get();
+        
+        return $query->result_array();  // Retourne toutes les lignes sous forme d'objets
     }
 
     // Fonction pour lire un bon de réception par ID

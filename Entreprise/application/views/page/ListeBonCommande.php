@@ -2,8 +2,8 @@
        <div class="col-md-12 grid-margin">
               <div class="row">
                      <div class="col-12 col-xl-8 mb-4 mb-xl-0">
-                            <h3 class="font-weight-bold">BON COMMANDE</h3>
-                            <h6 class="font-weight-normal mb-0">Liste des bon commande <span class="text-primary">3 unread alerts!</span></h6>
+                            <h3 class="font-weight-bold">BONS DE  COMMANDE</h3>
+                            <h6 class="font-weight-normal mb-0">Liste des bon commande<span class="text-primary">3 unread alerts!</span></h6>
                      </div>
               </div>
        </div>
@@ -12,7 +12,10 @@
        <div class="col-md-12 grid-margin stretch-card">
               <div class="card">
                      <div class="card-body">
-                            <p class="card-title">Bon commande table</p>
+                            <p class="card-title">Liste</p>
+                            <?php if (isset($error)) { ?>
+                                   <p style="color:red;"><?php echo $error; ?></p>
+                            <?php } ?>
                             <div class="row">
                                    <div class="col-12">
                                           <div class="table-responsive">
@@ -25,12 +28,15 @@
                                                                </tr>
                                                         </thead>
                                                         <tbody>
+                                                        <?php
+                                                        $id = 0;
+                                                        foreach ($commandes as $com) { ?>
                                                                <tr class="odd">
-                                                                      <td class="sorting_1">Exemple libelle 1</td>
-                                                                      <td>19 octobre 2024</td>
-                                                                      <td><button type="button" class="btn btn-outline-warning btn-fw" onclick="toggleDetails('details1')">Details</button></td>
+                                                                      <td class="sorting_1"><?php echo $com['libelle'];?></td>
+                                                                      <td><?php echo $com['date_attestation']; ?></td>
+                                                                      <td><button type="button" class="btn btn-outline-warning btn-fw" onclick="toggleDetails('details<?php echo $id;?>')">Voir facture</button></td>
                                                                </tr>
-                                                               <tr  id="details1" style="display:table-row">   <!-- ilay tr mipoitra refa miclique details -->
+                                                               <tr  id="details<?php echo $id;?>" style="display:none">   <!-- ilay tr mipoitra refa miclique details -->
                                                                       <td colspan="8">
                                                                              <table cellpadding="5" cellspacing="0" border="0" style="width:100%">
                                                                                     <tbody>
@@ -45,15 +51,15 @@
                                                                                                                               <div class="col-md-10 grid-margin stretch-card">
                                                                                                                                      <!-- <div class="card"> -->
                                                                                                                                             <div class="card-body">
-                                                                                                                                                   <h4 class="card-title">Entreprise :  <code>nom_entreprise</code></h4>
+                                                                                                                                                   <h4 class="card-title">Entreprise :  <code>Bakery</code></h4>
                                                                                                                                                    <div class="row">
                                                                                                                                                           <div class="col-md-7"></div>
                                                                                                                                                           <div class="col-md-5">
-                                                                                                                                                                 <p class="font-weight-bold">Fournisseur : <code>nom_fournisseur</code>  </p>
+                                                                                                                                                                 <p class="font-weight-bold">Fournisseur : <code><?php echo $this->FournisseurModel->getById($com['id_fournisseur'])['nom_fournisseur']; ?></code>  </p>
                                                                                                                                                           </div>
                                                                                                                                                    </div>
-                                                                                                                                                   <p class="font-weight-bold">Date : <code>19/10/2024</code></p>
-                                                                                                                                                   <p class="font-weight-bold">Centre : <code>nom_centre</code></p>
+                                                                                                                                                   <p class="font-weight-bold">Date : <code><?php echo $com['date_attestation'] ?></code></p>
+                                                                                                                                                   <p class="font-weight-bold">Centre : <code><?php echo $this->CentreModel->getById($com['id_centre'])['nom_centre']; ?></code></p>
                                                                                                                                                    <div class="row">
                                                                                                                                                           <div class="col-md-12 stretch-card grid-margin">
                                                                                                                                                                  <div class="card-body">
@@ -62,24 +68,25 @@
                                                                                                                                                                                       <!-- <thead> -->
                                                                                                                                                                                              <tr>
                                                                                                                                                                                                     <th class="pl-0  pb-2 border-bottom">Nom</th>
+                                                                                                                                                                                                    <th class="border-bottom pb-2">Prix unitaire</th>
                                                                                                                                                                                                     <th class="border-bottom pb-2">Quantite</th>
-                                                                                                                                                                                                    <th class="border-bottom pb-2">P.U</th>
                                                                                                                                                                                                     <th class="border-bottom pb-2">Total</th>
                                                                                                                                                                                              </tr>
                                                                                                                                                                                       <!-- </thead> -->
                                                                                                                                                                                       <tbody>
+                                                                                                                                                                                      <?php
+                                                                                                                                                                                      $total = 0;
+                                                                                                                                                                                      $produits = $this->ProduitInAttestationModel->getProduitByAttestation($com['id_attestation']);
+                                                                                                                                                                                      foreach($produits as $prod) { ?>
                                                                                                                                                                                              <tr>
-                                                                                                                                                                                                    <td class="pl-0">Kentucky</td>
-                                                                                                                                                                                                    <td class="text-muted">51</td>
-                                                                                                                                                                                                    <td class="text-muted">51</td>
-                                                                                                                                                                                                    <td class="text-muted">51</td>
+                                                                                                                                                                                                    <td class="pl-0"><?php echo $prod['nom_produit'];?></td>
+                                                                                                                                                                                                    <td class="text-muted"><?php echo $prod['montant'];?></td>
+                                                                                                                                                                                                    <td class="text-muted"><?php echo $prod['quantite'];?></td>
+                                                                                                                                                                                                    <td class="text-muted"><?php echo $prod['montant']*$prod['quantite'];?></td>
                                                                                                                                                                                              </tr>
-                                                                                                                                                                                             <tr>
-                                                                                                                                                                                                    <td class="pl-0">Ohio</td>
-                                                                                                                                                                                                    <td class="text-muted">51</td>
-                                                                                                                                                                                                    <td class="text-muted">51</td>
-                                                                                                                                                                                                    <td class="text-muted">51</td>
-                                                                                                                                                                                             </tr>
+                                                                                                                                                                                      <?php
+                                                                                                                                                                                             $total += $prod['montant']*$prod['quantite'];
+                                                                                                                                                                                      } ?>
                                                                                                                                                                                       </tbody>
                                                                                                                                                                                </table>
                                                                                                                                                                         </div>
@@ -89,16 +96,23 @@
                                                                                                                                                    <div class="row">
                                                                                                                                                           <div class="col-md-7"></div>
                                                                                                                                                           <div class="col-md-5">
-                                                                                                                                                                 <p class="font-weight-bold">TOTAL : <code>10000</code>  </p>
+                                                                                                                                                                 <p class="font-weight-bold">TOTAL : <code><?php echo $total;?></code></p>
                                                                                                                                                           </div>
                                                                                                                                                    </div>
                                                                                                                                                    <div class="row">
                                                                                                                                                           <div class="col-md-3"></div>
                                                                                                                                                           <div class="col-md-2">
-                                                                                                                                                                 <button type="button" class="btn btn-success btn-rounded btn-fw">Accepter</button>
+                                                                                                                                                                 <form action="<?php echo site_url('BonCommandeController/accept'); ?>" method="post">
+                                                                                                                                                                        <input type="hidden" value="<?php echo $total; ?>" name="total_montant">
+                                                                                                                                                                        <input type="hidden" value="<?php echo $com['id_attestation']; ?>" name="id">
+                                                                                                                                                                        <button type="submit" class="btn btn-success btn-rounded btn-fw">Accepter</button>
+                                                                                                                                                                 </form>
                                                                                                                                                           </div>
                                                                                                                                                           <div class="col-md-2">
-                                                                                                                                                                 <button type="button" class="btn btn-danger btn-rounded btn-fw">Refuser</button>
+                                                                                                                                                                 <form action="<?php echo site_url('BonCommandeController/refuse'); ?>" method="post">
+                                                                                                                                                                        <input type="hidden" value="<?php echo $com['id_attestation']; ?>" name="id">
+                                                                                                                                                                        <button type="submit" class="btn btn-danger btn-rounded btn-fw">Refuser</button>
+                                                                                                                                                                 </form>
                                                                                                                                                           </div>
                                                                                                                                                    </div>
                                                                                                                                             </div>
@@ -113,92 +127,8 @@
                                                                              </table>
                                                                       </td>
                                                                </tr>
-                                                               <tr class="odd">
-                                                                      <td class="sorting_1">Exemple libelle 2</td>
-                                                                      <td>19 octobre 2024</td>
-                                                                      <td><button type="button" class="btn btn-outline-warning btn-fw" onclick="toggleDetails('details2')">Details</button></td>
-                                                               </tr>
-                                                               <tr id="details2"style="display:none">  <!-- ilay tr mipoitra refa miclique details -->
-                                                                      <td colspan="8">
-                                                                             <table cellpadding="5" cellspacing="0" border="0" style="width:100%">
-                                                                                    <tbody>
-                                                                                           <tr class="expanded-row">
-                                                                                                  <td colspan="8" class="row-bg">
-                                                                                                         <div>
-                                                                                                                <!-- <div class="d-flex justify-content-between"> -->
-                                                                                                                <div class="d-flex">
-                                                                                                                       <div class="col-md-4 expanded-table-normal-cell">
-                                                                                                                              <div class="mr-2 mb-4">
-                                                                                                                                     <h3>Liste des produits :</h3>
-                                                                                                                                     <ul>
-                                                                                                                                            <li>Ordinateur   Quantite : 7</li>
-                                                                                                                                            <li>La farine   Quantite : 8</li>
-                                                                                                                                            <li>Telephone   Quantite : 10</li>
-                                                                                                                                     </ul>
-                                                                                                                              </div>
-                                                                                                                       </div>
-                                                                                                                       <div class="col-md-1"></div>
-                                                                                                                       <div class="expanded-table-normal-cell">
-                                                                                                                              <div class="mr-2 mb-4">
-                                                                                                                                     <button type="button" class="btn btn-inverse-success btn-fw">Accepter</button>
-                                                                                                                              </div>
-                                                                                                                       </div>
-                                                                                                                       <div class="expanded-table-normal-cell">
-                                                                                                                              <div class="mr-2 mb-4">
-                                                                                                                                     <button type="button" class="btn btn-inverse-danger btn-fw">Refuser</button>
-                                                                                                                              </div>
-                                                                                                                       </div>
-                                                                                                                </div>
-                                                                                                         </div>
-                                                                                                  </td>
-                                                                                           </tr>
-                                                                                    </tbody>
-                                                                             </table>
-                                                                      </td>
-                                                               </tr>
-                                                               <tr class="odd">
-                                                                      <td class="sorting_1">Exemple libelle 3</td>
-                                                                      <td>19 octobre 2024</td>
-                                                                      <td><button type="button" class="btn btn-outline-warning btn-fw" onclick="toggleDetails('details3')">Details</button></td>
-                                                               </tr>
-                                                               <tr id="details3" style="display:none">  <!-- ilay tr mipoitra refa miclique details -->
-                                                                      <td colspan="8">
-                                                                             <table cellpadding="5" cellspacing="0" border="0" style="width:100%">
-                                                                                    <tbody>
-                                                                                           <tr class="expanded-row">
-                                                                                                  <td colspan="8" class="row-bg">
-                                                                                                         <div>
-                                                                                                                <!-- <div class="d-flex justify-content-between"> -->
-                                                                                                                <div class="d-flex">
-                                                                                                                       <div class="col-md-4 expanded-table-normal-cell">
-                                                                                                                              <div class="mr-2 mb-4">
-                                                                                                                                     <h3>Liste des produits :</h3>
-                                                                                                                                     <ul>
-                                                                                                                                            <li>Ordinateur   Quantite : 7</li>
-                                                                                                                                            <li>La farine   Quantite : 8</li>
-                                                                                                                                            <li>Telephone   Quantite : 10</li>
-                                                                                                                                     </ul>
-                                                                                                                              </div>
-                                                                                                                       </div>
-                                                                                                                       <div class="col-md-1"></div>
-                                                                                                                       <div class="expanded-table-normal-cell">
-                                                                                                                              <div class="mr-2 mb-4">
-                                                                                                                                     <button type="button" class="btn btn-inverse-success btn-fw">Accepter</button>
-                                                                                                                              </div>
-                                                                                                                       </div>
-                                                                                                                       <div class="expanded-table-normal-cell">
-                                                                                                                              <div class="mr-2 mb-4">
-                                                                                                                                     <button type="button" class="btn btn-inverse-danger btn-fw">Refuser</button>
-                                                                                                                              </div>
-                                                                                                                       </div>
-                                                                                                                </div>
-                                                                                                         </div>
-                                                                                                  </td>
-                                                                                           </tr>
-                                                                                    </tbody>
-                                                                             </table>
-                                                                      </td>
-                                                               </tr>
+                                                        <?php $id+= 1;
+                                                        } ?>
                                                         </tbody>
                                                  </table>
                                           </div>
@@ -220,196 +150,3 @@
               }
        }
 </script>
-
-
-
-
-
-<!-- ============ code teo aloha =========== -->
-<!-- ============ code teo aloha =========== -->
-<!-- ============ code teo aloha =========== -->
-<!-- ============ code teo aloha =========== -->
-<!-- ============ code teo aloha =========== -->
-
-
-
-
-<!-- <div class="row">
-       <div class="col-md-12 grid-margin">
-              <div class="row">
-                     <div class="col-12 col-xl-8 mb-4 mb-xl-0">
-                            <h3 class="font-weight-bold">BON COMMANDE</h3>
-                            <h6 class="font-weight-normal mb-0">Liste des bon commande <span class="text-primary">3 unread alerts!</span></h6>
-                     </div>
-              </div>
-       </div>
-</div>
-<div class="row">
-       <div class="col-md-12 grid-margin stretch-card">
-              <div class="card">
-                     <div class="card-body">
-                            <p class="card-title">Bon commande table</p>
-                            <div class="row">
-                                   <div class="col-12">
-                                          <div class="table-responsive">
-                                                 <table id="example" class="display expandable-table" style="width:100%">
-                                                        <thead>
-                                                               <tr>
-                                                                      <th>Libelle</th>
-                                                                      <th>Date</th>
-                                                                      <th></th>
-                                                               </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                               <tr class="odd">
-                                                                      <td class="sorting_1">Exemple libelle 1</td>
-                                                                      <td>19 octobre 2024</td>
-                                                                      <td><button type="button" class="btn btn-outline-warning btn-fw" onclick="toggleDetails('details1')">Details</button></td>
-                                                               </tr>
-                                                               <tr  id="details1" style="display:none">  ilay tr mipoitra refa miclique details
-                                                                      <td colspan="8">
-                                                                             <table cellpadding="5" cellspacing="0" border="0" style="width:100%">
-                                                                                    <tbody>
-                                                                                           <tr class="expanded-row">
-                                                                                                  <td colspan="8" class="row-bg">
-                                                                                                         <div>
-                                                                                                                <div class="d-flex">
-                                                                                                                       <div class="col-md-4 expanded-table-normal-cell">
-                                                                                                                              <div class="mr-2 mb-4">
-                                                                                                                                     <h3>Liste des produits :</h3>
-                                                                                                                                     <ul>
-                                                                                                                                            <li>Ordinateur   Quantite : 7</li>
-                                                                                                                                            <li>La farine   Quantite : 8</li>
-                                                                                                                                            <li>Telephone   Quantite : 10</li>
-                                                                                                                                     </ul>
-                                                                                                                              </div>
-                                                                                                                       </div>
-                                                                                                                       <div class="col-md-1"></div>
-                                                                                                                       <div class="expanded-table-normal-cell">
-                                                                                                                              <div class="mr-2 mb-4">
-                                                                                                                                     <button type="button" class="btn btn-inverse-success btn-fw">Accepter</button>
-                                                                                                                              </div>
-                                                                                                                       </div>
-                                                                                                                       <div class="expanded-table-normal-cell">
-                                                                                                                              <div class="mr-2 mb-4">
-                                                                                                                                     <button type="button" class="btn btn-inverse-danger btn-fw">Refuser</button>
-                                                                                                                              </div>
-                                                                                                                       </div>
-                                                                                                                </div>
-                                                                                                         </div>
-                                                                                                  </td>
-                                                                                           </tr>
-                                                                                    </tbody>
-                                                                             </table>
-                                                                      </td>
-                                                               </tr>
-                                                               <tr class="odd">
-                                                                      <td class="sorting_1">Exemple libelle 2</td>
-                                                                      <td>19 octobre 2024</td>
-                                                                      <td><button type="button" class="btn btn-outline-warning btn-fw" onclick="toggleDetails('details2')">Details</button></td>
-                                                               </tr>
-                                                               <tr id="details2"style="display:none"> 
-                                                                      <td colspan="8">
-                                                                             <table cellpadding="5" cellspacing="0" border="0" style="width:100%">
-                                                                                    <tbody>
-                                                                                           <tr class="expanded-row">
-                                                                                                  <td colspan="8" class="row-bg">
-                                                                                                         <div>
-                                                                                                                <div class="d-flex">
-                                                                                                                       <div class="col-md-4 expanded-table-normal-cell">
-                                                                                                                              <div class="mr-2 mb-4">
-                                                                                                                                     <h3>Liste des produits :</h3>
-                                                                                                                                     <ul>
-                                                                                                                                            <li>Ordinateur   Quantite : 7</li>
-                                                                                                                                            <li>La farine   Quantite : 8</li>
-                                                                                                                                            <li>Telephone   Quantite : 10</li>
-                                                                                                                                     </ul>
-                                                                                                                              </div>
-                                                                                                                       </div>
-                                                                                                                       <div class="col-md-1"></div>
-                                                                                                                       <div class="expanded-table-normal-cell">
-                                                                                                                              <div class="mr-2 mb-4">
-                                                                                                                                     <button type="button" class="btn btn-inverse-success btn-fw">Accepter</button>
-                                                                                                                              </div>
-                                                                                                                       </div>
-                                                                                                                       <div class="expanded-table-normal-cell">
-                                                                                                                              <div class="mr-2 mb-4">
-                                                                                                                                     <button type="button" class="btn btn-inverse-danger btn-fw">Refuser</button>
-                                                                                                                              </div>
-                                                                                                                       </div>
-                                                                                                                </div>
-                                                                                                         </div>
-                                                                                                  </td>
-                                                                                           </tr>
-                                                                                    </tbody>
-                                                                             </table>
-                                                                      </td>
-                                                               </tr>
-                                                               <tr class="odd">
-                                                                      <td class="sorting_1">Exemple libelle 3</td>
-                                                                      <td>19 octobre 2024</td>
-                                                                      <td><button type="button" class="btn btn-outline-warning btn-fw" onclick="toggleDetails('details3')">Details</button></td>
-                                                               </tr>
-                                                               <tr id="details3" style="display:none">  
-                                                                      <td colspan="8">
-                                                                             <table cellpadding="5" cellspacing="0" border="0" style="width:100%">
-                                                                                    <tbody>
-                                                                                           <tr class="expanded-row">
-                                                                                                  <td colspan="8" class="row-bg">
-                                                                                                         <div>
-                                                                                                                <div class="d-flex">
-                                                                                                                       <div class="col-md-4 expanded-table-normal-cell">
-                                                                                                                              <div class="mr-2 mb-4">
-                                                                                                                                     <h3>Liste des produits :</h3>
-                                                                                                                                     <ul>
-                                                                                                                                            <li>Ordinateur   Quantite : 7</li>
-                                                                                                                                            <li>La farine   Quantite : 8</li>
-                                                                                                                                            <li>Telephone   Quantite : 10</li>
-                                                                                                                                     </ul>
-                                                                                                                              </div>
-                                                                                                                       </div>
-                                                                                                                       <div class="col-md-1"></div>
-                                                                                                                       <div class="expanded-table-normal-cell">
-                                                                                                                              <div class="mr-2 mb-4">
-                                                                                                                                     <button type="button" class="btn btn-inverse-success btn-fw">Accepter</button>
-                                                                                                                              </div>
-                                                                                                                       </div>
-                                                                                                                       <div class="expanded-table-normal-cell">
-                                                                                                                              <div class="mr-2 mb-4">
-                                                                                                                                     <button type="button" class="btn btn-inverse-danger btn-fw">Refuser</button>
-                                                                                                                              </div>
-                                                                                                                       </div>
-                                                                                                                </div>
-                                                                                                         </div>
-                                                                                                  </td>
-                                                                                           </tr>
-                                                                                    </tbody>
-                                                                             </table>
-                                                                      </td>
-                                                               </tr>
-                                                        </tbody>
-                                                 </table>
-                                          </div>
-                                   </div>
-                            </div>
-                     </div>
-              </div>
-       </div>
-</div>
-
-
-<script>
-       function toggleDetails(detailsId) {
-              var details = document.getElementById(detailsId);
-              if (details.style.display === "none") {
-                     details.style.display = "table-row";
-              } else {
-                     details.style.display = "none";  // Utiliser table-row pour préserver la structure
-              }
-       }
-</script> -->
-
-<!-- ==== raha sendra tsy mety ======= -->
-<!-- <tr class="odd shown">  -->      <!--  ny voalohany  -->
-<!-- <tr class="even">  -->            <!--  ny faharoa  -->
-<!-- <tr class="odd">   -->      <!--  ny fahatelo  --> <!--  apres mifandimby even , odd , even , odd , ....  -->

@@ -9,7 +9,7 @@ class ProformaController extends CI_Controller {
     }
 
     public function index() {
-        $data['contents'] = 'page/ListeFacture';
+        $data['contents'] = 'page/ListeProforma';
         $this->load->view('template/template', $data);
     }
 }

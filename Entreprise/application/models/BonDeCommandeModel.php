@@ -13,10 +13,20 @@ class BonDeCommandeModel extends CI_Model {
     }
 
     // Fonction pour lire tous les bons de commande
+    // public function getAll() {
+    //     $this->db->where('id_type_attestation', 1); // 1 est l'ID pour 'Bon de commande'
+    //     $query = $this->db->get('attestation');
+    //     return $query->result_array();
+    // }
+
     public function getAll() {
-        $this->db->where('id_type_attestation', 1); // 1 est l'ID pour 'Bon de commande'
-        $query = $this->db->get('attestation');
-        return $query->result_array();
+        $this->db->select('*');
+        $this->db->from('attestation');
+        $this->db->where('id_type_attestation', 1);
+        $this->db->where('accepte IS NULL');  // Accepte NULL
+        $query = $this->db->get();
+        
+        return $query->result_array();  // Retourne toutes les lignes sous forme d'objets
     }
 
     // Fonction pour lire un bon de commande par ID
