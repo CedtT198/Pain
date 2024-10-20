@@ -24,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 // $config['base_url'] = 'http://localhost/web/Entreprise/Pain/';   // Cedy
-$config['base_url'] = 'http://localhost/projet/S5/GESTION/1erProjet/Pain/Entreprise/';   // Tsiry
+$config['base_url'] = 'http://localhost/projet/S5/GESTION/1erProjet/Pain/Fournisseur/';   // Tsiry
 
 
 /*
