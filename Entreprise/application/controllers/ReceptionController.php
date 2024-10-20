@@ -5,10 +5,12 @@ class ReceptionController extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
+        $this->load->model('BonDeReceptionModel');
     }
 
     public function index() {
-        $data['contents'] = 'page/ListeBonCommande';
+        $data['contents'] = 'page/ListeBonReception';
+        $data['receptions'] = $this->BonDeReceptionModel->getAll();
         $this->load->view('template/template', $data);
     }
 }

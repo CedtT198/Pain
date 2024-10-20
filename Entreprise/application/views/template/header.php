@@ -199,7 +199,7 @@
             </a>
             <div class="collapse" id="finance">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('ProformaController'); ?>">Liste proforma</a></li>
+                <!-- <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('ProformaController'); ?>">Liste proforma</a></li> -->
                 <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('BonCommandeController'); ?>">Liste de bon <br> de commande  </a></li>
               </ul>
             </div>

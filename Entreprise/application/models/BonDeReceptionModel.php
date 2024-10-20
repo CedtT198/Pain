@@ -23,7 +23,9 @@ class BonDeReceptionModel extends CI_Model {
         $this->db->select('*');
         $this->db->from('attestation');
         $this->db->where('id_type_attestation', 2);
-        $this->db->where('accepte IS NULL');  // Accepte NULL
+        $this->db->group_by('date_attestation');
+        $this->db->group_by('id_centre');
+        $this->db->order_by('date_attestation DESC');
         $query = $this->db->get();
         
         return $query->result_array();  // Retourne toutes les lignes sous forme d'objets
