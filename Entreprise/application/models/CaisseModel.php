@@ -1,7 +1,8 @@
 <?php
 class CaisseModel extends CI_Model {
     public function getAll() {
-        return $this->db->get('caisse')->row_array();
+        $query = $this->db->query("SELECT montant FROM caisse ORDER BY date_caisse DESC, Id_caisse DESC LIMIT 1");
+        return $query->row_array();
     }
 }
 ?>

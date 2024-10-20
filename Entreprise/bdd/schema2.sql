@@ -146,6 +146,7 @@ CREATE TABLE output_stock(
 
 CREATE TABLE caisse(
    Id_caisse INT AUTO_INCREMENT,
+   date_caisse DATE NOT NULL,
    montant DECIMAL(15,2)   NOT NULL,
    PRIMARY KEY(Id_caisse)
 );
@@ -278,7 +279,8 @@ INSERT INTO demande_besoin (description, quantite, accepte, date_demande, id_cen
 ('Demande de 15 écrans', 15, null, '2024-10-03', 3, 3),               -- Demande de 15 écrans pour le centre 2
 ('Demande de 50kg farine', 50, null, '2024-10-05', 2, 1),               -- Demande de 50 claviers pour le centre 3
 ('Demande de 100kg sucre', 100, null, '2024-10-10', 2, 2),               -- Demande de 100 souris pour le centre 1
-('Demande de 5 refrigerateur', 5, null, '2024-10-12', 3, 5);             -- Demande de 5 imprimantes pour le centre 2
+('Demande de 5 refrigerateur', 5, null, '2024-10-12', 3, 5),             -- Demande de 5 imprimantes pour le centre 2
+('Demande de 5 refrigerateur', 5, null, '2024-10-12', 4, 5);             -- Demande de 5 imprimantes pour le centre 2
 
 
 INSERT INTO input_stock (date_input, quantite, id_produit) VALUES
@@ -287,7 +289,7 @@ INSERT INTO input_stock (date_input, quantite, id_produit) VALUES
 ('2024-10-19', 1, 3),
 ('2024-10-19', 1, 4);
 
-INSERT INTO caisse (montant) VALUES ("100");
+INSERT INTO caisse (date_caisse, montant) VALUES ('2024-10-19', "100000");
 
 SELECT rubrique.*  FROM rubrique JOIN unite_oeuvre on rubrique.id_unite_oeuvre=unite_oeuvre.id_unite_oeuvre;
 SELECT * FROM rubrique JOIN charge ON rubrique.id_rubrique=charge.id_rubrique; 
