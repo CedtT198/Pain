@@ -7,6 +7,8 @@ class FactureController extends CI_Controller {
         parent::__construct();
         $this->load->model('AttestationModel');
         $this->load->model('FactureModel');
+        $this->load->model('FournisseurModel');
+        $this->load->model('CentreModel');
     }
 
     public function index() {

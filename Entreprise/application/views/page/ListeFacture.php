@@ -14,73 +14,83 @@
                      <div class="card-body">
                             <div id="detailedReports" class="carousel slide detailed-report-carousel position-static pt-2">
                                    <div class="carousel-inner">
-                                          <div class="carousel-item active">
-                                                 <div class="row">
-                                                        <div class="col-md-1"></div>
-                                                               <div class="col-md-10 grid-margin stretch-card">
-                                                                      <!-- <div class="card"> -->
-                                                                             <div class="card-body">
-                                                                                    <h4 class="card-title">Entreprise :  <code>nom_entreprise</code></h4>
-                                                                                    <div class="row">
-                                                                                           <div class="col-md-7"></div>
-                                                                                           <div class="col-md-5">
-                                                                                                  <p class="font-weight-bold">Fournisseur : <code>nom_fournisseur</code></p>
+
+                                          <?php foreach ($factures as $facture) { ?>
+
+                                                 <div class="carousel-item active">
+                                                        <div class="row">
+                                                               <div class="col-md-1"></div>
+                                                                      <div class="col-md-10 grid-margin stretch-card">
+                                                                             <!-- <div class="card"> -->
+                                                                                    <div class="card-body">
+                                                                                           <h4 class="card-title">Entreprise :  <code>Bakary</code></h4>
+                                                                                           <div class="row">
+                                                                                                  <div class="col-md-7"></div>
+                                                                                                  <div class="col-md-5">
+                                                                                                         <p class="font-weight-bold">Fournisseur : <code><?php echo $this->FournisseurModel->getById($facture['id_fournisseur'])['nom_fournisseur']  ;?></code></p>
+                                                                                                  </div>
                                                                                            </div>
-                                                                                    </div>
-                                                                                    <p class="font-weight-bold">Date : <code>19/10/2024</code></p>
-                                                                                    <p class="font-weight-bold">Centre : <code>nom_centre</code></p>
-                                                                                    <div class="row">
-                                                                                           <div class="col-md-12 stretch-card grid-margin">
-                                                                                                  <div class="card-body">
-                                                                                                         <div class="table-responsive">
-                                                                                                                <table class="table table-borderless">
-                                                                                                                       <!-- <thead> -->
-                                                                                                                       <tr>
-                                                                                                                              <th class="pl-0  pb-2 border-bottom">Nom</th>
-                                                                                                                              <th class="border-bottom pb-2">Quantite</th>
-                                                                                                                              <th class="border-bottom pb-2">P.U</th>
-                                                                                                                              <th class="border-bottom pb-2">Total</th>
-                                                                                                                       </tr>
-                                                                                                                       <!-- </thead> -->
-                                                                                                                       <tbody>
+                                                                                           <p class="font-weight-bold">Date : <code><?php echo $facture['date_attestation'] ;?></code></p>
+                                                                                           <p class="font-weight-bold">Centre : <code><?php echo $this->CentreModel->getById($facture['id_centre'])['nom_centre'] ;?></code></p>
+                                                                                           <div class="row">
+                                                                                                  <div class="col-md-12 stretch-card grid-margin">
+                                                                                                         <div class="card-body">
+                                                                                                                <div class="table-responsive">
+                                                                                                                       <table class="table table-borderless">
+                                                                                                                              <!-- <thead> -->
                                                                                                                               <tr>
-                                                                                                                                     <td class="pl-0">Kentucky</td>
-                                                                                                                                     <td class="text-muted">51</td>
-                                                                                                                                     <td class="text-muted">51</td>
-                                                                                                                                     <td class="text-muted">51</td>
+                                                                                                                                     <th class="pl-0  pb-2 border-bottom">Nom</th>
+                                                                                                                                     <th class="border-bottom pb-2">Quantite</th>
+                                                                                                                                     <th class="border-bottom pb-2">P.U</th>
+                                                                                                                                     <th class="border-bottom pb-2">Total</th>
                                                                                                                               </tr>
-                                                                                                                              <tr>
-                                                                                                                                     <td class="pl-0">Ohio</td>
-                                                                                                                                     <td class="text-muted">51</td>
-                                                                                                                                     <td class="text-muted">51</td>
-                                                                                                                                     <td class="text-muted">51</td>
-                                                                                                                              </tr>
-                                                                                                                       </tbody>
-                                                                                                                </table>
+                                                                                                                              <!-- </thead> -->
+                                                                                                                              <tbody>
+                                                                                                                                     <?php 
+                                                                                                                                            $total = 0;
+                                                                                                                                            $produits = $this->ProduitInAttestationModel->getProduitByAttestation($facture['id_attestation']);
+                                                                                                                                            foreach ($produits as $prod) {
+                                                                                                                                     ?>
+                                                                                                                                            <tr>
+                                                                                                                                                   <td class="pl-0"><?php echo $prod['nom_produit'] ;?></td>
+                                                                                                                                                   <td class="text-muted"><?php echo $prod['quantite'] ;?></td>
+                                                                                                                                                   <td class="text-muted"><?php echo $prod['montant'] ;?></td>
+                                                                                                                                                   <td class="text-muted"><?php echo $prod['quantite'] * $prod['montant'] ;?></td>
+                                                                                                                                            </tr>
+                                                                                                                                     <?php 
+                                                                                                                                                   $total += $prod['montant']*$prod['quantite'];
+                                                                                                                                            }
+                                                                                                                                     ?>
+                                                                                                                              </tbody>
+                                                                                                                       </table>
+                                                                                                                </div>
                                                                                                          </div>
                                                                                                   </div>
                                                                                            </div>
-                                                                                    </div>
-                                                                                    <div class="row">
-                                                                                           <div class="col-md-7"></div>
-                                                                                           <div class="col-md-5">
-                                                                                                  <p class="font-weight-bold">TOTAL : <code>10000</code>  </p>
+                                                                                           <div class="row">
+                                                                                                  <div class="col-md-7"></div>
+                                                                                                  <div class="col-md-5">
+                                                                                                         <p class="font-weight-bold">TOTAL : <code><?php echo $total ;?></code>  </p>
+                                                                                                  </div>
+                                                                                           </div>
+                                                                                           <div class="row">
+                                                                                                  <div class="col-md-3"></div>
+                                                                                                  <div class="col-md-2">
+                                                                                                         <button type="button" class="btn btn-success btn-rounded btn-fw">Accepter</button>
+                                                                                                  </div>
+                                                                                                  <div class="col-md-2">
+                                                                                                         <button type="button" class="btn btn-danger btn-rounded btn-fw">Refuser</button>
+                                                                                                  </div>
                                                                                            </div>
                                                                                     </div>
-                                                                                    <div class="row">
-                                                                                           <div class="col-md-3"></div>
-                                                                                           <div class="col-md-2">
-                                                                                                  <button type="button" class="btn btn-success btn-rounded btn-fw">Accepter</button>
-                                                                                           </div>
-                                                                                           <div class="col-md-2">
-                                                                                                  <button type="button" class="btn btn-danger btn-rounded btn-fw">Refuser</button>
-                                                                                           </div>
-                                                                                    </div>
-                                                                             </div>
-                                                                      <!-- </div> -->
-                                                               </div>
+                                                                             <!-- </div> -->
+                                                                      </div>
+                                                        </div>
                                                  </div>
-                                          </div>
+
+                                          <?php } ?>
+
+
                                           <div class="carousel-item activer">
                                                  <div class="row">
                                                  <div class="col-md-1"></div>
