@@ -5,6 +5,9 @@
                      <div class="card-body">
                             <h4 class="card-title">Entree stock</h4>
                             <p class="card-description">formulaire</p>
+                            <?php if (isset($error)) { ?>
+                                   <p style="color:red;"><?php echo $error; ?></p>
+                            <?php } ?>
                             <form class="forms-sample" action="<?php echo site_url('StockController/insert') ;?>" method="post">
                                    <div class="form-group row">
                                           <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Date</label>
@@ -28,7 +31,7 @@
                                                  </select>
                                           </div>
                                    </div>
-                                   <button type="button" class="btn btn-primary btn-lg btn-block">Submit</button>
+                                   <button type="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
                                    <!-- <button type="submit" class="btn btn-primary mr-2">Submit</button> -->
                             </form>
                      </div>

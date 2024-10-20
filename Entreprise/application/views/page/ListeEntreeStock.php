@@ -2,9 +2,9 @@
        <div class="card">
               <div class="card-body">
                      <h4 class="card-title">Liste entree stock</h4>
-                     <p class="card-description">
+                     <!-- <p class="card-description">
                             Add class <code>.table-striped</code>
-                     </p>
+                     </p> -->
                      <div class="table-responsive">
                             <table class="table table-striped">
                                    <thead>
@@ -15,13 +15,13 @@
                                           </tr>
                                    </thead>
                                     <tbody>
-                                          <?php foreach ($isteStock as $stock) {  
+                                          <?php foreach ($listeStock as $stock) {  
                                                  $produit = $this->ProduitModel->getById($stock['id_produit']);
                                           ?>
                                                  <tr>
-                                                        <td class="py-1"><?php $stock['date_input'] ;?></td>
-                                                        <td><?php $stock['quantite']  ;?></td>
-                                                        <td><?php $produit['nom_produit'] ;?></td>
+                                                        <td class="py-1"><?php echo $stock['date_input'] ;?></td>
+                                                        <td><?php echo $stock['quantite']  ;?></td>
+                                                        <td><?php echo $produit['nom_produit'] ;?></td>
                                                  </tr>
                                           <?php } ?>
                                    </tbody>

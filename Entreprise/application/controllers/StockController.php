@@ -17,18 +17,28 @@ class StockController extends CI_Controller {
 
     public function index2() {
         $data['contents'] = 'page/FormulaireEntreeStock';
-        // $data['ListeStock'] = $this->StockModel->getAll();
+        $data['produits'] = $this->ProduitModel->getAll();
         $this->load->view('template/template', $data);
     }
 
     public function insert() {
-        $data_insertion = array (
-            'date_input' => $this->input->post('date');
-            'quantite' => $this->input->post('quantite');
-            'id_produit' => $this->input->post('id_produit');
-        );
-        $this->StockModel->insertInputStock($data_insertion);
+        $date = $this->input->post('date');
+        $quantite = $this->input->post('quantite');
+        $id_produit = $this->input->post('id_produit');
 
+        if ($quantite > 0) {
+            $data_insertion = array (
+                'date_input' => $date,
+                'quantite' => $quantite,
+                'id_produit' => $id_produit,
+            );
+            $this->StockModel->insertInputStock($data_insertion);
+        } else {
+            $data['error'] = 'Quantiter doit etre superieur a zero' ;
+            $data['contents'] = 'page/FormulaireEntreeStock';
+        }
+
+        $data['produits'] = $this->ProduitModel->getAll();
         $data['contents'] = 'page/FormulaireEntreeStock';
         $this->load->view('template/template', $data);
     }
