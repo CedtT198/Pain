@@ -14,6 +14,7 @@
   <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/js/select.dataTables.min.css">
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/vertical-layout-light/style.css">
   <link rel="shortcut icon" href="<?php echo base_url(); ?>assets/images/favicon.png" />
+  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/vendors/mdi/css/materialdesignicons.min.css">
   <!-- <link rel="stylesheet" href="<?php echo base_url(); ?>assets/vendors/select2/select2.min.css">
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/vendors/select2-bootstrap-theme/select2-bootstrap.min.css"> -->
 </head>
@@ -85,7 +86,13 @@
         <ul class="nav">
               <!-- ============ debut lien sisiny ============= -->
               <!-- ============ debut lien sisiny ============= -->
-              <!-- ============ debut lien sisiny ============= -->
+              <!-- ============ debut lien sisiny ============= --> 
+          <li class="nav-item">
+            <a class="nav-link" href="<?php echo site_url('CaisseController'); ?>">
+              <i class="icon-layout menu-icon"></i>
+              <span class="menu-title">Caisse</span>
+            </a>
+          </li>
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#rubrique" aria-expanded="false" aria-controls="rubrique">
               <i class="icon-grid menu-icon"></i>

@@ -114,6 +114,15 @@
                                                                                                                                                                         <button type="submit" class="btn btn-danger btn-rounded btn-fw">Refuser</button>
                                                                                                                                                                  </form>
                                                                                                                                                           </div>
+                                                                                                                                                          <div class="col-md-5  dropdown">
+                                                                                                                                                                 <button type="button" class="btn btn-outline-danger" id="dropupMenuIconButton3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                                                                                                                        <i class="mdi mdi-help"></i>
+                                                                                                                                                                 </button>
+                                                                                                                                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuIconButton3">
+                                                                                                                                                                        <h6 class="dropdown-header">A vérifier</h6>
+                                                                                                                                                                        <a class="dropdown-item" href="<?php echo site_url('CaisseController'); ?>">Assurez-vous que le montant en caisse de l'entreprise est suffisant pour ces achats.</a>
+                                                                                                                                                                 </div>
+                                                                                                                                                          </div>
                                                                                                                                                    </div>
                                                                                                                                             </div>
                                                                                                                                      <!-- </div> -->

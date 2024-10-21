@@ -54,6 +54,15 @@
                                           <?php } ?>
                                    </div> -->
                                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                                   <div class="dropdown">
+                                          <button type="button" class="btn btn-outline-danger" id="dropupMenuIconButton3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                 <i class="mdi mdi-help"></i>
+                                          </button>
+                                          <div class="dropdown-menu" aria-labelledby="dropdownMenuIconButton3">
+                                                 <h6 class="dropdown-header">A vérifier</h6>
+                                                 <a class="dropdown-item" href="#">Ce produit est-il vraiment nécessaire à la production de votre département ?</a>
+                                          </div>
+                                   </div>
                             </form>
                      </div>
               </div>

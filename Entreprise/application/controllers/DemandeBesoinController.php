@@ -144,6 +144,8 @@ class DemandeBesoinController extends CI_Controller {
                     'id_produit' => $id_produit
                 );
                 $this->StockModel->insertOutput($data);
+                $id = $this->input->post('id');
+                $this->DemandeBesoinModel->updateAcceptation($id, $qt, true);
     
                 $data['contents'] = 'page/ListeDemandeBesoin';
                 $data['success'] = 'Accepté. Le(s) produit(s) demandé(s) ont été prélevé du stock.<br>Nombre de '.$this->ProduitModel->getById($id_produit)['nom_produit'].' restant : '.$resteStock;

@@ -27,11 +27,11 @@ class BonCommandeController extends CI_Controller {
     }
 
     public function accept() {
-        $compMoney = $this->CaisseModel->getAll();
+        $compMoney = $this->CaisseModel->getSum();
         $total_montant = $this->input->post('total_montant');
         $id = $this->input->post('id');
 
-        if ($total_montant < $compMoney['montant']) {
+        if ($total_montant < $compMoney['somme']) {
             $this->AttestationModel->updateAccepte($id, true);
             redirect('BonCommandeController/index');
         }

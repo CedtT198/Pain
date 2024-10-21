@@ -11,6 +11,16 @@
                             <?php }if (isset($success)) { ?>
                                    <p style="color:green;"><?php echo $success; ?></p>
                             <?php } ?>
+                            
+                            <div class="dropdown">
+                                   <button type="button" class="btn btn-outline-danger" id="dropupMenuIconButton3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                          <i class="mdi mdi-help"></i>
+                                   </button>
+                                   <div class="dropdown-menu" aria-labelledby="dropdownMenuIconButton3">
+                                          <h6 class="dropdown-header">A vérifier</h6>
+                                          <a class="dropdown-item" href="<?php echo site_url('StockController'); ?>">Vérifier la quantité de stock restant du produit demandé.</a>
+                                   </div>
+                            </div>
                             <div class="table-responsive">
                                    <table class="table table-striped">
                                           <thead>

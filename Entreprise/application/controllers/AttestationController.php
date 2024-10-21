@@ -29,16 +29,17 @@ class AttestationController extends CI_Controller {
 
         echo $id_attestation . "\n";
         echo $id_correspondance . "\n";
-
-        if ($prodFact[0]['quantite'] != $prodCom[0]['quantite']) {
-            $error .= "Quantité de la commande et de la facture différente.<br>
-                Quantité demandée : ".$prodCom[0]['quantite']."<br>
-                Quantité facturée : ".$prodFact[0]['quantite']."<br><br>";
-        }
-        if ($prodFact[0]['montant'] != $prodCom[0]['montant']) {
-            $error .= "Montant de la commande et de la facture différente.<br>
-                Montant demandé : ".$prodCom[0]['montant']."<br>
-                Montant facturé : ".$prodFact[0]['montant']."<br><br>";
+        if ($prodCom != null && $prodFact != null) {
+            if ($prodFact[0]['quantite'] != $prodCom[0]['quantite']) {
+                $error .= "Quantité de la commande et de la facture différente.<br>
+                    Quantité demandée : ".$prodCom[0]['quantite']."<br>
+                    Quantité facturée : ".$prodFact[0]['quantite']."<br><br>";
+            }
+            if ($prodFact[0]['montant'] != $prodCom[0]['montant']) {
+                $error .= "Montant de la commande et de la facture différente.<br>
+                    Montant demandé : ".$prodCom[0]['montant']."<br>
+                    Montant facturé : ".$prodFact[0]['montant']."<br><br>";
+            }
         }
 
         if ($error != "") {

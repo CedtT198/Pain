@@ -172,6 +172,18 @@
                                                                                                                                                                  <input type="text" class="form-control" id="montant" name="montant" placeholder="00" required>
                                                                                                                                                           </div>
                                                                                                                                                           <button type="submit" class="btn btn-primary mr-2">VALIDER</button>
+                                                                                                                                                          <div class="col-md-5  dropdown">
+                                                                                                                                                                 <button type="button" class="btn btn-outline-danger" id="dropupMenuIconButton3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                                                                                                                        <i class="mdi mdi-help"></i>
+                                                                                                                                                                 </button>
+                                                                                                                                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuIconButton3">
+                                                                                                                                                                        <h6 class="dropdown-header">A vérifier avant création de bon de livraison</h6>
+                                                                                                                                                                        <a class="dropdown-item" href="#">Le bon de livraison à crée doit être égale au bon de commande associé, vérifier les propriétés suivants : </a>
+                                                                                                                                                                        <a class="dropdown-item" href="#">- Quantité</a>
+                                                                                                                                                                        <a class="dropdown-item" href="#">- Montant</a>
+                                                                                                                                                                        <a class="dropdown-item" href="<?php echo site_url('CaisseController'); ?>"></a>
+                                                                                                                                                                 </div>
+                                                                                                                                                          </div>
                                                                                                                                                    </form>
                                                                                                                                             </div>
                                                                                                                                      </div>
@@ -264,6 +276,7 @@
                                                                                                                                                                         <button type="submit" class="btn btn-outline-success btn-fw">Créer une facture</button>
                                                                                                                                                                  </form>
                                                                                                                                                           </div>
+                                                                                                                                                          
                                                                                                                                                    </div>
                                                                                                                                             </div>
                                                                                                                                      </div>
