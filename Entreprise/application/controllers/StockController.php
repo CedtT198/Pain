@@ -33,8 +33,9 @@ class StockController extends CI_Controller {
                 'id_produit' => $id_produit,
             );
             $this->StockModel->insertInputStock($data_insertion);
+            $data['success'] = "Insertion effectué avec succès.";
         } else {
-            $data['error'] = 'Quantiter doit etre superieur a zero' ;
+            $data['error'] = 'Quantité doit être supérieur à zéro.' ;
             $data['contents'] = 'page/FormulaireEntreeStock';
         }
 

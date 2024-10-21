@@ -204,7 +204,7 @@
               </ul>
             </div>
           </li>
-          <?php } else if ($id_depa == 6) { ?>
+          <?php } if ($id_depa == 6) { ?>
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#finance" aria-expanded="false" aria-controls="finance">
               <i class="icon-grid menu-icon"></i>
@@ -218,18 +218,12 @@
               </ul>
             </div>
           </li>
-          <?php } else if ($id_depa == 7) { ?>
+          <?php } if ($id_depa == 7 || $id_depa == 6) { ?>
           <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#directeur" aria-expanded="false" aria-controls="directeur">
-              <i class="icon-grid menu-icon"></i>
-              <span class="menu-title">Dir. général</span>
-              <i class="menu-arrow"></i>
+            <a class="nav-link" href="<?php echo site_url('FactureController'); ?>">
+              <i class="icon-layout menu-icon"></i>
+              <span class="menu-title">Liste factures</span>
             </a>
-            <div class="collapse" id="directeur">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('FactureController'); ?>">Liste demande <br>de  paiement</a></li>
-              </ul>
-            </div>
           </li>
           <?php } ?>
           <!-- <li class="nav-item">

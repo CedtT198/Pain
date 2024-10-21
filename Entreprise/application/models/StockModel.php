@@ -3,6 +3,7 @@ class StockModel extends CI_Model {
 
     public function getAllInputStock() {
         $query = $this->db->get('input_stock');
+        $this->db->order_by('date_input DESC');
         return $query->result_array();
     }
 

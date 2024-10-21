@@ -14,15 +14,30 @@
                      <div class="card-body">
                             <div id="detailedReports" class="carousel slide detailed-report-carousel position-static pt-2">
                                    <div class="carousel-inner">
+                                   <div style="text-align:center">
+                                          <?php if (isset($error)) { ?>
+                                                 <p style="color:red;"><?php echo $error; ?></p>
+                                          <?php } if (isset($success)) { ?>
+                                                 <p style="color:green;"><?php echo $success; ?></p>
+                                          <?php } ?>
+                                   </div>
+                                          <?php
+                                          $id = 0;
+                                          foreach ($factures as $facture) { ?>
+                                                 <?php if ($id == 0) { ?>
+                                                        <div class="carousel-item active">
+                                                 <?php } else { ?>
+                                                        <div class="carousel-item activer">
+                                                 <?php } ?>
 
-                                          <?php foreach ($factures as $facture) { ?>
 
-                                                 <div class="carousel-item active">
                                                         <div class="row">
                                                                <div class="col-md-1"></div>
                                                                       <div class="col-md-10 grid-margin stretch-card">
                                                                              <!-- <div class="card"> -->
                                                                                     <div class="card-body">
+                                                                                           <h3>N° facture : <?php echo $facture['id_attestation'] ;?></h3>
+                                                                                           <br>
                                                                                            <h4 class="card-title">Entreprise :  <code>Bakary</code></h4>
                                                                                            <div class="row">
                                                                                                   <div class="col-md-7"></div>
@@ -73,29 +88,43 @@
                                                                                                          <p class="font-weight-bold">TOTAL : <code><?php echo $total ;?></code>  </p>
                                                                                                   </div>
                                                                                            </div>
-                                                                                           <div class="row">
-                                                                                                  <div class="col-md-3"></div>
-                                                                                                  <div class="col-md-2">
-                                                                                                         <button type="button" class="btn btn-success btn-rounded btn-fw">Accepter</button>
+                                                                                           <?php if ($this->session->userdata('id_depa') == 7) { ?>
+                                                                                                  <div class="row">
+                                                                                                         <div class="col-md-3"></div>
+                                                                                                         <div class="col-md-2">
+                                                                                                                <form action="<?php echo site_url('FactureController/accept'); ?>" method="post">
+                                                                                                                       <input type="hidden" name="id_attestation" value="<?php echo $facture['id_attestation']; ?>">
+                                                                                                                       <button type="submit" class="btn btn-success btn-rounded btn-fw">Accepter</button>
+                                                                                                                </form>
+                                                                                                         </div>
+                                                                                                         <div class="col-md-2">
+                                                                                                                <form action="<?php echo site_url('FactureController/refuse'); ?>" method="post">
+                                                                                                                       <input type="hidden" name="id_attestation" value="<?php echo $facture['id_attestation']; ?>">
+                                                                                                                       <button type="submit" class="btn btn-danger btn-rounded btn-fw">Refuser</button>
+                                                                                                                </form>
+                                                                                                         </div>
                                                                                                   </div>
-                                                                                                  <div class="col-md-2">
-                                                                                                         <button type="button" class="btn btn-danger btn-rounded btn-fw">Refuser</button>
+                                                                                           <?php } ?>
+                                                                                                  <div class="col-md-4"></div>
+                                                                                                  <div class="col-md-3">        
+                                                                                                         <form action="<?php echo site_url('AttestationController/compare'); ?>" method="post">
+                                                                                                                <input type="hidden" name="id_attestation" value="<?php echo $facture['id_attestation']; ?>">
+                                                                                                                <button type="submit" class="btn btn-outline-success btn-fw">Comparer validité</button>
+                                                                                                         </form>
                                                                                                   </div>
-                                                                                           </div>
                                                                                     </div>
                                                                              <!-- </div> -->
                                                                       </div>
                                                         </div>
                                                  </div>
 
-                                          <?php } ?>
+                                          <?php $id += 1; } ?>
 
-
-                                          <div class="carousel-item activer">
+                                          <!-- <div class="carousel-item activer">
                                                  <div class="row">
                                                  <div class="col-md-1"></div>
                                                                <div class="col-md-10 grid-margin stretch-card">
-                                                                      <!-- <div class="card"> -->
+                                                                      <div class="card">
                                                                              <div class="card-body">
                                                                                     <h4 class="card-title">Entreprise :  <code>nom_entreprise</code></h4>
                                                                                     <div class="row">
@@ -111,14 +140,12 @@
                                                                                                   <div class="card-body">
                                                                                                          <div class="table-responsive">
                                                                                                                 <table class="table table-borderless">
-                                                                                                                       <!-- <thead> -->
                                                                                                                        <tr>
                                                                                                                               <th class="pl-0  pb-2 border-bottom">Nom</th>
                                                                                                                               <th class="border-bottom pb-2">Quantite</th>
                                                                                                                               <th class="border-bottom pb-2">P.U</th>
                                                                                                                               <th class="border-bottom pb-2">Total</th>
                                                                                                                        </tr>
-                                                                                                                       <!-- </thead> -->
                                                                                                                        <tbody>
                                                                                                                               <tr>
                                                                                                                                      <td class="pl-0">Kentucky</td>
@@ -154,10 +181,9 @@
                                                                                            </div>
                                                                                     </div>
                                                                              </div>
-                                                                      <!-- </div> -->
                                                                </div>
                                                  </div>
-                                          </div>
+                                          </div> -->
 
 
                                           

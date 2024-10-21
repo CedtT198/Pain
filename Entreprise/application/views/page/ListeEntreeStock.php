@@ -9,9 +9,9 @@
                             <table class="table table-striped">
                                    <thead>
                                           <tr>
-                                                 <th>DATE</th>
-                                                 <th>QUANTITE</th>
-                                                 <th>PRODUIT</th>
+                                                 <th>Date</th>
+                                                 <th>Quantite</th>
+                                                 <th>Produit</th>
                                           </tr>
                                    </thead>
                                     <tbody>

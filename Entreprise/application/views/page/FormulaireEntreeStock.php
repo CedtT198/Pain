@@ -4,9 +4,11 @@
               <div class="card">
                      <div class="card-body">
                             <h4 class="card-title">Entree stock</h4>
-                            <p class="card-description">formulaire</p>
+                            <!-- <p class="card-description">formulaire</p> -->
                             <?php if (isset($error)) { ?>
                                    <p style="color:red;"><?php echo $error; ?></p>
+                            <?php } if (isset($success)) { ?>
+                                   <p style="color:green;"><?php echo $success; ?></p>
                             <?php } ?>
                             <form class="forms-sample" action="<?php echo site_url('StockController/insert') ;?>" method="post">
                                    <div class="form-group row">
