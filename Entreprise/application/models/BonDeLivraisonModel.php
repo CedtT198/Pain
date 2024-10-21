@@ -23,7 +23,7 @@ class BonDeLivraisonModel extends CI_Model {
         $this->db->select('*');
         $this->db->from('attestation');
         $this->db->where('id_type_attestation', 3);
-        $this->db->where('accepte IS NULL');
+        // $this->db->where('accepte IS NULL');
         // $this->db->where('accepte', true);
         $this->db->order_by('date_attestation DESC');
         $query = $this->db->get();

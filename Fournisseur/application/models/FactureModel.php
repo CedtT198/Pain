@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class BonDeLivraisonModel extends CI_Model {
+class FactureModel extends CI_Model {
     // Constructeur
     public function __construct() {
         parent::__construct();
@@ -23,9 +23,10 @@ class BonDeLivraisonModel extends CI_Model {
     public function getAll($id_fournisseur) {
         $this->db->select('*');
         $this->db->from('attestation');
-        $this->db->where('id_type_attestation', 3);
-        $this->db->where('accepte IS NULL'); 
+        $this->db->where('id_type_attestation', 4);
+        // $this->db->where('accepte IS NULL'); 
         $this->db->where('id_fournisseur', $id_fournisseur);  
+        $this->db->order_by('date_attestation DESC');
         $query = $this->db->get();
         
         return $query->result_array();  // Retourne toutes les lignes sous forme d'objets
@@ -45,7 +46,7 @@ class BonDeLivraisonModel extends CI_Model {
                     LEFT JOIN 
                         attestation a2 ON a1.id_attestation = a2.id_correspondance
                     LEFT JOIN 
-                        produitsInAttestation pbl ON a2.id_attestation = pbl.id_attestation AND pbl.id_type_attestation = 3
+                        produitsInAttestation pbl ON a2.id_attestation = pbl.id_attestation AND pbl.id_type_attestation = 4
                     WHERE 
                         pbc.id_attestation = ".$id_bonCommande."
                         AND pbc.id_type_attestation = 1
@@ -68,7 +69,7 @@ class BonDeLivraisonModel extends CI_Model {
     public function getAllTrue($id_fournisseur) {
         $this->db->select('*');
         $this->db->from('attestation');
-        $this->db->where('id_type_attestation', 3);
+        $this->db->where('id_type_attestation', 4);
         $this->db->where('accepte', TRUE);
         $this->db->where('id_fournisseur', $id_fournisseur);
         $query = $this->db->get();
@@ -79,7 +80,7 @@ class BonDeLivraisonModel extends CI_Model {
     // Fonction pour lire un bon de commande par ID
     public function getById($id) {
         $this->db->where('id_attestation', $id);
-        $this->db->where('id_type_attestation', 3); // Assurer que c'est un bon de commande
+        $this->db->where('id_type_attestation', 4); // Assurer que c'est un bon de commande
         $query = $this->db->get('attestation');
         return $query->row_array();
     }
@@ -87,14 +88,14 @@ class BonDeLivraisonModel extends CI_Model {
     // Fonction pour mettre à jour un bon de commande
     public function update($id, $data) {
         $this->db->where('id_attestation', $id);
-        $this->db->where('id_type_attestation', 3); // Assurer que c'est un bon de commande
+        $this->db->where('id_type_attestation', 4); // Assurer que c'est un bon de commande
         return $this->db->update('attestation', $data);
     }
 
     // Fonction pour supprimer un bon de commande
     public function delete($id) {
         $this->db->where('id_attestation', $id);
-        $this->db->where('id_type_attestation', 3); // Assurer que c'est un bon de commande
+        $this->db->where('id_type_attestation', 4); // Assurer que c'est un bon de commande
         return $this->db->delete('attestation');
     }
 
@@ -105,7 +106,7 @@ class BonDeLivraisonModel extends CI_Model {
         $this->db->join('fournisseur f', 'a.id_fournisseur = f.id_fournisseur', 'left');
         $this->db->join('produitsInAttestation pai', 'a.id_attestation = pai.id_attestation', 'left');
         $this->db->join('produit p', 'pai.id_produit = p.id_produit', 'left');
-        $this->db->where('a.id_type_attestation', 3); // 1 est l'ID pour 'Bon de commande'
+        $this->db->where('a.id_type_attestation', 4); // 1 est l'ID pour 'Bon de commande'
         $query = $this->db->get();
 
         return $query->result_array();

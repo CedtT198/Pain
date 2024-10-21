@@ -21,6 +21,7 @@ class ProduitInAttestationModel extends CI_Model {
 
     public function getProduitByAttestation($id_attestation) {
         $query = "SELECT 
+                                p.id_produit, 
                                 p.nom_produit, 
                                 pf.montant, 
                                 pa.quantite

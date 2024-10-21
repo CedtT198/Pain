@@ -99,6 +99,13 @@
                                                                                                                                                    </div>
                                                                                                                                                    <div class="row">
                                                                                                                                                           <div class="col-md-7"></div>
+                                                                                                                                                          <!-- <div class="col-md-4"></div>
+                                                                                                                                                          <div class="col-md-3">        
+                                                                                                                                                                 <form action="<?php echo site_url('AttestationController/insert'); ?>" method="post">
+                                                                                                                                                                        <input type="hidden" name="id_attestation" value="<?php echo $com['id_attestation']; ?>">
+                                                                                                                                                                        <button type="submit" class="btn btn-outline-success btn-fw">Comparer validité</button>
+                                                                                                                                                                 </form>
+                                                                                                                                                          </div> -->
                                                                                                                                                           <div class="col-md-5">
                                                                                                                                                                  <p class="font-weight-bold">TOTAL : <code><?php echo $total;?></code></p>
                                                                                                                                                           </div>

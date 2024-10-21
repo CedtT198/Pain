@@ -556,3 +556,112 @@ WHERE a1.id_type_attestation = 1
   AND a1.accepte = TRUE
   AND a1.id_fournisseur = 1
   AND a2.id_attestation IS NULL;
+
+
+
+
+
+
+
+
+
+
+WITH RECURSIVE AttestationChain AS (
+    SELECT 
+        a.id_attestation,
+        a.id_correspondance
+    FROM 
+        attestation a
+    WHERE 
+        a.id_attestation = 20
+    
+    UNION ALL
+    
+    SELECT 
+        a.id_attestation,
+        a.id_correspondance
+    FROM 
+        attestation a
+    INNER JOIN 
+        AttestationChain ac ON a.id_attestation = ac.id_correspondance
+)
+SELECT * FROM AttestationChain;
+
+
+
+
+
+
+-- depart : bon de reception - bon de commande
+WITH RECURSIVE AttestationChain AS (
+    -- Point de départ : récupérer toutes les attestations liées à un id_attestation donné
+    SELECT 
+        a.id_attestation,
+        a.id_correspondance,
+        a.libelle
+    FROM 
+        attestation a
+    WHERE 
+        a.id_attestation = 20  -- Remplacez '1' par l'ID de départ
+    
+    UNION ALL
+    
+    -- Récursion : Trouver toutes les attestations liées via id_correspondance
+    SELECT 
+        a.id_attestation,
+        a.id_correspondance,
+        a.libelle
+    FROM 
+        attestation a
+    INNER JOIN 
+        AttestationChain ac ON a.id_attestation = ac.id_correspondance
+)
+SELECT * FROM AttestationChain;
+
+
+
+-- depart : bon de commande - bon de reception
+WITH RECURSIVE AttestationChain AS (
+    -- Point de départ : l'attestation de type 'Bon de commande'
+    SELECT 
+        a.id_attestation,
+        a.id_correspondance
+    FROM 
+        attestation a
+    WHERE 
+        a.id_attestation = 6 
+    
+    UNION ALL
+    
+    -- Récursion : Trouver toutes les attestations qui ont le bon de commande comme id_correspondance
+    SELECT 
+        a.id_attestation,
+        a.id_correspondance
+    FROM 
+        attestation a
+    INNER JOIN 
+        AttestationChain ac ON a.id_correspondance = ac.id_attestation
+)
+SELECT * FROM AttestationChain;
+
+
+
+
+
+
+
+
+
+
+
+SELECT 
+    a1.id_correspondance, 
+    a1.id_attestation AS bon_livraison, 
+    a2.id_attestation AS bon_reception
+FROM 
+    attestation a1
+LEFT JOIN 
+    attestation a2 ON a1.id_attestation = a2.id_correspondance
+WHERE 
+    a1.id_correspondance = 6;
+

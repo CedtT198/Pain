@@ -37,10 +37,12 @@
                                                                       <td><?php echo $com['date_attestation']; ?></td>
                                                                       <td><button type="button" class="btn btn-outline-primary btn-fw" onclick="toggleDetails('details<?php echo $id;?>')">Details</button></td>
                                                                       <td>
-                                                                             <form action="<?php echo site_url('BonReceptionController/insert'); ?>" method="post">
-                                                                                    <input type="hidden" name="id_attestation" value="<?php echo $com['id_attestation']; ?>">
-                                                                                    <button type="submit" class="btn btn-outline-success btn-fw">Créer bon de réception</button>
-                                                                             </form>
+                                                                             <?php if (!$com['accepte']) { ?>
+                                                                                    <form action="<?php echo site_url('BonReceptionController/insert'); ?>" method="post">
+                                                                                           <input type="hidden" name="id_attestation" value="<?php echo $com['id_attestation']; ?>">
+                                                                                           <button type="submit" class="btn btn-outline-success btn-fw">Créer bon de réception</button>
+                                                                                    </form>
+                                                                             <?php } ?>
                                                                       </td>
                                                                </tr>
                                                                <tr  id="details<?php echo $id;?>" style="display:none">   <!-- ilay tr mipoitra refa miclique details -->

@@ -16,8 +16,8 @@ class BonReceptionController extends CI_Controller {
     }
 
     public function index() {
-        $data['contents'] = 'page/ListeBonLivraison';
-        $data['livraisons'] = $this->BonDeLivraisonModel->getAll();
+        $data['contents'] = 'page/ListeBonReception';
+        $data['livraisons'] = $this->BonDeReceptionModel->getAll();
         $this->load->view('template/template', $data);
     }
 

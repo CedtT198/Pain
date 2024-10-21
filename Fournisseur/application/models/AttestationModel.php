@@ -1,5 +1,26 @@
 <?php
 class AttestationModel extends CI_Model {
+    
+    public function getById($id) {
+        $this->db->where('id_attestation', $id);
+        return $this->db->get('attestation')->row_array();
+    }
+
+    public function getIdCorrespondances($id_depart) {
+        $query = $this->db->query('SELECT 
+                                                                a1.id_correspondance, 
+                                                                a1.id_attestation AS  bon_livraison, 
+                                                                a2.id_attestation AS bon_reception
+                                                            FROM 
+                                                                attestation a1
+                                                            LEFT JOIN 
+                                                                attestation a2 ON a1.id_attestation = a2.id_correspondance
+                                                            WHERE 
+                                                                a1.id_type_attestation % 4 and
+                                                                a1.id_correspondance = '.$id_depart);
+        return $query->result_array();
+    }
+
     private function getAttestationByType($type) {
         $this->db->select('attestation.id_fournisseur, produitsInAttestation.id_produit');
         $this->db->from('attestation');

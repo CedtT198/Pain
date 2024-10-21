@@ -13,6 +13,11 @@
               <div class="card">
                      <div class="card-body">
                             <p class="card-title">Liste</p>
+                            <?php if (isset($error)) { ?>
+                                   <p style="color:red;"><?php echo $error; ?></p>
+                            <?php }if (isset($success)) { ?>
+                                   <p style="color:green;"><?php echo $success; ?></p>
+                            <?php } ?>
                             <div class="row">
                                    <div class="col-12">
                                           <div class="table-responsive">

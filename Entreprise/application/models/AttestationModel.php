@@ -1,5 +1,35 @@
 <?php
 class AttestationModel extends CI_Model {
+
+    public function getById($id) {
+        $this->db->where('id_attestation', $id);
+        return $this->db->get('attestation')->row_array();
+    }
+
+    public function getIdCorrespondances($id_depart) {
+        $query = $this->db->query('WITH RECURSIVE AttestationChain AS (
+                            SELECT 
+                                a.id_attestation,
+                                a.id_correspondance
+                            FROM 
+                                attestation a
+                            WHERE 
+                                a.id_attestation = '.$id_depart.'
+                            
+                            UNION ALL
+                            
+                            SELECT 
+                                a.id_attestation,
+                                a.id_correspondance
+                            FROM 
+                                attestation a
+                            INNER JOIN 
+                                AttestationChain ac ON a.id_attestation = ac.id_correspondance
+                        )
+                        SELECT * FROM AttestationChain');
+        return $query->row_array();
+    }
+
     private function getAttestationByType($type) {
         $this->db->select('attestation.id_fournisseur, produitsInAttestation.id_produit');
         $this->db->from('attestation');
