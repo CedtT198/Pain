@@ -6,12 +6,11 @@ class FactureModel extends CI_Model {
         return $this->db->insert('attestation', $data);
     }
 
-
     public function getAll() {
         $this->db->select('*');
         $this->db->from('attestation');
         $this->db->where('id_type_attestation', 4);
-        $this->db->where('accepte IS NULL');  // Accepte NULL
+        // $this->db->where('accepte IS NULL');  // Accepte NULL
         $query = $this->db->get();
         
         return $query->result_array();  // Retourne toutes les lignes sous forme d'objets

@@ -33,8 +33,20 @@
                                                  </select>
                                           </div>
                                    </div>
-                                   <button type="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
-                                   <!-- <button type="submit" class="btn btn-primary mr-2">Submit</button> -->
+                                   <div class="row">
+                                          <div class="col-md-10">
+                                                 <button type="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
+                                          </div>
+                                          <div class="col-md-2  dropdown">
+                                                 <button type="button" class="btn btn-outline-danger" id="dropupMenuIconButton3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        <i class="mdi mdi-help"></i>
+                                                 </button>
+                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuIconButton3">
+                                                        <h6 class="dropdown-header">A vérifier</h6>
+                                                        <a class="dropdown-item" href="<?php echo site_url('FactureController'); ?>">Voir chaque détails des factures à insérer</a>
+                                                 </div>
+                                          </div>
+                                   </div>
                             </form>
                      </div>
               </div>

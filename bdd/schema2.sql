@@ -210,7 +210,7 @@ INSERT INTO nature (id_nature,nom_nature) VALUES
 INSERT INTO centre VALUES
 (null, "Courses"),
 (null, "Usine"),
-(null, "Administration"),
+(null, "Administ²ration"),
 (null, "Livraison");
 
 INSERT INTO charge (id_nature, id_rubrique, id_type, unite, montant, date_charge) VALUES
@@ -249,8 +249,8 @@ INSERT INTO fournisseur (nom_fournisseur, attribution) VALUES
 ('Fournisseur C', 10);
 
 INSERT INTO produit (nom_produit) VALUES 
-('Farine'),
-('Sucre'),
+('Telephone'),
+('Souris'),
 ('Ordinateur'),
 ('Coffre'),
 ('Refrigerateur');
@@ -279,13 +279,13 @@ INSERT INTO produitInFournisseur (id_fournisseur, id_produit, quantite, montant)
 (3, 4, 250, 20.00),   -- Souris chez Fournisseur C
 (3, 5, 12, 310.00);   -- Imprimante chez Fournisseur C
 
-INSERT INTO demande_besoin (description, quantite, accepte, date_demande, id_centre, id_produit) VALUES
-('Demande de 10 ordinateurs portables', 10, null, '2024-10-01', 3, 3),  -- Demande de 10 ordinateurs portables pour le centre 1
-('Demande de 15 écrans', 15, null, '2024-10-03', 3, 3),               -- Demande de 15 écrans pour le centre 2
-('Demande de 50kg farine', 50, null, '2024-10-05', 2, 1),               -- Demande de 50 claviers pour le centre 3
-('Demande de 100kg sucre', 100, null, '2024-10-10', 2, 2),               -- Demande de 100 souris pour le centre 1
-('Demande de 5 refrigerateur', 5, null, '2024-10-12', 3, 5),             -- Demande de 5 imprimantes pour le centre 2
-('Demande de 5 refrigerateur', 5, null, '2024-10-12', 4, 5);             -- Demande de 5 imprimantes pour le centre 2
+-- INSERT INTO demande_besoin (description, quantite, accepte, date_demande, id_centre, id_produit) VALUES
+-- ('Demande de 10 ordinateurs portables', 10, null, '2024-10-01', 3, 3),  -- Demande de 10 ordinateurs portables pour le centre 1
+-- ('Demande de 15 écrans', 15, null, '2024-10-03', 3, 3),               -- Demande de 15 écrans pour le centre 2
+-- ('Demande de 50kg farine', 50, null, '2024-10-05', 2, 1),               -- Demande de 50 claviers pour le centre 3
+-- ('Demande de 100kg sucre', 100, null, '2024-10-10', 2, 2),               -- Demande de 100 souris pour le centre 1
+-- ('Demande de 5 refrigerateur', 5, null, '2024-10-12', 3, 5),             -- Demande de 5 imprimantes pour le centre 2
+-- ('Demande de 5 refrigerateur', 5, null, '2024-10-12', 4, 5);             -- Demande de 5 imprimantes pour le centre 2
 
 
 INSERT INTO input_stock (date_input, quantite, id_produit) VALUES

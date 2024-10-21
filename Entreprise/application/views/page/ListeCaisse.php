@@ -11,7 +11,7 @@
                                           <tr>
                                                  <th>id</th>
                                                  <th>Date</th>
-                                                 <th>Montant</th>
+                                                 <th>Mouvement</th>
                                           </tr>
                                    </thead>
                                     <tbody>

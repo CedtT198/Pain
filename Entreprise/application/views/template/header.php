@@ -87,12 +87,15 @@
               <!-- ============ debut lien sisiny ============= -->
               <!-- ============ debut lien sisiny ============= -->
               <!-- ============ debut lien sisiny ============= --> 
-          <li class="nav-item">
-            <a class="nav-link" href="<?php echo site_url('CaisseController'); ?>">
-              <i class="icon-layout menu-icon"></i>
-              <span class="menu-title">Caisse</span>
-            </a>
-          </li>
+               
+           <?php if ($id_depa == 6) { ?>
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo site_url('CaisseController'); ?>">
+                <i class="icon-layout menu-icon"></i>
+                <span class="menu-title">Caisse</span>
+              </a>
+            </li>
+          <?php } ?>
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#rubrique" aria-expanded="false" aria-controls="rubrique">
               <i class="icon-grid menu-icon"></i>
@@ -177,7 +180,9 @@
             <div class="collapse" id="stock">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('StockController'); ?>">Liste</a></li>
-                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('StockController/index2'); ?>">insertion</a></li>
+                <?php if ($id_depa == 5) { ?>
+                  <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('StockController/index2'); ?>">insertion</a></li>
+                <?php } ?>
               </ul>
             </div>
           </li>
@@ -225,7 +230,7 @@
               </ul>
             </div>
           </li>
-          <?php } if ($id_depa == 7 || $id_depa == 6) { ?>
+          <?php } if ($id_depa == 7 || $id_depa == 6 || $id_depa == 5) { ?>
           <li class="nav-item">
             <a class="nav-link" href="<?php echo site_url('FactureController'); ?>">
               <i class="icon-layout menu-icon"></i>
