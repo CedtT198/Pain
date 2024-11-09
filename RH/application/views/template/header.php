@@ -94,10 +94,10 @@
             </a>
             <div class="collapse" id="annonce">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('Controller'); ?>">Insertion</a></li>
+                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('AnnonceController'); ?>">Insertion</a></li>
                 <!-- <?php if ($id_depa < 5) { ?> -->
                   <li class="nav-item">
-                    <a class="nav-link" href="<?php echo site_url('Controller'); ?>">Liste avec tous les <br>candidatures</a>
+                    <a class="nav-link" href="<?php echo site_url('Controller/index2'); ?>">Liste avec tous les <br>candidatures</a>
                   </li>
                 <!-- <?php } ?> -->
               </ul>
