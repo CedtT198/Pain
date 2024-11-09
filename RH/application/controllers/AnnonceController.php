@@ -12,5 +12,12 @@ class AnnonceController extends CI_Controller {
         // $data['receptions'] = $this->BonDeReceptionModel->getAll($id_fournisseur);
         $this->load->view('template/template', $data);
     }
+
+    public function index2() {
+        $data['contents'] = 'page/ListeAnnonce';
+        // $data['receptions'] = $this->BonDeReceptionModel->getAll($id_fournisseur);
+        $this->load->view('template/template', $data);
+    }
+
 }
 ?>
