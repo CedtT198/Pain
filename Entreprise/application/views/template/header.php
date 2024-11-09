@@ -88,7 +88,7 @@
               <!-- ============ debut lien sisiny ============= -->
               <!-- ============ debut lien sisiny ============= --> 
                
-           <?php if ($id_depa == 6) { ?>
+           <?php if ($id_depa == 6 || $id_depa == 7) { ?>
             <li class="nav-item">
               <a class="nav-link" href="<?php echo site_url('CaisseController'); ?>">
                 <i class="icon-layout menu-icon"></i>
@@ -199,7 +199,7 @@
               </ul>
             </div>
           </li> -->
-           <?php if ($id_depa == 5) { ?>
+           <?php if ($id_depa == 5 || $id_depa == 7) { ?>
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#achat" aria-expanded="false" aria-controls="achat">
               <i class="icon-grid menu-icon"></i>
@@ -216,7 +216,7 @@
               </ul>
             </div>
           </li>
-          <?php } if ($id_depa == 6) { ?>
+          <?php } if ($id_depa == 6 || $id_depa == 7) { ?>
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#finance" aria-expanded="false" aria-controls="finance">
               <i class="icon-grid menu-icon"></i>

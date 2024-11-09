@@ -1,3 +1,10 @@
+<?php 
+  for ($i=1; $i < 10000; $i*=2) { 
+    $f = new NumberFormatter("fr", NumberFormatter::SPELLOUT);
+    echo $f->format($i) . "\n"; 
+  }
+?>
+
 <!-- <h1>ok</h1> -->
 
 <!DOCTYPE html>
