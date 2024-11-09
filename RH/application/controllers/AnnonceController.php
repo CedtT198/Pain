@@ -7,5 +7,10 @@ class AnnonceController extends CI_Controller {
         parent::__construct();
     }
 
+    public function index() {
+        $data['contents'] = 'page/FormulaireAnnonce';
+        // $data['receptions'] = $this->BonDeReceptionModel->getAll($id_fournisseur);
+        $this->load->view('template/template', $data);
+    }
 }
 ?>
