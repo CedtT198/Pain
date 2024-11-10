@@ -107,7 +107,7 @@
 
 
 
-                                                               <tr  id="listeCV1" style="display:table-row">   <!-- ilay tr mipoitra refa miclique Liste CV -->
+                                                               <tr  id="listeCV1" style="display:none">   <!-- ilay tr mipoitra refa miclique Liste CV -->
                                                                       <td colspan="8">
                                                                              <table cellpadding="5" cellspacing="0" border="0" style="width:100%">
                                                                                     <tbody>
