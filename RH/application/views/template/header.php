@@ -112,7 +112,7 @@
             <div class="collapse" id="personnel">
               <ul class="nav flex-column sub-menu">
                 <li>Côté dev</li>
-                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('Controller'); ?>">Insertion personnel</a></li>
+                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('PersonnelController'); ?>">Insertion personnel</a></li>
                 <!-- <?php if ($id_depa < 5) { ?> -->
                   <li class="nav-item">
                     <a class="nav-link" href="<?php echo site_url('Controller'); ?>">Liste du personnel</a>
@@ -121,7 +121,7 @@
                 <!-- <?php } ?> -->
                 <li>Côté candidat</li>
                 <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('CandidatureController'); ?>">Candidater</a></li>
-                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('Controller'); ?>">Insertion <br>expériences<br>professionnelles</a></li>
+                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('ExperienceTravailController'); ?>">Insertion <br>expériences<br>professionnelles</a></li>
               </ul>
             </div>
           </li>
@@ -133,10 +133,10 @@
             </a>
             <div class="collapse" id="rendezvous">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('Controller'); ?>">Insertion</a></li>
+                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('RendezVousController/index2'); ?>">Insertion</a></li>
                 <!-- <?php if ($id_depa < 5) { ?> -->
                   <li class="nav-item">
-                    <a class="nav-link" href="<?php echo site_url('Controller'); ?>">Liste</a>
+                    <a class="nav-link" href="<?php echo site_url('RendezVousController'); ?>">Liste</a>
                   </li>
                 <!-- <?php } ?> -->
               </ul>
@@ -150,10 +150,10 @@
             </a>
             <div class="collapse" id="resulttest">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('Controller'); ?>">Insertion</a></li>
+                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('ResultatTestController/index2'); ?>">Insertion</a></li>
                 <!-- <?php if ($id_depa < 5) { ?> -->
                   <li class="nav-item">
-                    <a class="nav-link" href="<?php echo site_url('Controller'); ?>">Liste des tests</a>
+                    <a class="nav-link" href="<?php echo site_url('ResultatTestController'); ?>">Liste des tests</a>
                   </li>
                 <!-- <?php } ?> -->
               </ul>

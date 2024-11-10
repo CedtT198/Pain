@@ -6,6 +6,11 @@ class PersonnelController extends CI_Controller {
     public function __construct() {
         parent::__construct();
     }
+    
+    public function index() {
+        $data['contents'] = 'page/FormulairePersonnel';
+        $this->load->view('template/template', $data);
+    }
 
 }
 ?>

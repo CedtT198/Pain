@@ -7,5 +7,16 @@ class RendezVousController extends CI_Controller {
         parent::__construct();
     }
 
+    public function index() {
+        $data['contents'] = 'page/ListeRendezVous';
+        $this->load->view('template/template', $data);
+    }
+
+    public function index2() {
+        $data['contents'] = 'page/FormulaireRendezVous';
+        $this->load->view('template/template', $data);
+    }
+
+
 }
 ?>
