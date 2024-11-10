@@ -115,7 +115,7 @@
                 <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('PersonnelController'); ?>">Insertion personnel</a></li>
                 <!-- <?php if ($id_depa < 5) { ?> -->
                   <li class="nav-item">
-                    <a class="nav-link" href="<?php echo site_url('Controller'); ?>">Liste du personnel</a>
+                    <a class="nav-link" href="<?php echo site_url('PersonnelController/index2'); ?>">Liste du personnel</a>
                   </li>
 
                 <!-- <?php } ?> -->
@@ -155,6 +155,23 @@
                   <li class="nav-item">
                     <a class="nav-link" href="<?php echo site_url('ResultatTestController'); ?>">Liste des tests</a>
                   </li>
+                <!-- <?php } ?> -->
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#resulttest" aria-expanded="false" aria-controls="resulttest">
+              <i class="icon-grid menu-icon"></i>
+              <span class="menu-title">Contrat</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="resulttest">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('ContratController/index2'); ?>">Insertion</a></li>
+                <!-- <?php if ($id_depa < 5) { ?> -->
+                  <!-- <li class="nav-item">
+                    <a class="nav-link" href="<?php echo site_url('Controller'); ?>">Liste des tests</a>
+                  </li> -->
                 <!-- <?php } ?> -->
               </ul>
             </div>
