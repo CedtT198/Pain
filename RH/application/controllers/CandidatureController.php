@@ -7,5 +7,11 @@ class CandidatureController extends CI_Controller {
         parent::__construct();
     }
 
+    public function index() {
+        $data['contents'] = 'page/FormulaireCandidature';
+        // $data['receptions'] = $this->BonDeReceptionModel->getAll($id_fournisseur);
+        $this->load->view('template/template', $data);
+    }
+
 }
 ?>

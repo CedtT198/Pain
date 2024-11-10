@@ -9,7 +9,7 @@
                                           <h4 class="card-title">FORMULAIRE D'INSERTION ANNONCE</h4>
                                    </div>
                             </div>
-                            <p class="card-description">Message :</p>
+                            <p class="card-description">Message :  <span class="text-info"> Annonce Enregistre ! </span> </p>
                             <form class="forms-sample">
                                    <div class="row">
                                           <div class="col-md-6">

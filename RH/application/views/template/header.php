@@ -120,7 +120,7 @@
 
                 <!-- <?php } ?> -->
                 <li>Côté candidat</li>
-                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('Controller'); ?>">Candidater</a></li>
+                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('CandidatureController'); ?>">Candidater</a></li>
                 <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('Controller'); ?>">Insertion <br>expériences<br>professionnelles</a></li>
               </ul>
             </div>
