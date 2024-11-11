@@ -37,8 +37,8 @@
                                                                       <td><?php echo $annonce['date_annonce'];?></td>
                                                                       <td><?php echo $annonce['poste_nom'];?></td>
                                                                       <td>
-                                                                             <button type="button" class="btn btn-outline-primary btn-fw" onclick="toggleDetails('details<?php echo $i;?>','listeCV<?php echo $i;?>')">Details</button>
-                                                                             <button type="button" class="btn btn-outline-primary btn-fw" onclick="toggleDetails('listeCV<?php echo $i;?>','details<?php echo $i;?>')">Voir liste candidature</button>
+                                                                             <button type="button" class="btn btn-outline-warning btn-fw" onclick="toggleDetails('details<?php echo $i;?>','listeCV<?php echo $i;?>')">Details</button>
+                                                                             <button type="button" class="btn btn-outline-info btn-fw" onclick="toggleDetails('listeCV<?php echo $i;?>','details<?php echo $i;?>')">Voir liste candidature</button>
                                                                       </td>
                                                                </tr>
 
@@ -133,22 +133,21 @@
                                                                                                                                                           <div class="col-md-11 grid-margin stretch-card">
                                                                                                                                                                  <div class="card position-relative">
                                                                                                                                                                         <div class="card-body">
-                                                                                                                                                                               <?php
-                                                                                                                                                                               $id = 0;
-                                                                                                                                                                               // $candidatures = $this->CandidatureModel->getAllForAnnonce($annonce['id_annonce']);
-                                                                                                                                                                               $candidatures = $this->CandidatureModel->getAllWithExperience($annonce['id_annonce']);
-                                                                                                                                                                               foreach($candidatures as $candidature) { ?>
-                                                                                                                                                                               <div id="detailedReports<?php echo $i.$id;?>" class="carousel slide detailed-report-carousel position-static pt-2">
+                                                                                                                                                                               <div id="detailedReports<?php echo $i; ?>" class="carousel slide detailed-report-carousel position-static pt-2">
                                                                                                                                                                                       <div class="carousel-inner">
                                                                                                                                                                                              <?php
+                                                                                                                                                                                             $id = 0;
+
+                                                                                                                                                                                             // $candidatures = $this->CandidatureModel->getAllForAnnonce($annonce['id_annonce']);
+                                                                                                                                                                                             $candidatures = $this->CandidatureModel->getQualifiedCandidates($annonce['id_annonce']);
                                                                                                                                                                                              // echo $annonce['id_annonce'];
                                                                                                                                                                                              // echo var_dump($candidatures);
+                                                                                                                                                                                             foreach($candidatures as $candidature) {
                                                                                                                                                                                                     if ($id == 0) { ?>
                                                                                                                                                                                                            <div class="carousel-item active">
                                                                                                                                                                                                     <?php } else { ?>
                                                                                                                                                                                                            <div class="carousel-item activer">
                                                                                                                                                                                                     <?php } ?>
-                                                                                                                                                                                             <!-- <div class="carousel-item active"> -->
                                                                                                                                                                                              
                                                                                                                                                                                                     <div class="row">
                                                                                                                                                                                                            <div class="col-md-2"></div>
@@ -212,17 +211,17 @@
                                                                                                                                                                                                            </div>
                                                                                                                                                                                                     </div>
                                                                                                                                                                                              </div>
+                                                                                                                                                                                             <?php $id++; } ?>
                                                                                                                                                                                       </div>
-                                                                                                                                                                                      <a class="carousel-control-prev" href="#detailedReports<?php echo $i.$id;?>" role="button" data-slide="prev">
+                                                                                                                                                                                      <a class="carousel-control-prev" href="#detailedReports<?php echo $i; ?>" role="button" data-slide="prev">
                                                                                                                                                                                              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                                                                                                                                                                              <span class="sr-only">Previous</span>
                                                                                                                                                                                       </a>
-                                                                                                                                                                                      <a class="carousel-control-next" href="#detailedReports<?php echo $i.$id;?>" role="button" data-slide="next">
+                                                                                                                                                                                      <a class="carousel-control-next" href="#detailedReports<?php echo $i;  ?>" role="button" data-slide="next">
                                                                                                                                                                                              <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                                                                                                                                                                              <span class="sr-only">Next</span>
                                                                                                                                                                                       </a>
                                                                                                                                                                                </div>
-                                                                                                                                                                               <?php $id++; } ?>
                                                                                                                                                                         </div>
                                                                                                                                                                  </div>
                                                                                                                                                           </div>

@@ -19,7 +19,7 @@ class AnnonceController extends CI_Controller {
         $data['postes'] = $this->PosteModel->getAll();
         $data['travails'] = $this->TravailModel->getAll();
         $data['type_contrats'] = $this->TypeContratModel->getAll();
-        $data['contents'] = 'page/FormulaireAnnonce';
+        $data['contents'] = 'page/FormulaireAnnonce'; 
         $this->load->view('template/template', $data);
     }
     
