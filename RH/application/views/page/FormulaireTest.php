@@ -6,7 +6,7 @@
                             <div class="row">
                                    <div class="col-md-2"></div>
                                    <div class="col-md-8">
-                                          <h4 class="card-title">FORMULAIRE D'INSERTION RESULTAT DE TEST</h4>
+                                          <h4 class="card-title">PROGRAMMER UN TEST</h4>
                                    </div>
                             </div>
                             <?php if (isset($success)) { ?>
@@ -14,25 +14,20 @@
                             <?php  } if (isset($error)) { ?>
                                    <p class="card-description"><span class="text-info"><?php echo $error; ?> </span> </p>
                             <?php  } ?>
-                            <form class="forms-sample" method="post" action ="<?php echo site_url('ResultatTestController/insert'); ?>">
+                            <form class="forms-sample" method="post" action ="<?php echo site_url('TestController/insert'); ?>">
                                    <div class="form-group">
-                                          <label for="id_test">Candidat</label>
-                                          <select class="form-control" id="id_test" name="id_test">
-                                                 <?php  foreach ($tests as $test) { ?>
-                                                        <option value="<?php echo $test['id_test']; ?>">
-                                                               <?php echo $test['date_test'] ; ?> - 
-                                                               <?php echo $test['nom'] . ' ' . $test['prenom']; ?>
+                                          <label for="id_candidature">Candidat</label>
+                                          <select class="form-control" id="id_candidature" name="id_candidature">
+                                                 <?php  foreach ($candidatures as $candidature) { ?>
+                                                        <option value="<?php echo $candidature['id_candidature']; ?>">
+                                                               <?php echo $candidature['nom'] . ' ' . $candidature['prenom']; ?>
                                                         </option>
                                                  <?php } ?>
                                           </select>
                                    </div>
                                    <div class="form-group">
-                                          <label for="note">Note</label>
-                                          <input type="number" class="form-control" id="note" name="note" placeholder="Note">
-                                   </div>
-                                   <div class="form-group">
-                                          <label for="date_resultat_test">Date de resultat de test</label>
-                                          <input type="date" class="form-control" id="date_resultat_test" name="date_resultat_test">
+                                          <label for="date_test">Date de test</label>
+                                          <input type="date" class="form-control" id="date_test" name="date_test">
                                    </div>
                                    <div class="row">
                                           <div class="col-md-5"></div>

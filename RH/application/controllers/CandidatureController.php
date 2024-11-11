@@ -24,7 +24,7 @@ class CandidatureController extends CI_Controller {
             'prenom' => $this->input->post('prenom'),
             'date_naissance' => $this->input->post('date_naissance'),
             'date_candidature' => $this->input->post('date_candidature'),
-            'id_diplome' => $this->input->post('diplome')
+            'id_diplome' => $this->input->post('id_diplome')
         );
         $id_candidature = $this->CandidatureModel->insert($data);
         

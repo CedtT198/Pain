@@ -87,6 +87,19 @@
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
           <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#demadne_besoin" aria-expanded="false" aria-controls="demadne_besoin">
+              <i class="icon-grid menu-icon"></i>
+              <span class="menu-title">Demande <br>de besoin</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="demadne_besoin">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('DemandeBesoinController/index'); ?>">Insertion</a></li>
+                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('DemandeBesoinController/index2'); ?>">Liste</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#annonce" aria-expanded="false" aria-controls="annonce">
               <i class="icon-grid menu-icon"></i>
               <span class="menu-title">Annonce</span>
@@ -127,9 +140,24 @@
             </div>
           </li>
           <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#resulttest" aria-expanded="false" aria-controls="resulttest">
+              <i class="icon-grid menu-icon"></i>
+              <span class="menu-title">Test</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="resulttest">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"><a class="nav-link" href="<?php echo site_url('TestController/index'); ?>">Insertion d'un test</a></li>
+                <li class="nav-item"><a class="nav-link" href="<?php echo site_url('TestController/index2'); ?>">Liste rendez-vous <br> test</a></li>
+                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('ResultatTestController/index'); ?>">Insertion notes</a></li>
+                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('ResultatTestController/index2'); ?>">Résultats tests</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#rendezvous" aria-expanded="false" aria-controls="rendezvous">
               <i class="icon-grid menu-icon"></i>
-              <span class="menu-title">Rendez vous</span>
+              <span class="menu-title">Rendez-vous <br>pour un entretien</span>
               <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="rendezvous">
@@ -138,23 +166,6 @@
                 <!-- <?php if ($id_depa < 5) { ?> -->
                   <li class="nav-item">
                     <a class="nav-link" href="<?php echo site_url('RendezVousController/index2'); ?>">Liste</a>
-                  </li>
-                <!-- <?php } ?> -->
-              </ul>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#resulttest" aria-expanded="false" aria-controls="resulttest">
-              <i class="icon-grid menu-icon"></i>
-              <span class="menu-title">Résultats tests</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="resulttest">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('ResultatTestController/index'); ?>">Insertion</a></li>
-                <!-- <?php if ($id_depa < 5) { ?> -->
-                  <li class="nav-item">
-                    <a class="nav-link" href="<?php echo site_url('ResultatTestController/index2'); ?>">Liste des tests</a>
                   </li>
                 <!-- <?php } ?> -->
               </ul>

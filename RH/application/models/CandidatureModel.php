@@ -49,10 +49,11 @@ class CandidatureModel extends CI_Model {
         $query = $this->db->get();
         return $query->result_array();
     }
+    
     public function getQualifiedCandidates($id_annonce) {
         $sql = "
             SELECT 
-                *,
+                *, candidature.nom as candidature_nom,
                 SUM(experience_travail.duree) AS total_experience,
                 diplome.nom AS diplome_nom
             FROM 

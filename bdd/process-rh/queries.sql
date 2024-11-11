@@ -81,32 +81,30 @@ ORDER BY
 
 
 
-SELECT 
-    candidature.*, 
-    annonce.duree_exp_requise,
-    SUM(experience_travail.duree) AS total_experience, 
-    diplome.nom AS diplome_nom, 
-    diplome.valeur AS diplome_valeur
-FROM 
-    candidature
-JOIN 
-    candidature_in_annonce ON candidature_in_annonce.id_candidature = candidature.id_candidature
-JOIN 
-    annonce ON annonce.id_annonce = candidature_in_annonce.id_annonce
-JOIN 
-    experience_travail ON experience_travail.id_candidature = candidature.id_candidature
-JOIN 
-    diplome ON diplome.id_diplome = candidature.id_diplome
-WHERE 
-    annonce.id_annonce = 2
-    AND experience_travail.id_travail = annonce.id_travail  -- Condition de même type de travail
-GROUP BY 
-    candidature.id_candidature
-HAVING 
-    SUM(experience_travail.duree) >= annonce.duree_exp_requise
-ORDER BY 
-    total_experience DESC, 
-    diplome.valeur DESC;
+            SELECT 
+                *, candidat_nom,
+                SUM(experience_travail.duree) AS total_experience,
+                diplome.nom AS diplome_nom
+            FROM 
+                candidature
+            JOIN 
+                candidature_in_annonce ON candidature.id_candidature = candidature_in_annonce.id_candidature
+            JOIN 
+                annonce ON annonce.id_annonce = candidature_in_annonce.id_annonce
+            JOIN 
+                experience_travail ON experience_travail.id_candidature = candidature.id_candidature
+            JOIN 
+                diplome ON diplome.id_diplome = candidature.id_diplome
+            WHERE 
+                annonce.id_annonce = 2
+                AND experience_travail.id_travail = annonce.id_travail  -- Condition pour vérifier le même type de travail
+            GROUP BY 
+                candidature.id_candidature
+            HAVING 
+                SUM(experience_travail.duree) >= annonce.duree_exp_requise
+            ORDER BY 
+                total_experience DESC, 
+                valeur DESC;
 
 
     
@@ -133,6 +131,60 @@ GROUP BY
     candidature.id_candidature
 ORDER BY 
     total_experience DESC;
+
+
+            SELECT 
+                *, candidature.nom as candidature_nom,
+                SUM(experience_travail.duree) AS total_experience,
+                diplome.nom AS diplome_nom
+            FROM 
+                candidature
+            JOIN 
+                candidature_in_annonce ON candidature.id_candidature = candidature_in_annonce.id_candidature
+            JOIN 
+                annonce ON annonce.id_annonce = candidature_in_annonce.id_annonce
+            JOIN 
+                experience_travail ON experience_travail.id_candidature = candidature.id_candidature
+            JOIN 
+                diplome ON diplome.id_diplome = candidature.id_diplome
+            WHERE 
+                annonce.id_annonce = 6
+                AND experience_travail.id_travail = annonce.id_travail  -- Condition pour vérifier le même type de travail
+            GROUP BY 
+                candidature.id_candidature
+            HAVING 
+                SUM(experience_travail.duree) >= annonce.duree_exp_requise
+            ORDER BY 
+                total_experience DESC, 
+                valeur DESC;
+
+
+
+
+select *
+FROM resultat_test
+JOIN test ON test.id_test = resultat_test.id_test
+JOIN candidature ON test.id_candidature = candidature.id_candidature
+ORDER BY resultat_test.note DESC;
+
+
+
+
+            SELECT 
+                *
+            FROM 
+                candidature
+            JOIN 
+                candidature_in_annonce ON candidature.id_candidature = candidature_in_annonce.id_candidature
+            JOIN 
+                annonce ON annonce.id_annonce = candidature_in_annonce.id_annonce
+            JOIN 
+                experience_travail ON experience_travail.id_candidature = candidature.id_candidature
+            JOIN 
+                diplome ON diplome.id_diplome = candidature.id_diplome
+            WHERE 
+                annonce.id_annonce = 6
+
 
 
 

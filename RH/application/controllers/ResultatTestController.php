@@ -7,14 +7,15 @@ class ResultatTestController extends CI_Controller {
         parent::__construct();
         $this->load->model('CandidatureModel');
         $this->load->model('ResultatTestModel');
+        $this->load->model('TestModel');
     }
 
     public function index() {
-        $data['candidatures'] = $this->CandidatureModel->getAll();
+        $data['tests'] = $this->TestModel->getAll();
         $data['contents'] = 'page/FormulaireResultatTest';
         $this->load->view('template/template', $data);
     }
-
+ 
     public function index2() {
         $data['results'] = $this->ResultatTestModel->getAllWithCandidature();
         $data['contents'] = 'page/ListeResultatTest';
@@ -28,7 +29,7 @@ class ResultatTestController extends CI_Controller {
         else if ($note > 20) $data['error'] = 'Note doit être inférieur ou égale à 20.';
         else {   
             $data = array(
-                'id_candidature' => $this->input->post('id_candidature'),
+                'id_test' => $this->input->post('id_test'),
                 'date_resultat_test' => $this->input->post('date_resultat_test'),
                 'note' => $note
             );

@@ -1,6 +1,13 @@
 <?php
 class PosteModel extends CI_Model {
+    public function alreadyExistencePoste($id_poste) {
         
+        $sql = "select * from personnel join poste on personnel.id_poste=poste.id_poste where personnel.id_poste= ".$id_poste;
+        
+        $query = $this->db->query($sql);
+        return $query->result_array();
+    } 
+    
     // Récupérer tous les canaux
     public function getAll() {
         $query = $this->db->get('poste');

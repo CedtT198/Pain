@@ -3,18 +3,28 @@ use pain;
 DROP TABLE experience_travail; 
 DROP TABLE candidature_in_annonce;
 DROP TABLE annonce; 
+DROP TABLE demande_besoin_rh; 
 DROP TABLE contrat; 
 DROP TABLE personnel; 
 DROP TABLE rendez_vous; 
 DROP TABLE resultat_test; 
+DROP TABLE test; 
 DROP TABLE candidature; 
 DROP TABLE diplome; 
 DROP TABLE travail; 
 DROP TABLE type_contrat;
-DROP TABLE poste; 
+-- DROP TABLE poste; 
 DROP TABLE canal;
+-- DROP TABLE departement;
 
 
+
+-- CREATE TABLE departement(
+--    id_departement INT AUTO_INCREMENT,
+--    nom_departement VARCHAR(50)  NOT NULL,
+--    mdp_departement VARCHAR(50)  NOT NULL,
+--    PRIMARY KEY(id_departement)
+-- );
 
 CREATE TABLE canal(
    id_canal INT AUTO_INCREMENT,
@@ -58,13 +68,21 @@ CREATE TABLE candidature(
    FOREIGN KEY(id_diplome) REFERENCES diplome(id_diplome)
 );
 
+CREATE TABLE test(
+   id_test INT AUTO_INCREMENT,
+   date_test DATE NOT NULL,
+   id_candidature INT NOT NULL,
+   PRIMARY KEY(id_test),
+   FOREIGN KEY(id_candidature) REFERENCES candidature(id_candidature)
+);
+
 CREATE TABLE resultat_test(
    id_resultat_test INT AUTO_INCREMENT,
    date_resultat_test DATE NOT NULL,
    note DECIMAL(15,2)   NOT NULL,
-   id_candidature INT NOT NULL,
+   id_test INT NOT NULL,
    PRIMARY KEY(id_resultat_test),
-   FOREIGN KEY(id_candidature) REFERENCES candidature(id_candidature)
+   FOREIGN KEY(id_test) REFERENCES test(id_test)
 );
 
 CREATE TABLE rendez_vous(
@@ -97,6 +115,16 @@ CREATE TABLE contrat(
    FOREIGN KEY(id_personnel) REFERENCES personnel(id_personnel),
    FOREIGN KEY(id_type_contrat) REFERENCES type_contrat(id_type_contrat),
    FOREIGN KEY(id_poste) REFERENCES poste(id_poste)
+);
+
+CREATE TABLE demande_besoin_rh(
+   id_demande_besoin INT AUTO_INCREMENT,
+   date_demande DATE NOT NULL,
+   id_poste INT NOT NULL,
+   id_departement INT NOT NULL,
+   PRIMARY KEY(id_demande_besoin),
+   FOREIGN KEY(id_poste) REFERENCES poste(id_poste),
+   FOREIGN KEY(id_departement) REFERENCES departement(id_departement)
 );
 
 CREATE TABLE annonce(
@@ -135,6 +163,12 @@ CREATE TABLE experience_travail(
 
 
 -- DONNEES FIXE
+-- INSERT INTO departement (id_departement, nom_departement, mdp_departement)
+-- VALUES
+--    (1, 'informatique', 'informatique'),
+--    (2, 'administration', 'administration'),
+--    (3, 'usine', 'usine');
+
 INSERT INTO canal (nom)
 VALUES
    ('LinkedIn'),
@@ -144,18 +178,18 @@ VALUES
    ('Television'),
    ('Journal');
 
-INSERT INTO poste (nom)
-VALUES
-   ('Boulanger'),
-   ('Patissier'),
-   ('Chef Boulanger'),
-   ('Vendeur'),
-   ('Caissier'),
-   ('Apprenti Boulanger'),
-   ('Responsable de Production'),
-   ('Responsable des Ventes'),
-   ('Preparateur de Commandes'),
-   ('Livreur');
+-- INSERT INTO poste (nom)
+-- VALUES
+--    ('Boulanger'),
+--    ('Patissier'),
+--    ('Chef Boulanger'),
+--    ('Vendeur'),
+--    ('Caissier'),
+--    ('Apprenti Boulanger'),
+--    ('Responsable de Production'),
+--    ('Responsable des Ventes'),
+--    ('Preparateur de Commandes'),
+--    ('Livreur');
 
 INSERT INTO type_contrat (nom)
 VALUES

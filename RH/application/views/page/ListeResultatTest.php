@@ -11,8 +11,7 @@
        </div>
 </div>
 <div class="row">
-       <div class="col-md-2"></div>
-       <div class="col-md-8">
+       <div class="col-md-12">
               <div class="col-lg-12 grid-margin stretch-card">
                      <div class="card">
                             <div class="card-body">
@@ -24,7 +23,7 @@
                                                                <th>Date de rendez vous</th>
                                                                <th>Nom</th>
                                                                <th>Prenom</th>
-                                                               <th>Note ( /20)</th>
+                                                               <th colspan="2">Note ( /20)</th>
                                                         </tr>
                                                         </thead>
                                                  <tbody>
@@ -34,6 +33,15 @@
                                                                       <td><?php echo $result['nom']; ?></td>
                                                                       <td><?php echo $result['prenom']; ?></td>
                                                                       <td><?php echo $result['note']; ?></td>
+                                                                      <td>
+                                                                             <?php if ($result['nom'] > 10) { ?>
+                                                                                    <a class="nav-link" href="<?php echo site_url('RendezVousController/index2'); ?>">
+                                                                                           <button type="button" class="btn btn-outline-dark btn-fw">
+                                                                                                  Appeler pour un entretien
+                                                                                           </button>
+                                                                                    </a>
+                                                                             <?php } ?>
+                                                                      </td>
                                                                </tr>
                                                         <?php } ?>
                                                  </tbody>

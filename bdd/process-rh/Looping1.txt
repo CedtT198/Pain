@@ -47,12 +47,11 @@ CREATE TABLE candidature(
    FOREIGN KEY(id_diplome) REFERENCES diplome(id_diplome)
 );
 
-CREATE TABLE resultat_test(
-   id_resultat_test INT AUTO_INCREMENT,
-   date_resultat_test DATE NOT NULL,
-   note DECIMAL(15,2)   NOT NULL,
+CREATE TABLE test(
+   id_test INT AUTO_INCREMENT,
+   date_test DATE NOT NULL,
    id_candidature INT NOT NULL,
-   PRIMARY KEY(id_resultat_test),
+   PRIMARY KEY(id_test),
    FOREIGN KEY(id_candidature) REFERENCES candidature(id_candidature)
 );
 
@@ -88,6 +87,25 @@ CREATE TABLE contrat(
    FOREIGN KEY(id_poste) REFERENCES poste(id_poste)
 );
 
+CREATE TABLE resultat_test(
+   id_resultat_test INT AUTO_INCREMENT,
+   date_resultat_test DATE NOT NULL,
+   note DECIMAL(15,2)   NOT NULL,
+   id_test INT NOT NULL,
+   PRIMARY KEY(id_resultat_test),
+   FOREIGN KEY(id_test) REFERENCES test(id_test)
+);
+
+CREATE TABLE demande_besoin(
+   id_demande_besoin INT AUTO_INCREMENT,
+   date_demande DATE NOT NULL,
+   id_poste INT NOT NULL,
+   id_departement INT NOT NULL,
+   PRIMARY KEY(id_demande_besoin),
+   FOREIGN KEY(id_poste) REFERENCES poste(id_poste),
+   FOREIGN KEY(id_departement) REFERENCES departement(id_departement)
+);
+
 CREATE TABLE annonce(
    id_annonce INT AUTO_INCREMENT,
    date_annonce DATE NOT NULL,
@@ -114,7 +132,7 @@ CREATE TABLE candidature_in_annonce(
 CREATE TABLE experience_travail(
    id_travail INT,
    id_candidature INT,
-   durï¿½e INT NOT NULL,
+   durée INT NOT NULL,
    PRIMARY KEY(id_travail, id_candidature),
    FOREIGN KEY(id_travail) REFERENCES travail(id_travail),
    FOREIGN KEY(id_candidature) REFERENCES candidature(id_candidature)
