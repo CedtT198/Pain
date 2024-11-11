@@ -9,7 +9,7 @@ class ExperienceTravailModel extends CI_Model {
         $this->db->join('candidature_in_annonce', 'candidature_in_annonce.id_candidature = experience_travail.id_candidature');
         $this->db->where('candidature_in_annonce.id_annonce', $id_annonce);
         $query = $this->db->get();
-        return $query->result();
+        return $query->result_array();
     }
 
     // Insérer une nouvelle expérience de travail

@@ -111,11 +111,12 @@
             </a>
             <div class="collapse" id="personnel">
               <ul class="nav flex-column sub-menu">
-                <li>Côté dev</li>
-                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('PersonnelController'); ?>">Insertion personnel</a></li>
+                <li>Côté entreprise</li>
+                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('PersonnelController'); ?>">Insertion</a></li>
+                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('PersonnelController/index3'); ?>">Licensier</a></li>
                 <!-- <?php if ($id_depa < 5) { ?> -->
                   <li class="nav-item">
-                    <a class="nav-link" href="<?php echo site_url('PersonnelController/index2'); ?>">Liste du personnel</a>
+                    <a class="nav-link" href="<?php echo site_url('PersonnelController/index2'); ?>">Liste</a>
                   </li>
 
                 <!-- <?php } ?> -->
@@ -133,10 +134,10 @@
             </a>
             <div class="collapse" id="rendezvous">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('RendezVousController/index2'); ?>">Insertion</a></li>
+                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('RendezVousController'); ?>">Insertion</a></li>
                 <!-- <?php if ($id_depa < 5) { ?> -->
                   <li class="nav-item">
-                    <a class="nav-link" href="<?php echo site_url('RendezVousController'); ?>">Liste</a>
+                    <a class="nav-link" href="<?php echo site_url('RendezVousController/index2'); ?>">Liste</a>
                   </li>
                 <!-- <?php } ?> -->
               </ul>
@@ -150,24 +151,24 @@
             </a>
             <div class="collapse" id="resulttest">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('ResultatTestController/index2'); ?>">Insertion</a></li>
+                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('ResultatTestController/index'); ?>">Insertion</a></li>
                 <!-- <?php if ($id_depa < 5) { ?> -->
                   <li class="nav-item">
-                    <a class="nav-link" href="<?php echo site_url('ResultatTestController'); ?>">Liste des tests</a>
+                    <a class="nav-link" href="<?php echo site_url('ResultatTestController/index2'); ?>">Liste des tests</a>
                   </li>
                 <!-- <?php } ?> -->
               </ul>
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#resulttest" aria-expanded="false" aria-controls="resulttest">
+            <a class="nav-link" data-toggle="collapse" href="#contrat" aria-expanded="false" aria-controls="contrat">
               <i class="icon-grid menu-icon"></i>
               <span class="menu-title">Contrat</span>
               <i class="menu-arrow"></i>
             </a>
-            <div class="collapse" id="resulttest">
+            <div class="collapse" id="contrat">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('ContratController/index2'); ?>">Insertion</a></li>
+                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('ContratController/index'); ?>">Insertion</a></li>
                 <!-- <?php if ($id_depa < 5) { ?> -->
                   <!-- <li class="nav-item">
                     <a class="nav-link" href="<?php echo site_url('Controller'); ?>">Liste des tests</a>

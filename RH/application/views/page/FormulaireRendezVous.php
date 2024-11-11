@@ -9,17 +9,25 @@
                                           <h4 class="card-title">FORMULAIRE D'INSERTION RENDEZ-VOUS</h4>
                                    </div>
                             </div>
-                            <p class="card-description">Message :  <span class="text-info"> Rendez-vous Enregistre ! </span> </p>
-                            <form class="forms-sample">
+                            <?php if (isset($success)) { ?>
+                                   <p class="card-description"><span class="text-info"><?php echo $success; ?> </span> </p>
+                            <?php  } if (isset($error)) { ?>
+                                   <p class="card-description"><span class="text-info"><?php echo $error; ?> </span> </p>
+                            <?php  } ?>
+                            <form class="forms-sample" method="post" action="<?php echo site_url('RendezVousController/insert'); ?>">
                                    <div class="form-group">
-                                          <label for="exampleSelectGender">Candidature</label>
-                                          <select class="form-control" id="exampleSelectGender">
-                                                 <option>RAKOTOARISON Navany Badoda</option>
+                                          <label for="id_candidature">Candidat</label>
+                                          <select class="form-control" id="id_candidature" name="id_candidature">
+                                                 <?php  foreach ($candidatures as $candidature) { ?>
+                                                        <option value="<?php echo $candidature['id_candidature']; ?>">
+                                                               <?php echo $candidature['nom'] . ' ' . $candidature['prenom']; ?>
+                                                        </option>
+                                                 <?php } ?>
                                           </select>
                                    </div>
                                    <div class="form-group">
-                                          <label for="exampleInputUsername1">Date de rendez-vous</label>
-                                          <input type="date" class="form-control" id="exampleInputUsername1" placeholder="0">
+                                          <label for="date_rendez_vous">Date de rendez-vous</label>
+                                          <input type="date" class="form-control" id="date_rendez_vous" name="date_rendez_vous">
                                    </div>
                                    <div class="row">
                                           <div class="col-md-5"></div>

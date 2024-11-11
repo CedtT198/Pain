@@ -4,14 +4,22 @@ class RendezVousModel extends CI_Model {
     // Récupérer tous les rendez-vous
     public function getAll() {
         $query = $this->db->get('rendez_vous');
-        return $query->result();
+        return $query->result_array();
+    }
+    
+    public function getAllWithCandidature() {
+        $this->db->select('rendez_vous.*, candidature.*');
+        $this->db->from('rendez_vous');
+        $this->db->join('candidature', 'rendez_vous.id_candidature = candidature.id_candidature');
+        $query = $this->db->get();
+        return $query->result_array();
     }
 
     // Récupérer un rendez-vous par ID
     public function getById($id_rendez_vous) {
         $this->db->where('id_rendez_vous', $id_rendez_vous);
         $query = $this->db->get('rendez_vous');
-        return $query->row();
+        return $query->row_array();
     }
 
     // Insérer un nouveau rendez-vous

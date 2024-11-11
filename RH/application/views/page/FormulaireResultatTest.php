@@ -9,21 +9,29 @@
                                           <h4 class="card-title">FORMULAIRE D'INSERTION RESULTAT DE TEST</h4>
                                    </div>
                             </div>
-                            <p class="card-description">Message :  <span class="text-info"> Resultat de test Enregistre ! </span> </p>
-                            <form class="forms-sample">
+                            <?php if (isset($success)) { ?>
+                                   <p class="card-description"><span class="text-info"><?php echo $success; ?> </span> </p>
+                            <?php  } if (isset($error)) { ?>
+                                   <p class="card-description"><span class="text-info"><?php echo $error; ?> </span> </p>
+                            <?php  } ?>
+                            <form class="forms-sample" method="post" action ="<?php echo site_url('ResultatTestController/insert'); ?>">
                                    <div class="form-group">
-                                          <label for="exampleSelectGender">Candidature</label>
-                                          <select class="form-control" id="exampleSelectGender">
-                                                 <option>RAKOTOARISON Navany Badoda</option>
+                                          <label for="id_candidature">Candidat</label>
+                                          <select class="form-control" id="id_candidature" name="id_candidature">
+                                                 <?php  foreach ($candidatures as $candidature) { ?>
+                                                        <option value="<?php echo $candidature['id_candidature']; ?>">
+                                                               <?php echo $candidature['nom'] . ' ' . $candidature['prenom']; ?>
+                                                        </option>
+                                                 <?php } ?>
                                           </select>
                                    </div>
                                    <div class="form-group">
-                                          <label for="exampleInputUsername1">Note</label>
-                                          <input type="number" class="form-control" id="exampleInputUsername1" placeholder="0">
+                                          <label for="note">Note</label>
+                                          <input type="number" class="form-control" id="note" name="note" placeholder="Note">
                                    </div>
                                    <div class="form-group">
-                                          <label for="exampleInputUsername1">Date de resultat de test</label>
-                                          <input type="date" class="form-control" id="exampleInputUsername1" placeholder="0">
+                                          <label for="date_resultat_test">Date de resultat de test</label>
+                                          <input type="date" class="form-control" id="date_resultat_test" name="date_resultat_test">
                                    </div>
                                    <div class="row">
                                           <div class="col-md-5"></div>

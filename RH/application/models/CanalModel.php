@@ -4,14 +4,14 @@ class CanalModel extends CI_Model {
     // Récupérer tous les canaux
     public function getAll() {
         $query = $this->db->get('canal');
-        return $query->result();
+        return $query->result_array();
     }
 
     // Récupérer un canal par son ID
     public function getById($id) {
         $this->db->where('id_canal', $id);
         $query = $this->db->get('canal');
-        return $query->row(); // Utilise `row` pour un seul enregistrement
+        return $query->row_array(); // Utilise `row` pour un seul enregistrement
     }
 
     // Insérer un nouveau canal

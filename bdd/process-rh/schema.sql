@@ -131,3 +131,75 @@ CREATE TABLE experience_travail(
    FOREIGN KEY(id_candidature) REFERENCES candidature(id_candidature)
 );
 
+
+
+
+-- DONNEES FIXE
+INSERT INTO canal (nom)
+VALUES
+   ('LinkedIn'),
+   ('Facebook'),
+   ('Radio'),
+   ('Pole emploi'),
+   ('Television'),
+   ('Journal');
+
+INSERT INTO poste (nom)
+VALUES
+   ('Boulanger'),
+   ('Patissier'),
+   ('Chef Boulanger'),
+   ('Vendeur'),
+   ('Caissier'),
+   ('Apprenti Boulanger'),
+   ('Responsable de Production'),
+   ('Responsable des Ventes'),
+   ('Preparateur de Commandes'),
+   ('Livreur');
+
+INSERT INTO type_contrat (nom)
+VALUES
+   ('Periode essaie'),  
+   ('CDD'),    
+   ('CDI');       
+
+INSERT INTO travail (nom)
+VALUES
+   ('Preparation de la pate'),
+   ('Petrissage de la pate'),
+   ('Cuisson du pain'),
+   ('Preparation des viennoiseries'),
+   ('Decoration des patisseries'),
+   ('Preparation des sandwichs'),
+   ('Emballage des produits'),
+   ('Nettoyage du materiel'),
+   ('Gestion des stocks'),
+   ('Commande des matieres premieres'),
+   ('Gestion des invendus'),
+   ('Accueil des clients'),
+   ('Conseil sur les produits'),
+   ('Encaissement des ventes'),
+   ('Organisation des livraisons'),
+   ('Rangement du magasin'),
+   ('Entretien de l espace de vente'),
+   ('Creation de nouvelles recettes'),
+   ('Verification des normes de securite'),
+   ('Gestion des employes'),
+   ('Formation des apprentis'),
+   ('Suivi des commandes clients'),
+   ('Preparation des commandes clients'),
+   ('Prise de commande telephonique'),
+   ('Gestion des reseaux sociaux');
+
+INSERT INTO diplome (nom, valeur)
+VALUES
+   ('Pas de diplome', 0),
+   ('CEPE', 20),
+   ('BEPC', 40),
+   ('BACC', 50),
+   ('DTS / BTS', 60),
+   ('Licence', 70),
+   ('Master I', 80),
+   ('Master II', 90),
+   ('Doctorat', 100);
+

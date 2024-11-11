@@ -9,34 +9,40 @@
                                           <h4 class="card-title">FORMULAIRE D'INSERTION PERSONNEL</h4>
                                    </div>
                             </div>
-                            <p class="card-description">Message :  <span class="text-info"> Information personnel Enregistre ! </span> </p>
-                            <form class="forms-sample">
+                            <?php if (isset($success)) { ?>
+                                   <p class="card-description"><span class="text-info"><?php echo $success; ?> </span> </p>
+                            <?php  } if (isset($error)) { ?>
+                                   <p class="card-description"><span class="text-info"><?php echo $error; ?> </span> </p>
+                            <?php  } ?>
+                            <form class="forms-sample" method="post" action ="<?php echo site_url('PersonnelController/insert'); ?>">
                                    <div class="row">
                                           <div class="col-md-6">
                                                  <div class="form-group">
-                                                        <label for="exampleInputUsername1">Nom</label>
-                                                        <input type="text" class="form-control" id="exampleInputUsername1" placeholder="nom">
+                                                        <label for="nom">Nom</label>
+                                                        <input type="text" class="form-control" id="nom" name="nom" placeholder="Nom">
                                                  </div>
                                           </div>
                                           <div class="col-md-6">
                                                  <div class="form-group">
-                                                        <label for="exampleInputUsername1">Prenom</label>
-                                                        <input type="text" class="form-control" id="exampleInputUsername1" placeholder="prenom">
+                                                        <label for="prenom">Prenom</label>
+                                                        <input type="text" class="form-control" id="prenom" name="prenom" placeholder="Prénom">
                                                  </div>
                                           </div>
                                    </div>
                                    <div class="row">
                                           <div class="col-md-6">
                                                  <div class="form-group">
-                                                        <label for="exampleInputUsername1">Date de naissance</label>
-                                                        <input type="date" class="form-control" id="exampleInputUsername1" placeholder="">
+                                                        <label for="date_naissance">Date de naissance</label>
+                                                        <input type="date" class="form-control" id="date_naissance" name="date_naissance">
                                                  </div>
                                           </div>
                                           <div class="col-md-6">
                                                  <div class="form-group">
-                                                        <label for="exampleSelectGender">Poste</label>
-                                                        <select class="form-control" id="exampleSelectGender">
-                                                               <option>exemple</option>
+                                                        <label for="poste">Poste</label>
+                                                        <select class="form-control" id="poste" name="poste">
+                                                               <?php  foreach ($postes as $poste) { ?>
+                                                                      <option value="<?php echo $poste['id_poste']; ?>"><?php echo $poste['nom']; ?></option>
+                                                               <?php } ?>
                                                         </select>
                                                  </div>
                                           </div>

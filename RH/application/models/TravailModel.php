@@ -5,13 +5,13 @@ class TravailModel extends CI_Model {
     public function getById($id_travail) {
         $this->db->where('id_travail', $id_travail);
         $query = $this->db->get('travail');
-        return $query->row();
+        return $query->row_array();
     }
 
     // Récupérer tous les travaux
     public function getAll() {
         $query = $this->db->get('travail');
-        return $query->result();
+        return $query->result_array();
     }
 
     // Insérer un nouveau travail

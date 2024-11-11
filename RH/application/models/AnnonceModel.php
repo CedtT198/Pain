@@ -8,8 +8,30 @@ class AnnonceModel extends CI_Model {
         $this->db->join('canal', 'canal.id_canal = annonce.id_canal');
         $this->db->join('poste', 'poste.id_poste = annonce.id_poste');
         $query = $this->db->get();
-        return $query->result();
+        return $query->result_array();
     }
+    
+    public function getAllWithTravail() {
+        $this->db->select('annonce.*, canal.nom AS canal_nom, poste.nom AS poste_nom, travail.nom AS travail_nom');
+        $this->db->from('annonce');
+        $this->db->join('canal', 'canal.id_canal = annonce.id_canal');
+        $this->db->join('poste', 'poste.id_poste = annonce.id_poste');
+        $this->db->join('travail', 'travail.id_travail = annonce.id_travail');
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
+    public function getAllJointure() {
+        $this->db->select('annonce.*, canal.nom AS canal_nom, poste.nom AS poste_nom, travail.nom AS travail_nom, type_contrat.nom AS nom_type_contrat');
+        $this->db->from('annonce');
+        $this->db->join('canal', 'canal.id_canal = annonce.id_canal');
+        $this->db->join('poste', 'poste.id_poste = annonce.id_poste');
+        $this->db->join('travail', 'travail.id_travail = annonce.id_travail');
+        $this->db->join('type_contrat', 'type_contrat.id_type_contrat = annonce.id_type_contrat');
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+    
 
     // Récupérer une annonce par son ID
     public function getById($id) {
@@ -19,7 +41,7 @@ class AnnonceModel extends CI_Model {
         $this->db->join('poste', 'poste.id_poste = annonce.id_poste');
         $this->db->where('annonce.id_annonce', $id);
         $query = $this->db->get();
-        return $query->row(); // Utilise `row` pour un seul enregistrement
+        return $query->row_array(); // Utilise `row` pour un seul enregistrement
     }
 
     // Insérer une nouvelle annonce

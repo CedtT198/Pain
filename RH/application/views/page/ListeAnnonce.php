@@ -4,7 +4,7 @@
                      <div class="col-12 col-xl-8 mb-4 mb-xl-0">
                             <div class="row">
                                    <div class="col-md-4"></div>
-                                   <div class=""><h2 class="font-weight-bold">   <small class="text-muted">LISTE AVEC TOUS LES CANDIDATURES</small> </h2></div>
+                                   <div class=""><h2 class="font-weight-bold">   <small class="text-muted">LES ANNONCES AVEC CANDIDATURES</small> </h2></div>
                             </div>
                      </div>
               </div>
@@ -14,32 +14,35 @@
        <div class="col-md-12 grid-margin stretch-card">
               <div class="card">
                      <div class="card-body">
-                            <p class="card-title">Liste</p>
+                            <!-- <p class="card-title">Liste</p> -->
                             <div class="row">
                                    <div class="col-12">
                                           <div class="table-responsive">
                                                  <table id="example" class="display expandable-table" style="width:100%">
                                                         <thead>
                                                                <tr>
-                                                                      <th>Nom d'annonce</th>
+                                                                      <th>Numéro</th>
+                                                                      <th>Date d'envoie</th>
                                                                       <th>Poste</th>
-                                                                      <th>Type de contrat</th>
                                                                       <th></th>
                                                                </tr>
                                                         </thead>
                                                         <tbody>
+                                                               <?php
+                                                                      $i = 0;
+                                                                      foreach ($annonces as $annonce) {
+                                                               ?>
                                                                <tr class="odd">
-                                                                      <td class="sorting_1">exemple</td>
-                                                                      <td>exemple</td>
-                                                                      <td>exemple</td>
-                                                                      <td><button type="button" class="btn btn-outline-primary btn-fw" onclick="toggleDetails('details1','listeCV1')">Details</button> <button type="button" class="btn btn-outline-primary btn-fw" onclick="toggleDetails('listeCV1','details1')">Liste CV</button> </td>
+                                                                      <td class="sorting_1"><?php echo $annonce['id_annonce'];?></td>
+                                                                      <td><?php echo $annonce['date_annonce'];?></td>
+                                                                      <td><?php echo $annonce['poste_nom'];?></td>
+                                                                      <td>
+                                                                             <button type="button" class="btn btn-outline-primary btn-fw" onclick="toggleDetails('details<?php echo $i;?>','listeCV<?php echo $i;?>')">Details</button>
+                                                                             <button type="button" class="btn btn-outline-primary btn-fw" onclick="toggleDetails('listeCV<?php echo $i;?>','details<?php echo $i;?>')">Voir liste candidature</button>
+                                                                      </td>
                                                                </tr>
 
-
-
-
-
-                                                               <tr  id="details1" style="display:none">   <!-- ilay tr mipoitra refa miclique details -->
+                                                               <tr  id="details<?php echo $i;?>" style="display:none">   <!-- ilay tr mipoitra refa miclique details -->
                                                                       <td colspan="8">
                                                                              <table cellpadding="5" cellspacing="0" border="0" style="width:100%">
                                                                                     <tbody>
@@ -66,22 +69,20 @@
                                                                                                                                                                                <table class="table table-borderless">
                                                                                                                                                                                       <thead>
                                                                                                                                                                                              <tr>
-                                                                                                                                                                                                    <th class="pl-0  pb-2 border-bottom">Date d'annonce</th>
-                                                                                                                                                                                                    <th class="border-bottom pb-2">Duree d'exp requise</th>
-                                                                                                                                                                                                    <th class="border-bottom pb-2">Travail</th>
-                                                                                                                                                                                                    <th class="border-bottom pb-2">Canal</th>
                                                                                                                                                                                                     <th class="border-bottom pb-2">Poste</th>
-                                                                                                                                                                                                    <th class="border-bottom pb-2">Type de contrat</th>
+                                                                                                                                                                                                    <th class="border-bottom pb-2">Travail</th>
+                                                                                                                                                                                                    <th class="border-bottom pb-2">Année d'expérience requise</th>
+                                                                                                                                                                                                    <th class="border-bottom pb-2">Canal d'envoie</th>
+                                                                                                                                                                                                    <!-- <th class="border-bottom pb-2">Type de contrat</th> -->
                                                                                                                                                                                              </tr>
                                                                                                                                                                                       </thead>
                                                                                                                                                                                       <tbody>
                                                                                                                                                                                              <tr>
-                                                                                                                                                                                                    <td class="pl-0">exemple</td>
-                                                                                                                                                                                                    <td class="text-muted">exemple</td>
-                                                                                                                                                                                                    <td class="text-muted">exemple</td>
-                                                                                                                                                                                                    <td class="text-muted">exemple</td>
-                                                                                                                                                                                                    <td class="text-muted">exemple</td>
-                                                                                                                                                                                                    <td class="text-muted">exemple</td>
+                                                                                                                                                                                                    <td class="text-muted"><?php echo $annonce['poste_nom'];?></td>
+                                                                                                                                                                                                    <td class="text-muted"><?php echo $annonce['travail_nom'];?></td>
+                                                                                                                                                                                                    <td class="text-muted"><?php echo $annonce['duree_exp_requise'];?></td>
+                                                                                                                                                                                                    <td class="text-muted"><?php echo $annonce['canal_nom'];?></td>
+                                                                                                                                                                                                    <!-- <td class="text-muted"><?php echo $annonce['nom_type_contrat'];?></td> -->
                                                                                                                                                                                              </tr>
                                                                                                                                                                                       </tbody>
                                                                                                                                                                                </table>
@@ -107,7 +108,7 @@
 
 
 
-                                                               <tr  id="listeCV1" style="display:none">   <!-- ilay tr mipoitra refa miclique Liste CV -->
+                                                               <tr  id="listeCV<?php echo $i;?>" style="display:none">   <!-- ilay tr mipoitra refa miclique Liste CV -->
                                                                       <td colspan="8">
                                                                              <table cellpadding="5" cellspacing="0" border="0" style="width:100%">
                                                                                     <tbody>
@@ -125,164 +126,107 @@
                                                                                                                                                           <div class="col-md-5"></div>
                                                                                                                                                           <div class="col-md-5">
                                                                                                                                                                  <!-- <h1 class="card-title"><u>Liste CV</u></h1> -->
-                                                                                                                                                                 <h2 class=""><u>Liste CV</u></h2>
+                                                                                                                                                                 <h2 class=""><u>Liste candidature</u></h2>
                                                                                                                                                           </div>
                                                                                                                                                    </div>
-
-
-
-
-
                                                                                                                                                    <div class="row">
                                                                                                                                                           <div class="col-md-11 grid-margin stretch-card">
                                                                                                                                                                  <div class="card position-relative">
                                                                                                                                                                         <div class="card-body">
-                                                                                                                                                                               <div id="detailedReports" class="carousel slide detailed-report-carousel position-static pt-2">
+                                                                                                                                                                               <?php
+                                                                                                                                                                               $id = 0;
+                                                                                                                                                                               // $candidatures = $this->CandidatureModel->getAllForAnnonce($annonce['id_annonce']);
+                                                                                                                                                                               $candidatures = $this->CandidatureModel->getAllWithExperience($annonce['id_annonce']);
+                                                                                                                                                                               foreach($candidatures as $candidature) { ?>
+                                                                                                                                                                               <div id="detailedReports<?php echo $i.$id;?>" class="carousel slide detailed-report-carousel position-static pt-2">
                                                                                                                                                                                       <div class="carousel-inner">
-
-                                                                                                                                                                                                    <div class="carousel-item active">        <!-- izay apotra voalohany -->
-                                                                                                                                                                                                           <div class="row">
-                                                                                                                                                                                                                  <div class="col-md-2"></div>
-                                                                                                                                                                                                                         <div class="col-md-10 grid-margin stretch-card">
-                                                                                                                                                                                                                                <!-- <div class="card"> -->
-                                                                                                                                                                                                                                       <div class="card-body">
-                                                                                                                                                                                                                                              <div class="row">
-                                                                                                                                                                                                                                                     <div class="col-md-2"></div>
-                                                                                                                                                                                                                                                     <div class="">
-                                                                                                                                                                                                                                                            <h3>N° Candidature : 01</h3>
-                                                                                                                                                                                                                                                     </div>
-                                                                                                                                                                                                                                              </div>
-                                                                                                                                                                                                                                              <br>
-                                                                                                                                                                                                                                              <div class="row">
-                                                                                                                                                                                                                                                     <div class="col-md-5">
-                                                                                                                                                                                                                                                            <h4 class="card-title">Nom :
-                                                                                                                                                                                                                                                     </div>
-                                                                                                                                                                                                                                                     <div class="">
-                                                                                                                                                                                                                                                            <span class="text-success"> RAKOTOARIMISA</span>
-                                                                                                                                                                                                                                                     </div>
-                                                                                                                                                                                                                                              </div>
-                                                                                                                                                                                                                                              <div class="row">
-                                                                                                                                                                                                                                                     <div class="col-md-5">
-                                                                                                                                                                                                                                                            <h4 class="card-title">Prenom :</h4>
-                                                                                                                                                                                                                                                     </div>
-                                                                                                                                                                                                                                                     <div class="">
-                                                                                                                                                                                                                                                            <span class="text-success"> Brodrique Tiavina </span>
-                                                                                                                                                                                                                                                     </div>
-                                                                                                                                                                                                                                              </div>
-                                                                                                                                                                                                                                              <div class="row">
-                                                                                                                                                                                                                                                     <div class="col-md-5">
-                                                                                                                                                                                                                                                            <h4 class="card-title">Date de naissance : </h4>
-                                                                                                                                                                                                                                                     </div>
-                                                                                                                                                                                                                                                     <div class="">
-                                                                                                                                                                                                                                                            <span class="text-success"> 20 August 2003 </span>
-                                                                                                                                                                                                                                                     </div>
-                                                                                                                                                                                                                                              </div>
-                                                                                                                                                                                                                                              <div class="row">
-                                                                                                                                                                                                                                                     <div class="col-md-5">
-                                                                                                                                                                                                                                                            <h4 class="card-title">Date de Candidature : </h4>
-                                                                                                                                                                                                                                                     </div>
-                                                                                                                                                                                                                                                     <div class="">
-                                                                                                                                                                                                                                                            <span class="text-success"> 30 Juillet 2024  </span>
-                                                                                                                                                                                                                                                     </div>
-                                                                                                                                                                                                                                              </div>
-                                                                                                                                                                                                                                              <div class="row">
-                                                                                                                                                                                                                                                     <div class="col-md-5">
-                                                                                                                                                                                                                                                            <h4 class="card-title">Diplome : </h4>
-                                                                                                                                                                                                                                                     </div>
-                                                                                                                                                                                                                                                     <div class="">
-                                                                                                                                                                                                                                                            <span class="text-success"> Doctor en broForce </span>
-                                                                                                                                                                                                                                                     </div>
-                                                                                                                                                                                                                                              </div>
-                                                                                                                                                                                                                                                          
-                                                                                                                                                                                                                                                         
+                                                                                                                                                                                             <?php
+                                                                                                                                                                                             // echo $annonce['id_annonce'];
+                                                                                                                                                                                             // echo var_dump($candidatures);
+                                                                                                                                                                                                    if ($id == 0) { ?>
+                                                                                                                                                                                                           <div class="carousel-item active">
+                                                                                                                                                                                                    <?php } else { ?>
+                                                                                                                                                                                                           <div class="carousel-item activer">
+                                                                                                                                                                                                    <?php } ?>
+                                                                                                                                                                                             <!-- <div class="carousel-item active"> -->
+                                                                                                                                                                                             
+                                                                                                                                                                                                    <div class="row">
+                                                                                                                                                                                                           <div class="col-md-2"></div>
+                                                                                                                                                                                                           <div class="col-md-10 grid-margin stretch-card">
+                                                                                                                                                                                                                  <!-- <div class="card"> -->
+                                                                                                                                                                                                                         <div class="card-body">
+                                                                                                                                                                                                                                <div class="row">
+                                                                                                                                                                                                                                       <div class="col-md-2"></div>
+                                                                                                                                                                                                                                       <div class="">
+                                                                                                                                                                                                                                              <!-- <h3>N° Candidature : <?php echo $id+1;?></h3> -->
+                                                                                                                                                                                                                                              <h3>N° Candidature : <?php echo $candidature['id_candidature'];?></h3>
                                                                                                                                                                                                                                        </div>
-                                                                                                                                                                                                                                <!-- </div> -->
+                                                                                                                                                                                                                                </div>
+                                                                                                                                                                                                                                <br>
+                                                                                                                                                                                                                                <div class="row">
+                                                                                                                                                                                                                                       <div class="col-md-5">
+                                                                                                                                                                                                                                              <h4 class="card-title">Nom :
+                                                                                                                                                                                                                                       </div>
+                                                                                                                                                                                                                                       <div class="">
+                                                                                                                                                                                                                                              <span class="text-success"> <?php echo $candidature['nom'];?></span>
+                                                                                                                                                                                                                                       </div>
+                                                                                                                                                                                                                                </div>
+                                                                                                                                                                                                                                <div class="row">
+                                                                                                                                                                                                                                       <div class="col-md-5">
+                                                                                                                                                                                                                                              <h4 class="card-title">Prenom :</h4>
+                                                                                                                                                                                                                                       </div>
+                                                                                                                                                                                                                                       <div class="">
+                                                                                                                                                                                                                                              <span class="text-success"> <?php echo $candidature['prenom'];?> </span>
+                                                                                                                                                                                                                                       </div>
+                                                                                                                                                                                                                                </div>
+                                                                                                                                                                                                                                <div class="row">
+                                                                                                                                                                                                                                       <div class="col-md-5">
+                                                                                                                                                                                                                                              <h4 class="card-title">Date de naissance : </h4>
+                                                                                                                                                                                                                                       </div>
+                                                                                                                                                                                                                                       <div class="">
+                                                                                                                                                                                                                                              <span class="text-success"> <?php echo $candidature['date_naissance'];?> </span>
+                                                                                                                                                                                                                                       </div>
+                                                                                                                                                                                                                                </div>
+                                                                                                                                                                                                                                <div class="row">
+                                                                                                                                                                                                                                       <div class="col-md-5">
+                                                                                                                                                                                                                                              <h4 class="card-title">Date de Candidature : </h4>
+                                                                                                                                                                                                                                       </div>
+                                                                                                                                                                                                                                       <div class="">
+                                                                                                                                                                                                                                              <span class="text-success"> <?php echo $candidature['date_candidature'];?>  </span>
+                                                                                                                                                                                                                                       </div>
+                                                                                                                                                                                                                                </div>
+                                                                                                                                                                                                                                <div class="row">
+                                                                                                                                                                                                                                       <div class="col-md-5">
+                                                                                                                                                                                                                                              <h4 class="card-title">Diplome : </h4>
+                                                                                                                                                                                                                                       </div>
+                                                                                                                                                                                                                                       <div class="">
+                                                                                                                                                                                                                                              <?php if ($candidature['id_diplome'] == 1) { ?>
+                                                                                                                                                                                                                                                     <p style="color:red"><?php echo $candidature['diplome_nom'];?></p> 
+                                                                                                                                                                                                                                              <?php } else { ?>
+                                                                                                                                                                                                                                                     <p style="color:green"><?php echo $candidature['diplome_nom'];?></p>
+                                                                                                                                                                                                                                              <?php }  ?>
+                                                                                                                                                                                                                                       </div>
+                                                                                                                                                                                                                                </div>
                                                                                                                                                                                                                          </div>
+                                                                                                                                                                                                                  <!-- </div> -->
                                                                                                                                                                                                            </div>
                                                                                                                                                                                                     </div>
-
-
-                                                                                                                                                                                                    <div class="carousel-item activer">      <!-- Ny ambiny rehetra       -->        
-                                                                                                                                                                                                           <div class="row">
-                                                                                                                                                                                                                  <div class="col-md-2"></div>
-                                                                                                                                                                                                                         <div class="col-md-10 grid-margin stretch-card">
-                                                                                                                                                                                                                                <!-- <div class="card"> -->
-                                                                                                                                                                                                                                       <div class="card-body">
-                                                                                                                                                                                                                                              <div class="row">
-                                                                                                                                                                                                                                                     <div class="col-md-2"></div>
-                                                                                                                                                                                                                                                     <div class="">
-                                                                                                                                                                                                                                                            <h3>N° Candidature : 02</h3>
-                                                                                                                                                                                                                                                     </div>
-                                                                                                                                                                                                                                              </div>
-                                                                                                                                                                                                                                              <br>
-                                                                                                                                                                                                                                              <div class="row">
-                                                                                                                                                                                                                                                     <div class="col-md-5">
-                                                                                                                                                                                                                                                            <h4 class="card-title">Nom :
-                                                                                                                                                                                                                                                     </div>
-                                                                                                                                                                                                                                                     <div class="">
-                                                                                                                                                                                                                                                            <span class="text-success"> RAKOTOARIMISA</span>
-                                                                                                                                                                                                                                                     </div>
-                                                                                                                                                                                                                                              </div>
-                                                                                                                                                                                                                                              <div class="row">
-                                                                                                                                                                                                                                                     <div class="col-md-5">
-                                                                                                                                                                                                                                                            <h4 class="card-title">Prenom :</h4>
-                                                                                                                                                                                                                                                     </div>
-                                                                                                                                                                                                                                                     <div class="">
-                                                                                                                                                                                                                                                            <span class="text-success"> Brodrique Tiavina </span>
-                                                                                                                                                                                                                                                     </div>
-                                                                                                                                                                                                                                              </div>
-                                                                                                                                                                                                                                              <div class="row">
-                                                                                                                                                                                                                                                     <div class="col-md-5">
-                                                                                                                                                                                                                                                            <h4 class="card-title">Date de naissance : </h4>
-                                                                                                                                                                                                                                                     </div>
-                                                                                                                                                                                                                                                     <div class="">
-                                                                                                                                                                                                                                                            <span class="text-success"> 20 August 2003 </span>
-                                                                                                                                                                                                                                                     </div>
-                                                                                                                                                                                                                                              </div>
-                                                                                                                                                                                                                                              <div class="row">
-                                                                                                                                                                                                                                                     <div class="col-md-5">
-                                                                                                                                                                                                                                                            <h4 class="card-title">Date de Candidature : </h4>
-                                                                                                                                                                                                                                                     </div>
-                                                                                                                                                                                                                                                     <div class="">
-                                                                                                                                                                                                                                                            <span class="text-success"> 30 Juillet 2024  </span>
-                                                                                                                                                                                                                                                     </div>
-                                                                                                                                                                                                                                              </div>
-                                                                                                                                                                                                                                              <div class="row">
-                                                                                                                                                                                                                                                     <div class="col-md-5">
-                                                                                                                                                                                                                                                            <h4 class="card-title">Diplome : </h4>
-                                                                                                                                                                                                                                                     </div>
-                                                                                                                                                                                                                                                     <div class="">
-                                                                                                                                                                                                                                                            <span class="text-success"> Doctor en broForce </span>
-                                                                                                                                                                                                                                                     </div>
-                                                                                                                                                                                                                                              </div>
-                                                                                                                                                                                                                                                          
-                                                                                                                                                                                                                                                         
-                                                                                                                                                                                                                                       </div>
-                                                                                                                                                                                                                                <!-- </div> -->
-                                                                                                                                                                                                                         </div>
-                                                                                                                                                                                                           </div>
-                                                                                                                                                                                                    </div>
-
-
-
+                                                                                                                                                                                             </div>
                                                                                                                                                                                       </div>
-                                                                                                                                                                                      <a class="carousel-control-prev" href="#detailedReports" role="button" data-slide="prev">
+                                                                                                                                                                                      <a class="carousel-control-prev" href="#detailedReports<?php echo $i.$id;?>" role="button" data-slide="prev">
                                                                                                                                                                                              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                                                                                                                                                                              <span class="sr-only">Previous</span>
                                                                                                                                                                                       </a>
-                                                                                                                                                                                      <a class="carousel-control-next" href="#detailedReports" role="button" data-slide="next">
+                                                                                                                                                                                      <a class="carousel-control-next" href="#detailedReports<?php echo $i.$id;?>" role="button" data-slide="next">
                                                                                                                                                                                              <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                                                                                                                                                                              <span class="sr-only">Next</span>
                                                                                                                                                                                       </a>
                                                                                                                                                                                </div>
+                                                                                                                                                                               <?php $id++; } ?>
                                                                                                                                                                         </div>
                                                                                                                                                                  </div>
                                                                                                                                                           </div>
                                                                                                                                                    </div>
-
-
-
-
                                                                                                                                             </div>
                                                                                                                                      </div>
                                                                                                                               </div>
@@ -295,11 +239,7 @@
                                                                              </table>
                                                                       </td>
                                                                </tr>
-
-
-
-
-
+                                                               <?php $i++; } ?>
                                                         </tbody>
                                                  </table>
                                           </div>

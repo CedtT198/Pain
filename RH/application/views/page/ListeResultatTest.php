@@ -3,37 +3,39 @@
               <div class="row">
                      <div class="col-12 col-xl-8 mb-4 mb-xl-0">
                             <div class="row">
-                                   <div class="col-md-4"></div>
-                                   <div class="col-md-8"><h2 class="font-weight-bold">   <small class="h2 text-muted">LISTE DES RESULTAT DE TEST</small> </h2></div>
+                                   <div class="col-md-5"></div>
+                                   <div class="col-md-7"><h2 class="font-weight-bold">   <small class="h2 text-muted">RESULTATS DES TESTS</small> </h2></div>
                             </div>
                      </div>
               </div>
        </div>
 </div>
 <div class="row">
-       <div class="col-md-1"></div>
-       <div class="col-md-10">
+       <div class="col-md-2"></div>
+       <div class="col-md-8">
               <div class="col-lg-12 grid-margin stretch-card">
                      <div class="card">
                             <div class="card-body">
-                                   <h4 class="card-title">Liste</h4>
+                                   <!-- <h4 class="card-title">Liste</h4> -->
                                    <div class="table-responsive">
                                           <table class="table table-striped">
                                                  <thead>
                                                         <tr>
+                                                               <th>Date de rendez vous</th>
                                                                <th>Nom</th>
                                                                <th>Prenom</th>
-                                                               <th>Note</th>
-                                                               <th>Date de resultat de test</th>
+                                                               <th>Note ( /20)</th>
                                                         </tr>
                                                         </thead>
                                                  <tbody>
-                                                        <tr>
-                                                               <td class="py-1">RAKOTOARISON</td>
-                                                               <td>Navany Badoda</td>
-                                                               <td>19</td>
-                                                               <td>10 Janvier 2025</td>
-                                                        </tr>
+                                                        <?php foreach ($results as $result) { ?>
+                                                               <tr>
+                                                                      <td class="py-1"><?php echo $result['date_resultat_test']; ?></td>
+                                                                      <td><?php echo $result['nom']; ?></td>
+                                                                      <td><?php echo $result['prenom']; ?></td>
+                                                                      <td><?php echo $result['note']; ?></td>
+                                                               </tr>
+                                                        <?php } ?>
                                                  </tbody>
                                           </table>
                                    </div>

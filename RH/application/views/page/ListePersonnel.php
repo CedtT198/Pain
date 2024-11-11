@@ -4,7 +4,7 @@
                      <div class="col-12 col-xl-8 mb-4 mb-xl-0">
                             <div class="row">
                                    <div class="col-md-1"></div>
-                                   <div class="col-md-11"><h2 class="font-weight-bold">   <small class="h2 text-muted">LISTE PERSONNEL AVEC LEUR CONTRAT</small> </h2></div>
+                                   <div class="col-md-11"><h2 class="font-weight-bold">   <small class="h2 text-muted">PERSONNELS DANS L'ENTREPRISE</small> </h2></div>
                             </div>
                      </div>
               </div>
@@ -16,7 +16,7 @@
               <div class="col-lg-12 grid-margin stretch-card">
                      <div class="card">
                             <div class="card-body">
-                                   <h4 class="card-title">Liste</h4>
+                                   <!-- <h4 class="card-title">Liste</h4> -->
                                    <div class="table-responsive">
                                           <table class="table table-striped">
                                                  <thead>
@@ -27,21 +27,27 @@
                                                                <th>Poste</th>
                                                                <th>Date debut</th>
                                                                <th>Date fin</th>
-                                                               <th>Date renvoi</th>
                                                                <th>Type de contrat</th>
+                                                               <th></th>
                                                         </tr>
                                                         </thead>
                                                  <tbody>
-                                                        <tr>
-                                                               <td class="py-1">RAKOTOARISON</td>
-                                                               <td>Navany Badoda</td>
-                                                               <td>10 Janvier 2025</td>
-                                                               <td>exemple poste</td>
-                                                               <td>10/02/2025</td>
-                                                               <td>10/02/2025</td>
-                                                               <td>10/02/2025</td>
-                                                               <td>exemple de contrat</td>
-                                                        </tr>
+                                                        <?php foreach ($personnels as $personnel) { ?>
+                                                               <tr>   
+                                                                      <td class="py-1"><?php echo $personnel['personnel_nom']; ?></td>
+                                                                      <td><?php echo $personnel['prenom'] ?></td>
+                                                                      <td><?php echo $personnel['date_naissance'] ?></td>
+                                                                      <td><?php echo $personnel['poste_nom'] ?></td>
+                                                                      <td><?php echo $personnel['date_debut'] ?></td>
+                                                                      <td><?php echo $personnel['date_fin'] ?></td>
+                                                                      <td><?php echo $personnel['nom_type_contrat'] ?></td>
+                                                                      <?php if ($personnel['date_renvoie'] != null) { ?>
+                                                                             <td><p style="color:red">Renvoyé</p></td>
+                                                                      <?php } else { ?>
+                                                                             <td></td>
+                                                                      <?php } ?>
+                                                               </tr>
+                                                        <?php } ?>
                                                  </tbody>
                                           </table>
                                    </div>
