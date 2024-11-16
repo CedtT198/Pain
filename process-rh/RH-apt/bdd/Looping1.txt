@@ -1,42 +1,9 @@
-use pain;
-
-DROP TABLE mot_cle_reponse; 
-DROP TABLE simulation_questions; 
-DROP TABLE reponses_question; 
-DROP TABLE mot_cle_domaine; 
-DROP TABLE experience_travail; 
-DROP TABLE candidature_in_annonce;
-DROP TABLE resultat_simulation;  
-DROP TABLE question_simulation;  
-DROP TABLE notification;  
-DROP TABLE annonce;  
-DROP TABLE simulation; 
-DROP TABLE reponse_simulation; 
-DROP TABLE mot_cle; 
-DROP TABLE domaine; 
-DROP TABLE reponses_chatbot; 
-DROP TABLE demande_besoin_rh; 
-DROP TABLE contrat; 
-DROP TABLE personnel; 
-DROP TABLE rendez_vous; 
-DROP TABLE resultat_test; 
-DROP TABLE test; 
-DROP TABLE candidature; 
-DROP TABLE diplome; 
-DROP TABLE travail; 
-DROP TABLE type_contrat;
-DROP TABLE poste; 
-DROP TABLE canal;
--- DROP TABLE departement;
-
-
-
--- CREATE TABLE departement(
---    id_departement INT AUTO_INCREMENT,
---    nom_departement VARCHAR(50)  NOT NULL,
---    mdp_departement VARCHAR(50)  NOT NULL,
---    PRIMARY KEY(id_departement)
--- );
+CREATE TABLE departement(
+   id_departement INT AUTO_INCREMENT,
+   nom_departement VARCHAR(50)  NOT NULL,
+   mdp_departement VARCHAR(50)  NOT NULL,
+   PRIMARY KEY(id_departement)
+);
 
 CREATE TABLE canal(
    id_canal INT AUTO_INCREMENT,
@@ -231,7 +198,7 @@ CREATE TABLE candidature_in_annonce(
 CREATE TABLE experience_travail(
    id_travail INT,
    id_candidature INT,
-   duree INT NOT NULL,
+   durée INT NOT NULL,
    PRIMARY KEY(id_travail, id_candidature),
    FOREIGN KEY(id_travail) REFERENCES travail(id_travail),
    FOREIGN KEY(id_candidature) REFERENCES candidature(id_candidature)
@@ -268,81 +235,3 @@ CREATE TABLE mot_cle_reponse(
    FOREIGN KEY(id_reponses_chatbot) REFERENCES reponses_chatbot(id_reponses_chatbot),
    FOREIGN KEY(id_mot_cle) REFERENCES mot_cle(id_mot_cle)
 );
-
-
-
--- DONNEES FIXE
--- INSERT INTO departement (id_departement, nom_departement, mdp_departement)
--- VALUES
---    (1, 'informatique', 'informatique'),
---    (2, 'administration', 'administration'),
---    (3, 'usine', 'usine');
-
-INSERT INTO canal (nom)
-VALUES
-   ('LinkedIn'),
-   ('Facebook'),
-   ('Radio'),
-   ('Pole emploi'),
-   ('Television'),
-   ('Journal');
-
--- INSERT INTO poste (nom)
--- VALUES
---    ('Boulanger'),
---    ('Patissier'),
---    ('Chef Boulanger'),
---    ('Vendeur'),
---    ('Caissier'),
---    ('Apprenti Boulanger'),
---    ('Responsable de Production'),
---    ('Responsable des Ventes'),
---    ('Preparateur de Commandes'),
---    ('Livreur');
-
-INSERT INTO type_contrat (nom)
-VALUES
-   ('Periode essaie'),  
-   ('CDD'),    
-   ('CDI');       
-
-INSERT INTO travail (nom)
-VALUES
-   ('Preparation de la pate'),
-   ('Petrissage de la pate'),
-   ('Cuisson du pain'),
-   ('Preparation des viennoiseries'),
-   ('Decoration des patisseries'),
-   ('Preparation des sandwichs'),
-   ('Emballage des produits'),
-   ('Nettoyage du materiel'),
-   ('Gestion des stocks'),
-   ('Commande des matieres premieres'),
-   ('Gestion des invendus'),
-   ('Accueil des clients'),
-   ('Conseil sur les produits'),
-   ('Encaissement des ventes'),
-   ('Organisation des livraisons'),
-   ('Rangement du magasin'),
-   ('Entretien de l espace de vente'),
-   ('Creation de nouvelles recettes'),
-   ('Verification des normes de securite'),
-   ('Gestion des employes'),
-   ('Formation des apprentis'),
-   ('Suivi des commandes clients'),
-   ('Preparation des commandes clients'),
-   ('Prise de commande telephonique'),
-   ('Gestion des reseaux sociaux');
-
-INSERT INTO diplome (nom, valeur)
-VALUES
-   ('Pas de diplome', 0),
-   ('CEPE', 20),
-   ('BEPC', 40),
-   ('BACC', 50),
-   ('DTS / BTS', 60),
-   ('Licence', 70),
-   ('Master I', 80),
-   ('Master II', 90),
-   ('Doctorat', 100);
-

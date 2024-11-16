@@ -5,10 +5,6 @@ class CandidatureController extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
-        $this->load->model('AnnonceModel');
-        $this->load->model('DiplomeModel');
-        $this->load->model('CandidatureInAnnonceModel');
-        $this->load->model('CandidatureModel');
     }
 
     public function index() {
