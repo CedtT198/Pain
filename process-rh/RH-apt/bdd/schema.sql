@@ -287,18 +287,18 @@ VALUES
    ('Television'),
    ('Journal');
 
--- INSERT INTO poste (nom)
--- VALUES
---    ('Boulanger'),
---    ('Patissier'),
---    ('Chef Boulanger'),
---    ('Vendeur'),
---    ('Caissier'),
---    ('Apprenti Boulanger'),
---    ('Responsable de Production'),
---    ('Responsable des Ventes'),
---    ('Preparateur de Commandes'),
---    ('Livreur');
+INSERT INTO poste (nom)
+VALUES
+   ('Boulanger'),
+   ('Patissier'),
+   ('Chef Boulanger'),
+   ('Vendeur'),
+   ('Caissier'),
+   ('Apprenti Boulanger'),
+   ('Responsable de Production'),
+   ('Responsable des Ventes'),
+   ('Preparateur de Commandes'),
+   ('Livreur');
 
 INSERT INTO type_contrat (nom)
 VALUES

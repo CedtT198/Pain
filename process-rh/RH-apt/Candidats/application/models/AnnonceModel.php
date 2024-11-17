@@ -32,6 +32,19 @@ class AnnonceModel extends CI_Model {
         return $query->result_array();
     }
     
+    public function getAllJointureBy($id_canal) {
+        $this->db->select('annonce.*, canal.nom AS canal_nom, poste.nom AS poste_nom, travail.nom AS travail_nom, type_contrat.nom AS nom_type_contrat');
+        $this->db->from('annonce');
+        $this->db->join('canal', 'canal.id_canal = annonce.id_canal');
+        $this->db->join('poste', 'poste.id_poste = annonce.id_poste');
+        $this->db->join('travail', 'travail.id_travail = annonce.id_travail');
+        $this->db->join('type_contrat', 'type_contrat.id_type_contrat = annonce.id_type_contrat');
+        $this->db->where('canal.id_canal', $id_canal);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+    
+    
 
     // Récupérer une annonce par son ID
     public function getById($id) {
