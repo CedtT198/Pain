@@ -7,32 +7,32 @@ VALUES
    ('2024-10-20', 4, 5, 5, 5, 1);  -- Caissier en CDI
 
 
-INSERT INTO candidature (nom, prenom, date_naissance, date_candidature, id_diplome)
+INSERT INTO candidature (nom, prenom, mdp, date_naissance, id_diplome)
 VALUES
-   ('Durand', 'Alice', '1990-04-12', '2024-01-10', 1),
-   ('Martin', 'Benoit', '1988-03-20', '2024-01-12', 2),
-   ('Dupont', 'Claire', '1992-08-05', '2024-01-14', 3),
-   ('Bernard', 'David', '1985-11-10', '2024-01-15', 1),
-   ('Petit', 'Elise', '1991-07-25', '2024-01-18', 4),
-   ('Leroy', 'François', '1994-06-15', '2024-01-20', 7),
-   ('Moreau', 'Georges', '1989-12-30', '2024-01-22', 3),
-   ('Simon', 'Helene', '1987-05-03', '2024-01-25', 1),
-   ('Rousseau', 'Isabelle', '1995-10-19', '2024-01-28', 5),
-   ('Garnier', 'Julien', '1986-09-21', '2024-01-30', 1),
-   ('Faure', 'Karine', '1990-01-11', '2024-02-01', 2),
-   ('Blanc', 'Louis', '1984-02-15', '2024-02-03', 3),
-   ('Morel', 'Marie', '1993-03-29', '2024-02-05', 5),
-   ('Girard', 'Nathalie', '1982-06-22', '2024-02-07', 6),
-   ('Andre', 'Olivier', '1991-11-09', '2024-02-10', 1),
-   ('Lemoine', 'Pauline', '1990-04-18', '2024-02-13', 3),
-   ('Perrin', 'Quentin', '1987-10-24', '2024-02-15', 4),
-   ('Renaud', 'Sabine', '1995-07-05', '2024-02-18', 2),
-   ('Benoit', 'Thomas', '1986-12-06', '2024-02-20', 8),
-   ('Schmitt', 'Ursule', '1992-09-17', '2024-02-22', 4),
-   ('Colin', 'Victor', '1989-05-11', '2024-02-25', 9),
-   ('Renard', 'Wendy', '1994-08-13', '2024-02-27', 8),
-   ('Leclerc', 'Xavier', '1985-07-19', '2024-02-29', 6),
-   ('Martinez', 'Yvonne', '1993-11-01', '2024-03-01', 2);
+   ('Durand', 'Alice', '123', '1990-04-12', 1),
+   ('Martin', 'Benoit', '123', '1988-03-20', 2),
+   ('Dupont', 'Claire', '123', '1992-08-05', 3),
+   ('Bernard', 'David', '123', '1985-11-10', 1),
+   ('Petit', 'Elise', '123', '1991-07-25', 4),
+   ('Leroy', 'François', '123', '1994-06-15', 7),
+   ('Moreau', 'Georges', '123', '1989-12-30', 3),
+   ('Simon', 'Helene', '123', '1987-05-03', 1),
+   ('Rousseau', 'Isabelle', '123', '1995-10-19', 5),
+   ('Garnier', 'Julien', '123', '1986-09-21', 1),
+   ('Faure', 'Karine', '123', '1990-01-11', 2),
+   ('Blanc', 'Louis', '123', '1984-02-15', 3),
+   ('Morel', 'Marie', '123', '1993-03-29', 5),
+   ('Girard', 'Nathalie', '123', '1982-06-22', 6),
+   ('Andre', 'Olivier', '123', '1991-11-09', 1),
+   ('Lemoine', 'Pauline', '123', '1990-04-18', 3),
+   ('Perrin', 'Quentin', '123', '1987-10-24', 4),
+   ('Renaud', 'Sabine', '123', '1995-07-05', 2),
+   ('Benoit', 'Thomas', '123', '1986-12-06', 8),
+   ('Schmitt', 'Ursule', '123', '1992-09-17', 4),
+   ('Colin', 'Victor', '123', '1989-05-11', 9),
+   ('Renard', 'Wendy', '123', '1994-08-13', 8),
+   ('Leclerc', 'Xavier', '123', '1985-07-19', 6),
+   ('Martinez', 'Yvonne', '123', '1993-11-01', 2);
 
 
 -- Candidatures pour l'annonce 1 (Boulanger en CDI, requérant 3 ans d'expérience)

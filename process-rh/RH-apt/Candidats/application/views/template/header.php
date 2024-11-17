@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Ressources Humaines</title>
+  <title>Chercher emplois</title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/vendors/feather/feather.css">
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/vendors/ti-icons/css/themify-icons.css">
@@ -22,7 +22,7 @@
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-        <a class="navbar-brand brand-logo mr-5" href="<?php echo site_url('DemandeBesoinController'); ?>">
+        <a class="navbar-brand brand-logo mr-5" href="<?php echo site_url('AnnonceController'); ?>">
           <img src="<?php echo base_url(); ?>assets/images/collaborer.png" class="mr-2" alt="logo"/>
         </a>
       </div>
@@ -34,24 +34,24 @@
           <li class="nav-item nav-profile dropdown">
             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
               <!-- <img src="images/faces/face28.jpg" alt="profile"/> -->
-              <!-- <p style="color:green">Connected as  : 
-                <?php echo $this->session->userdata('nom_fou');  ?>
-              </p> -->
+              <p style="color:green">Connected as  : 
+                <?php echo $this->session->userdata('nom_can');  ?> 
+              </p>
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
               <!-- <a class="dropdown-item">
                 <i class="ti-settings text-primary"></i>
                 Settings
               </a> -->
-              <!-- <a class="dropdown-item" href="<?php echo site_url('LoginController'); ?>">
+              <a class="dropdown-item" href="<?php echo site_url('LoginController'); ?>">
                 <i class="ti-power-off text-primary"></i>
                 Logout
-              </a> -->
+              </a>
             </div>
           </li>
         </ul>
         <div>
-          <h4 class="display1" style="color: #72a962;">Département ressources humaines</h4>
+          <!-- <h4 class="display1" style="color: #BF0A30;">Département ressources humaines</h4> -->
         </div>
         <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
           <span class="icon-menu"></span>
@@ -86,104 +86,33 @@
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
           <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#demadne_besoin" aria-expanded="false" aria-controls="demadne_besoin">
+            <a class="nav-link" data-toggle="collapse" href="#annocne" aria-expanded="false" aria-controls="annocne">
               <i class="icon-grid menu-icon"></i>
-              <span class="menu-title">Demande <br>de besoin</span>
+              <span class="menu-title">Annonces</span>
               <i class="menu-arrow"></i>
             </a>
-            <div class="collapse" id="demadne_besoin">
+            <div class="collapse" id="annocne">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('DemandeBesoinController/index'); ?>">Insertion</a></li>
-                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('DemandeBesoinController/index2'); ?>">Liste</a></li>
+                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('AnnonceController'); ?>">Offre(s)</a></li>
+                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('AnnoncePostuleController'); ?>">Postulé(s)</a></li>
               </ul>
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#annonce" aria-expanded="false" aria-controls="annonce">
-              <i class="icon-grid menu-icon"></i>
-              <span class="menu-title">Annonce</span>
-              <i class="menu-arrow"></i>
+            <a class="nav-link" href="<?php echo site_url('NotificationsController'); ?>">
+              <i class="icon-layout menu-icon"></i>
+              <span class="menu-title">Notifications</span>
             </a>
-            <div class="collapse" id="annonce">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('AnnonceController'); ?>">Insertion</a></li>
-                <!-- <?php if ($id_depa < 5) { ?> -->
-                  <li class="nav-item">
-                    <a class="nav-link" href="<?php echo site_url('AnnonceController/index2'); ?>">Liste avec tous les <br>candidatures</a>
-                  </li>
-                <!-- <?php } ?> -->
-              </ul>
-            </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#personnel" aria-expanded="false" aria-controls="personnel">
+            <a class="nav-link" data-toggle="collapse" href="#simulation" aria-expanded="false" aria-controls="simulation">
               <i class="icon-grid menu-icon"></i>
-              <span class="menu-title">Personnel</span>
+              <span class="menu-title">Simulation</span>
               <i class="menu-arrow"></i>
             </a>
-            <div class="collapse" id="personnel">
+            <div class="collapse" id="simulation">
               <ul class="nav flex-column sub-menu">
-                <li>Côté entreprise</li>
-                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('PersonnelController'); ?>">Insertion</a></li>
-                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('PersonnelController/index3'); ?>">Licensier</a></li>
-                <!-- <?php if ($id_depa < 5) { ?> -->
-                  <li class="nav-item">
-                    <a class="nav-link" href="<?php echo site_url('PersonnelController/index2'); ?>">Liste</a>
-                  </li>
-
-                <!-- <?php } ?> -->
-                <li>Côté candidat</li>
-                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('CandidatureController'); ?>">Candidater</a></li>
-                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('ExperienceTravailController'); ?>">Insertion <br>expériences<br>professionnelles</a></li>
-              </ul>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#resulttest" aria-expanded="false" aria-controls="resulttest">
-              <i class="icon-grid menu-icon"></i>
-              <span class="menu-title">Test</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="resulttest">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"><a class="nav-link" href="<?php echo site_url('TestController/index'); ?>">Insertion d'un test</a></li>
-                <li class="nav-item"><a class="nav-link" href="<?php echo site_url('TestController/index2'); ?>">Liste rendez-vous <br> test</a></li>
-                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('ResultatTestController/index'); ?>">Insertion notes</a></li>
-                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('ResultatTestController/index2'); ?>">Résultats tests</a></li>
-              </ul>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#rendezvous" aria-expanded="false" aria-controls="rendezvous">
-              <i class="icon-grid menu-icon"></i>
-              <span class="menu-title">Rendez-vous <br>pour un entretien</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="rendezvous">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('RendezVousController'); ?>">Insertion</a></li>
-                <!-- <?php if ($id_depa < 5) { ?> -->
-                  <li class="nav-item">
-                    <a class="nav-link" href="<?php echo site_url('RendezVousController/index2'); ?>">Liste</a>
-                  </li>
-                <!-- <?php } ?> -->
-              </ul>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#contrat" aria-expanded="false" aria-controls="contrat">
-              <i class="icon-grid menu-icon"></i>
-              <span class="menu-title">Contrat</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="contrat">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('ContratController/index'); ?>">Insertion</a></li>
-                <!-- <?php if ($id_depa < 5) { ?> -->
-                  <!-- <li class="nav-item">
-                    <a class="nav-link" href="<?php echo site_url('Controller'); ?>">Liste des tests</a>
-                  </li> -->
-                <!-- <?php } ?> -->
+                <li class="nav-item"><a class="nav-link" href="<?php echo site_url('SimulationController'); ?>">Faire une <br> simulation</a></li>
               </ul>
             </div>
           </li>
@@ -204,28 +133,3 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-          $a = 5;
-          $b = 10;
-          
-          $a=$a*$b;
-          50
-
-          $b=$a/$b;
-          5
-
-          $a=$a/$b;
-          10
