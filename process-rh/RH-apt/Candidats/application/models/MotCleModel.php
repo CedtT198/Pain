@@ -102,7 +102,7 @@ class MotCleModel extends CI_Model {
     
             // synonymes
             foreach ($motCleData['synonymes'] as $synonyme) {
-                if (strpos($phrase, strtolower($synonyme->nom_synonyme)) !== false) {
+                if (strpos($phrase, strtolower($synonyme->nom)) !== false) {
                     return $motCleData['reponse'];
                 }
             }
