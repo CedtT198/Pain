@@ -11,7 +11,7 @@ class RendezVousController extends CI_Controller {
     }
 
     public function index() {
-        $data['candidatures'] = $this->CandidatureModel->getAll();
+        $data['candidatures'] = $this->CandidatureModel->getAllAvecMoyenne();
         $data['contents'] = 'page/FormulaireRendezVous';
         $this->load->view('template/template', $data);
     }
@@ -29,7 +29,7 @@ class RendezVousController extends CI_Controller {
             'date_rendez_vous' => $this->input->post('date_rendez_vous')
         );
         $id_rendez_vous = $this->RendezVousModel->insert($data);
-        
+        // echo $id_rendez_vous;
         $dataNotif = array(
             'date_notification' => date('Y-m-d'),
             'vu' => false,

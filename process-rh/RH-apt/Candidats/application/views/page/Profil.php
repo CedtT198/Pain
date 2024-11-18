@@ -21,8 +21,8 @@
                             <p><strong>Date de Diplome :</strong> <?php echo $candidat['diplome_nom']; ?></p>
                             <hr>
                             <h3>Professionnel</h3>
-                            <p><a href="<?php echo site_url('ExperienceTravailController'); ?>">Ajouter nouvelle expérience professionnelle</a></p>
                             <?php if (Count($experiences) > 0) { ?>
+                                <p><a href="<?php echo site_url('ExperienceTravailController'); ?>">Ajouter nouvelle expérience professionnelle</a></p>
                                 <div class="table-responsive">
                                     <table class="table table-striped">
                                         <thead>

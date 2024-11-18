@@ -39,20 +39,18 @@
               </p> -->
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
+              <p style="color:green">Département ressources humaines</p> 
               <!-- <a class="dropdown-item">
                 <i class="ti-settings text-primary"></i>
                 Settings
               </a> -->
               <!-- <a class="dropdown-item" href="<?php echo site_url('LoginController'); ?>">
                 <i class="ti-power-off text-primary"></i>
-                Logout
-              </a> -->
+                Logout -->
+              </a>
             </div>
           </li>
         </ul>
-        <div>
-          <h4 class="display1" style="color: #72a962;">Département ressources humaines</h4>
-        </div>
         <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
           <span class="icon-menu"></span>
         </button>
@@ -125,7 +123,7 @@
               <ul class="nav flex-column sub-menu">
                 <!-- <li>Côté entreprise</li> -->
                 <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('PersonnelController'); ?>">Insertion</a></li>
-                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('PersonnelController/index3'); ?>">Licensier</a></li>
+                <!-- <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('PersonnelController/index3'); ?>">Licensier</a></li> -->
                 <!-- <?php if ($id_depa < 5) { ?> -->
                   <li class="nav-item">
                     <a class="nav-link" href="<?php echo site_url('PersonnelController/index2'); ?>">Liste</a>

@@ -197,3 +197,15 @@ WHERE t.id_candidature=1 or rd.id_candidature=1;
 
 
 
+
+
+        select contrat.*, personnel.*, poste.nom as poste_nom, personnel.nom as personnel_nom, type_contrat.nom as nom_type_contrat
+        from contrat
+        join personnel on contrat.id_personnel = personnel.id_personnel
+        join poste on poste.id_poste = contrat.id_poste
+        join type_contrat on type_contrat.id_type_contrat = contrat.id_type_contrat
+        where date_renvoie is NOT NULL
+        order by contrat.date_debut DESC,  contrat.id_personnel DESC;
+
+
+

@@ -10,6 +10,8 @@ class NotificationsController extends CI_Controller {
 
     public function index() {
         $id = $this->session->userdata('id_can');
+        // echo $id;
+        // var_dump($this->NotificationModel->getAll($id));
         $data['notifications'] = $this->NotificationModel->getAll($id);
         $data['contents'] = 'page/Notifications';
         $this->load->view('template/template', $data);

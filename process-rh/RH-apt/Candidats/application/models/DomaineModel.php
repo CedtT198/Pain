@@ -5,9 +5,10 @@ class DomaineModel extends CI_Model {
 
     // Fonction pour obtenir tous les domaines
     public function getAllDomaine() {
-        return $this->db->get('domaine')->result();
+        return $this->db->get('domaine')->result_array();
     }
-    public function getAll(){
-        $this->db->get('domain');
-    }
+
+    // public function getAll(){
+    //     $this->db->get('domain');
+    // }
 }

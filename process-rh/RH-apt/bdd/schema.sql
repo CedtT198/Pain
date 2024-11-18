@@ -1,9 +1,9 @@
 use pain;
 
-DROP TABLE mot_cle_reponse; 
+-- DROP TABLE mot_cle_reponse; 
 DROP TABLE simulation_questions; 
 DROP TABLE reponses_question; 
-DROP TABLE mot_cle_domaine; 
+-- DROP TABLE mot_cle_domaine; 
 DROP TABLE experience_travail; 
 DROP TABLE candidature_in_annonce;
 DROP TABLE resultat_simulation;  
@@ -12,8 +12,8 @@ DROP TABLE notification;
 DROP TABLE annonce;  
 DROP TABLE simulation; 
 DROP TABLE reponse_simulation; 
-DROP TABLE mot_cle; 
-DROP TABLE domaine; 
+-- DROP TABLE mot_cle; 
+-- DROP TABLE domaine; 
 DROP TABLE reponses_chatbot; 
 DROP TABLE demande_besoin_rh; 
 DROP TABLE contrat; 
@@ -145,17 +145,17 @@ CREATE TABLE reponses_chatbot(
    PRIMARY KEY(id_reponses_chatbot)
 );
 
-CREATE TABLE domaine(
-   id_domaine INT AUTO_INCREMENT,
-   nom_domaine VARCHAR(50)  NOT NULL,
-   PRIMARY KEY(id_domaine)
-);
+-- CREATE TABLE domaine(
+--    id_domaine INT AUTO_INCREMENT,
+--    nom_domaine VARCHAR(50)  NOT NULL,
+--    PRIMARY KEY(id_domaine)
+-- );
 
-CREATE TABLE mot_cle(
-   id_mot_cle INT AUTO_INCREMENT,
-   mot VARCHAR(50)  NOT NULL,
-   PRIMARY KEY(id_mot_cle)
-);
+-- CREATE TABLE mot_cle(
+--    id_mot_cle INT AUTO_INCREMENT,
+--    mot VARCHAR(50)  NOT NULL,
+--    PRIMARY KEY(id_mot_cle)
+-- );
 
 CREATE TABLE reponse_simulation(
    id_reponse_simulation INT AUTO_INCREMENT,
@@ -237,13 +237,13 @@ CREATE TABLE experience_travail(
    FOREIGN KEY(id_candidature) REFERENCES candidature(id_candidature)
 );
 
-CREATE TABLE mot_cle_domaine(
-   id_domaine INT,
-   id_mot_cle INT,
-   PRIMARY KEY(id_domaine, id_mot_cle),
-   FOREIGN KEY(id_domaine) REFERENCES domaine(id_domaine),
-   FOREIGN KEY(id_mot_cle) REFERENCES mot_cle(id_mot_cle)
-);
+-- CREATE TABLE mot_cle_domaine(
+--    id_domaine INT,
+--    id_mot_cle INT,
+--    PRIMARY KEY(id_domaine, id_mot_cle),
+--    FOREIGN KEY(id_domaine) REFERENCES domaine(id_domaine),
+--    FOREIGN KEY(id_mot_cle) REFERENCES mot_cle(id_mot_cle)
+-- );
 
 CREATE TABLE reponses_question(
    id_question_simulation INT,
@@ -261,13 +261,13 @@ CREATE TABLE simulation_questions(
    FOREIGN KEY(id_simulation) REFERENCES simulation(id_simulation)
 );
 
-CREATE TABLE mot_cle_reponse(
-   id_reponses_chatbot INT,
-   id_mot_cle INT,
-   PRIMARY KEY(id_reponses_chatbot, id_mot_cle),
-   FOREIGN KEY(id_reponses_chatbot) REFERENCES reponses_chatbot(id_reponses_chatbot),
-   FOREIGN KEY(id_mot_cle) REFERENCES mot_cle(id_mot_cle)
-);
+-- CREATE TABLE mot_cle_reponse(
+--    id_reponses_chatbot INT,
+--    id_mot_cle INT,
+--    PRIMARY KEY(id_reponses_chatbot, id_mot_cle),
+--    FOREIGN KEY(id_reponses_chatbot) REFERENCES reponses_chatbot(id_reponses_chatbot),
+--    FOREIGN KEY(id_mot_cle) REFERENCES mot_cle(id_mot_cle)
+-- );
 
 
 
@@ -317,22 +317,22 @@ VALUES
    ('Emballage des produits'),
    ('Nettoyage du materiel'),
    ('Gestion des stocks'),
-   ('Commande des matieres premieres'),
-   ('Gestion des invendus'),
-   ('Accueil des clients'),
-   ('Conseil sur les produits'),
-   ('Encaissement des ventes'),
-   ('Organisation des livraisons'),
-   ('Rangement du magasin'),
-   ('Entretien de l espace de vente'),
-   ('Creation de nouvelles recettes'),
-   ('Verification des normes de securite'),
-   ('Gestion des employes'),
-   ('Formation des apprentis'),
-   ('Suivi des commandes clients'),
-   ('Preparation des commandes clients'),
-   ('Prise de commande telephonique'),
-   ('Gestion des reseaux sociaux');
+   ('Commande des matieres premieres');
+   -- ('Gestion des invendus'),
+   -- ('Accueil des clients'),
+   -- ('Conseil sur les produits'),
+   -- ('Encaissement des ventes'),
+   -- ('Organisation des livraisons'),
+   -- ('Rangement du magasin'),
+   -- ('Entretien de l espace de vente'),
+   -- ('Creation de nouvelles recettes'),
+   -- ('Verification des normes de securite'),
+   -- ('Gestion des employes'),
+   -- ('Formation des apprentis'),
+   -- ('Suivi des commandes clients'),
+   -- ('Preparation des commandes clients'),
+   -- ('Prise de commande telephonique'),
+   -- ('Gestion des reseaux sociaux');
 
 INSERT INTO diplome (nom, valeur)
 VALUES

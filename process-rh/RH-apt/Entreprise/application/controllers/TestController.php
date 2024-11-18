@@ -43,6 +43,7 @@ class TestController extends CI_Controller {
         );
         $this->NotificationModel->insert($dataNotif);
         
+        $data['candidatures'] = $this->CandidatureModel->getAll();
         $data['success'] = 'Date de test enregistré ! ';
         $data['tests'] = $this->CandidatureModel->getAll();
         $data['contents'] = 'page/FormulaireTest';

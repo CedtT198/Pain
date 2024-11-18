@@ -5,6 +5,13 @@ class CandidatureModel extends CI_Model {
         $query=$this->db->get('candidature');
         return $query->result_array();
     }
+
+    public function getAllAvecMoyenne() {  
+        $sql = "select * from candidature c join test t on c.id_candidature=t.id_candidature join resultat_test rt on rt.id_test=t.id_test where note > 10";
+        
+        $query = $this->db->query($sql);
+        return $query->result_array();
+    } 
     
     // Insérer une nouvelle candidature
     public function insert($data) {

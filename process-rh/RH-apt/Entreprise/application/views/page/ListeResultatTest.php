@@ -34,8 +34,8 @@
                                                                       <td><?php echo $result['prenom']; ?></td>
                                                                       <td><?php echo $result['note']; ?></td>
                                                                       <td>
-                                                                             <?php if ($result['nom'] > 10) { ?>
-                                                                                    <a class="nav-link" href="<?php echo site_url('RendezVousController/index2'); ?>">
+                                                                             <?php if ($result['note'] > 10) { ?>
+                                                                                    <a class="nav-link" href="<?php echo site_url('RendezVousController/index'); ?>">
                                                                                            <button type="button" class="btn btn-outline-dark btn-fw">
                                                                                                   Appeler pour un entretien
                                                                                            </button>

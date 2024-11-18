@@ -2,6 +2,16 @@
 class ExperienceTravailModel extends CI_Model {
 
     // Récupérer toutes les expériences de travail pour une annonce spécifique
+    public function getById($id_candidature) {
+        $sql = "select * from experience_travail et
+                        join travail t on et.id_travail=t.id_travail
+                        where et.id_candidature=".$id_candidature;
+        
+        $query = $this->db->query($sql);
+        return $query->result_array();
+    }
+    
+    // Récupérer toutes les expériences de travail pour une annonce spécifique
     public function getAll($id_annonce) {
         $this->db->select('experience_travail.duree, travail.nom AS travail_nom');
         $this->db->from('experience_travail');

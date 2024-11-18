@@ -42,7 +42,7 @@
                                                                       <td><?php echo $personnel['date_fin'] ?></td>
                                                                       <td><?php echo $personnel['nom_type_contrat'] ?></td>
                                                                       <?php if ($personnel['date_renvoie'] != null) { ?>
-                                                                             <td><p style="color:red">Renvoyé</p></td>
+                                                                             <!-- <td><p style="color:red">Renvoyé</p></td> -->
                                                                       <?php } else { ?>
                                                                              <td></td>
                                                                       <?php } ?>

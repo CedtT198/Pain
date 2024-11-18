@@ -6,6 +6,7 @@ class AnnonceController extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('AnnonceModel');
+        $this->load->model('ExperienceTravailModel');
         $this->load->model('NotificationModel');
         $this->load->model('CandidatureModel');
         $this->load->model('CandidatureInAnnonceModel');

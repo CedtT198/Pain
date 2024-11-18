@@ -40,8 +40,6 @@ class DemandeBesoinController extends CI_Controller {
     
             $this->DemandeBesoinModel->insert($data);
             
-            $data['departements'] = $this->DepartementModel->getAll();
-            $data['postes'] = $this->PosteModel->getAll();
             $data['success'] = 'Demande envoyée ! ';
         }
         else {
@@ -49,6 +47,8 @@ class DemandeBesoinController extends CI_Controller {
             $data['error'] = 'Il y a déjà ce poste occupé par ce personnel. ';
         }
 
+        $data['departements'] = $this->DepartementModel->getAll();
+        $data['postes'] = $this->PosteModel->getAll();
         $data['contents'] = 'page/FormulaireDemandeBesoin';
         $this->load->view('template/template', $data);
     }

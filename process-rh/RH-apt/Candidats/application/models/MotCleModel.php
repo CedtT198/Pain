@@ -42,7 +42,7 @@ class MotCleModel extends CI_Model {
         if (!$domaine) {
             return null; 
         }
-
+ 
         $motCleList = $this->getMotCleByIdDomaine($idDomaine);
         
         $result = [
