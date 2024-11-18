@@ -6,7 +6,8 @@ class ResultatTestController extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('CandidatureModel');
-        $this->load->model('ResultatTestModel');
+        $this->load->model('ResultatTestModel'); 
+        $this->load->model('NotificationModel'); 
         $this->load->model('TestModel');
     }
 
@@ -33,10 +34,22 @@ class ResultatTestController extends CI_Controller {
                 'date_resultat_test' => $this->input->post('date_resultat_test'),
                 'note' => $note
             );
-            $this->ResultatTestModel->insert($data);
+            $id_resultat_test = $this->ResultatTestModel->insert($data);
+            
+            $dataNotif = array(
+                'date_notification' => date('Y-m-d'),
+                'vu' => false,
+                'id_candidature' => $this->TestModel->getById($this->input->post('id_test'))['id_candidature'],
+                'id_test' => null,
+                'id_annonce' => null,
+                'id_resultat_test' => $id_resultat_test,
+                'id_rendez_vous' => null
+            );
+            $this->NotificationModel->insert($dataNotif);
             
             $data['success'] = 'Résultat de test Enregistré ! ';
         }
+        $data['tests'] = $this->TestModel->getAll();
         $data['candidatures'] = $this->CandidatureModel->getAll();
         $data['contents'] = 'page/FormulaireResultatTest';
         $this->load->view('template/template', $data);

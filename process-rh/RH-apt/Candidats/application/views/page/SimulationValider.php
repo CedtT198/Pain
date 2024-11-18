@@ -13,9 +13,9 @@
                     <div class="form-group">
                         <label for="difficulte"></label>
                         <select class="form-control" id="difficulte" name="difficulte" required>
-                            <option value="10">Facile</option>
-                            <option value="10">Moyen</option>
-                            <option value="10">Difficile</option>
+                            <option value="5">Facile</option>
+                            <option value="25">Moyen</option>
+                            <option value="50">Difficile</option>
                         </select>
                     </div>
                     <div class="mt-3">

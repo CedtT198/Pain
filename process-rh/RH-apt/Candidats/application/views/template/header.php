@@ -34,15 +34,15 @@
           <li class="nav-item nav-profile dropdown">
             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
               <!-- <img src="images/faces/face28.jpg" alt="profile"/> -->
-              <p style="color:green">Connected as  : 
+              <p style="color:red">Connected as  : 
                 <?php echo $this->session->userdata('nom_can');  ?> 
-              </p>
+              </p> 
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
               <!-- <a class="dropdown-item">
                 <i class="ti-settings text-primary"></i>
                 Settings
-              </a> -->
+              </a> --> 
               <a class="dropdown-item" href="<?php echo site_url('LoginController'); ?>">
                 <i class="ti-power-off text-primary"></i>
                 Logout
@@ -115,6 +115,12 @@
                 <li class="nav-item"><a class="nav-link" href="<?php echo site_url('SimulationController'); ?>">Faire une <br> simulation</a></li>
               </ul>
             </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="<?php echo site_url('ProfilController'); ?>">
+              <i class="icon-layout menu-icon"></i>
+              <span class="menu-title">Profil</span>
+            </a>
           </li>
       </ul>
       </nav>

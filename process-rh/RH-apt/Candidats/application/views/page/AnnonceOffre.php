@@ -19,6 +19,9 @@
                                     </form><br><br>
                                 </div>
                                 <div class="col-md-11"><h2 class="font-weight-bold">   <small class="h2 text-muted">Liste d'annonces disponibles : <?php echo Count($annonces); ?></small> </h2></div>
+                                   <?php if (isset($success)) { ?>
+                                          <h6 style="color:green;"><?php echo $success; ?></h6>
+                                   <?php } ?>
                             </div>
                      </div>
               </div>
@@ -51,7 +54,10 @@
                                                                       <td><?php echo $annonce['duree_exp_requise'] ?></td>
                                                                       <td><?php echo $annonce['nom_type_contrat'] ?></td>
                                                                       <td>
-                                                                             <button type="submit" class="btn btn-dark mr-2">Postuler</button>
+                                                                             <form action="<?php echo site_url('AnnonceController/postule'); ?>" method="post">
+                                                                                    <input type="hidden" name="id_annonce" value="<?php echo $annonce['id_annonce'] ?>">
+                                                                                    <button type="submit" class="btn btn-dark mr-2">Postuler</button>
+                                                                             </form>
                                                                       </td>
                                                                </tr>
                                                         <?php } ?>

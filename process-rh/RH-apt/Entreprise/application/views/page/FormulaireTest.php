@@ -16,7 +16,7 @@
                             <?php  } ?>
                             <form class="forms-sample" method="post" action ="<?php echo site_url('TestController/insert'); ?>">
                                    <div class="form-group">
-                                          <label for="id_candidature">Candidat</label>
+                                          <label for="id_candidature">Candidat</label> 
                                           <select class="form-control" id="id_candidature" name="id_candidature">
                                                  <?php  foreach ($candidatures as $candidature) { ?>
                                                         <option value="<?php echo $candidature['id_candidature']; ?>">

@@ -24,7 +24,8 @@ class RendezVousModel extends CI_Model {
 
     // Insérer un nouveau rendez-vous
     public function insert($data) {
-        return $this->db->insert('rendez_vous', $data);
+        $this->db->insert('rendez_vous', $data);
+        return $this->db->insert_id();
     }
 
     // Mettre à jour un rendez-vous existant par ID

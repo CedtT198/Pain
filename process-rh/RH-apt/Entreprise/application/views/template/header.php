@@ -123,7 +123,7 @@
             </a>
             <div class="collapse" id="personnel">
               <ul class="nav flex-column sub-menu">
-                <li>Côté entreprise</li>
+                <!-- <li>Côté entreprise</li> -->
                 <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('PersonnelController'); ?>">Insertion</a></li>
                 <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('PersonnelController/index3'); ?>">Licensier</a></li>
                 <!-- <?php if ($id_depa < 5) { ?> -->
@@ -132,9 +132,9 @@
                   </li>
 
                 <!-- <?php } ?> -->
-                <li>Côté candidat</li>
-                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('CandidatureController'); ?>">Candidater</a></li>
-                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('ExperienceTravailController'); ?>">Insertion <br>expériences<br>professionnelles</a></li>
+                <!-- <li>Côté candidat</li> -->
+                <!-- <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('CandidatureController'); ?>">Candidater</a></li>
+                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('ExperienceTravailController'); ?>">Insertion <br>expériences<br>professionnelles</a></li> -->
               </ul>
             </div>
           </li>

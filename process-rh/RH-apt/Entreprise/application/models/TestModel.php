@@ -28,7 +28,8 @@ class TestModel extends CI_Model {
 
     // Insérer un nouveau test
     public function insert($data) {
-        return $this->db->insert('test', $data);
+        $this->db->insert('test', $data);
+        return $this->db->insert_id();
     }
 
     // Mettre à jour un test existant

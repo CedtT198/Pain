@@ -7,6 +7,7 @@ class AnnonceController extends CI_Controller {
         parent::__construct();
         $this->load->model('AnnonceModel');
         $this->load->model('CanalModel');
+        $this->load->model('CandidatureInAnnonceModel');
     }
 
     public function index() {
@@ -25,6 +26,22 @@ class AnnonceController extends CI_Controller {
         $data['annonces'] = $this->AnnonceModel->getAllJointureBy($id_canal);
 
         $data['contents'] = 'page/AnnonceOffre'; 
+        $this->load->view('template/template', $data);
+    }
+
+    public function postule() {
+        $data = array(
+            'id_annonce' => $this->input->post('nom'),
+            'id_candidature' => $this->input->post('prenom'),
+            'date_candidature' => date('Y-m-d')
+        );
+        $this->CandidatureInAnnonceModel->insert($data);
+        
+        
+        $data['canals'] = $this->CanalModel->getAll();
+        $data['annonces'] = $this->AnnonceModel->getAllWithTravail();
+        $data['success'] = 'Candidature envoyé avec succès.';
+        $data['contents'] = 'page/AnnonceOffre';
         $this->load->view('template/template', $data);
     }
 }

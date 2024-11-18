@@ -14,8 +14,8 @@
             <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                         <div class="card-body">
-                            <h1>Nom Prénom</h1>
-                            <p>Score : 10 / 100</p>
+                            <h1><?php echo $this->session->userdata('nom_can');  ?> </h1>
+                            <p>Score : <?php echo $score; ?> / <?php echo $nb_question; ?></p>
                             <a href="<?php echo site_url('SimulationController'); ?>">
                                 <button class="btn btn-block btn-success btn-lg font-weight-medium auth-form-btn">Recommencer</button>
                             </a>

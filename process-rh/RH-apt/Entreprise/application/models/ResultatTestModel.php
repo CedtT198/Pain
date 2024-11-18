@@ -27,7 +27,9 @@ class ResultatTestModel extends CI_Model {
     // }
 
     public function insert($data) {
-        return $this->db->insert('resultat_test', $data);
+        $this->db->insert('resultat_test', $data);
+        return $this->db->insert_id();
     }
+    
 }
 ?>

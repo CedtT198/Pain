@@ -14,25 +14,29 @@
        <div class="col-md-12">
             <div class="col-lg-12 grid-margin stretch-card">
                 <form class="pt-3" method="post" action="<?php echo site_url('SimulationController/getResultat'); ?>">
+                    <input type="hidden" name="data" value="<?php echo htmlspecialchars(json_encode($questions)); ?>">
                     <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title">Question 1</h4>
-                                <div class="form-group">
-                                    <label for="quest"></label>
+                        <?php
+                        $i = 0;
+                        foreach($questions as $question) { ?>
+                        <div class="card-body">
+                            <h4 class="card-title"><?php echo $question['question'] .' - '. $question['id_reponse_simulation'];?></h4>
+                            <div class="form-group">
+                                <?php
+                                $reponses = $this->SimulationModel->getReponsesQuest($question['id_question_simulation']);
+                                foreach ($reponses as $reponse) { ?>
                                     <div>
-                                        <input type="checkbox"> ok
+                                        <input type="radio" name="<?php echo $i; ?>[]" value="<?php echo $reponse['id_reponse_simulation']; ?>" required>
+                                            <?php echo $reponse['id_reponse_simulation']; ?> - 
+                                            <?php echo $reponse['reponse']; ?>
                                     </div>
-                                    <div>
-                                        <input type="checkbox"> ok
-                                    </div>
-                                    <div>
-                                        <input type="checkbox"> ok
-                                    </div>
-                                </div>
+                                <?php } ?>
                             </div>
+                        </div>
+                        <?php $i++; } ?>
                     </div>
                     <div class="mt-3">
-                        <button class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" type="submit">Voir résultats</button>
+                        <button class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" type="submit">Valider réponses</button>
                     </div>
                 </form><br><br>
              </div>

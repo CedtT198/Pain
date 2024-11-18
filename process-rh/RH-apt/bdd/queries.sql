@@ -188,6 +188,11 @@ ORDER BY resultat_test.note DESC;
 
 
 
+select * from notification n
+left join test t on n.id_test=t.id_test
+left join resultat_test rt on rt.id_test=t.id_test
+left join rendez_vous rd on rd.id_rendez_vous=n.id_rendez_vous
+WHERE t.id_candidature=1 or rd.id_candidature=1;
 
 
 
