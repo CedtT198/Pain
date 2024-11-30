@@ -1,10 +1,10 @@
--- INSERT INTO annonce (date_annonce, duree_exp_requise, id_travail, id_canal, id_poste, id_type_contrat)
--- VALUES
---    ('2024-10-01', 2, 1, 6, 1, 1),  -- Boulanger en CDI
---    ('2024-10-05', 3, 2, 7, 2, 2),  -- Pâtissier en CDD
---    ('2024-10-10', 5, 3, 8, 3, 1),  -- Chef Boulanger en CDI
---    ('2024-10-15', 1, 4, 9, 4, 2),  -- Vendeur en CDD
---    ('2024-10-20', 4, 5, 10, 5, 1);  -- Caissier en CDI
+INSERT INTO annonce (date_annonce, duree_exp_requise, id_travail, id_canal, id_poste, id_type_contrat)
+VALUES
+   ('2024-10-01', 2, 1, 1, 1, 1),  -- Boulanger en CDI
+   ('2024-10-05', 3, 2, 2, 2, 2),  -- Pâtissier en CDD
+   ('2024-10-10', 5, 3, 3, 3, 1),  -- Chef Boulanger en CDI
+   ('2024-10-15', 1, 4, 4, 4, 2),  -- Vendeur en CDD
+   ('2024-10-20', 4, 5, 5, 5, 1);  -- Caissier en CDI
 
 
 -- INSERT INTO candidature (nom, prenom, mdp, date_naissance, id_diplome)
@@ -189,13 +189,13 @@
 
 
 
-INSERT INTO personnel (nom, prenom, date_naissance, id_poste)
+INSERT INTO personnel (nom, prenom, date_naissance, date_embauche, id_poste, id_categorie_pesonnel)
 VALUES
-   ('Durand', 'Sophie', '1987-05-10', 1),    -- Boulanger
-   ('Faure', 'Laurent', '1990-08-20', 2),    -- Pâtissier
-   ('Garnier', 'eric', '1992-04-05', 3),     -- Chef Boulanger
-   ('Lemoine', 'Cecile', '1989-01-11', 4),   -- Vendeur
-   ('Moreau', 'Antoine', '1994-07-30', 5);   -- Caissier
+   ('Durand', 'Sophie', '1987-05-10', '2000-01-01', 1, 1),    -- Boulanger
+   ('Faure', 'Laurent', '1990-08-20', '2000-01-01', 2, 1),    -- Pâtissier
+   ('Garnier', 'eric', '1992-04-05', '2000-01-01', 3, 3),     -- Chef Boulanger
+   ('Lemoine', 'Cecile', '1989-01-11', '2000-01-01', 4, 2),   -- Vendeur
+   ('Moreau', 'Antoine', '1994-07-30', '2000-01-01', 5, 2);   -- Caissier
 
 INSERT INTO contrat (date_debut, date_fin, date_renvoie, id_personnel, id_type_contrat, id_poste)
 VALUES

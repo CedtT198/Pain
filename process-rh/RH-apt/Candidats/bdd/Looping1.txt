@@ -63,30 +63,6 @@ CREATE TABLE rendez_vous(
    FOREIGN KEY(id_candidature) REFERENCES candidature(id_candidature)
 );
 
-CREATE TABLE personnel(
-   id_personnel INT AUTO_INCREMENT,
-   nom VARCHAR(50)  NOT NULL,
-   prenom VARCHAR(50)  NOT NULL,
-   date_naissance DATE NOT NULL,
-   id_poste INT NOT NULL,
-   PRIMARY KEY(id_personnel),
-   FOREIGN KEY(id_poste) REFERENCES poste(id_poste)
-);
-
-CREATE TABLE contrat(
-   id_contrat INT AUTO_INCREMENT,
-   date_debut DATE NOT NULL,
-   date_fin DATE,
-   date_renvoie DATE,
-   id_personnel INT NOT NULL,
-   id_type_contrat INT NOT NULL,
-   id_poste INT NOT NULL,
-   PRIMARY KEY(id_contrat),
-   FOREIGN KEY(id_personnel) REFERENCES personnel(id_personnel),
-   FOREIGN KEY(id_type_contrat) REFERENCES type_contrat(id_type_contrat),
-   FOREIGN KEY(id_poste) REFERENCES poste(id_poste)
-);
-
 CREATE TABLE resultat_test(
    id_resultat_test INT AUTO_INCREMENT,
    date_resultat_test DATE NOT NULL,
@@ -106,24 +82,6 @@ CREATE TABLE demande_besoin_rh(
    FOREIGN KEY(id_departement) REFERENCES departement(id_departement)
 );
 
-CREATE TABLE reponses_chatbot(
-   id_reponses_chatbot INT AUTO_INCREMENT,
-   texte VARCHAR(50)  NOT NULL,
-   PRIMARY KEY(id_reponses_chatbot)
-);
-
-CREATE TABLE domaine(
-   id_domaine INT AUTO_INCREMENT,
-   nom_domaine VARCHAR(50)  NOT NULL,
-   PRIMARY KEY(id_domaine)
-);
-
-CREATE TABLE mot_cle(
-   id_mot_cle INT AUTO_INCREMENT,
-   mot VARCHAR(50)  NOT NULL,
-   PRIMARY KEY(id_mot_cle)
-);
-
 CREATE TABLE reponse_simulation(
    id_reponse_simulation INT AUTO_INCREMENT,
    reponse VARCHAR(500)  NOT NULL,
@@ -134,6 +92,42 @@ CREATE TABLE simulation(
    id_simulation INT AUTO_INCREMENT,
    date_simulation DATE NOT NULL,
    PRIMARY KEY(id_simulation)
+);
+
+CREATE TABLE categorie_personnel(
+   id_categorie_pesonnel INT AUTO_INCREMENT,
+   nom_categorie_pesonnel VARCHAR(50)  NOT NULL,
+   PRIMARY KEY(id_categorie_pesonnel)
+);
+
+CREATE TABLE salaire(
+   id_salaire INT AUTO_INCREMENT,
+   montant DECIMAL(15,2)   NOT NULL,
+   PRIMARY KEY(id_salaire)
+);
+
+CREATE TABLE type_conge(
+   id_type_conge INT AUTO_INCREMENT,
+   nom_type_conge VARCHAR(50)  NOT NULL,
+   PRIMARY KEY(id_type_conge)
+);
+
+CREATE TABLE centre(
+   id_centre INT AUTO_INCREMENT,
+   nom_centre VARCHAR(50)  NOT NULL,
+   PRIMARY KEY(id_centre)
+);
+
+CREATE TABLE type_rupture_contrat(
+   id_type_rupture_contrat INT AUTO_INCREMENT,
+   nom_type_rupture_contrat VARCHAR(50)  NOT NULL,
+   PRIMARY KEY(id_type_rupture_contrat)
+);
+
+CREATE TABLE avenant(
+   id_avenant INT AUTO_INCREMENT,
+   date_avenant DATE NOT NULL,
+   PRIMARY KEY(id_avenant)
 );
 
 CREATE TABLE annonce(
@@ -148,6 +142,34 @@ CREATE TABLE annonce(
    FOREIGN KEY(id_travail) REFERENCES travail(id_travail),
    FOREIGN KEY(id_canal) REFERENCES canal(id_canal),
    FOREIGN KEY(id_poste) REFERENCES poste(id_poste),
+   FOREIGN KEY(id_type_contrat) REFERENCES type_contrat(id_type_contrat)
+);
+
+CREATE TABLE personnel(
+   id_personnel INT AUTO_INCREMENT,
+   id_cnaps VARCHAR(7)  NOT NULL,
+   nom VARCHAR(50)  NOT NULL,
+   prenom VARCHAR(50)  NOT NULL,
+   date_naissance DATE NOT NULL,
+   date_embauche DATE NOT NULL,
+   id_poste INT NOT NULL,
+   id_categorie_pesonnel INT NOT NULL,
+   PRIMARY KEY(id_personnel),
+   FOREIGN KEY(id_poste) REFERENCES poste(id_poste),
+   FOREIGN KEY(id_categorie_pesonnel) REFERENCES categorie_personnel(id_categorie_pesonnel)
+);
+
+CREATE TABLE contrat(
+   id_contrat INT AUTO_INCREMENT,
+   date_debut DATE NOT NULL,
+   date_fin DATE,
+   date_renvoie DATE,
+   id_poste INT NOT NULL,
+   id_personnel INT NOT NULL,
+   id_type_contrat INT NOT NULL,
+   PRIMARY KEY(id_contrat),
+   FOREIGN KEY(id_poste) REFERENCES poste(id_poste),
+   FOREIGN KEY(id_personnel) REFERENCES personnel(id_personnel),
    FOREIGN KEY(id_type_contrat) REFERENCES type_contrat(id_type_contrat)
 );
 
@@ -186,6 +208,27 @@ CREATE TABLE resultat_simulation(
    FOREIGN KEY(id_candidature) REFERENCES candidature(id_candidature)
 );
 
+CREATE TABLE rupture_contrat(
+   id_rupture_contrat INT AUTO_INCREMENT,
+   date_rupture_contrat DATE NOT NULL,
+   id_type_rupture_contrat INT NOT NULL,
+   id_personnel INT NOT NULL,
+   PRIMARY KEY(id_rupture_contrat),
+   FOREIGN KEY(id_type_rupture_contrat) REFERENCES type_rupture_contrat(id_type_rupture_contrat),
+   FOREIGN KEY(id_personnel) REFERENCES personnel(id_personnel)
+);
+
+CREATE TABLE conge(
+   id_conge INT AUTO_INCREMENT,
+   date_debut DATE NOT NULL,
+   date_fin DATE NOT NULL,
+   id_type_conge INT NOT NULL,
+   id_personnel INT NOT NULL,
+   PRIMARY KEY(id_conge),
+   FOREIGN KEY(id_type_conge) REFERENCES type_conge(id_type_conge),
+   FOREIGN KEY(id_personnel) REFERENCES personnel(id_personnel)
+);
+
 CREATE TABLE candidature_in_annonce(
    id_annonce INT,
    id_candidature INT,
@@ -204,14 +247,6 @@ CREATE TABLE experience_travail(
    FOREIGN KEY(id_candidature) REFERENCES candidature(id_candidature)
 );
 
-CREATE TABLE mot_cle_domaine(
-   id_domaine INT,
-   id_mot_cle INT,
-   PRIMARY KEY(id_domaine, id_mot_cle),
-   FOREIGN KEY(id_domaine) REFERENCES domaine(id_domaine),
-   FOREIGN KEY(id_mot_cle) REFERENCES mot_cle(id_mot_cle)
-);
-
 CREATE TABLE reponses_question(
    id_question_simulation INT,
    id_reponse_simulation INT,
@@ -228,10 +263,27 @@ CREATE TABLE simulation_questions(
    FOREIGN KEY(id_simulation) REFERENCES simulation(id_simulation)
 );
 
-CREATE TABLE mot_cle_reponse(
-   id_reponses_chatbot INT,
-   id_mot_cle INT,
-   PRIMARY KEY(id_reponses_chatbot, id_mot_cle),
-   FOREIGN KEY(id_reponses_chatbot) REFERENCES reponses_chatbot(id_reponses_chatbot),
-   FOREIGN KEY(id_mot_cle) REFERENCES mot_cle(id_mot_cle)
+CREATE TABLE personnel_salaire(
+   id_personnel INT,
+   id_salaire INT,
+   date_salaire DATE NOT NULL,
+   PRIMARY KEY(id_personnel, id_salaire),
+   FOREIGN KEY(id_personnel) REFERENCES personnel(id_personnel),
+   FOREIGN KEY(id_salaire) REFERENCES salaire(id_salaire)
+);
+
+CREATE TABLE centre_poste(
+   id_poste INT,
+   id_centre INT,
+   PRIMARY KEY(id_poste, id_centre),
+   FOREIGN KEY(id_poste) REFERENCES poste(id_poste),
+   FOREIGN KEY(id_centre) REFERENCES centre(id_centre)
+);
+
+CREATE TABLE contrat_avenant(
+   id_contrat INT,
+   id_avenant INT,
+   PRIMARY KEY(id_contrat, id_avenant),
+   FOREIGN KEY(id_contrat) REFERENCES contrat(id_contrat),
+   FOREIGN KEY(id_avenant) REFERENCES avenant(id_avenant)
 );

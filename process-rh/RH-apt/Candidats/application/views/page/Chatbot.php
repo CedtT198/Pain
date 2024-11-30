@@ -3,7 +3,7 @@
               <div class="row">
                      <div class="col-12 col-xl-8 mb-4 mb-xl-0">
                             <div class="row">
-                                <div class="col-md-12"><h2 class="font-weight-bold">   <small class="h2 text-muted">Conversation</small> </h2></div>
+                                <div class="col-md-12"><h2 class="font-weight-bold">   <small class="h2 text-muted">Chatbot</small> </h2></div>
                             </div>
                      </div>
               </div>
@@ -15,12 +15,12 @@
             <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Chatbot :</h4>
-                        <h6>Domaine de conversation : </h6> 
+                        <h4 class="card-title"></h4>
+                        <h6>Choisir domaine de conversation : </h6> 
                         <?php  foreach ($domaines as $domaine) { ?>
                             <form class="forms-sample" style="display:inline-block"  method="post" action ="<?php echo site_url('ChatbotController/choixDomaine'); ?>">
                                 <input type="hidden" value="<?php echo $domaine['id']; ?>" name="id">
-                                <button  type="submit" class="btn btn-primary mr-2"><?php echo $domaine['nom']; ?></button>
+                                <button  type="submit" class="btn btn-success mr-2"><?php echo $domaine['nom']; ?></button>
                             </form>
                             <?php } ?><br>
                             <?php if (isset($message)) { ?>
@@ -43,16 +43,16 @@
                                 } ?>
                             </div>
                         </div><br><br>
-
+                        <hr>
                         <div>
                             <form class="forms-sample" method="post" action ="<?php echo site_url('ChatbotController/talk'); ?>">
                                 <div class="container">
                                     <div class="row">
-                                        <div class="form-group col-md-9">
+                                        <div class="form-group col-md-10">
                                             <input type="text" class="form-control" name="question" placeholder="Ecrire votre requête ici" required>
                                         </div>
-                                        <div class="col-md-3">
-                                            <button type="submit" class="btn btn-dark mr-2">Envoyer</button>
+                                        <div class="col-md-2">
+                                            <button type="submit" class="form-control btn btn-dark mr-2">Envoyer</button>
                                         </div>
                                     </div>
                                 </div>

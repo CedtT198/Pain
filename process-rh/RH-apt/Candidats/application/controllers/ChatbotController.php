@@ -11,7 +11,8 @@ class ChatbotController extends CI_Controller {
     }
     
     public function index() {
-        $data['conversations'] = $this->ConversationModel->getAll();
+        $data['conversations'] = $this->ConversationModel->getAllByDomaine($this->session->userdata('session_convo')['id_domaine']);
+        // $data['conversations'] = $this->ConversationModel->getAll();
         $data['domaines'] = $this->DomaineModel->getAllDomaine();
         $data['contents'] = 'page/Chatbot'; 
         $this->load->view('template/template', $data);
@@ -35,7 +36,8 @@ class ChatbotController extends CI_Controller {
         $dataInsert = array(
             'message' => $question,
             'isChat' => false,
-            'id_domaine' => $this->session->userdata('session_convo')['id_domaine']
+            'id_domaine' => $this->session->userdata('session_convo')['id_domaine'],
+            'id_candidature' => $this->session->userdata('id_can')
         );
         $this->ConversationModel->insert($dataInsert);
 
@@ -45,7 +47,8 @@ class ChatbotController extends CI_Controller {
         $dataInsert = array(
             'message' => $reponse,
             'isChat' => true,
-            'id_domaine' => $this->session->userdata('session_convo')['id_domaine']
+            'id_domaine' => $this->session->userdata('session_convo')['id_domaine'],
+            'id_candidature' => $this->session->userdata('id_can')
         );
         $this->ConversationModel->insert($dataInsert);
 

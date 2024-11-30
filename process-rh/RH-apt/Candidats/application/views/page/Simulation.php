@@ -11,7 +11,7 @@
 </div>
 <div class="row">
        <!-- <div class="col-md-0"></div> -->
-       <div class="col-md-12">
+       <div class="col-md-6">
             <div class="col-lg-12 grid-margin stretch-card">
                 <form class="pt-3" method="post" action="<?php echo site_url('SimulationController/getResultat'); ?>">
                     <input type="hidden" name="data" value="<?php echo htmlspecialchars(json_encode($questions)); ?>">
@@ -40,5 +40,18 @@
                     </div>
                 </form><br><br>
              </div>
-       </div>
+       </div><br>
+
+       <!-- TEMPS RESTANT -->
+        <!-- <div class="col-lg-6 card">
+            <div class="card">
+                <h4>Temps restant</h4>
+            </div>
+        </div> -->
 </div>
+
+<style>
+.card {
+    padding:15px;
+}
+</style>

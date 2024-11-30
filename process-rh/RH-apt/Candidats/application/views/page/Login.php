@@ -23,7 +23,7 @@
           <div class="col-lg-4 mx-auto">
             <div class="auth-form-light text-left py-5 px-4 px-sm-5">
               <div class="brand-logo">
-                <img src="<?php echo base_url(); ?>assets/images/fournisseur.png" alt="logo">
+                <!-- <img src="<?php echo base_url(); ?>assets/images/candidat.png" alt="logo"> -->
               </div>
               <h6 class="font-weight-light">Log in to continue.</h6>
                 <?php if (isset($error)) { ?>
