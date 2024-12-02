@@ -84,21 +84,21 @@
                                                                       </td>
                                                                       <td>
                                                                              <div class="row">
-                                                                                    <div class="col-md-4">
+                                                                                    <div class="col-md-3">
                                                                                            <form action="<?php echo site_url('CongeController/index'); ?>" method="post">
                                                                                                   <input type="hidden" name="id_personnel" value="<?php echo $personnel['id_personnel']; ?>">
                                                                                                   <button type="submit" class="btn btn-warning btn-fw">Conger</button>
                                                                                            </form>
                                                                                     </div>
                                                                                     
-                                                                                    <div class="col-md-4">
+                                                                                    <div class="col-md-3">
                                                                                            <form action="<?php echo site_url('PersonnelController/licencie'); ?>" method="post">
                                                                                                   <input type="hidden" name="id_personnel" value="<?php echo $personnel['id_personnel']; ?>">
                                                                                                   <button type="submit" class="btn btn-danger btn-fw">Licencie</button>
                                                                                            </form>
                                                                                     </div>
                                                                                     
-                                                                                    <div class="col-md-4">
+                                                                                    <div class="col-md-3">
                                                                                            <form action="<?php echo site_url('ContratController/generatePdf'); ?>" method="post">
                                                                                                   <input type="hidden" name="id_personnel" value="<?php echo $personnel['id_personnel']; ?>">
                                                                                                   <input type="hidden" name="nom_poste" value="<?php echo $personnel['poste_nom']; ?>">
@@ -108,6 +108,12 @@
                                                                                                   <input type="hidden" name="nom_type_contrat" value="<?php echo $personnel['nom_type_contrat']; ?>">
                                                                                                   <input type="hidden" name="date_embauche" value="<?php echo $personnel['date_embauche']; ?>">
                                                                                                   <button type="submit" class="btn btn-dark btn-fw">Voir contrat</button>
+                                                                                           </form>
+                                                                                    </div>
+
+                                                                                    <div class="col-md-3">
+                                                                                           <form action="<?php echo site_url('AvenantController/generatePdf'); ?>" method="post">
+                                                                                                  <button type="submit" class="btn btn-info btn-fw">Avenant</button>
                                                                                            </form>
                                                                                     </div>
                                                                              </div>
