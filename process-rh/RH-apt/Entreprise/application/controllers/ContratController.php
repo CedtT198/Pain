@@ -24,6 +24,11 @@ class ContratController extends CI_Controller {
         $this->load->view('template/template', $data);
     }
     
+    public function index3() {
+        $data['contents'] = 'page/FormulaireContrat';
+        $this->load->view('template/template', $data);
+    }
+
     public function insert() {
         // $data = array(
         //     'date_debut' => $this->input->post('date_debut'),

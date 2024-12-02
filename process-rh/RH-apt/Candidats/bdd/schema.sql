@@ -19,7 +19,7 @@ DROP TABLE personnel;
 DROP TABLE annonce; 
 DROP TABLE avenant; 
 DROP TABLE type_rupture_contrat; 
-DROP TABLE centre; 
+-- DROP TABLE centre; 
 DROP TABLE type_conge; 
 DROP TABLE salaire; 
 DROP TABLE categorie_personnel;
@@ -174,11 +174,11 @@ CREATE TABLE type_conge(
    PRIMARY KEY(id_type_conge)
 );
 
-CREATE TABLE centre(
-   id_centre INT AUTO_INCREMENT,
-   nom_centre VARCHAR(50)  NOT NULL,
-   PRIMARY KEY(id_centre)
-);
+-- CREATE TABLE centre(
+--    id_centre INT AUTO_INCREMENT,
+--    nom_centre VARCHAR(50)  NOT NULL,
+--    PRIMARY KEY(id_centre)
+-- );
 
 CREATE TABLE type_rupture_contrat(
    id_type_rupture_contrat INT AUTO_INCREMENT,
@@ -467,11 +467,11 @@ VALUES
    ('Hors categorie');
 
 
-INSERT INTO centre VALUES
-(null, "Courses"),
-(null, "Usine"),
-(null, "Administ²ration"),
-(null, "Livraison");
+-- INSERT INTO centre VALUES
+-- (null, "Courses"),
+-- (null, "Usine"),
+-- (null, "Administ²ration"),
+-- (null, "Livraison");
 
 
 
