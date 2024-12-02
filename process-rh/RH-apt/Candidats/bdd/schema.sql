@@ -184,6 +184,12 @@ CREATE TABLE avenant(
    PRIMARY KEY(id_avenant)
 );
 
+CREATE TABLE motif_rupture_contrat(
+   id_motif_rupture_contrat INT AUTO_INCREMENT,
+   nom_motif_rupture_contrat VARCHAR(50)  NOT NULL,
+   PRIMARY KEY(id_motif_rupture_contrat)
+);
+
 CREATE TABLE poste(
    id_poste INT AUTO_INCREMENT,
    nom VARCHAR(50)  NOT NULL,
@@ -283,9 +289,11 @@ CREATE TABLE resultat_simulation(
 CREATE TABLE rupture_contrat(
    id_rupture_contrat INT AUTO_INCREMENT,
    date_rupture_contrat DATE NOT NULL,
+   id_motif_rupture_contrat INT NOT NULL,
    id_type_rupture_contrat INT NOT NULL,
    id_personnel INT NOT NULL,
    PRIMARY KEY(id_rupture_contrat),
+   FOREIGN KEY(id_motif_rupture_contrat) REFERENCES motif_rupture_contrat(id_motif_rupture_contrat),
    FOREIGN KEY(id_type_rupture_contrat) REFERENCES type_rupture_contrat(id_type_rupture_contrat),
    FOREIGN KEY(id_personnel) REFERENCES personnel(id_personnel)
 );
@@ -485,6 +493,11 @@ INSERT INTO type_conge VALUES
 (null, "Sabbatiques"),
 (null, "Formation");
 
+
+INSERT INTO motif_rupture_contrat VALUES
+(null, "Motif 1"),
+(null, "Motif 2"),
+(null, "Autre");
 
 
 INSERT INTO type_rupture_contrat VALUES

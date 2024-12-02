@@ -90,14 +90,15 @@
                                                                                     </div>
                                                                                     
                                                                                     <div class="col-md-4">
-                                                                                           <form action="<?php echo site_url('CongeController/licencie'); ?>" method="post">
+                                                                                           <form action="<?php echo site_url('PersonnelController/licencie'); ?>" method="post">
+                                                                                                  <input type="hidden" name="id_personnel" value="<?php echo $personnel['id_personnel']; ?>">
                                                                                                   <button type="submit" class="btn btn-danger btn-fw">Licencie</button>
                                                                                            </form>
                                                                                     </div>
                                                                                     
                                                                                     <div class="col-md-4">
-                                                                                           <form action="<?php echo site_url('CongeController/licencie'); ?>" method="post">
-                                                                                                  <button type="submit" class="btn btn-dark btn-fw">Voir contrat</button>
+                                                                                           <form action="<?php echo site_url('PersonnelController/licencie'); ?>" method="post">
+                                                                                                  <button type="submit" class="btn btn-dark btn-fw">Voir contrat</button>      
                                                                                            </form>
                                                                                     </div>
                                                                              </div>
