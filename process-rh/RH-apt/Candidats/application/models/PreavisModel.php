@@ -1,6 +1,7 @@
 <?php
+defined('BASEPATH') OR exit('No direct script access allowed');
 class PreavisModel extends CI_Model {
-    public function calculerDroitsPreavis($idPersonnel) {
+    public function calculerDroitsPreavis($idPersonnel, $date_rupture) {
         // Récupérer les infos de l'employé
         $personnel = $this->db->get_where('personnel', ['id_personnel' => $idPersonnel])->row();
         $contratPersonnel = $this->db->get_where('contrat', ['id_personnel' => $idPersonnel])->row();
@@ -11,7 +12,7 @@ class PreavisModel extends CI_Model {
 
         // Calculer l'ancienneté en mois
         $date_embauche = new DateTime($personnel->date_embauche);
-        $date_rupture = new DateTime();
+        // $date_rupture = new DateTime();
         $anciennete = $date_embauche->diff($date_rupture)->m + ($date_embauche->diff($date_rupture)->y * 12);
 
         // Récupérer les règles de préavis applicables

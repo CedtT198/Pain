@@ -514,5 +514,19 @@ VALUES
 (2, 0, NULL, 15), -- Toujours 15 jours pour CDD
 (1, 0, NULL, 5); -- Toujours 5 jours pour intérim
 
+CREATE TABLE regles_indemnites (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_type_rupture_contrat INT NOT NULL,
+    id_type_contrat INT NOT NULL,
+    anciennete_min INT NOT NULL, -- en mois
+    anciennete_max INT DEFAULT NULL, -- NULL pour illimité
+    pourcentage_salaire FLOAT NOT NULL, -- % du salaire par mois d'ancienneté
+    FOREIGN KEY (id_type_rupture_contrat) REFERENCES type_rupture_contrat(id_type_rupture_contrat),
+    FOREIGN KEY (id_type_contrat) REFERENCES type_contrat(id_type_contrat)
+);
+INSERT INTO regles_indemnites (id_type_rupture_contrat, id_type_contrat, anciennete_min, anciennete_max, pourcentage_salaire)
+VALUES
+(3, 3, 0, 12, 10),  -- Licenciement, CDI, ancienneté < 1 an : 10% du salaire par mois
+(3, 3, 12, NULL, 20); -- Licenciement, CDI, ancienneté > 1 an : 20% du salaire par mois
 
    
