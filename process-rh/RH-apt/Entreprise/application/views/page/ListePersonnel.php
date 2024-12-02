@@ -47,8 +47,10 @@
                                                  </thead>
                                                  <tbody>
                                                         <?php
-                                                        // var_dump($personnels);
-                                                        foreach ($personnels as $personnel) { ?>
+                                                               // var_dump($personnels);
+                                                               foreach ($personnels as $personnel) {
+                                                               var_dump($personnel);
+                                                        ?>
                                                                <tr>   
                                                                       <td class="py-1"><?php echo $personnel['personnel_nom'] . ' ' .$personnel['prenom']; ?></td>
                                                                       <!-- <td><?php echo $personnel['date_naissance'] ?></td> -->
@@ -98,6 +100,13 @@
                                                                                     
                                                                                     <div class="col-md-4">
                                                                                            <form action="<?php echo site_url('ContratController/generatePdf'); ?>" method="post">
+                                                                                                  <input type="hidden" name="id_personnel" value="<?php echo $personnel['id_personnel']; ?>">
+                                                                                                  <input type="hidden" name="nom_poste" value="<?php echo $personnel['poste_nom']; ?>">
+                                                                                                  <input type="hidden" name="nom_prenom" value="<?php echo $personnel['nom'] . ' ' . $personnel['prenom']; ?>">
+                                                                                                  <input type="hidden" name="date_debut" value="<?php echo $personnel['date_debut']; ?>">
+                                                                                                  <input type="hidden" name="date_fin" value="<?php echo $personnel['date_fin']; ?>">
+                                                                                                  <input type="hidden" name="nom_type_contrat" value="<?php echo $personnel['nom_type_contrat']; ?>">
+                                                                                                  <input type="hidden" name="date_embauche" value="<?php echo $personnel['date_embauche']; ?>">
                                                                                                   <button type="submit" class="btn btn-dark btn-fw">Voir contrat</button>
                                                                                            </form>
                                                                                     </div>

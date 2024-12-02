@@ -10,6 +10,7 @@ class ContratController extends CI_Controller {
         $this->load->model('ContratModel');
         $this->load->model('PosteModel');
         $this->load->model('TypeContratModel');
+        $this->load->model('SalaireModel');
     }
 
     public function index() {
@@ -64,36 +65,35 @@ class ContratController extends CI_Controller {
         $pdf->AddPage();
 
         $pdf->SetFont('Arial','',12);
-        $pdf->Cell(150);
+        $pdf->Cell(130);
         $pdf->SetTextColor(0,0,0);
-        $pdf->Cell(30,10,'[Ville], le [Date]');
+        $pdf->Cell(30,10,'Antananarivo, le '.$this->input->post('date_debut'));
         $pdf->Ln(10);
 
         $pdf->SetFont('Arial','',12);
         $pdf->SetTextColor(0,0,0);
-        $pdf->Cell(30,10,'[Votre nom]');
+        $pdf->Cell(30,10, 'Boulangerie Mihary');
         $pdf->Ln(8);
 
         $pdf->SetFont('Arial','',12);
         $pdf->SetTextColor(0,0,0);
-        $pdf->Cell(30,10,'[Adresse de votre entreprise]');
+        $pdf->Cell(30,10,'IIIG Ibiscus USA');
         $pdf->Ln(13);
 
         $pdf->SetFont('Arial','B',20);
         // $pdf->Cell(8);
         $pdf->SetTextColor(0,100,0);
-        $pdf->Cell(30,10,'Objet : Contrat de travail - [Poste]');
+        $pdf->Cell(30,10,'Objet : Contrat de travail - '.$this->input->post('nom_poste'));
         $pdf->Ln(13);
 
         $pdf->SetFont('Arial','B',12);
         $pdf->SetTextColor(0,0,0);
-        $pdf->Cell(30,10,'Monsieur/Madame [nom de l"employe]');
+        $pdf->Cell(30,10,'Monsieur/Madame '.$this->input->post('nom_prenom'));
         $pdf->Ln(15);
         
         $pdf->SetFont('Times','',12);
         // Sortie du texte justifié
-        $pdf->MultiCell(0,5,'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laudantium doloribus nesciunt voluptatem repudiandae perferendis laborum sit iure laboriosam. Voluptate suscipit impedit incidunt laudantium, hic non voluptatibus repudiandae accusantium et officia ipsam, sed quasi atque, iste dolorum. Facere illo hic autem iure. Error soluta iste officia reiciendis ipsum modi minima eum.
-        ');
+        $pdf->MultiCell(0,5,'Il nous fait plaisir de vous souhaiter la bienvenue au sein de notre equipe. Vous occuperez le poste de '.$this->input->post('nom_poste').'. Voici les conditions qui s\'y rapportent pour vous permettre d\'un prendre connaissance et de nous faire part de vos questions ou commentaires.');
         // Saut de ligne
         // $pdf->Ln();
         // // Mention en italique
@@ -114,49 +114,50 @@ class ContratController extends CI_Controller {
 
         $pdf->SetFont('Arial','',12);
         $pdf->SetTextColor(0,0,0);
-        $pdf->Cell(30,10,'[Nom,adress,coordonnees]');
+        $pdf->Cell(30,10,'Mihary, IIIG Ibiscus USA');
         $pdf->Cell(70);
-        $pdf->Cell(30,10,'[Nom,adress,coordonnees]');
+        $pdf->Cell(30,10,$this->input->post('nom_prenom'));
         $pdf->Ln(10);
 
         $pdf->SetFont('Arial','B',15);
         $pdf->SetTextColor(0,100,0);
-        $pdf->Cell(30,10,'Date d"entree en fonction');
+        $pdf->Cell(30,10,'Date d\'entree en fonction');
         $pdf->Ln(13);
 
         $pdf->SetTextColor(0,0,0);
         $pdf->SetFont('Times','',12);
-        // Sortie du texte justifié
-        $pdf->MultiCell(0,5,'Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere facilis officiis consequatur ducimus eaque quam minus sunt culpa excepturi fugit.
-        ');
-
+        $pdf->MultiCell(0,5,'Si les conditions enoncees ci-dessous vous conviennet, nous souhaitons fixer la date de votre entree en fonction '.$this->input->post('date_embauche').'.');
+    
+        
         $pdf->SetTextColor(0,0,0);
         $pdf->SetFont('Times','',12);
         // Sortie du texte justifié
-        $pdf->MultiCell(0,5,'[Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus similique autem quam. Earum blanditiis ea architecto ipsum accusantium adipisci dolore non maxime sapiente eligendi. Hic at distinctio natus beatae explicabo id animi sequi, aperiam eligendi?]');
+        if ($this->input->post('date_fin') != null) {
+            $pdf->MultiCell(0,5,'Il s\'agit ici d\'un '.$this->input->post('nom_type_contrat').'. La fin de votre contrat s\'acheve donc le '.$this->input->post('date_fin').'. Avec possibilite de prolongation a la suite d\'une evaluation.');
+        }
         $pdf->Ln(5);
 
-        $pdf->SetFont('Arial','B',15);
-        $pdf->SetTextColor(0,100,0);
-        $pdf->Cell(30,10,'Horaire de travail');
-        $pdf->Ln(13);
+        // $pdf->SetFont('Arial','B',15);
+        // $pdf->SetTextColor(0,100,0);
+        // $pdf->Cell(30,10,'Horaire de travail');
+        // $pdf->Ln(13);
 
-        $pdf->SetTextColor(0,0,0);
-        $pdf->SetFont('Times','',12);
-        // Sortie du texte justifié
-        $pdf->MultiCell(0,5,'Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere facilis officiis consequatur ducimus eaque quam minus sunt culpa excepturi fugit.
-        ');
+        // $pdf->SetTextColor(0,0,0);
+        // $pdf->SetFont('Times','',12);
+        // // Sortie du texte justifié
+        // $pdf->MultiCell(0,5,'Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere facilis officiis consequatur ducimus eaque quam minus sunt culpa excepturi fugit.
+        // ');
 
         $pdf->SetFont('Arial','B',15);
         $pdf->SetTextColor(0,100,0);
         $pdf->Cell(30,10,'Remuneration');
         $pdf->Ln(13);
 
+        $salaire = $this->SalaireModel->getSalaireActuel($this->input->post('id_personnel'));
+
         $pdf->SetTextColor(0,0,0);
         $pdf->SetFont('Times','',12);
-        // Sortie du texte justifié
-        $pdf->MultiCell(0,5,'Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere facilis officiis consequatur ducimus eaque quam minus sunt culpa excepturi fugit.
-        ');
+        $pdf->MultiCell(0,5,'Votre salaire mensuel sera fixe a '.$salaire.'. Avec possibilite de promotion');
 
 // =======================================================================
 // =======================================================================
