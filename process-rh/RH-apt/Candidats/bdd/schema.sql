@@ -184,6 +184,12 @@ CREATE TABLE avenant(
    PRIMARY KEY(id_avenant)
 );
 
+CREATE TABLE motif_rupture_contrat(
+   id_motif_rupture_contrat INT AUTO_INCREMENT,
+   nom_motif_rupture_contrat VARCHAR(50)  NOT NULL,
+   PRIMARY KEY(id_motif_rupture_contrat)
+);
+
 CREATE TABLE poste(
    id_poste INT AUTO_INCREMENT,
    nom VARCHAR(50)  NOT NULL,
@@ -239,6 +245,7 @@ CREATE TABLE contrat(
    id_personnel INT NOT NULL,
    id_type_contrat INT NOT NULL,
    id_poste INT NOT NULL,
+
    PRIMARY KEY(id_contrat),
    FOREIGN KEY(id_personnel) REFERENCES personnel(id_personnel),
    FOREIGN KEY(id_type_contrat) REFERENCES type_contrat(id_type_contrat),
@@ -283,9 +290,11 @@ CREATE TABLE resultat_simulation(
 CREATE TABLE rupture_contrat(
    id_rupture_contrat INT AUTO_INCREMENT,
    date_rupture_contrat DATE NOT NULL,
+   id_motif_rupture_contrat INT NOT NULL,
    id_type_rupture_contrat INT NOT NULL,
    id_personnel INT NOT NULL,
    PRIMARY KEY(id_rupture_contrat),
+   FOREIGN KEY(id_motif_rupture_contrat) REFERENCES motif_rupture_contrat(id_motif_rupture_contrat),
    FOREIGN KEY(id_type_rupture_contrat) REFERENCES type_rupture_contrat(id_type_rupture_contrat),
    FOREIGN KEY(id_personnel) REFERENCES personnel(id_personnel)
 );
@@ -490,6 +499,11 @@ INSERT INTO type_conge VALUES
 (null, "Formation");
 
 
+INSERT INTO motif_rupture_contrat VALUES
+(null, "Motif 1"),
+(null, "Motif 2"),
+(null, "Autre");
+
 
 INSERT INTO type_rupture_contrat VALUES
 (null, "Commun accord"),
@@ -497,6 +511,21 @@ INSERT INTO type_rupture_contrat VALUES
 (null, "Licenciement");
 
 
+CREATE TABLE regles_preavis (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_type_contrat INT NOT NULL,
+    anciennete_min INT NOT NULL, -- en mois
+    anciennete_max INT DEFAULT NULL, -- en mois, NULL pour illimité
+    preavis_duree INT NOT NULL, -- en jours
+    FOREIGN KEY (id_type_contrat) REFERENCES type_contrat(id_type_contrat)
+);
+INSERT INTO regles_preavis (id_type_contrat, anciennete_min, anciennete_max, preavis_duree)
+VALUES
+(3, 0, 6, 7), -- Moins de 6 mois d'ancienneté : 7 jours
+(3, 6, 24, 30), -- Entre 6 mois et 2 ans : 30 jours
+(3, 24, NULL, 60), -- Plus de 2 ans : 60 jours
+(2, 0, NULL, 15), -- Toujours 15 jours pour CDD
+(1, 0, NULL, 5); -- Toujours 5 jours pour intérim
 
 
    

@@ -10,6 +10,7 @@ class PersonnelController extends CI_Controller {
         $this->load->model('ContratModel');
         $this->load->model('FichePaieModel');
         $this->load->model('CategoriePersonnelModel');
+        $this->load->model('MotifRuptureContratModel');
     }
     
     public function index() {
@@ -68,6 +69,8 @@ class PersonnelController extends CI_Controller {
     }
 
     public function licencie() {
+        $data['motif_rupture_contrat'] = $this->MotifRuptureContratModel->getAll();
+        $data['personnel'] = $this->PersonnelModel->getPersonAllDetail($this->input->post('id_personnel'));
         $data['contents'] = 'page/RuptureContrat';
         $this->load->view('template/template', $data);
     }
