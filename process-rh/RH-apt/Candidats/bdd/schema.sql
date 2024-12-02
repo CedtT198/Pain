@@ -529,4 +529,27 @@ VALUES
 (3, 3, 0, 12, 10),  -- Licenciement, CDI, ancienneté < 1 an : 10% du salaire par mois
 (3, 3, 12, NULL, 20); -- Licenciement, CDI, ancienneté > 1 an : 20% du salaire par mois
 
-   
+CREATE TABLE smig(
+   id_smig INT PRIMARY KEY AUTO_INCREMENT,
+   montant DECIMAL(10,2) NOT NULL,
+   date_update DATE
+);
+
+INSERT INTO smig(montant, date_update) VALUES(250000, '2000-01-01');
+
+CREATE TABLE tranche_irsa (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    seuil_min DECIMAL(10,2) NOT NULL, -- Limite inférieure de la tranche
+    seuil_max DECIMAL(10,2),          -- Limite supérieure de la tranche (NULL si illimité)
+    taux DECIMAL(5,2) NOT NULL,       -- Taux d'imposition (en %)
+    montant_fixe DECIMAL(10,2) NOT NULL -- Montant fixe pour cette tranche
+);
+
+-- Insertion des données des tranches
+INSERT INTO tranche_irsa (seuil_min, seuil_max, taux, montant_fixe)
+VALUES
+(0, 350000, 0, 0),                  -- Pas d'IRSA pour les salaires <= 350000
+(350001, 400000, 5, 2500),          -- 5% entre 350001 et 400000
+(400001, 500000, 10, 10000),        -- 10% entre 400001 et 500000
+(500001, 600000, 15, 15000),        -- 15% entre 500001 et 600000
+(600001, NULL, 20, 0);              -- 20% au-delà de 600000
