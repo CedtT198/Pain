@@ -17,35 +17,79 @@
                      <div class="card">
                             <div class="card-body">
                                    <!-- <h4 class="card-title">Liste</h4> -->
+                                   <form action="<?php echo site_url('PersonnelController/filterByCategoriePersonnel'); ?>" method="post">
+                                          <div class="row">
+                                                 <div class="col-md-2">
+                                                        <select class="form-control form-control-sm" id="id_cat_pers" name="id_cat_pers">
+                                                               <?php foreach ($categorie_personnel as $cp) { ?>
+                                                                      <option value="<?php echo $cp['id_categorie_pesonnel']; ?>"><?php echo $cp['nom_categorie_pesonnel']; ?></option>
+                                                               <?php } ?>
+                                                        </select>     
+                                                 </div>
+                                                 <div class="col-md-6">
+                                                        <button type="submit" class="btn btn-primary">Filtrer</button>
+                                                 </div>
+                                          </div>
+                                   </form>
                                    <div class="table-responsive">
                                           <table class="table table-striped">
                                                  <thead>
                                                         <tr>
-                                                               <th>Nom</th>
-                                                               <th>Prenom</th>
-                                                               <th>Date de naissance</th>
+                                                               <th>Nom & prénom</th>
+                                                               <!-- <th>Date de naissance</th> -->
                                                                <th>Poste</th>
                                                                <th>Date debut</th>
                                                                <th>Date fin</th>
                                                                <th>Type de contrat</th>
                                                                <th></th>
+                                                               <th></th>
                                                         </tr>
-                                                        </thead>
+                                                 </thead>
                                                  <tbody>
-                                                        <?php foreach ($personnels as $personnel) { ?>
+                                                        <?php
+                                                        // var_dump($personnels);
+                                                        foreach ($personnels as $personnel) { ?>
                                                                <tr>   
-                                                                      <td class="py-1"><?php echo $personnel['personnel_nom']; ?></td>
-                                                                      <td><?php echo $personnel['prenom'] ?></td>
-                                                                      <td><?php echo $personnel['date_naissance'] ?></td>
+                                                                      <td class="py-1"><?php echo $personnel['personnel_nom'] . ' ' .$personnel['prenom']; ?></td>
+                                                                      <!-- <td><?php echo $personnel['date_naissance'] ?></td> -->
                                                                       <td><?php echo $personnel['poste_nom'] ?></td>
                                                                       <td><?php echo $personnel['date_debut'] ?></td>
                                                                       <td><?php echo $personnel['date_fin'] ?></td>
                                                                       <td><?php echo $personnel['nom_type_contrat'] ?></td>
-                                                                      <?php if ($personnel['date_renvoie'] != null) { ?>
+                                                                      <!-- <?php if ($personnel['date_renvoie'] != null) { ?> -->
                                                                              <!-- <td><p style="color:red">Renvoyé</p></td> -->
-                                                                      <?php } else { ?>
-                                                                             <td></td>
-                                                                      <?php } ?>
+                                                                      <!-- <?php } else { ?> -->
+                                                                             <!-- <td></td> -->
+                                                                      <!-- <?php } ?> -->
+                                                                      <td>
+                                                                             <form action="<?php echo site_url('CongeController/'); ?>" method="post">
+                                                                                    <div class="row">
+                                                                                           <div class="col-md-6">
+                                                                                                  <select class="form-control form-control-sm" id="exampleFormControlSelect3">
+                                                                                                         <?php 
+                                                                                                                $dates = $this->FichePaieModel->getDateDeTravail($personnel['id_personnel']);
+                                                                                                                foreach ($dates as $date) {
+                                                                                                         ?>
+                                                                                                                <option value="<?php echo $date; ?>"><?php echo $date; ?></option>
+                                                                                                         <?php } ?>
+                                                                                                  </select>
+                                                                                           </div>
+                                                                                           <div class="col-md-6">
+                                                                                                  <button type="submit" class="btn btn-light">Voir</button>
+                                                                                           </div>
+                                                                                    </div>
+                                                                             </form>
+                                                                      </td>
+                                                                      <td>
+                                                                             <form action="<?php echo site_url('CongeController/index'); ?>" method="post">
+                                                                                    <input type="hidden" name="id_personnel" value="<?php echo $personnel['id_personnel']; ?>">
+                                                                                    <button type="submit" class="btn btn-warning btn-fw">Conger</button>
+                                                                             </form>
+                                                                             
+                                                                             <form action="<?php echo site_url('CongeController/'); ?>" method="post">
+                                                                                    <button type="submit" class="btn btn-danger btn-fw">Licencie</button>
+                                                                             </form>
+                                                                      </td>
                                                                </tr>
                                                         <?php } ?>
                                                  </tbody>

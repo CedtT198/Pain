@@ -8,6 +8,8 @@ class PersonnelController extends CI_Controller {
         $this->load->model('PersonnelModel');
         $this->load->model('PosteModel');
         $this->load->model('ContratModel');
+        $this->load->model('FichePaieModel');
+        $this->load->model('CategoriePersonnelModel');
     }
     
     public function index() {
@@ -19,6 +21,7 @@ class PersonnelController extends CI_Controller {
     public function index2() {
         $data['contents'] = 'page/ListePersonnel';
         $data['personnels'] = $this->ContratModel->getAllWithPersonAndContrat();
+        $data['categorie_personnel'] = $this->CategoriePersonnelModel->getAll();
         $this->load->view('template/template', $data);
     }
     
@@ -28,17 +31,24 @@ class PersonnelController extends CI_Controller {
         $this->load->view('template/template', $data);
     }
 
-    public function renvoyer() {
-        $id = $this->input->post('id_contrat');
-        $data = array(
-            'date_renvoie' => date('Y-m-d')
-        );
+    // public function renvoyer() {
+    //     $id = $this->input->post('id_contrat');
+    //     $data = array(
+    //         'date_renvoie' => date('Y-m-d')
+    //     );
 
-        $this->ContratModel->update($id, $data);
+    //     $this->ContratModel->update($id, $data);
 
-        $data['contents'] = 'page/FormulaireRenvoiePersonnel';
-        $data['success'] = 'Personnel renvoyé.';
-        $data['personnels'] = $this->ContratModel->getAllWithPersonAndContratNonRenvoye();
+    //     $data['contents'] = 'page/FormulaireRenvoiePersonnel';
+    //     $data['success'] = 'Personnel renvoyé.';
+    //     $data['personnels'] = $this->ContratModel->getAllWithPersonAndContratNonRenvoye();
+    //     $this->load->view('template/template', $data);
+    // }
+
+    public function filterByCategoriePersonnel() {
+        $data['contents'] = 'page/ListePersonnel';
+        $data['personnels'] = $this->PersonnelModel->getAllWithPersonAndContratByIdcatPers($this->input->post('id_cat_pers'));
+        $data['categorie_personnel'] = $this->CategoriePersonnelModel->getAll();
         $this->load->view('template/template', $data);
     }
     

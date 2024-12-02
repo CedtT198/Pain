@@ -58,6 +58,12 @@ class CongeModel extends CI_Model {
         return $query->result_array();
     }
 
+    public function getAllByIdPersonnel($id_personnel) {
+        $this->db->where('id_personnel', $id_personnel);
+        $query = $this->db->get('conge');
+        return $query->result_array();
+    }
+
     public function getById($id) {
         $this->db->where('id_conge', $id);
         $query = $this->db->get('conge');
