@@ -10,8 +10,7 @@ class RuptureContratModel extends CI_Model {
         return $query->row_array();
     }
 
-    public function getAll($id) {
-        $this->db->where('id_rupture_contrat', $id);
+    public function getAll() {
         $query = $this->db->get('rupture_contrat'); 
         return $query->result_array();
     }
