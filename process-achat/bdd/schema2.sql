@@ -210,7 +210,7 @@ INSERT INTO nature (id_nature,nom_nature) VALUES
 INSERT INTO centre VALUES
 (null, "Courses"),
 (null, "Usine"),
-(null, "Administ²ration"),
+(null, "Administration"),
 (null, "Livraison");
 
 INSERT INTO charge (id_nature, id_rubrique, id_type, unite, montant, date_charge) VALUES

@@ -28,7 +28,7 @@ class FichePaieModel extends CI_Model {
         $date = []; 
     
         while ($dateEmbauche <= $dateRuptureContrat) {
-            $date[] = $dateEmbauche->format('M') . $dateEmbauche->format('Y');
+            $date[] = $dateEmbauche->format('M') . " - " . $dateEmbauche->format('Y');
             
             $dateEmbauche->modify('+1 month');
         }

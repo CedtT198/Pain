@@ -2,7 +2,7 @@ use pain;
 
 -- DROP TABLE mot_cle_reponse; 
 DROP TABLE contrat_avenant; 
-DROP TABLE centre_poste; 
+-- DROP TABLE centre_poste; 
 DROP TABLE personnel_salaire; 
 DROP TABLE simulation_questions; 
 DROP TABLE reponses_question; 
@@ -14,9 +14,11 @@ DROP TABLE rupture_contrat;
 DROP TABLE resultat_simulation;  
 DROP TABLE question_simulation;  
 DROP TABLE notification;  
-DROP TABLE contrat;  
+DROP TABLE contrat; 
 DROP TABLE personnel; 
-DROP TABLE annonce; 
+DROP TABLE annonce;
+DROP TABLE demande_besoin_rh;  
+DROP TABLE poste; 
 DROP TABLE avenant; 
 DROP TABLE type_rupture_contrat; 
 -- DROP TABLE centre; 
@@ -28,7 +30,7 @@ DROP TABLE reponse_simulation;
 -- DROP TABLE mot_cle; 
 -- DROP TABLE domaine; 
 DROP TABLE reponses_chatbot; 
-DROP TABLE demande_besoin_rh;
+-- DROP TABLE demande_besoin_rh;
 DROP TABLE rendez_vous; 
 DROP TABLE resultat_test; 
 DROP TABLE test; 
@@ -36,7 +38,7 @@ DROP TABLE candidature;
 DROP TABLE diplome; 
 DROP TABLE travail; 
 DROP TABLE type_contrat;
-DROP TABLE poste; 
+-- DROP TABLE poste; 
 DROP TABLE canal;
 -- DROP TABLE departement;
 
@@ -55,11 +57,11 @@ CREATE TABLE canal(
    PRIMARY KEY(id_canal)
 );
 
-CREATE TABLE poste(
-   id_poste INT AUTO_INCREMENT,
-   nom VARCHAR(50)  NOT NULL,
-   PRIMARY KEY(id_poste)
-);
+-- CREATE TABLE poste(
+--    id_poste INT AUTO_INCREMENT,
+--    nom VARCHAR(50)  NOT NULL,
+--    PRIMARY KEY(id_poste)
+-- );
 
 CREATE TABLE type_contrat(
    id_type_contrat INT AUTO_INCREMENT,
@@ -114,16 +116,6 @@ CREATE TABLE resultat_test(
    id_test INT NOT NULL,
    PRIMARY KEY(id_resultat_test),
    FOREIGN KEY(id_test) REFERENCES test(id_test)
-);
-
-CREATE TABLE demande_besoin_rh(
-   id_demande_besoin INT AUTO_INCREMENT,
-   date_demande DATE NOT NULL,
-   id_poste INT NOT NULL,
-   id_departement INT NOT NULL,
-   PRIMARY KEY(id_demande_besoin),
-   FOREIGN KEY(id_poste) REFERENCES poste(id_poste),
-   FOREIGN KEY(id_departement) REFERENCES departement(id_departement)
 );
 
 CREATE TABLE reponses_chatbot(
@@ -190,6 +182,24 @@ CREATE TABLE avenant(
    id_avenant INT AUTO_INCREMENT,
    date_avenant DATE NOT NULL,
    PRIMARY KEY(id_avenant)
+);
+
+CREATE TABLE poste(
+   id_poste INT AUTO_INCREMENT,
+   nom VARCHAR(50)  NOT NULL,
+   id_centre INT NOT NULL,
+   PRIMARY KEY(id_poste),
+   FOREIGN KEY(id_centre) REFERENCES centre(id_centre)
+);
+
+CREATE TABLE demande_besoin_rh(
+   id_demande_besoin INT AUTO_INCREMENT,
+   date_demande DATE NOT NULL,
+   id_poste INT NOT NULL,
+   id_departement INT NOT NULL,
+   PRIMARY KEY(id_demande_besoin),
+   FOREIGN KEY(id_poste) REFERENCES poste(id_poste),
+   FOREIGN KEY(id_departement) REFERENCES departement(id_departement)
 );
 
 CREATE TABLE annonce(
@@ -354,14 +364,6 @@ CREATE TABLE personnel_salaire(
    FOREIGN KEY(id_salaire) REFERENCES salaire(id_salaire)
 );
 
-CREATE TABLE centre_poste(
-   id_poste INT,
-   id_centre INT,
-   PRIMARY KEY(id_poste, id_centre),
-   FOREIGN KEY(id_poste) REFERENCES poste(id_poste),
-   FOREIGN KEY(id_centre) REFERENCES centre(id_centre)
-);
-
 CREATE TABLE contrat_avenant(
    id_contrat INT,
    id_avenant INT,
@@ -397,18 +399,18 @@ VALUES
    ('Television'),
    ('Journal');
 
-INSERT INTO poste (nom)
+INSERT INTO poste (nom, id_centre)
 VALUES
-   ('Boulanger'),
-   ('Patissier'),
-   ('Chef Boulanger'),
-   ('Vendeur'),
-   ('Caissier'),
-   ('Apprenti Boulanger'),
-   ('Responsable de Production'),
-   ('Responsable des Ventes'),
-   ('Preparateur de Commandes'),
-   ('Livreur');
+   ('Boulanger', 1),
+   ('Patissier', 1),
+   ('Chef Boulanger', 1),
+   ('Vendeur', 4),
+   ('Caissier', 4),
+   ('Apprenti Boulanger', 1),
+   ('Responsable de Production', 3),
+   ('Responsable des Ventes', 3),
+   ('Preparateur de Commandes', 3),
+   ('Livreur', 4);
 
 INSERT INTO type_contrat (nom)
 VALUES
@@ -470,7 +472,11 @@ VALUES
 -- INSERT INTO centre VALUES
 -- (null, "Courses"),
 -- (null, "Usine"),
+<<<<<<< HEAD
 -- (null, "Administ²ration"),
+=======
+-- (null, "Administration"),
+>>>>>>> ee10b292e65132b5609c0c1f6d5a8faf16c24d38
 -- (null, "Livraison");
 
 

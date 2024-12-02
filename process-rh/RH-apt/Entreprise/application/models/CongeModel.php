@@ -2,8 +2,6 @@
 <?php
 class CongeModel extends CI_Model {
 
-
-
     public function verifier_conge($idPersonnel) {
         // Récupérer l'ancienneté en mois
         $nbMoisTravail = $this->get_anciennete($idPersonnel);
@@ -54,6 +52,12 @@ class CongeModel extends CI_Model {
     }
 
     public function getAll() {
+        $query = $this->db->get('conge');
+        return $query->result_array();
+    }
+
+    public function getAllByIdPersonnel($id_personnel) {
+        $this->db->where('id_personnel', $id_personnel);
         $query = $this->db->get('conge');
         return $query->result_array();
     }
