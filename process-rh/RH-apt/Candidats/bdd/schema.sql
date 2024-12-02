@@ -290,12 +290,24 @@ CREATE TABLE rupture_contrat(
    FOREIGN KEY(id_personnel) REFERENCES personnel(id_personnel)
 );
 
+CREATE TABLE droit_conge_cumule(
+   id_droit_conge_cumule INT AUTO_INCREMENT PRIMARY KEY,
+   id_personnel INT NOT NULL,
+   droit_de_conge DECIMAL(5, 2) DEFAULT 0, -- Droits cumulés
+   -- atao update io rehefa par mois na isakin aka conge dia verifier-na
+   taux_accumulation DECIMAL(5, 2) DEFAULT 2.5, -- Exemple : 2.5 jours par mois
+   last_update DATE,
+   FOREIGN KEY (id_personnel) REFERENCES personnel(id_personnel) ON DELETE CASCADE
+);
+
 CREATE TABLE conge(
    id_conge INT AUTO_INCREMENT,
    date_debut DATE NOT NULL,
    date_fin DATE NOT NULL,
    id_type_conge INT NOT NULL,
    id_personnel INT NOT NULL,
+   nb_j_conge INT NOT NULL,
+   status ENUM('pending', 'approved', 'rejected') DEFAULT 'pending',
    PRIMARY KEY(id_conge),
    FOREIGN KEY(id_type_conge) REFERENCES type_conge(id_type_conge),
    FOREIGN KEY(id_personnel) REFERENCES personnel(id_personnel)
