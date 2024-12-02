@@ -51,21 +51,21 @@ class ContratModel extends CI_Model {
         $query = $this->db->get();
         return $query->result_array();
     }
-    
+
     public function getAllWithPersonAndContratNonRenvoye()
-    {
-        $this->db->select('contrat.*, personnel.*, poste.nom as poste_nom, personnel.nom as personnel_nom, type_contrat.nom as nom_type_contrat');
-        $this->db->from('contrat');
-        $this->db->join('personnel', 'contrat.id_personnel = personnel.id_personnel');
-        $this->db->join('poste', 'poste.id_poste = contrat.id_poste');
-        $this->db->join('type_contrat', 'type_contrat.id_type_contrat = contrat.id_type_contrat');
-        $this->db->where('date_renvoie', 'NOT NULL');
-        $this->db->order_by('contrat.date_debut', 'DESC');
-        $this->db->order_by('contrat.id_personnel', 'DESC');
-        
-        $query = $this->db->get();
-        return $query->result_array();
-    }
+{
+    $this->db->select('contrat.*, personnel.*, poste.nom as poste_nom, personnel.nom as personnel_nom, type_contrat.nom as nom_type_contrat');
+    $this->db->from('contrat');
+    $this->db->join('personnel', 'contrat.id_personnel = personnel.id_personnel');
+    $this->db->join('poste', 'poste.id_poste = contrat.id_poste');
+    $this->db->join('type_contrat', 'type_contrat.id_type_contrat = contrat.id_type_contrat');
+    $this->db->where('personnel.id_personnel NOT IN (SELECT id_personnel FROM rupture_contrat)', null, false);
+    $this->db->order_by('contrat.date_debut', 'DESC');
+    $this->db->order_by('contrat.id_personnel', 'DESC');
+    $query = $this->db->get();
+    return $query->result_array();
+}
+
 
     public function getAllByPersonnel($idPersonnel)
     {
