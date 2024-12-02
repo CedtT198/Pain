@@ -58,7 +58,7 @@ class CnapsIrsaModel extends CI_Model {
         return $retenueSanitaire;
 
     }
-    public function calculer_irsa($salaire) {
+    public function calculerIrsa($salaire) {
         $irsa = 0;
         $tranches = $this->db->select('*')
                              ->from('tranche_irsa')
