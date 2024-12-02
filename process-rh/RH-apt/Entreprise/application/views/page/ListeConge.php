@@ -81,6 +81,7 @@
           <div class="card-body">
               <h4 class="offset-5 card-title">Ajouter congé</h4>
               <form class="forms-sample" action="<?php echo site_url('CongeController/insert'); ?>" method="post">
+                  <input type="hidden" name="id_personnel" value="<?php echo $personnel['id_personnel'];?>">
                   <div class="form-group row">
                       <label for="dateDebut" class="col-sm-3 col-form-label">Date début</label>
                       <div class="col-sm-9">
@@ -109,6 +110,11 @@
                           <button type="button" class="btn btn-light" onclick="cacherFormulaire()">Annuler</button>
                       </div>
                   </div>
+                <?php if (isset($success)) { ?>
+                        <p class="card-description"><span class="text-info"><?php echo $success; ?> </span> </p>
+                <?php  } if (isset($error)) { ?>
+                        <p class="card-description"><span class="text-info"><?php echo $error; ?> </span> </p>
+                <?php  } ?>
               </form>
           </div>
       </div>
@@ -151,7 +157,7 @@
                     </td>
                     <td class="text-muted">
                       <?php
-                        $type = $this->TypeCongeModel->getById($conge['id_type_conge']);
+                        $type = $this->TypeCongeModel->getById($conge['id_type_conge'])['nom_type_conge'];
                         echo $type;
                       ?>
                     </td>

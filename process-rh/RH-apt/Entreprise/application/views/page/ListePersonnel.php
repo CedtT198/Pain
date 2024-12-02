@@ -40,7 +40,7 @@
                                                                <th>Poste</th>
                                                                <th>Date debut</th>
                                                                <th>Date fin</th>
-                                                               <th>Type de contrat</th>
+                                                               <!-- <th>Type de contrat</th> -->
                                                                <th></th>
                                                                <th></th>
                                                         </tr>
@@ -55,7 +55,7 @@
                                                                       <td><?php echo $personnel['poste_nom'] ?></td>
                                                                       <td><?php echo $personnel['date_debut'] ?></td>
                                                                       <td><?php echo $personnel['date_fin'] ?></td>
-                                                                      <td><?php echo $personnel['nom_type_contrat'] ?></td>
+                                                                      <!-- <td><?php echo $personnel['nom_type_contrat'] ?></td> -->
                                                                       <!-- <?php if ($personnel['date_renvoie'] != null) { ?> -->
                                                                              <!-- <td><p style="color:red">Renvoyé</p></td> -->
                                                                       <!-- <?php } else { ?> -->
@@ -75,20 +75,32 @@
                                                                                                   </select>
                                                                                            </div>
                                                                                            <div class="col-md-6">
-                                                                                                  <button type="submit" class="btn btn-light">Voir</button>
+                                                                                                  <button type="submit" class="btn btn-light">Fiche paie</button>
                                                                                            </div>
                                                                                     </div>
                                                                              </form>
                                                                       </td>
                                                                       <td>
-                                                                             <form action="<?php echo site_url('CongeController/index'); ?>" method="post">
-                                                                                    <input type="hidden" name="id_personnel" value="<?php echo $personnel['id_personnel']; ?>">
-                                                                                    <button type="submit" class="btn btn-warning btn-fw">Conger</button>
-                                                                             </form>
-                                                                             
-                                                                             <form action="<?php echo site_url('CongeController/'); ?>" method="post">
-                                                                                    <button type="submit" class="btn btn-danger btn-fw">Licencie</button>
-                                                                             </form>
+                                                                             <div class="row">
+                                                                                    <div class="col-md-4">
+                                                                                           <form action="<?php echo site_url('CongeController/index'); ?>" method="post">
+                                                                                                  <input type="hidden" name="id_personnel" value="<?php echo $personnel['id_personnel']; ?>">
+                                                                                                  <button type="submit" class="btn btn-warning btn-fw">Conger</button>
+                                                                                           </form>
+                                                                                    </div>
+                                                                                    
+                                                                                    <div class="col-md-4">
+                                                                                           <form action="<?php echo site_url('CongeController/licencie'); ?>" method="post">
+                                                                                                  <button type="submit" class="btn btn-danger btn-fw">Licencie</button>
+                                                                                           </form>
+                                                                                    </div>
+                                                                                    
+                                                                                    <div class="col-md-4">
+                                                                                           <form action="<?php echo site_url('CongeController/licencie'); ?>" method="post">
+                                                                                                  <button type="submit" class="btn btn-dark btn-fw">Voir contrat</button>
+                                                                                           </form>
+                                                                                    </div>
+                                                                             </div>
                                                                       </td>
                                                                </tr>
                                                         <?php } ?>

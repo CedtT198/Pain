@@ -28,7 +28,7 @@ class PersonnelController extends CI_Controller {
     public function index3() {
         $data['contents'] = 'page/FormulaireRenvoiePersonnel';
         $data['personnels'] = $this->ContratModel->getAllWithPersonAndContratNonRenvoye();
-        $this->load->view('template/template', $data);
+        $this->load->view('template/template', $data); 
     }
 
     // public function renvoyer() {
@@ -64,6 +64,11 @@ class PersonnelController extends CI_Controller {
         $data['postes'] = $this->PosteModel->getAll();
         $data['contents'] = 'page/FormulairePersonnel';
         $data['success'] = 'Insertion effectué avec succès.';
+        $this->load->view('template/template', $data);
+    }
+
+    public function licencie() {
+        $data['contents'] = 'page/RuptureContrat';
         $this->load->view('template/template', $data);
     }
 }

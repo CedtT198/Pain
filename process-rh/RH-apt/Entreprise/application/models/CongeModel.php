@@ -2,8 +2,6 @@
 <?php
 class CongeModel extends CI_Model {
 
-
-
     public function verifier_conge($idPersonnel) {
         // Récupérer l'ancienneté en mois
         $nbMoisTravail = $this->get_anciennete($idPersonnel);
