@@ -190,5 +190,12 @@ class ContratModel extends CI_Model {
         // id anle contrat inserer
         return $this->db->insert_id();
     }
-}
+    
+    // public function generatePdf () {
+        //     $pdf = new Fpdf_lib();
+        //     $pdf->AddPage();
+        
+        
+        // }
+    }
 ?>

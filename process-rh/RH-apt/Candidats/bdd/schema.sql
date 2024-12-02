@@ -245,6 +245,7 @@ CREATE TABLE contrat(
    id_personnel INT NOT NULL,
    id_type_contrat INT NOT NULL,
    id_poste INT NOT NULL,
+
    PRIMARY KEY(id_contrat),
    FOREIGN KEY(id_personnel) REFERENCES personnel(id_personnel),
    FOREIGN KEY(id_type_contrat) REFERENCES type_contrat(id_type_contrat),
@@ -480,7 +481,11 @@ VALUES
 -- INSERT INTO centre VALUES
 -- (null, "Courses"),
 -- (null, "Usine"),
+<<<<<<< HEAD
+-- (null, "Administ²ration"),
+=======
 -- (null, "Administration"),
+>>>>>>> ee10b292e65132b5609c0c1f6d5a8faf16c24d38
 -- (null, "Livraison");
 
 
@@ -506,6 +511,21 @@ INSERT INTO type_rupture_contrat VALUES
 (null, "Licenciement");
 
 
+CREATE TABLE regles_preavis (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_type_contrat INT NOT NULL,
+    anciennete_min INT NOT NULL, -- en mois
+    anciennete_max INT DEFAULT NULL, -- en mois, NULL pour illimité
+    preavis_duree INT NOT NULL, -- en jours
+    FOREIGN KEY (id_type_contrat) REFERENCES type_contrat(id_type_contrat)
+);
+INSERT INTO regles_preavis (id_type_contrat, anciennete_min, anciennete_max, preavis_duree)
+VALUES
+(3, 0, 6, 7), -- Moins de 6 mois d'ancienneté : 7 jours
+(3, 6, 24, 30), -- Entre 6 mois et 2 ans : 30 jours
+(3, 24, NULL, 60), -- Plus de 2 ans : 60 jours
+(2, 0, NULL, 15), -- Toujours 15 jours pour CDD
+(1, 0, NULL, 5); -- Toujours 5 jours pour intérim
 
 
    

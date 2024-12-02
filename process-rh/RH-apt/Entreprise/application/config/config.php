@@ -23,8 +23,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/web/Pain/process-rh/RH-apt/Entreprise/';   // Cedy
-// $config['base_url'] = 'http://localhost/projet/S5/GESTION/1erProjet/Pain/RH/';   // Tsiry
+// $config['base_url'] = 'http://localhost/web/Pain/process-rh/RH-apt/Entreprise/';   // Cedy
+$config['base_url'] = 'http://localhost/projet/S5/GESTION/Pain/process-rh/RH-apt/Entreprise/';   // Tsiry
 
 
 /*
