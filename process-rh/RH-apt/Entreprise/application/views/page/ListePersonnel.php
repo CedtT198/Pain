@@ -96,7 +96,7 @@
                                                                                     </div>
                                                                                     
                                                                                     <div class="col-md-4">
-                                                                                           <form action="<?php echo site_url('ContratController/licencie'); ?>" method="post">
+                                                                                           <form action="<?php echo site_url('ContratController/generatePdf'); ?>" method="post">
                                                                                                   <button type="submit" class="btn btn-dark btn-fw">Voir contrat</button>
                                                                                            </form>
                                                                                     </div>
